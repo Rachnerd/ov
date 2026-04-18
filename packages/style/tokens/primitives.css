@@ -1,0 +1,207 @@
+/* =============================================================================
+   tokens/primitives.css
+   Tier 1 — raw values. Never used directly in components; only semantic tokens
+   (in semantic.css) should reference these.
+   ============================================================================= */
+
+:root {
+
+   /* ---------------------------------------------------------------------------
+     Brand Color Palette — from OpenValue Brand Guidelines
+     --------------------------------------------------------------------------- */
+
+   /* Primary */
+   --ov-blue: #3D7DC9;
+   /* PMS 660 C */
+   --ov-charcoal: #1D252D;
+   /* PMS 433 C */
+   --ov-black: #000000;
+   --ov-white: #FFFFFF;
+
+   /* Accent */
+   --ov-midnight: #014046;
+   --ov-light-midnight: #809FA2;
+   --ov-steel-gray: #CBD9DA;
+   --ov-light-steel-gray: #F1F5F6;
+
+   /* ---------------------------------------------------------------------------
+     Blue scale — anchored at brand blue #3D7DC9 (= blue-500)
+     --------------------------------------------------------------------------- */
+   --ov-blue-50: #EEF5FC;
+   --ov-blue-100: #D6E6F6;
+   --ov-blue-200: #ADCDEE;
+   --ov-blue-300: #7FB0E2;
+   --ov-blue-400: #5B96D6;
+   --ov-blue-500: #3D7DC9;
+   --ov-blue-600: #2F66AB;
+   --ov-blue-700: #254F86;
+   --ov-blue-800: #1C3B65;
+   --ov-blue-900: #132849;
+
+   /* ---------------------------------------------------------------------------
+     Neutral scale — anchored at charcoal #1D252D (= neutral-800)
+     and light steel gray #F1F5F6 (= neutral-50)
+     --------------------------------------------------------------------------- */
+   --ov-neutral-0: #FFFFFF;
+   --ov-neutral-50: #F1F5F6;
+   --ov-neutral-100: #E4EBED;
+   --ov-neutral-200: #CBD9DA;
+   --ov-neutral-300: #A9BCBE;
+   --ov-neutral-400: #809FA2;
+   --ov-neutral-500: #5E7478;
+   --ov-neutral-600: #455558;
+   --ov-neutral-700: #2E3A3E;
+   --ov-neutral-800: #1D252D;
+   --ov-neutral-900: #10161B;
+   --ov-neutral-1000: #000000;
+
+   /* ---------------------------------------------------------------------------
+     Midnight (teal) scale — anchored at #014046
+     --------------------------------------------------------------------------- */
+   --ov-midnight-50: #E6EEEF;
+   --ov-midnight-100: #C1D5D7;
+   --ov-midnight-200: #809FA2;
+   --ov-midnight-300: #4A7479;
+   --ov-midnight-400: #265158;
+   --ov-midnight-500: #014046;
+   --ov-midnight-600: #013338;
+   --ov-midnight-700: #01262A;
+   --ov-midnight-800: #00191C;
+
+   /* ---------------------------------------------------------------------------
+     Semantic state colors — success, warning, danger, info
+     --------------------------------------------------------------------------- */
+   --ov-success-50: #E6F4EC;
+   --ov-success-500: #2E9B57;
+   --ov-success-700: #1E6B3C;
+
+   --ov-warning-50: #FFF6E5;
+   --ov-warning-500: #E39A1F;
+   --ov-warning-700: #A26810;
+
+   --ov-danger-50: #FDECEC;
+   --ov-danger-500: #D23B3B;
+   --ov-danger-700: #922121;
+
+   --ov-info-50: var(--ov-blue-50);
+   --ov-info-500: var(--ov-blue-500);
+   --ov-info-700: var(--ov-blue-700);
+
+   /* ---------------------------------------------------------------------------
+     Typography
+     Primary: Montserrat. Fallback: Avenir Next (Office). System fallbacks last.
+     --------------------------------------------------------------------------- */
+   --ov-font-primary: 'Montserrat', 'Avenir Next', -apple-system, BlinkMacSystemFont,
+      'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+   --ov-font-secondary: 'Avenir Next', 'Montserrat', -apple-system, BlinkMacSystemFont,
+      'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+   --ov-font-mono: ui-monospace, 'SF Mono', Menlo, Consolas,
+      'Liberation Mono', monospace;
+
+   /* Font weights — approved: Light, Regular, Medium, SemiBold, Bold */
+   --ov-fw-light: 300;
+   --ov-fw-regular: 400;
+   --ov-fw-medium: 500;
+   --ov-fw-semibold: 600;
+   --ov-fw-bold: 700;
+
+   /* Fluid type scale (clamp min / ideal / max) */
+   --ov-fs-xs: clamp(0.75rem, 0.72rem + 0.15vw, 0.8125rem);
+   --ov-fs-sm: clamp(0.875rem, 0.85rem + 0.15vw, 0.9375rem);
+   --ov-fs-base: clamp(1rem, 0.97rem + 0.2vw, 1.0625rem);
+   --ov-fs-md: clamp(1.125rem, 1.08rem + 0.25vw, 1.25rem);
+   --ov-fs-lg: clamp(1.375rem, 1.3rem + 0.4vw, 1.625rem);
+   --ov-fs-xl: clamp(1.75rem, 1.6rem + 0.7vw, 2.25rem);
+   --ov-fs-2xl: clamp(2.25rem, 2rem + 1.2vw, 3rem);
+   --ov-fs-3xl: clamp(3rem, 2.5rem + 2.5vw, 4.5rem);
+
+   /* Line heights */
+   --ov-lh-tight: 1.1;
+   --ov-lh-snug: 1.25;
+   --ov-lh-normal: 1.5;
+   --ov-lh-relaxed: 1.7;
+
+   /* Letter spacing */
+   --ov-ls-tighter: -0.02em;
+   --ov-ls-tight: -0.01em;
+   --ov-ls-normal: 0;
+   --ov-ls-wide: 0.04em;
+   --ov-ls-wider: 0.08em;
+   --ov-ls-widest: 0.14em;
+
+   /* ---------------------------------------------------------------------------
+     Spacing — 4px base grid
+     --------------------------------------------------------------------------- */
+   --ov-space-0: 0;
+   --ov-space-1: 0.25rem;
+   --ov-space-2: 0.5rem;
+   --ov-space-3: 0.75rem;
+   --ov-space-4: 1rem;
+   --ov-space-5: 1.25rem;
+   --ov-space-6: 1.5rem;
+   --ov-space-8: 2rem;
+   --ov-space-10: 2.5rem;
+   --ov-space-12: 3rem;
+   --ov-space-16: 4rem;
+   --ov-space-20: 5rem;
+   --ov-space-24: 6rem;
+   --ov-space-32: 8rem;
+
+   /* ---------------------------------------------------------------------------
+     Sizing & Radii
+     --------------------------------------------------------------------------- */
+   --ov-radius-none: 0;
+   --ov-radius-xs: 2px;
+   --ov-radius-sm: 4px;
+   --ov-radius-md: 8px;
+   --ov-radius-lg: 12px;
+   --ov-radius-xl: 16px;
+   --ov-radius-2xl: 24px;
+   --ov-radius-pill: 999px;
+
+   --ov-border-thin: 1px;
+   --ov-border-base: 1.5px;
+   --ov-border-thick: 2px;
+
+   --ov-container-sm: 640px;
+   --ov-container-md: 768px;
+   --ov-container-lg: 1024px;
+   --ov-container-xl: 1280px;
+   --ov-container-2xl: 1536px;
+
+   /* ---------------------------------------------------------------------------
+     Elevation — shadows tuned to charcoal, not pure black
+     --------------------------------------------------------------------------- */
+   --ov-shadow-xs: 0 1px 2px rgba(29, 37, 45, 0.06);
+   --ov-shadow-sm: 0 1px 3px rgba(29, 37, 45, 0.08),
+      0 1px 2px rgba(29, 37, 45, 0.04);
+   --ov-shadow-md: 0 4px 8px -2px rgba(29, 37, 45, 0.10),
+      0 2px 4px -2px rgba(29, 37, 45, 0.06);
+   --ov-shadow-lg: 0 12px 24px -4px rgba(29, 37, 45, 0.12),
+      0 4px 8px -4px rgba(29, 37, 45, 0.06);
+   --ov-shadow-xl: 0 24px 48px -8px rgba(29, 37, 45, 0.18),
+      0 8px 16px -8px rgba(29, 37, 45, 0.08);
+   --ov-shadow-focus: 0 0 0 3px rgba(61, 125, 201, 0.35);
+
+   /* ---------------------------------------------------------------------------
+     Z-index layers
+     --------------------------------------------------------------------------- */
+   --ov-z-base: 0;
+   --ov-z-raised: 10;
+   --ov-z-dropdown: 100;
+   --ov-z-sticky: 200;
+   --ov-z-overlay: 300;
+   --ov-z-modal: 400;
+   --ov-z-popover: 500;
+   --ov-z-toast: 600;
+   --ov-z-tooltip: 700;
+
+   /* ---------------------------------------------------------------------------
+     Breakpoints (reference — use in media queries as values, not var())
+     --------------------------------------------------------------------------- */
+   --ov-bp-sm: 640px;
+   --ov-bp-md: 768px;
+   --ov-bp-lg: 1024px;
+   --ov-bp-xl: 1280px;
+   --ov-bp-2xl: 1536px;
+}

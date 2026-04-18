@@ -1,0 +1,68 @@
+/* =============================================================================
+   base/typography.css
+   Bare element defaults — class-based typography is handled by ov-heading
+   and ov-text web components.
+   ============================================================================= */
+
+/* Headings */
+h1 {
+  font-family: var(--ov-font-primary);
+  font-weight: var(--ov-fw-semibold);
+  font-size: var(--ov-fs-xl);
+  line-height: var(--ov-lh-snug);
+  letter-spacing: var(--ov-ls-tight);
+  margin: 0 0 var(--ov-space-4);
+  color: var(--color-text-primary);
+}
+
+h2 {
+  font-family: var(--ov-font-primary);
+  font-weight: var(--ov-fw-semibold);
+  font-size: var(--ov-fs-lg);
+  line-height: var(--ov-lh-snug);
+  letter-spacing: var(--ov-ls-tight);
+  margin: 0 0 var(--ov-space-3);
+  color: var(--color-text-primary);
+}
+
+h3 {
+  font-family: var(--ov-font-primary);
+  font-weight: var(--ov-fw-medium);
+  font-size: var(--ov-fs-md);
+  line-height: var(--ov-lh-snug);
+  margin: 0 0 var(--ov-space-3);
+  color: var(--color-text-primary);
+}
+
+h4 {
+  font-family: var(--ov-font-primary);
+  font-weight: var(--ov-fw-medium);
+  font-size: var(--ov-fs-base);
+  line-height: var(--ov-lh-normal);
+  margin: 0 0 var(--ov-space-2);
+  color: var(--color-text-primary);
+}
+
+/* Inline code */
+code,
+kbd,
+samp {
+  font-family: var(--ov-font-mono);
+  font-size: 0.9em;
+  background: var(--color-bg-surface-muted);
+  padding: 0.15em 0.4em;
+  border-radius: var(--ov-radius-xs);
+}
+
+/* Links */
+a {
+  color: var(--color-text-link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color var(--ov-duration-fast) var(--ov-ease-out);
+}
+
+a:hover {
+  color: var(--color-text-link-hover);
+}

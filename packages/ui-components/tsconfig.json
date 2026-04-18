@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "es2022",
+    "moduleResolution": "bundler",
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false,
+    "declaration": true,
+    "outDir": "dist",
+    "lib": ["es2022", "dom", "dom.iterable"]
+  },
+  "include": ["src/**/*.ts"]
+}

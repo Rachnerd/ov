@@ -1,0 +1,63 @@
+/* =============================================================================
+   base/reset.css
+   Minimal opinionated reset. Establishes the design system baseline on <html>
+   and <body>, then handles element-level defaults.
+   ============================================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  tab-size: 4;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  font-family: var(--ov-font-primary);
+  font-size: var(--ov-fs-base);
+  font-weight: var(--ov-fw-regular);
+  line-height: var(--ov-lh-normal);
+  color: var(--color-text-primary);
+  background: var(--color-bg-canvas);
+  transition:
+    background-color var(--ov-duration-base) var(--ov-ease-out),
+    color var(--ov-duration-base) var(--ov-ease-out);
+}
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block;
+  max-width: 100%;
+}
+
+hr {
+  border: 0;
+  border-top: var(--ov-border-thin) solid var(--color-border-subtle);
+  margin: var(--ov-space-8) 0;
+}
+
+/* Keyboard-first focus */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+  border-radius: var(--ov-radius-sm);
+}
+
+::selection {
+  background: var(--color-brand);
+  color: var(--color-brand-contrast);
+}

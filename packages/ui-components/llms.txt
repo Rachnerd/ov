@@ -1,0 +1,947 @@
+# @ov/ui-components — LLM reference
+
+Complete API reference for every atom component. Use this file to correctly
+generate, review, and compose `ov-*` custom elements.
+
+## Quick rules
+
+- **Never invent** props, slots, or attribute values not listed below.
+- **Headings**: always `ov-heading`, never `ov-text`.
+- **Forms**: wrap every label+control in `ov-field`.
+- **Tokens**: use `var(--color-brand)` etc. instead of raw hex or px values.
+- **Imports**: no barrel — import each component by path:
+  `import '@ov/ui-components/atoms/button/ov-button';`
+
+---
+
+# ov-button
+
+A button element with multiple visual variants, sizes, loading and disabled states, and optional icon slots.
+
+## Tag
+
+```html
+<ov-button>Label</ov-button>
+```
+
+## Properties
+
+| Property   | Attribute  | Type                                                       | Default     | Description                                    |
+|------------|------------|------------------------------------------------------------|-------------|------------------------------------------------|
+| `variant`  | `variant`  | `'primary' \| 'secondary' \| 'ghost' \| 'inverse' \| 'accent' \| 'danger'` | `'primary'` | Visual treatment |
+| `size`     | `size`     | `'sm' \| 'md' \| 'lg'`                                    | `'md'`      | Physical scale                                 |
+| `type`     | `type`     | `'button' \| 'submit' \| 'reset'`                         | `'button'`  | Native button type for forms                   |
+| `disabled` | `disabled` | `boolean`                                                  | `false`     | Non-interactive, dimmed                        |
+| `loading`  | `loading`  | `boolean`                                                  | `false`     | Shows spinner, preserves width, blocks clicks  |
+| `block`    | `block`    | `boolean`                                                  | `false`     | Stretches to 100% of parent width              |
+
+## Slots
+
+| Slot    | Description                        |
+|---------|------------------------------------|
+| (default) | Button label text                |
+| `start` | Leading icon or element            |
+| `end`   | Trailing icon or element           |
+
+## Events
+
+| Event   | Type         | Description                                          |
+|---------|--------------|------------------------------------------------------|
+| `click` | `MouseEvent` | Standard click; suppressed while `disabled` or `loading` |
+
+## CSS custom properties
+
+| Property               | Description                          |
+|------------------------|--------------------------------------|
+| `--color-brand`        | Background for `primary` variant     |
+| `--color-text-on-brand`| Foreground for `primary` variant     |
+
+## Usage examples
+
+```html
+<!-- Variants -->
+<ov-button variant="primary">Save</ov-button>
+<ov-button variant="secondary">Cancel</ov-button>
+<ov-button variant="ghost">Learn more</ov-button>
+<ov-button variant="accent">Upgrade</ov-button>
+<ov-button variant="danger">Delete</ov-button>
+<ov-button variant="inverse">Get started</ov-button>
+
+<!-- Sizes -->
+<ov-button size="sm">Small</ov-button>
+<ov-button size="md">Medium</ov-button>
+<ov-button size="lg">Large</ov-button>
+
+<!-- With icons (use ov-icon in slots) -->
+<ov-button variant="primary">
+  <ov-icon slot="start" name="plus"></ov-icon>
+  New item
+</ov-button>
+
+<ov-button variant="secondary">
+  Export
+  <ov-icon slot="end" name="arrow-right"></ov-icon>
+</ov-button>
+
+<!-- States -->
+<ov-button loading>Saving…</ov-button>
+<ov-button disabled>Unavailable</ov-button>
+
+<!-- Full width -->
+<ov-button block>Create account</ov-button>
+
+<!-- Form submit -->
+<ov-button type="submit" variant="primary">Submit</ov-button>
+```
+
+## Rules
+
+- Always provide visible label text; do not use icon-only buttons without an `aria-label`.
+- Use `loading` instead of `disabled` when an async action is in progress — it preserves layout width.
+- `inverse` is designed for dark backgrounds; wrap it in a dark container or use on a dark page section.
+- Slot content (SVGs, icons) automatically receives `width: 1em; height: 1em` sizing.
+
+---
+
+# ov-badge
+
+A small inline label used to convey status, counts, or categorical metadata. Supports three rendering appearances across six semantic variants.
+
+## Tag
+
+```html
+<ov-badge>Label</ov-badge>
+```
+
+## Properties
+
+| Property     | Attribute    | Type                                                                 | Default     | Description                      |
+|--------------|--------------|----------------------------------------------------------------------|-------------|----------------------------------|
+| `variant`    | `variant`    | `'default' \| 'brand' \| 'accent' \| 'success' \| 'warning' \| 'danger' \| 'info'` | `'default'` | Semantic colour intent |
+| `appearance` | `appearance` | `'soft' \| 'solid' \| 'outline'`                                     | `'soft'`    | Rendering style                  |
+| `size`       | `size`       | `'sm' \| 'md'`                                                       | `'md'`      | Physical scale                   |
+| `pill`       | `pill`       | `boolean`                                                            | `true`      | Fully rounded corners            |
+
+## Slots
+
+| Slot      | Description                                                                 |
+|-----------|-----------------------------------------------------------------------------|
+| (default) | Badge text content                                                          |
+| `dot`     | Optional leading status dot; only shown when explicitly slotted             |
+
+## Usage examples
+
+```html
+<!-- Variants (soft appearance, default) -->
+<ov-badge variant="default">Default</ov-badge>
+<ov-badge variant="brand">New</ov-badge>
+<ov-badge variant="success">Published</ov-badge>
+<ov-badge variant="warning">Draft</ov-badge>
+<ov-badge variant="danger">Error</ov-badge>
+<ov-badge variant="info">In review</ov-badge>
+<ov-badge variant="accent">Featured</ov-badge>
+
+<!-- Solid appearance -->
+<ov-badge variant="success" appearance="solid">Active</ov-badge>
+<ov-badge variant="danger" appearance="solid">Critical</ov-badge>
+
+<!-- Outline appearance -->
+<ov-badge variant="brand" appearance="outline">Beta</ov-badge>
+
+<!-- Small size -->
+<ov-badge variant="warning" size="sm">Pending</ov-badge>
+
+<!-- Square corners -->
+<ov-badge variant="info" pill="false">Tag</ov-badge>
+
+<!-- With a status dot -->
+<ov-badge variant="success">
+  <span slot="dot" style="width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block"></span>
+  Online
+</ov-badge>
+```
+
+## Rules
+
+- Badges are inline and purely visual — do not put interactive elements inside one.
+- The `dot` slot is opt-in; omitting it renders no dot even though the slot exists in shadow DOM.
+- Prefer `size="sm"` when badges appear inside table rows or dense list items.
+- `solid` on `default` variant renders dark-on-light (inverted) — use sparingly as a count bubble.
+
+---
+
+# ov-icon / ov-spinner
+
+Two display-only atoms for iconography and loading indication. Color is always `currentColor` so both inherit from surrounding text.
+
+---
+
+## ov-icon
+
+Renders one of the built-in SVG icons by name, or acts as a sized wrapper for a custom SVG passed via the default slot.
+
+### Tag
+
+```html
+<ov-icon name="check"></ov-icon>
+```
+
+### Properties
+
+| Property | Attribute | Type                                                                                                        | Default | Description                                  |
+|----------|-----------|-------------------------------------------------------------------------------------------------------------|---------|----------------------------------------------|
+| `name`   | `name`    | `'check' \| 'x' \| 'arrow-right' \| 'arrow-left' \| 'search' \| 'mail' \| 'info' \| 'warning' \| 'sun' \| 'moon' \| 'plus' \| 'user' \| ''` | `''`    | Built-in icon name; empty falls back to slot |
+| `size`   | `size`    | `'sm' \| 'md' \| 'lg' \| 'xl'`                                                                             | `'md'`  | `12 / 16 / 20 / 24 px`                       |
+| `label`  | `label`   | `string`                                                                                                    | `''`    | Accessible label; when set, `role="img"` is applied |
+
+### Slots
+
+| Slot      | Description                                      |
+|-----------|--------------------------------------------------|
+| (default) | Custom SVG to render when `name` is not a built-in |
+
+### Usage examples
+
+```html
+<!-- Built-in icons -->
+<ov-icon name="check"></ov-icon>
+<ov-icon name="x"></ov-icon>
+<ov-icon name="search"></ov-icon>
+<ov-icon name="mail"></ov-icon>
+<ov-icon name="info"></ov-icon>
+<ov-icon name="warning"></ov-icon>
+<ov-icon name="plus"></ov-icon>
+<ov-icon name="user"></ov-icon>
+<ov-icon name="arrow-right"></ov-icon>
+<ov-icon name="arrow-left"></ov-icon>
+<ov-icon name="sun"></ov-icon>
+<ov-icon name="moon"></ov-icon>
+
+<!-- Sizes -->
+<ov-icon name="user" size="sm"></ov-icon>
+<ov-icon name="user" size="md"></ov-icon>
+<ov-icon name="user" size="lg"></ov-icon>
+<ov-icon name="user" size="xl"></ov-icon>
+
+<!-- Accessible (labelled) -->
+<ov-icon name="warning" label="Warning"></ov-icon>
+
+<!-- Custom SVG via slot -->
+<ov-icon size="lg">
+  <svg viewBox="0 0 24 24" fill="none"><path d="..." stroke="currentColor"/></svg>
+</ov-icon>
+
+<!-- Inheriting color from parent -->
+<span style="color: var(--color-danger)">
+  <ov-icon name="x"></ov-icon>
+</span>
+```
+
+---
+
+## ov-spinner
+
+An animated circular loading indicator.
+
+### Tag
+
+```html
+<ov-spinner></ov-spinner>
+```
+
+### Properties
+
+| Property | Attribute | Type                           | Default   | Description               |
+|----------|-----------|--------------------------------|-----------|---------------------------|
+| `size`   | `size`    | `'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'`    | `14 / 20 / 32 / 40 px`    |
+| `tone`   | `tone`    | `'brand' \| 'neutral' \| 'inverse'` | `'brand'` | Color tone             |
+| `label`  | `label`   | `string`                       | `'Loading'` | `aria-label` text       |
+
+### Usage examples
+
+```html
+<ov-spinner></ov-spinner>
+<ov-spinner size="sm" tone="neutral"></ov-spinner>
+<ov-spinner size="lg" tone="brand"></ov-spinner>
+
+<!-- On a dark background -->
+<div style="background: var(--ov-charcoal)">
+  <ov-spinner tone="inverse"></ov-spinner>
+</div>
+
+<!-- Custom accessible label -->
+<ov-spinner label="Fetching results"></ov-spinner>
+```
+
+## Rules
+
+- `ov-icon` is decorative by default (`aria-hidden="true"`); only set `label` when the icon conveys meaning not available from surrounding text.
+- Never put text inside `ov-icon` — it is a sizing wrapper only.
+- `ov-spinner` always has `role="progressbar"` — do not wrap it in another ARIA live region.
+- Both elements inherit `currentColor`; set color on a parent element, not directly on the component.
+
+---
+
+# ov-input
+
+A single-line text field with prefix/suffix slots, multiple input types, and full validation-state support.
+
+## Tag
+
+```html
+<ov-input placeholder="Enter value"></ov-input>
+```
+
+## Properties
+
+| Property       | Attribute      | Type                                                             | Default  | Description                                  |
+|----------------|----------------|------------------------------------------------------------------|----------|----------------------------------------------|
+| `type`         | `type`         | `'text' \| 'email' \| 'password' \| 'number' \| 'search' \| 'tel' \| 'url'` | `'text'` | Native input type |
+| `value`        | `value`        | `string`                                                         | `''`     | Current value (live-bound)                   |
+| `placeholder`  | `placeholder`  | `string`                                                         | `''`     | Placeholder text                             |
+| `name`         | `name`         | `string`                                                         | `''`     | Form field name                              |
+| `autocomplete` | `autocomplete` | `string`                                                         | `'off'`  | Native autocomplete hint                     |
+| `size`         | `size`         | `'sm' \| 'md' \| 'lg'`                                          | `'md'`   | Physical scale                               |
+| `required`     | `required`     | `boolean`                                                        | `false`  | Required field                               |
+| `disabled`     | `disabled`     | `boolean`                                                        | `false`  | Non-interactive, dimmed                      |
+| `readonly`     | `readonly`     | `boolean`                                                        | `false`  | Value visible but not editable               |
+| `invalid`      | `invalid`      | `boolean`                                                        | `false`  | Applies error border; sets `aria-invalid`    |
+
+## Slots
+
+| Slot     | Description                                      |
+|----------|--------------------------------------------------|
+| `prefix` | Leading icon or element (search glyph, currency) |
+| `suffix` | Trailing icon or element (unit, clear button)    |
+
+## Events
+
+| Event    | Detail                    | Description                            |
+|----------|---------------------------|----------------------------------------|
+| `input`  | `{ value: string }`       | Fires on every keystroke               |
+| `change` | `{ value: string }`       | Fires on commit (blur or Enter)        |
+
+## Methods
+
+| Method  | Signature                        | Description                     |
+|---------|----------------------------------|---------------------------------|
+| `focus` | `(options?: FocusOptions): void` | Forwards focus to internal input |
+
+## Parts
+
+| Part   | Description               |
+|--------|---------------------------|
+| `wrap` | The border/background div |
+
+## Usage examples
+
+```html
+<!-- Basic -->
+<ov-input placeholder="Search…"></ov-input>
+
+<!-- Types -->
+<ov-input type="email" placeholder="you@example.com"></ov-input>
+<ov-input type="password" placeholder="••••••••"></ov-input>
+<ov-input type="number" placeholder="0"></ov-input>
+
+<!-- Sizes -->
+<ov-input size="sm" placeholder="Small"></ov-input>
+<ov-input size="lg" placeholder="Large"></ov-input>
+
+<!-- With prefix/suffix icons -->
+<ov-input placeholder="Search…">
+  <ov-icon slot="prefix" name="search"></ov-icon>
+</ov-input>
+
+<ov-input type="number" value="42">
+  <span slot="suffix">kg</span>
+</ov-input>
+
+<!-- States -->
+<ov-input value="Read-only" readonly></ov-input>
+<ov-input placeholder="Disabled" disabled></ov-input>
+<ov-input value="bad@" invalid></ov-input>
+
+<!-- Inside a form -->
+<ov-input name="email" type="email" required autocomplete="email"></ov-input>
+```
+
+## Rules
+
+- Always pair with `ov-label` (via `ov-field`) to satisfy accessibility — the component does not render its own label.
+- Set `invalid` through `ov-field` rather than directly when using the field molecule; `ov-field` syncs it automatically.
+- `prefix` and `suffix` slots expect `display: inline-flex` children; plain text will need a wrapper `<span>`.
+- `value` is live-bound — read it from the `input` or `change` event detail, not the attribute.
+
+---
+
+# ov-textarea
+
+A multi-line text field with configurable resize behaviour and validation-state support.
+
+## Tag
+
+```html
+<ov-textarea placeholder="Enter your message…"></ov-textarea>
+```
+
+## Properties
+
+| Property      | Attribute     | Type                                             | Default      | Description                                  |
+|---------------|---------------|--------------------------------------------------|--------------|----------------------------------------------|
+| `value`       | `value`       | `string`                                         | `''`         | Current value (live-bound)                   |
+| `placeholder` | `placeholder` | `string`                                         | `''`         | Placeholder text                             |
+| `name`        | `name`        | `string`                                         | `''`         | Form field name                              |
+| `rows`        | `rows`        | `number`                                         | `4`          | Initial visible row count                    |
+| `resize`      | `resize`      | `'none' \| 'vertical' \| 'horizontal' \| 'both'` | `'vertical'` | User resize behaviour                        |
+| `required`    | `required`    | `boolean`                                        | `false`      | Required field                               |
+| `disabled`    | `disabled`    | `boolean`                                        | `false`      | Non-interactive, dimmed                      |
+| `readonly`    | `readonly`    | `boolean`                                        | `false`      | Value visible but not editable               |
+| `invalid`     | `invalid`     | `boolean`                                        | `false`      | Applies error border; sets `aria-invalid`    |
+
+## Events
+
+| Event   | Detail              | Description             |
+|---------|---------------------|-------------------------|
+| `input` | `{ value: string }` | Fires on every keystroke |
+
+## Methods
+
+| Method  | Signature                        | Description                        |
+|---------|----------------------------------|------------------------------------|
+| `focus` | `(options?: FocusOptions): void` | Forwards focus to internal textarea |
+
+## Usage examples
+
+```html
+<!-- Basic -->
+<ov-textarea placeholder="Write your feedback…"></ov-textarea>
+
+<!-- Custom row count -->
+<ov-textarea rows="8" placeholder="Long-form content…"></ov-textarea>
+
+<!-- Resize modes -->
+<ov-textarea resize="none" placeholder="Fixed size"></ov-textarea>
+<ov-textarea resize="both" placeholder="Freely resizable"></ov-textarea>
+
+<!-- States -->
+<ov-textarea value="This cannot be changed." readonly></ov-textarea>
+<ov-textarea placeholder="Disabled" disabled></ov-textarea>
+<ov-textarea value="Too short." invalid></ov-textarea>
+```
+
+## Rules
+
+- Always pair with `ov-label` (via `ov-field`) — the component renders no label itself.
+- Prefer `resize="none"` when the textarea is inside a constrained layout where overflow would break the grid.
+- `value` is live-bound — read from the `input` event detail rather than the attribute after user interaction.
+
+---
+
+# ov-label
+
+An accessible form label that associates with a control via the `for` attribute and optionally displays a required indicator and hint text.
+
+## Tag
+
+```html
+<ov-label for="my-input">Email address</ov-label>
+```
+
+## Properties
+
+| Property   | Attribute  | Type               | Default | Description                                      |
+|------------|------------|--------------------|---------|--------------------------------------------------|
+| `for`      | `for`      | `string`           | `''`    | `id` of the associated form control              |
+| `required` | `required` | `boolean`          | `false` | Renders a red `*` after the label text           |
+| `size`     | `size`     | `'sm' \| 'md'`    | `'md'`  | Text scale                                       |
+
+## Slots
+
+| Slot      | Description                                     |
+|-----------|-------------------------------------------------|
+| (default) | Label text                                      |
+| `hint`    | Optional supplementary text shown beside label  |
+
+## Usage examples
+
+```html
+<!-- Basic -->
+<ov-label for="email">Email address</ov-label>
+<ov-input id="email" type="email"></ov-input>
+
+<!-- Required field -->
+<ov-label for="name" required>Full name</ov-label>
+<ov-input id="name"></ov-input>
+
+<!-- With hint -->
+<ov-label for="pw">
+  Password
+  <span slot="hint">Min. 8 characters</span>
+</ov-label>
+<ov-input id="pw" type="password"></ov-input>
+
+<!-- Small size -->
+<ov-label for="search" size="sm">Search</ov-label>
+```
+
+## Rules
+
+- Always set `for` to match the `id` of the associated control so screen readers announce the label correctly.
+- Prefer `ov-field` over manual `ov-label` + control composition — it wires `for`/`id` and validation states automatically.
+- The `hint` slot renders at a smaller size and muted color; keep hint text brief (under 10 words).
+
+---
+
+# ov-link
+
+A semantic `<a>` element with design-system color and underline behaviour. Renders a real anchor so SEO and keyboard navigation work correctly.
+
+## Tag
+
+```html
+<ov-link href="/dashboard">Go to dashboard</ov-link>
+```
+
+## Properties
+
+| Property    | Attribute   | Type                                          | Default     | Description                           |
+|-------------|-------------|-----------------------------------------------|-------------|---------------------------------------|
+| `href`      | `href`      | `string`                                      | `'#'`       | Link destination                      |
+| `target`    | `target`    | `string`                                      | `''`        | Native anchor target (`_blank`, etc.) |
+| `rel`       | `rel`       | `string`                                      | `''`        | Native anchor rel attribute           |
+| `download`  | `download`  | `string`                                      | `''`        | Native anchor download attribute      |
+| `variant`   | `variant`   | `'default' \| 'subtle' \| 'brand' \| 'inverse'` | `'default'` | Color treatment               |
+| `underline` | `underline` | `'hover' \| 'always' \| 'none'`              | `'hover'`   | Underline visibility                  |
+| `size`      | `size`      | `'sm' \| 'md' \| 'lg'`                       | `'md'`      | Text scale                            |
+
+## Slots
+
+| Slot      | Description  |
+|-----------|--------------|
+| (default) | Link text    |
+
+## Usage examples
+
+```html
+<!-- Basic -->
+<ov-link href="/reports">View reports</ov-link>
+
+<!-- Variants -->
+<ov-link href="#" variant="default">Default link</ov-link>
+<ov-link href="#" variant="brand">Brand link</ov-link>
+<ov-link href="#" variant="subtle">Subtle link</ov-link>
+
+<!-- On a dark background -->
+<div style="background: var(--ov-charcoal); padding: 16px">
+  <ov-link href="#" variant="inverse">Inverse link</ov-link>
+</div>
+
+<!-- Underline modes -->
+<ov-link href="#" underline="always">Always underlined</ov-link>
+<ov-link href="#" underline="none">Never underlined</ov-link>
+
+<!-- Sizes -->
+<ov-link href="#" size="sm">Small</ov-link>
+<ov-link href="#" size="lg">Large</ov-link>
+
+<!-- External link -->
+<ov-link href="https://example.com" target="_blank" rel="noopener noreferrer">
+  External site
+</ov-link>
+
+<!-- Download -->
+<ov-link href="/report.pdf" download="Q1-Report.pdf">Download PDF</ov-link>
+
+<!-- Inline in prose -->
+<p>
+  See the <ov-link href="/docs">full documentation</ov-link> for details.
+</p>
+```
+
+## Rules
+
+- Always provide meaningful link text — avoid "click here" or "read more" without context.
+- When using `target="_blank"`, always add `rel="noopener noreferrer"` for security.
+- Use `variant="inverse"` only on dark backgrounds — it renders white text.
+- `ov-link` is `display: inline`; do not place block-level elements inside it.
+
+---
+
+# ov-checkbox / ov-radio / ov-switch
+
+Three selection controls sharing a common visual language. All hide the native input visually and render a custom control while preserving full keyboard and screen-reader accessibility.
+
+---
+
+## ov-checkbox
+
+### Tag
+
+```html
+<ov-checkbox>Accept terms</ov-checkbox>
+```
+
+### Properties
+
+| Property        | Attribute       | Type      | Default | Description                                    |
+|-----------------|-----------------|-----------|---------|------------------------------------------------|
+| `checked`       | `checked`       | `boolean` | `false` | Whether the checkbox is checked                |
+| `indeterminate` | `indeterminate` | `boolean` | `false` | Partial-selection state (overrides `checked` visually) |
+| `disabled`      | `disabled`      | `boolean` | `false` | Non-interactive                                |
+| `required`      | `required`      | `boolean` | `false` | Required for form validation                   |
+| `name`          | `name`          | `string`  | `''`    | Form field name                                |
+| `value`         | `value`         | `string`  | `'on'`  | Value submitted with the form                  |
+
+### Events
+
+| Event    | Detail                           | Description                        |
+|----------|----------------------------------|------------------------------------|
+| `change` | `{ checked: boolean, value: string }` | Fires when checked state changes |
+
+### Usage examples
+
+```html
+<ov-checkbox>Receive email updates</ov-checkbox>
+<ov-checkbox checked>Pre-selected option</ov-checkbox>
+<ov-checkbox indeterminate>Partially selected group</ov-checkbox>
+<ov-checkbox disabled>Unavailable option</ov-checkbox>
+<ov-checkbox name="terms" value="accepted" required>I accept the terms</ov-checkbox>
+```
+
+---
+
+## ov-radio
+
+Groups by shared `name`. Selecting one automatically unchecks its siblings within the same root.
+
+### Tag
+
+```html
+<ov-radio name="plan" value="pro">Pro plan</ov-radio>
+```
+
+### Properties
+
+| Property   | Attribute  | Type      | Default | Description                      |
+|------------|------------|-----------|---------|----------------------------------|
+| `checked`  | `checked`  | `boolean` | `false` | Whether this radio is selected   |
+| `disabled` | `disabled` | `boolean` | `false` | Non-interactive                  |
+| `name`     | `name`     | `string`  | `''`    | Group name — required for exclusivity |
+| `value`    | `value`    | `string`  | `''`    | Value emitted in the change event |
+
+### Events
+
+| Event    | Detail                           | Description                             |
+|----------|----------------------------------|-----------------------------------------|
+| `change` | `{ checked: true, value: string }` | Fires when this radio becomes selected |
+
+### Usage examples
+
+```html
+<!-- Radio group -->
+<ov-radio name="plan" value="free" checked>Free</ov-radio>
+<ov-radio name="plan" value="pro">Pro — $29/month</ov-radio>
+<ov-radio name="plan" value="enterprise">Enterprise</ov-radio>
+<ov-radio name="plan" value="legacy" disabled>Legacy (unavailable)</ov-radio>
+```
+
+---
+
+## ov-switch
+
+A toggle switch for boolean on/off settings.
+
+### Tag
+
+```html
+<ov-switch>Dark mode</ov-switch>
+```
+
+### Properties
+
+| Property   | Attribute  | Type      | Default | Description                      |
+|------------|------------|-----------|---------|----------------------------------|
+| `checked`  | `checked`  | `boolean` | `false` | Whether the switch is on         |
+| `disabled` | `disabled` | `boolean` | `false` | Non-interactive                  |
+| `name`     | `name`     | `string`  | `''`    | Form field name                  |
+| `value`    | `value`    | `string`  | `'on'`  | Value submitted when checked     |
+
+### Events
+
+| Event    | Detail                           | Description                        |
+|----------|----------------------------------|------------------------------------|
+| `change` | `{ checked: boolean, value: string }` | Fires when toggle state changes |
+
+### Usage examples
+
+```html
+<ov-switch>Enable notifications</ov-switch>
+<ov-switch checked>Dark mode</ov-switch>
+<ov-switch disabled>Unavailable setting</ov-switch>
+<ov-switch checked disabled>Locked-on setting</ov-switch>
+<ov-switch name="newsletter" value="subscribed">Weekly digest</ov-switch>
+```
+
+---
+
+## Rules
+
+- All three controls render their label via the default slot — always provide label text for accessibility.
+- For `ov-radio`, always set a shared `name` on every radio in a group or exclusivity will not work.
+- `indeterminate` on `ov-checkbox` is a visual-only state — the `checked` property still governs the submitted form value.
+- `ov-switch` uses `role="switch"` internally; do not nest it inside another switch or checkbox.
+- Listen to the `change` event on individual controls rather than polling `.checked` directly.
+
+---
+
+# ov-heading / ov-text
+
+Two typography atoms that decouple semantic meaning from visual appearance.
+
+---
+
+## ov-heading
+
+Renders the correct `<h1>`–`<h6>` element while allowing the visual size to be set independently, keeping document outline correct even when designers want an `h2` styled as a display heading.
+
+### Tag
+
+```html
+<ov-heading level="2">Section title</ov-heading>
+```
+
+### Properties
+
+| Property | Attribute | Type                                                          | Default | Description                                          |
+|----------|-----------|---------------------------------------------------------------|---------|------------------------------------------------------|
+| `level`  | `level`   | `1 \| 2 \| 3 \| 4 \| 5 \| 6`                                | `2`     | Semantic heading level (`<h1>`–`<h6>`)               |
+| `size`   | `size`    | `'' \| 'display-1' \| 'display-2' \| 'h1' \| 'h2' \| 'h3' \| 'h4'` | `''`    | Visual size override; empty inherits from `level` |
+| `tone`   | `tone`    | `'primary' \| 'secondary' \| 'brand' \| 'accent' \| 'inverse'` | `'primary'` | Text color                                 |
+
+### Usage examples
+
+```html
+<!-- Semantic levels with default sizes -->
+<ov-heading level="1">Page title</ov-heading>
+<ov-heading level="2">Section title</ov-heading>
+<ov-heading level="3">Subsection</ov-heading>
+<ov-heading level="4">Card heading</ov-heading>
+<ov-heading level="5">Label heading</ov-heading>
+<ov-heading level="6">Eyebrow / category</ov-heading>
+
+<!-- Size overrides (semantic level stays correct) -->
+<ov-heading level="2" size="display-1">Hero headline</ov-heading>
+<ov-heading level="2" size="display-2">Section hero</ov-heading>
+<ov-heading level="3" size="h2">Visually promoted subsection</ov-heading>
+
+<!-- Tones -->
+<ov-heading level="2" tone="brand">Brand-colored heading</ov-heading>
+<ov-heading level="2" tone="secondary">Subdued heading</ov-heading>
+<ov-heading level="2" tone="accent">Accent heading</ov-heading>
+
+<!-- On dark background -->
+<div style="background: var(--ov-charcoal)">
+  <ov-heading level="2" tone="inverse">Inverse heading</ov-heading>
+</div>
+```
+
+---
+
+## ov-text
+
+General-purpose text atom. Controls typography variant, color tone, font weight, and the rendered HTML element independently.
+
+### Tag
+
+```html
+<ov-text variant="body" as="p">Paragraph text</ov-text>
+```
+
+### Properties
+
+| Property  | Attribute | Type                                                                                      | Default   | Description                              |
+|-----------|-----------|-------------------------------------------------------------------------------------------|-----------|------------------------------------------|
+| `variant` | `variant` | `'body' \| 'body-sm' \| 'lead' \| 'caption' \| 'eyebrow' \| 'code'`                      | `'body'`  | Typography style                         |
+| `tone`    | `tone`    | `'primary' \| 'secondary' \| 'tertiary' \| 'muted' \| 'brand' \| 'accent' \| 'success' \| 'warning' \| 'danger' \| 'inverse'` | `'primary'` | Text color |
+| `weight`  | `weight`  | `'' \| 'light' \| 'regular' \| 'medium' \| 'semibold' \| 'bold'`                         | `''`      | Font weight override; empty uses variant default |
+| `as`      | *(prop)*  | `'span' \| 'p' \| 'div' \| 'small' \| 'strong' \| 'em'`                                  | `'span'`  | HTML element to render                   |
+
+### Variant descriptions
+
+| Variant   | Use for                                              |
+|-----------|------------------------------------------------------|
+| `body`    | Standard paragraph text                              |
+| `body-sm` | Secondary / smaller body copy                        |
+| `lead`    | Intro paragraph, slightly larger with relaxed line height |
+| `caption` | Timestamps, footnotes, helper annotations            |
+| `eyebrow` | Small uppercase label above a heading                |
+| `code`    | Inline code snippet with monospace font and background |
+
+### Usage examples
+
+```html
+<!-- Paragraph variants -->
+<ov-text variant="lead" as="p">Introductory paragraph with more visual weight.</ov-text>
+<ov-text variant="body" as="p">Standard body copy for content areas.</ov-text>
+<ov-text variant="body-sm" as="p">Smaller secondary copy.</ov-text>
+<ov-text variant="caption" as="p">Posted April 18, 2026</ov-text>
+
+<!-- Eyebrow + heading pattern -->
+<ov-text variant="eyebrow">Market Update</ov-text>
+<ov-heading level="2">Q1 Results Exceed Forecast</ov-heading>
+
+<!-- Inline code -->
+<p>Call <ov-text variant="code">portfolio.rebalance()</ov-text> to trigger a sync.</p>
+
+<!-- Tones -->
+<ov-text tone="success" as="p">↑ 14.3% this quarter</ov-text>
+<ov-text tone="danger" as="p">↓ Margin alert</ov-text>
+<ov-text tone="secondary" as="p">Last updated 2 hours ago</ov-text>
+
+<!-- Weight override -->
+<ov-text variant="body" weight="semibold">Important notice</ov-text>
+
+<!-- Semantic elements -->
+<ov-text as="strong" weight="semibold">Bold text</ov-text>
+<ov-text as="em">Italicised text</ov-text>
+<ov-text as="small" variant="caption">Fine print</ov-text>
+```
+
+---
+
+## Rules
+
+- Use `ov-heading` for all headings — never `ov-text` with a large size — so the document outline stays correct.
+- `ov-text` is `display: inline` by default; use `as="p"` or `as="div"` to make it block.
+- `eyebrow` variant is always uppercase and small — do not additionally uppercase it via CSS.
+- `code` variant is intended for short inline snippets; use a `<pre>` block for multi-line code.
+- Set `tone` on the atom rather than a wrapping `color` style to stay within the design token system.
+
+---
+
+# ov-avatar / ov-divider
+
+Two layout-support atoms: `ov-avatar` for user/entity representation and `ov-divider` for visual separation.
+
+---
+
+## ov-avatar
+
+Displays a user image, derived initials, or explicit initials in a fixed-size circle or square. Falls back gracefully from image → initials → empty.
+
+### Tag
+
+```html
+<ov-avatar name="Sarah Kim"></ov-avatar>
+```
+
+### Properties
+
+| Property   | Attribute  | Type                                    | Default    | Description                                                  |
+|------------|------------|-----------------------------------------|------------|--------------------------------------------------------------|
+| `src`      | `src`      | `string`                                | `''`       | Image URL; when set, renders `<img>` instead of initials     |
+| `alt`      | `alt`      | `string`                                | `''`       | Alt text for the image (falls back to `name`)                |
+| `name`     | `name`     | `string`                                | `''`       | Full name — used to derive initials automatically            |
+| `initials` | `initials` | `string`                                | `''`       | Explicit initials (max 2 chars); overrides `name`-derived ones |
+| `size`     | `size`     | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'`     | `20 / 28 / 40 / 56 / 80 px`                                  |
+| `shape`    | `shape`    | `'circle' \| 'square'`                  | `'circle'` | Border radius treatment                                      |
+| `tone`     | `tone`     | `'brand' \| 'accent' \| 'neutral'`      | `'brand'`  | Background/foreground color when showing initials            |
+
+### Usage examples
+
+```html
+<!-- Initials derived from name -->
+<ov-avatar name="Sarah Kim"></ov-avatar>         <!-- renders "SK" -->
+<ov-avatar name="Tom"></ov-avatar>               <!-- renders "T" -->
+
+<!-- Explicit initials -->
+<ov-avatar initials="AI"></ov-avatar>
+
+<!-- Image -->
+<ov-avatar src="/avatars/sarah.jpg" name="Sarah Kim"></ov-avatar>
+
+<!-- Sizes -->
+<ov-avatar name="A B" size="xs"></ov-avatar>
+<ov-avatar name="A B" size="sm"></ov-avatar>
+<ov-avatar name="A B" size="md"></ov-avatar>
+<ov-avatar name="A B" size="lg"></ov-avatar>
+<ov-avatar name="A B" size="xl"></ov-avatar>
+
+<!-- Tones -->
+<ov-avatar name="Brand User" tone="brand"></ov-avatar>
+<ov-avatar name="Accent User" tone="accent"></ov-avatar>
+<ov-avatar name="Neutral" tone="neutral"></ov-avatar>
+
+<!-- Square shape (for organizations/entities) -->
+<ov-avatar name="Acme Corp" shape="square" size="md"></ov-avatar>
+
+<!-- Avatar stack pattern -->
+<div style="display:flex">
+  <ov-avatar name="Alice W" tone="brand" style="margin-right:-8px;border:2px solid white;border-radius:50%"></ov-avatar>
+  <ov-avatar name="Bob M" tone="accent" style="margin-right:-8px;border:2px solid white;border-radius:50%"></ov-avatar>
+  <ov-avatar initials="+3" tone="neutral" style="border:2px solid white;border-radius:50%"></ov-avatar>
+</div>
+```
+
+---
+
+## ov-divider
+
+A horizontal (or vertical) separator with optional centred label text.
+
+### Tag
+
+```html
+<ov-divider></ov-divider>
+```
+
+### Properties
+
+| Property      | Attribute     | Type                          | Default        | Description                                    |
+|---------------|---------------|-------------------------------|----------------|------------------------------------------------|
+| `orientation` | `orientation` | `'horizontal' \| 'vertical'`  | `'horizontal'` | Direction of the divider line                  |
+| `variant`     | `variant`     | `'default' \| 'subtle' \| 'strong'` | `'default'` | Line color intensity                      |
+| `spacing`     | `spacing`     | `string`                      | `''`           | CSS length for margin (`var(--ov-space-4)` default) |
+
+### Slots
+
+| Slot      | Description                                        |
+|-----------|----------------------------------------------------|
+| (default) | Optional label text centred within a horizontal divider |
+
+### Usage examples
+
+```html
+<!-- Horizontal (default) -->
+<ov-divider></ov-divider>
+
+<!-- With label -->
+<ov-divider>OR</ov-divider>
+<ov-divider>Continue with</ov-divider>
+
+<!-- Variants -->
+<ov-divider variant="subtle"></ov-divider>
+<ov-divider variant="strong"></ov-divider>
+
+<!-- Custom spacing -->
+<ov-divider spacing="var(--ov-space-8)"></ov-divider>
+
+<!-- Vertical (use inside a flex container) -->
+<div style="display:flex; align-items:center; height:40px">
+  <span>Dashboard</span>
+  <ov-divider orientation="vertical"></ov-divider>
+  <span>Reports</span>
+  <ov-divider orientation="vertical"></ov-divider>
+  <span>Settings</span>
+</div>
+```
+
+---
+
+## Rules
+
+- `ov-avatar`: always set either `name` or `initials` — without them, an empty circle renders with no content.
+- `ov-avatar`: when using `src`, also set `name` as the image `alt` text fallback.
+- `ov-divider`: label text only renders on horizontal orientation — slotted content is ignored when `orientation="vertical"`.
+- `ov-divider`: vertical dividers need `align-self: stretch` or a fixed height on the parent flex container to be visible.

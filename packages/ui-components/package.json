@@ -1,0 +1,22 @@
+{
+  "name": "@ov/ui-components",
+  "version": "1.0.0",
+  "exports": {
+    "./*": "./src/*.ts"
+  },
+  "scripts": {
+    "storybook": "storybook dev -p 6006 --config-dir .storybook",
+    "build-storybook": "storybook build --config-dir .storybook"
+  },
+  "dependencies": {
+    "lit": "^3.1.2"
+  },
+  "devDependencies": {
+    "@ov/style": "*",
+    "@storybook/addon-essentials": "^8.6.18",
+    "@storybook/addon-links": "^8.6.18",
+    "@storybook/web-components": "^8.6.18",
+    "@storybook/web-components-vite": "^8.6.18",
+    "storybook": "^8.6.18"
+  }
+}

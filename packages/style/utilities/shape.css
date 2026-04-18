@@ -1,0 +1,24 @@
+/* =============================================================================
+   utilities/shape.css
+   Border-radius helpers.
+   ============================================================================= */
+
+.ov-rounded-sm {
+   border-radius: var(--ov-radius-sm);
+}
+
+.ov-rounded {
+   border-radius: var(--ov-radius-md);
+}
+
+.ov-rounded-lg {
+   border-radius: var(--ov-radius-lg);
+}
+
+.ov-rounded-xl {
+   border-radius: var(--ov-radius-xl);
+}
+
+.ov-rounded-pill {
+   border-radius: var(--ov-radius-pill);
+}

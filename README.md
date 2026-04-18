@@ -1,109 +1,255 @@
-# Ov
+# OpenValue Design System — Atoms & Molecules
+### Lit 3 · TypeScript · v2.0
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+> 15 atoms · 10 molecules · zero hard-coded colours · strict TypeScript throughout
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is ready ✨.
+---
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/nx-api/js?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+## Contents
 
-## Generate a library
+- [Quick start](#quick-start)
+- [Theming & dark mode](#theming--dark-mode)
+- [TypeScript usage](#typescript-usage)
+- [Atom reference](#atom-reference)
+- [Molecule reference](#molecule-reference)
+- [Token architecture](#token-architecture)
+- [Project structure](#project-structure)
+- [Build commands](#build-commands)
+- [Browser support](#browser-support)
 
-```sh
-npx nx g @nx/js:lib packages/pkg1 --publishable --importPath=@my-org/pkg1
+---
+
+## Quick start
+
+```html
+<!-- 1. Design tokens -->
+<link rel="stylesheet" href="./openvalue.css">
+
+<!-- 2. Self-contained bundle (Lit + atoms + molecules) -->
+<script type="module" src="./dist/openvalue-atoms.js"></script>
+
+<!-- 3. Use -->
+<ov-button variant="primary" size="lg">
+  <ov-icon slot="start" name="plus"></ov-icon>
+  New project
+</ov-button>
+
+<ov-field label="Email" for="em" required status="error" message="Invalid address">
+  <ov-input id="em" type="email" value="oops" invalid></ov-input>
+</ov-field>
 ```
 
-## Run tasks
+For bundler projects (Vite / esbuild / webpack):
 
-To build the library use:
-
-```sh
-npx nx build pkg1
+```ts
+import 'openvalue-atoms';              // registers all 25 tags
+import { OvButton } from 'openvalue-atoms'; // typed class ref
+import type { ButtonVariant } from 'openvalue-atoms'; // type-only
 ```
 
-To run any task with Nx use:
+---
 
-```sh
-npx nx <target> <project-name>
+## Theming & dark mode
+
+All colours are CSS custom properties (`--color-*`) in `openvalue.css`.
+Custom properties cross Shadow DOM boundaries, so no component needs to
+know about themes — they read the token, and the token re-binds when the
+attribute changes on any ancestor.
+
+```html
+<!-- Respect OS preference (default — no attribute needed) -->
+<html>
+
+<!-- Force light or dark -->
+<html data-theme="light">
+<html data-theme="dark">
+
+<!-- Scope to a subtree -->
+<div data-theme="dark">
+  <ov-card>Always dark here</ov-card>
+</div>
 ```
 
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
-
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Versioning and releasing
-
-To version and release the library use
-
-```
-npx nx release
+```ts
+document.documentElement.setAttribute('data-theme', 'dark');
 ```
 
-Pass `--dry-run` to see what would happen without actually releasing the library.
+---
 
-[Learn more about Nx release &raquo;](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## TypeScript usage
 
-## Keep TypeScript project references up to date
+Every variant, size, and tone is a **string literal union** exported from
+`tokens.ts` / `molecule-tokens.ts`. `HTMLElementTagNameMap` augmentation
+means `document.querySelector('ov-button')` returns a typed `OvButton`.
 
-Nx automatically updates TypeScript [project references](https://www.typescriptlang.org/docs/handbook/project-references.html) in `tsconfig.json` files to ensure they remain accurate based on your project dependencies (`import` or `require` statements). This sync is automatically done when running tasks such as `build` or `typecheck`, which require updated references to function correctly.
+```ts
+import { OvButton, OvToast } from 'openvalue-atoms';
+import type { ButtonVariant, FieldStatus, TabItem, ToastVariant } from 'openvalue-atoms';
 
-To manually trigger the process to sync the project graph dependencies information to the TypeScript project references, run the following command:
+// querySelector typed via HTMLElementTagNameMap
+const btn = document.querySelector('ov-button')!; // OvButton
+btn.variant = 'danger';    // OK
+btn.variant = 'prumary';   // TS2322 — not assignable to ButtonVariant
 
-```sh
-npx nx sync
+// Field status union
+const field = document.querySelector('ov-field')!;
+field.status = 'error';    // OK — 'idle'|'success'|'error'|'warning'
+field.status = 'critical'; // TS2322
+
+// Typed CustomEvent detail
+const inp = document.querySelector('ov-input')!;
+inp.addEventListener('input', (e: CustomEvent<{ value: string }>) => {
+  console.log(e.detail.value); // string, not any
+});
+
+// Tabs with typed items array
+const tabs = document.querySelector('ov-tabs')!;
+const items: TabItem[] = [
+  { key: 'overview', label: 'Overview', count: 4 },
+  { key: 'settings', label: 'Settings', disabled: true },
+];
+tabs.tabs = items;
+tabs.active = 'overview';
+
+// Programmatic toast
+const toast = document.createElement('ov-toast'); // OvToast
+toast.variant  = 'success';     // ToastVariant
+toast.title    = 'Saved';
+toast.duration = 4000;
+document.body.appendChild(toast);
+toast.show();
+toast.addEventListener('dismiss', () => toast.remove(), { once: true });
 ```
 
-You can enforce that the TypeScript project references are always in the correct state when running in CI by adding a step to your CI job configuration that runs the following command:
+---
 
-```sh
-npx nx sync:check
+## Atom reference
+
+| Element | Key properties | Events | Slots |
+|---|---|---|---|
+| `ov-button` | `variant: ButtonVariant`, `size: ButtonSize`, `loading`, `disabled`, `block` | `click` | default, `start`, `end` |
+| `ov-input` | `type: InputType`, `value`, `invalid`, `size: ControlSize` | `input`, `change` (detail: `{value}`) | `prefix`, `suffix` |
+| `ov-textarea` | `value`, `rows`, `resize: TextareaResize`, `invalid` | `input` | — |
+| `ov-label` | `for`, `required`, `size` | — | default, `hint` |
+| `ov-heading` | `level: HeadingLevel`, `size: HeadingSize`, `tone: HeadingTone` | — | default |
+| `ov-text` | `variant: TextVariant`, `tone: Tone`, `weight: FontWeight`, `as: TextTag` | — | default |
+| `ov-badge` | `variant: BadgeVariant`, `appearance: BadgeAppearance`, `size`, `pill` | — | default, `dot` |
+| `ov-icon` | `name: IconName`, `size: IconSize`, `label` | — | default (custom SVG) |
+| `ov-spinner` | `size: IconSize`, `tone: SpinnerTone`, `label` | — | — |
+| `ov-avatar` | `src`, `name`, `initials`, `size: AvatarSize`, `shape`, `tone: AvatarTone` | — | — |
+| `ov-divider` | `orientation: DividerOrientation`, `variant: DividerVariant`, `spacing` | — | default (label) |
+| `ov-checkbox` | `checked`, `indeterminate`, `disabled`, `name`, `value` | `change` (`{checked,value}`) | default |
+| `ov-radio` | `checked`, `disabled`, `name` (reflects), `value` | `change` (`{checked,value}`) | default |
+| `ov-switch` | `checked`, `disabled`, `name`, `value` | `change` (`{checked,value}`) | default |
+| `ov-link` | `href`, `variant: LinkVariant`, `underline: LinkUnderline`, `size` | — | default |
+
+---
+
+## Molecule reference
+
+| Element | Composes | Key properties | Slots |
+|---|---|---|---|
+| `ov-field` | `ov-label` + any control | `label`, `for`, `required`, `status: FieldStatus`, `message`, `inline` | default, `label`, `help`, `message` |
+| `ov-input-group` | `ov-input` + `ov-button`/text | `attach: InputGroupAttach` | default (input), `start`, `end` |
+| `ov-alert` | icon + title + body | `variant: AlertVariant`, `title`, `dismissible` | default, `title`, `actions` |
+| `ov-card` | surface + regions | `variant: CardVariant`, `interactive`, `borderless`, `flush` | default, `header`, `footer`, `media` |
+| `ov-breadcrumbs` | `ov-link` chain | `items: BreadcrumbItem[]`, `max` | `separator` |
+| `ov-tabs` | tab list | `tabs: TabItem[]`, `active`, `appearance`, `fill` | — |
+| `ov-menu-item` | icon + label + shortcut | `label`, `description`, `selected`, `disabled`, `separator` | `icon`, `shortcut`, `trailing` |
+| `ov-stat` | value + delta | `label`, `value`, `delta`, `trend: StatDelta`, `sublabel` | — |
+| `ov-toast` | alert + animation | `variant: ToastVariant`, `title`, `message`, `duration`, `toastId` | default |
+| `ov-empty-state` | icon + heading + CTA | `heading`, `description`, `icon`, `size` | `icon`, `actions` |
+
+`ov-toast` imperative API:
+
+```ts
+toast.show();  // mount visible + start auto-dismiss timer
+toast.hide();  // dismiss (fires 'dismiss' event)
 ```
 
-[Learn more about nx sync](https://nx.dev/reference/nx-commands#sync)
+`ov-tabs` keyboard: `← / →` move focus · `Home / End` first/last · `Tab` exits.
 
-## Set up CI!
+---
 
-### Step 1
+## Token architecture
 
-To connect to Nx Cloud, run the following command:
+```
+openvalue.css
+  ├── Primitive tokens  --ov-*          raw palette, spacing, type scale
+  └── Semantic tokens   --color-*       what components read
+        ├── [data-theme="light"]        default
+        ├── [data-theme="dark"]         forced dark
+        └── @media prefers-color-scheme auto-dark (no attribute needed)
 
-```sh
-npx nx connect
+src/tokens.ts            string-literal unions mirroring CSS tokens
+src/molecule-tokens.ts   molecule-specific types and event detail shapes
 ```
 
-Connecting to Nx Cloud ensures a [fast and scalable CI](https://nx.dev/ci/intro/why-nx-cloud?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) pipeline. It includes features such as:
+Components **never** read `--ov-*` primitives. They always read the semantic
+`--color-*` layer, so one attribute swap re-themes every shadow root.
 
-- [Remote caching](https://nx.dev/ci/features/remote-cache?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task distribution across multiple machines](https://nx.dev/ci/features/distribute-task-execution?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Automated e2e test splitting](https://nx.dev/ci/features/split-e2e-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task flakiness detection and rerunning](https://nx.dev/ci/features/flaky-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+---
 
-### Step 2
+## Project structure
 
-Use the following command to configure a CI workflow for your workspace:
-
-```sh
-npx nx g ci-workflow
+```
+openvalue.css
+src/
+  tokens.ts
+  molecule-tokens.ts
+  shared-styles.ts          baseStyles + focusRing (CSSResult)
+  index.ts                  barrel — exports everything
+  atoms/
+    ov-button.ts
+    ov-input.ts
+    ov-textarea.ts
+    ov-label.ts
+    ov-typography.ts        ov-heading + ov-text
+    ov-badge.ts
+    ov-icon.ts              ov-icon + ov-spinner
+    ov-avatar-divider.ts    ov-avatar + ov-divider
+    ov-selection.ts         ov-checkbox + ov-radio + ov-switch
+    ov-link.ts
+  molecules/
+    ov-field.ts
+    ov-input-group.ts
+    ov-alert.ts
+    ov-card.ts
+    ov-breadcrumbs.ts
+    ov-tabs.ts
+    ov-molecules-misc.ts    ov-menu-item + ov-stat + ov-toast + ov-empty-state
+build/                      tsc output (.js + .d.ts + source maps)
+dist/
+  openvalue-atoms.js        dev bundle + source map  (~115 kB)
+  openvalue-atoms.min.js    production bundle         (~95 kB)
+demo.html
+tsconfig.json
 ```
 
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+---
 
-## Install Nx Console
+## Build commands
 
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
+```bash
+npm install
 
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+# Type-check (no emit)
+npx tsc --noEmit
 
-## Useful links
+# Emit JS + .d.ts to build/
+npx tsc
 
-Learn more:
+# Dev bundle
+npx esbuild src/index.ts --bundle --format=esm \
+  --outfile=dist/openvalue-atoms.js --sourcemap --loader:.ts=ts
 
-- [Learn more about this workspace setup](https://nx.dev/nx-api/js?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+# Production bundle
+npx esbuild src/index.ts --bundle --format=esm \
+  --outfile=dist/openvalue-atoms.min.js --minify --loader:.ts=ts
+```
 
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+---
+
+## Browser support
+
+Chrome 67+ · Edge 79+ · Firefox 63+ · Safari 14+

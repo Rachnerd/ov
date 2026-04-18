@@ -1,0 +1,67 @@
+/* =============================================================================
+   components/layout.css
+   Container, stack (flex-column), row (flex-row), and grid helpers.
+   ============================================================================= */
+
+.ov-container {
+  width: 100%;
+  max-width: var(--ov-container-xl);
+  margin-inline: auto;
+  padding-inline: var(--ov-space-6);
+}
+
+@media (min-width: 768px) {
+  .ov-container {
+    padding-inline: var(--ov-space-8);
+  }
+}
+
+/* Stack — vertical flex */
+.ov-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ov-space-4);
+}
+
+.ov-stack.ov-stack--sm {
+  gap: var(--ov-space-2);
+}
+
+.ov-stack.ov-stack--lg {
+  gap: var(--ov-space-6);
+}
+
+.ov-stack.ov-stack--xl {
+  gap: var(--ov-space-8);
+}
+
+/* Row — horizontal flex */
+.ov-row {
+  display: flex;
+  flex-direction: row;
+  gap: var(--ov-space-4);
+  align-items: center;
+}
+
+.ov-row--start {
+  align-items: flex-start;
+}
+
+.ov-row--between {
+  justify-content: space-between;
+}
+
+.ov-row--end {
+  justify-content: flex-end;
+}
+
+.ov-row--center {
+  justify-content: center;
+}
+
+/* Grid */
+.ov-grid {
+  display: grid;
+  gap: var(--ov-space-6);
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}

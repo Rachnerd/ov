@@ -1,0 +1,77 @@
+/* =============================================================================
+   utilities/spacing.css
+   Single-purpose margin and padding helpers.
+   ============================================================================= */
+
+/* Margin reset */
+.ov-m-0 {
+   margin: 0;
+}
+
+/* Margin top */
+.ov-mt-2 {
+   margin-top: var(--ov-space-2);
+}
+
+.ov-mt-4 {
+   margin-top: var(--ov-space-4);
+}
+
+.ov-mt-6 {
+   margin-top: var(--ov-space-6);
+}
+
+.ov-mt-8 {
+   margin-top: var(--ov-space-8);
+}
+
+/* Margin bottom */
+.ov-mb-2 {
+   margin-bottom: var(--ov-space-2);
+}
+
+.ov-mb-4 {
+   margin-bottom: var(--ov-space-4);
+}
+
+.ov-mb-6 {
+   margin-bottom: var(--ov-space-6);
+}
+
+.ov-mb-8 {
+   margin-bottom: var(--ov-space-8);
+}
+
+/* Padding */
+.ov-p-2 {
+   padding: var(--ov-space-2);
+}
+
+.ov-p-4 {
+   padding: var(--ov-space-4);
+}
+
+.ov-p-6 {
+   padding: var(--ov-space-6);
+}
+
+.ov-p-8 {
+   padding: var(--ov-space-8);
+}
+
+/* Shadow */
+.ov-shadow-sm {
+   box-shadow: var(--shadow-sm);
+}
+
+.ov-shadow-md {
+   box-shadow: var(--shadow-md);
+}
+
+.ov-shadow-lg {
+   box-shadow: var(--shadow-lg);
+}
+
+.ov-shadow-xl {
+   box-shadow: var(--shadow-xl);
+}

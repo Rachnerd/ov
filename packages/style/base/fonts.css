@@ -1,0 +1,6 @@
+/* =============================================================================
+   base/fonts.css
+   Web font loading. Montserrat is the primary typeface per brand guidelines.
+   ============================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');

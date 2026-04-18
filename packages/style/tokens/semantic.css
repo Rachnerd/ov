@@ -1,0 +1,239 @@
+/* =============================================================================
+   tokens/semantic.css
+   Tier 2 — semantic aliases that components reference.
+   Themes swap these values; primitives never change.
+   ============================================================================= */
+
+
+/* =============================================================================
+   Light theme (default)
+   ============================================================================= */
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+
+  /* Surfaces */
+  --color-bg-canvas: var(--ov-neutral-50);
+  --color-bg-surface: var(--ov-neutral-0);
+  --color-bg-surface-alt: var(--ov-neutral-50);
+  --color-bg-surface-muted: var(--ov-neutral-100);
+  --color-bg-inverse: var(--ov-neutral-800);
+  --color-bg-overlay: rgba(29, 37, 45, 0.55);
+
+  /* Text */
+  --color-text-primary: var(--ov-neutral-800);
+  --color-text-secondary: var(--ov-neutral-600);
+  --color-text-tertiary: var(--ov-neutral-500);
+  --color-text-muted: var(--ov-neutral-400);
+  --color-text-inverse: var(--ov-neutral-0);
+  --color-text-link: var(--ov-blue-600);
+  --color-text-link-hover: var(--ov-blue-700);
+  --color-text-on-brand: var(--ov-white);
+  --color-text-on-accent: var(--ov-white);
+
+  /* Borders */
+  --color-border-subtle: var(--ov-neutral-100);
+  --color-border-default: var(--ov-neutral-200);
+  --color-border-strong: var(--ov-neutral-300);
+  --color-border-inverse: var(--ov-neutral-700);
+  --color-border-focus: var(--ov-blue-500);
+
+  /* Brand — blue */
+  --color-brand: var(--ov-blue-500);
+  --color-brand-hover: var(--ov-blue-600);
+  --color-brand-active: var(--ov-blue-700);
+  --color-brand-subtle: var(--ov-blue-50);
+  --color-brand-muted: var(--ov-blue-100);
+  --color-brand-contrast: var(--ov-white);
+
+  /* Accent — midnight teal */
+  --color-accent: var(--ov-midnight-500);
+  --color-accent-hover: var(--ov-midnight-600);
+  --color-accent-active: var(--ov-midnight-700);
+  --color-accent-subtle: var(--ov-midnight-50);
+  --color-accent-contrast: var(--ov-white);
+
+  /* State */
+  --color-success: var(--ov-success-500);
+  --color-success-bg: var(--ov-success-50);
+  --color-success-text: var(--ov-success-700);
+
+  --color-warning: var(--ov-warning-500);
+  --color-warning-bg: var(--ov-warning-50);
+  --color-warning-text: var(--ov-warning-700);
+
+  --color-danger: var(--ov-danger-500);
+  --color-danger-bg: var(--ov-danger-50);
+  --color-danger-text: var(--ov-danger-700);
+
+  --color-info: var(--ov-info-500);
+  --color-info-bg: var(--ov-info-50);
+  --color-info-text: var(--ov-info-700);
+
+  /* Form controls */
+  --color-control-bg: var(--ov-neutral-0);
+  --color-control-bg-hover: var(--ov-neutral-50);
+  --color-control-bg-disabled: var(--ov-neutral-100);
+  --color-control-border: var(--ov-neutral-200);
+  --color-control-border-hover: var(--ov-neutral-300);
+
+  /* Shadows (semantic aliases for primitive shadow tokens) */
+  --shadow-xs: var(--ov-shadow-xs);
+  --shadow-sm: var(--ov-shadow-sm);
+  --shadow-md: var(--ov-shadow-md);
+  --shadow-lg: var(--ov-shadow-lg);
+  --shadow-xl: var(--ov-shadow-xl);
+  --shadow-focus: var(--ov-shadow-focus);
+}
+
+
+/* =============================================================================
+   Dark theme — explicit [data-theme="dark"]
+   ============================================================================= */
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Surfaces */
+  --color-bg-canvas: var(--ov-neutral-900);
+  --color-bg-surface: var(--ov-neutral-800);
+  --color-bg-surface-alt: var(--ov-neutral-700);
+  --color-bg-surface-muted: var(--ov-neutral-700);
+  --color-bg-inverse: var(--ov-neutral-50);
+  --color-bg-overlay: rgba(0, 0, 0, 0.65);
+
+  /* Text */
+  --color-text-primary: var(--ov-neutral-50);
+  --color-text-secondary: var(--ov-neutral-200);
+  --color-text-tertiary: var(--ov-neutral-300);
+  --color-text-muted: var(--ov-neutral-400);
+  --color-text-inverse: var(--ov-neutral-800);
+  --color-text-link: var(--ov-blue-300);
+  --color-text-link-hover: var(--ov-blue-200);
+  --color-text-on-brand: var(--ov-white);
+  --color-text-on-accent: var(--ov-white);
+
+  /* Borders */
+  --color-border-subtle: var(--ov-neutral-700);
+  --color-border-default: var(--ov-neutral-600);
+  --color-border-strong: var(--ov-neutral-500);
+  --color-border-inverse: var(--ov-neutral-100);
+  --color-border-focus: var(--ov-blue-400);
+
+  /* Brand */
+  --color-brand: var(--ov-blue-400);
+  --color-brand-hover: var(--ov-blue-300);
+  --color-brand-active: var(--ov-blue-200);
+  --color-brand-subtle: var(--ov-blue-900);
+  --color-brand-muted: var(--ov-blue-800);
+  --color-brand-contrast: var(--ov-neutral-900);
+
+  /* Accent */
+  --color-accent: var(--ov-midnight-200);
+  --color-accent-hover: var(--ov-midnight-100);
+  --color-accent-active: var(--ov-midnight-50);
+  --color-accent-subtle: var(--ov-midnight-700);
+  --color-accent-contrast: var(--ov-neutral-900);
+
+  /* State */
+  --color-success: #4BBE78;
+  --color-success-bg: rgba(46, 155, 87, 0.15);
+  --color-success-text: #8DE5AE;
+
+  --color-warning: #F3B558;
+  --color-warning-bg: rgba(227, 154, 31, 0.15);
+  --color-warning-text: #F8D097;
+
+  --color-danger: #EC6F6F;
+  --color-danger-bg: rgba(210, 59, 59, 0.18);
+  --color-danger-text: #F5ADAD;
+
+  --color-info: var(--ov-blue-300);
+  --color-info-bg: rgba(61, 125, 201, 0.18);
+  --color-info-text: var(--ov-blue-200);
+
+  /* Form controls */
+  --color-control-bg: var(--ov-neutral-800);
+  --color-control-bg-hover: var(--ov-neutral-700);
+  --color-control-bg-disabled: var(--ov-neutral-700);
+  --color-control-border: var(--ov-neutral-600);
+  --color-control-border-hover: var(--ov-neutral-500);
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.40), 0 1px 2px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 4px 8px -2px rgba(0, 0, 0, 0.45), 0 2px 4px -2px rgba(0, 0, 0, 0.30);
+  --shadow-lg: 0 12px 24px -4px rgba(0, 0, 0, 0.55), 0 4px 8px -4px rgba(0, 0, 0, 0.35);
+  --shadow-xl: 0 24px 48px -8px rgba(0, 0, 0, 0.65), 0 8px 16px -8px rgba(0, 0, 0, 0.40);
+  --shadow-focus: 0 0 0 3px rgba(91, 150, 214, 0.45);
+}
+
+
+/* =============================================================================
+   Auto dark mode — OS preference, no explicit data-theme set
+   ============================================================================= */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+
+    --color-bg-canvas: var(--ov-neutral-900);
+    --color-bg-surface: var(--ov-neutral-800);
+    --color-bg-surface-alt: var(--ov-neutral-700);
+    --color-bg-surface-muted: var(--ov-neutral-700);
+    --color-bg-inverse: var(--ov-neutral-50);
+    --color-bg-overlay: rgba(0, 0, 0, 0.65);
+
+    --color-text-primary: var(--ov-neutral-50);
+    --color-text-secondary: var(--ov-neutral-200);
+    --color-text-tertiary: var(--ov-neutral-300);
+    --color-text-muted: var(--ov-neutral-400);
+    --color-text-inverse: var(--ov-neutral-800);
+    --color-text-link: var(--ov-blue-300);
+    --color-text-link-hover: var(--ov-blue-200);
+
+    --color-border-subtle: var(--ov-neutral-700);
+    --color-border-default: var(--ov-neutral-600);
+    --color-border-strong: var(--ov-neutral-500);
+    --color-border-focus: var(--ov-blue-400);
+
+    --color-brand: var(--ov-blue-400);
+    --color-brand-hover: var(--ov-blue-300);
+    --color-brand-active: var(--ov-blue-200);
+    --color-brand-subtle: var(--ov-blue-900);
+    --color-brand-muted: var(--ov-blue-800);
+
+    --color-accent: var(--ov-midnight-200);
+    --color-accent-hover: var(--ov-midnight-100);
+    --color-accent-subtle: var(--ov-midnight-700);
+
+    --color-control-bg: var(--ov-neutral-800);
+    --color-control-bg-hover: var(--ov-neutral-700);
+    --color-control-bg-disabled: var(--ov-neutral-700);
+    --color-control-border: var(--ov-neutral-600);
+    --color-control-border-hover: var(--ov-neutral-500);
+
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.35);
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.40), 0 1px 2px rgba(0, 0, 0, 0.25);
+    --shadow-md: 0 4px 8px -2px rgba(0, 0, 0, 0.45), 0 2px 4px -2px rgba(0, 0, 0, 0.30);
+    --shadow-lg: 0 12px 24px -4px rgba(0, 0, 0, 0.55), 0 4px 8px -4px rgba(0, 0, 0, 0.35);
+    --shadow-xl: 0 24px 48px -8px rgba(0, 0, 0, 0.65), 0 8px 16px -8px rgba(0, 0, 0, 0.40);
+    --shadow-focus: 0 0 0 3px rgba(91, 150, 214, 0.45);
+  }
+}
+
+
+/* =============================================================================
+   High-contrast override
+   ============================================================================= */
+@media (prefers-contrast: more) {
+  :root {
+    --color-border-default: var(--ov-neutral-800);
+    --color-text-secondary: var(--ov-neutral-800);
+    --color-text-tertiary: var(--ov-neutral-700);
+  }
+
+  [data-theme="dark"] {
+    --color-border-default: var(--ov-neutral-50);
+    --color-text-secondary: var(--ov-neutral-50);
+    --color-text-tertiary: var(--ov-neutral-100);
+  }
+}

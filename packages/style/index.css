@@ -1,0 +1,26 @@
+/* =============================================================================
+   OpenValue Design System — v1.0
+   Entry point: import this file to get the full system.
+
+   Import order matters:
+     1. Tokens  — raw primitives and semantic aliases
+     2. Base    — reset, root defaults
+     3. Components — UI building blocks
+     4. Utilities — single-purpose overrides
+   ============================================================================= */
+
+/* Tokens */
+@import url('./tokens/primitives.css');
+@import url('./tokens/semantic.css');
+@import url('./tokens/motion.css');
+
+/* Base */
+@import url('./base/fonts.css');
+@import url('./base/reset.css');
+@import url('./base/typography.css');
+
+/* Components */
+@import url('./components/layout.css');
+
+/* Utilities */
+@import url('./utilities/utilities.css');

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenValue</title>
+
+
+  <script type="module" src="/src/main.ts"></script>
+</head>
+
+<body>
+
+  <header class="doc-header">
+    <div class="ov-container">
+      <div class="brand">
+        <strong>OPEN<span style="color:var(--color-brand);">•</span>VALUE</strong>
+        <small>Atoms · Lit</small>
+      </div>
+      <div class="theme-toggle" role="group" aria-label="Theme">
+        <button aria-pressed="true" data-theme-btn="light">Light</button>
+        <button aria-pressed="false" data-theme-btn="dark">Dark</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================== HERO ================== -->
+  <section class="hero">
+    <div class="ov-container">
+      <div class="hero-inner">
+        <ov-text variant="eyebrow">Atomic Design · Level 1</ov-text>
+        <ov-heading level="1" size="display-2" style="display:block; margin: var(--ov-space-4) 0;">
+          Indivisible UI primitives, wired to the token system.
+        </ov-heading>
+        <ov-text variant="lead" as="p">
+          Each atom is a Lit web component reading only from
+          <ov-text variant="code">--color-*</ov-text> tokens.
+          Dark mode is automatic — the toggle swaps
+          <ov-text variant="code">data-theme</ov-text> on <ov-text variant="code">&lt;html&gt;</ov-text>
+          and CSS custom properties cascade straight through Shadow DOM.
+        </ov-text>
+        <div class="row" style="margin-top: var(--ov-space-6);">
+          <ov-button size="lg">
+            <ov-icon slot="start" name="arrow-right"></ov-icon>
+            Explore atoms
+          </ov-button>
+          <ov-button variant="secondary" size="lg">View source</ov-button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================== TYPOGRAPHY ================== -->
+  <section class="section">
+    <div class="ov-container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">01 · Atoms</div>
+          <h2>Typography</h2>
+        </div>
+      </div>
+
+      <div class="demo stack">
+        <div class="demo-label">ov-heading · levels 1–4 with semantic tag</div>
+        <ov-heading level="1" size="display-1">Display 1 / h1</ov-heading>
+        <ov-heading level="1" size="display-2">Display 2 / h1</ov-heading>
+        <ov-heading level="1">Heading 1 — default for level 1</ov-heading>
+        <ov-heading level="2">Heading 2</ov-heading>
+        <ov-heading level="3">Heading 3</ov-heading>
+        <ov-heading level="4">Heading 4</ov-heading>
+        <ov-heading level="2" tone="brand">Branded heading</ov-heading>
+
+        <div class="demo-label" style="margin-top: var(--ov-space-6);">ov-text · variants</div>
+        <ov-text variant="eyebrow">Section eyebrow</ov-text>
+        <ov-text variant="lead" as="p">
+          A lead paragraph pulls the reader in — slightly larger, more relaxed line-height.
+        </ov-text>
+        <ov-text variant="body" as="p">
+          Body copy is the workhorse. Regular weight, 16–17px, readable line-height.
+        </ov-text>
+        <ov-text variant="body-sm" as="p" tone="secondary">
+          Smaller secondary copy for meta information and captions.
+        </ov-text>
+        <ov-text variant="caption" as="p">
+          Caption — 12–13px, tertiary tone by default.
+        </ov-text>
+        <ov-text variant="body" as="p">
+          Inline example with <ov-text variant="code">const value = tokens;</ov-text> code.
+        </ov-text>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================== BUTTONS ================== -->
+  <section class="section">
+    <div class="ov-container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">02 · Atoms</div>
+          <h2>Buttons</h2>
+        </div>
+      </div>
+
+      <div class="demo stack">
+        <div class="demo-label">Variants</div>
+        <div class="row">
+          <ov-button>Primary</ov-button>
+          <ov-button variant="secondary">Secondary</ov-button>
+          <ov-button variant="ghost">Ghost</ov-button>
+          <ov-button variant="accent">Accent</ov-button>
+          <ov-button variant="danger">Danger</ov-button>
+        </div>
+
+        <div class="demo-label">Sizes</div>
+        <div class="row">
+          <ov-button size="sm">Small</ov-button>
+          <ov-button size="md">Medium</ov-button>
+          <ov-button size="lg">Large</ov-button>
+        </div>
+
+        <div class="demo-label">With icons & state</div>
+        <div class="row">
+          <ov-button>
+            <ov-icon slot="start" name="plus"></ov-icon>
+            Create project
+          </ov-button>
+          <ov-button variant="secondary">
+            Continue
+            <ov-icon slot="end" name="arrow-right"></ov-icon>
+          </ov-button>
+          <ov-button loading>Loading</ov-button>
+          <ov-button disabled>Disabled</ov-button>
+        </div>
+
+        <div class="demo-label">On inverse / brand surface</div>
+        <div class="row"
+          style="background: var(--ov-charcoal); padding: var(--ov-space-5); border-radius: var(--ov-radius-md); width: 100%;">
+          <ov-button variant="inverse">Inverse</ov-button>
+          <ov-button variant="ghost" style="color: white;">Ghost on dark</ov-button>
+          <ov-button>Primary still works</ov-button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================== FORM CONTROLS ================== -->
+  <section class="section">
+    <div class="ov-container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">03 · Atoms</div>
+          <h2>Form controls</h2>
+        </div>
+      </div>
+
+      <div class="demo grid">
+        <div class="field-group">
+          <ov-label for="name" required>Full name</ov-label>
+          <ov-input id="name" placeholder="Ada Lovelace"></ov-input>
+        </div>
+        <div class="field-group">
+          <ov-label for="email">Work email <span slot="hint">— we won't share it</span></ov-label>
+          <ov-input id="email" type="email" placeholder="you@openvalue.dev">
+            <ov-icon slot="prefix" name="mail"></ov-icon>
+          </ov-input>
+        </div>
+        <div class="field-group">
+          <ov-label for="search">Search</ov-label>
+          <ov-input id="search" type="search" placeholder="Find anything…">
+            <ov-icon slot="prefix" name="search"></ov-icon>
+          </ov-input>
+        </div>
+        <div class="field-group">
+          <ov-label for="bad">Invalid state</ov-label>
+          <ov-input id="bad" invalid value="not-an-email"></ov-input>
+        </div>
+        <div class="field-group">
+          <ov-label for="dis">Disabled</ov-label>
+          <ov-input id="dis" disabled value="Read-only"></ov-input>
+        </div>
+        <div class="field-group">
+          <ov-label for="msg">Message</ov-label>
+          <ov-textarea id="msg" placeholder="Tell us about your project…" rows="3"></ov-textarea>
+        </div>
+      </div>
+
+      <div class="demo stack" style="margin-top: var(--ov-space-6);">
+        <div class="demo-label">Selection controls</div>
+        <div class="row">
+          <ov-checkbox>I agree to the terms</ov-checkbox>
+          <ov-checkbox checked>Pre-selected</ov-checkbox>
+          <ov-checkbox indeterminate>Indeterminate</ov-checkbox>
+          <ov-checkbox disabled>Disabled</ov-checkbox>
+        </div>
+
+        <div class="row">
+          <ov-radio name="plan" value="basic" checked>Basic</ov-radio>
+          <ov-radio name="plan" value="team">Team</ov-radio>
+          <ov-radio name="plan" value="enterprise">Enterprise</ov-radio>
+        </div>
+
+        <div class="row">
+          <ov-switch checked>Email notifications</ov-switch>
+          <ov-switch>Weekly digest</ov-switch>
+          <ov-switch disabled checked>Locked on</ov-switch>
+        </div>
+
+        <div class="demo-label">Live value</div>
+        <ov-input id="liveDemo" placeholder="Type something…"></ov-input>
+        <div class="log" id="liveOut">Waiting for input…</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================== BADGES ================== -->
+  <section class="section">
+    <div class="ov-container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">04 · Atoms</div>
+          <h2>Badges</h2>
+        </div>
+      </div>
+
+      <div class="demo stack">
+        <div class="demo-label">Soft (default)</div>
+        <div class="row">
+          <ov-badge>Default</ov-badge>
+          <ov-badge variant="brand">Brand</ov-badge>
+          <ov-badge variant="accent">Accent</ov-badge>
+          <ov-badge variant="success">Success</ov-badge>
+          <ov-badge variant="warning">Warning</ov-badge>
+          <ov-badge variant="danger">Danger</ov-badge>
+          <ov-badge variant="info">Info</ov-badge>
+        </div>
+
+        <div class="demo-label">Solid</div>
+        <div class="row">
+          <ov-badge appearance="solid" variant="brand">Brand</ov-badge>
+          <ov-badge appearance="solid" variant="accent">Accent</ov-badge>
+          <ov-badge appearance="solid" variant="success">Shipped</ov-badge>
+          <ov-badge appearance="solid" variant="warning">Warning</ov-badge>
+          <ov-badge appearance="solid" variant="danger">Blocked</ov-badge>
+        </div>
+
+        <div class="demo-label">Outline</div>
+        <div class="row">
+          <ov-badge appearance="outline">Default</ov-badge>
+          <ov-badge appearance="outline" variant="brand">Brand</ov-badge>
+          <ov-badge appearance="outline" variant="success">Live</ov-badge>
+          <ov-badge appearance="outline" variant="danger">Error</ov-badge>
+        </div>
+
+        <div class="demo-label">With status dot</div>
+        <div class="row">
+          <ov-badge variant="success"><span slot="dot"></span> Operational</ov-badge>
+          <ov-badge variant="warning"><span slot="dot"></span> Degraded</ov-badge>
+          <ov-badge variant="danger"><span slot="dot"></span> Down</ov-badge>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================== ICONS & SPINNERS ================== -->
+  <section class="section">
+    <div class="ov-container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">05 · Atoms</div>
+          <h2>Icons &amp; spinners</h2>
+        </div>
+      </div>
+
+      <div class="demo stack">
+        <div class="demo-label">Built-in icons · size md</div>
+        <div class="row" style="color: var(--color-text-primary);">
+          <ov-icon name="check"></ov-icon>
+          <ov-icon name="x"></ov-icon>
+          <ov-icon name="arrow-right"></ov-icon>
+          <ov-icon name="arrow-left"></ov-icon>
+          <ov-icon name="search"></ov-icon>
+          <ov-icon name="mail"></ov-icon>
+          <ov-icon name="user"></ov-icon>
+          <ov-icon name="plus"></ov-icon>
+          <ov-icon name="info"></ov-icon>
+          <ov-icon name="warning"></ov-icon>
+          <ov-icon name="sun"></ov-icon>
+          <ov-icon name="moon"></ov-icon>
+        </div>
+
+        <div class="demo-label">Sizes · inherit colour</div>
+        <div class="row" style="color: var(--color-brand);">
+          <ov-icon name="check" size="sm"></ov-icon>
+          <ov-icon name="check" size="md"></ov-icon>
+          <ov-icon name="check" size="lg"></ov-icon>
+          <ov-icon name="check" size="xl"></ov-icon>
+        </div>
+
+        <div class="demo-label">Spinners</div>
+        <div class="row">
+          <ov-spinner size="sm"></ov-spinner>
+          <ov-spinner size="md"></ov-spinner>
+          <ov-spinner size="lg"></ov-spinner>
+          <ov-spinner size="lg" tone="neutral"></ov-spinner>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================== AVATARS & DIVIDERS ================== -->
+  <section class="section">
+    <div class="ov-container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">06 · Atoms</div>
+          <h2>Avatars &amp; dividers</h2>
+        </div>
+      </div>
+
+      <div class="demo stack">
+        <div class="demo-label">Avatars · sizes</div>
+        <div class="row">
+          <ov-avatar size="xs" name="Ada Lovelace"></ov-avatar>
+          <ov-avatar size="sm" name="Ada Lovelace"></ov-avatar>
+          <ov-avatar size="md" name="Ada Lovelace"></ov-avatar>
+          <ov-avatar size="lg" name="Ada Lovelace"></ov-avatar>
+          <ov-avatar size="xl" name="Ada Lovelace"></ov-avatar>
+        </div>
+
+        <div class="demo-label">Tones &amp; shapes</div>
+        <div class="row">
+          <ov-avatar tone="brand" name="Ada Lovelace"></ov-avatar>
+          <ov-avatar tone="accent" name="Grace Hopper"></ov-avatar>
+          <ov-avatar tone="neutral" name="Linus Torvalds"></ov-avatar>
+          <ov-avatar shape="square" tone="brand" name="OpenValue"></ov-avatar>
+        </div>
+
+        <div class="demo-label">Horizontal divider</div>
+        <ov-divider></ov-divider>
+        <ov-divider>or continue with</ov-divider>
+        <ov-divider variant="strong">strong</ov-divider>
+
+        <div class="demo-label">Vertical divider</div>
+        <div class="row">
+          <ov-text>Overview</ov-text>
+          <ov-divider orientation="vertical"></ov-divider>
+          <ov-text>Settings</ov-text>
+          <ov-divider orientation="vertical"></ov-divider>
+          <ov-text>Team</ov-text>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================== LINKS ================== -->
+  <section class="section">
+    <div class="ov-container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">07 · Atoms</div>
+          <h2>Links</h2>
+        </div>
+      </div>
+
+      <div class="demo stack">
+        <div class="row">
+          <ov-link href="#">Default link</ov-link>
+          <ov-link href="#" variant="subtle">Subtle link</ov-link>
+          <ov-link href="#" variant="brand">Brand link</ov-link>
+          <ov-link href="#" underline="always">Always underlined</ov-link>
+          <ov-link href="#" underline="none">No underline</ov-link>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================== USAGE ================== -->
+  <section class="section" style="border-bottom: 0;">
+    <div class="ov-container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Getting started</div>
+          <h2>Using an atom</h2>
+        </div>
+      </div>
+
+      <div class="demo stack">
+        <ov-text variant="body" as="p">
+          Import the barrel once in your entry module, then drop atoms anywhere in your HTML:
+        </ov-text>
+        <pre class="code">import 'openvalue-atoms';
+
+&lt;ov-button variant="primary" size="lg"&gt;
+  &lt;ov-icon slot="start" name="plus"&gt;&lt;/ov-icon&gt;
+  Create project
+&lt;/ov-button&gt;
+
+&lt;ov-input placeholder="Search…"&gt;
+  &lt;ov-icon slot="prefix" name="search"&gt;&lt;/ov-icon&gt;
+&lt;/ov-input&gt;</pre>
+
+        <ov-text variant="body" as="p" style="margin-top: var(--ov-space-4);">
+          Toggle dark mode anywhere in your tree — the atoms follow automatically:
+        </ov-text>
+        <pre class="code">// Respect OS
+document.documentElement.removeAttribute('data-theme');
+
+// Force light / dark
+document.documentElement.setAttribute('data-theme', 'dark');
+
+// Scoped to a subtree
+&lt;div data-theme="dark"&gt;
+  &lt;ov-button&gt;Always dark&lt;/ov-button&gt;
+&lt;/div&gt;</pre>
+      </div>
+    </div>
+  </section>
+
+  <footer style="padding: var(--ov-space-8) 0; text-align: center;">
+    <ov-text variant="caption">
+      OpenValue Atoms · v1.0 · Lit 3 · Built on the OpenValue Design System
+    </ov-text>
+  </footer>
+
+  <script>
+    // Theme toggle
+    const root = document.documentElement;
+    const buttons = document.querySelectorAll('[data-theme-btn]');
+    function apply(theme) {
+      root.setAttribute('data-theme', theme);
+      buttons.forEach(b => b.setAttribute('aria-pressed',
+        b.dataset.themeBtn === theme));
+    }
+    buttons.forEach(b => b.addEventListener('click',
+      () => apply(b.dataset.themeBtn)));
+
+    // Live input echo demo — demonstrates the event contract
+    const inp = document.getElementById('liveDemo');
+    const out = document.getElementById('liveOut');
+    inp?.addEventListener('input', (e) => {
+      out.textContent = e.detail?.value
+        ? `value: "${e.detail.value}"`
+        : 'Waiting for input…';
+    });
+  </script>
+</body>
+
+</html>

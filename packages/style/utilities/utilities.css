@@ -1,0 +1,10 @@
+/* =============================================================================
+   utilities/index.css
+   Collects all single-purpose utility classes. Import this file,
+   or import individual partials directly if tree-shaking is needed.
+   ============================================================================= */
+
+@import url('./color.css');
+@import url('./spacing.css');
+@import url('./shape.css');
+@import url('./a11y.css');

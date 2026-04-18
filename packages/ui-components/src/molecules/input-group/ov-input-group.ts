@@ -1,0 +1,131 @@
+import { LitElement, html, css, type TemplateResult } from 'lit';
+import { customElement, property } from 'lit/decorators.js';
+import { baseStyles } from '../../shared-styles.js';
+import type { InputGroupAttach } from '../../molecule-tokens.js';
+
+/**
+ * <ov-input-group>
+ *
+ * Visually fuses an ov-input with attached buttons or text adornments,
+ * producing a single compound control (search bar, URL copier, promo-code
+ * entry, unit suffix, etc.).
+ *
+ * The group collapses inner borders and border-radii so the combined
+ * shape reads as one element. The input always fills remaining space.
+ *
+ * @element ov-input-group
+ *
+ * @slot        - The ov-input (required — exactly one).
+ * @slot start  - ov-button or plain text attached to the left edge.
+ * @slot end    - ov-button or plain text attached to the right edge.
+ *
+ * @example
+ * ```html
+ * <ov-input-group>
+ *   <ov-input slot="start" value="https://" readonly></ov-input>
+ *   <ov-input placeholder="your-domain.com"></ov-input>
+ *   <ov-button slot="end">Copy</ov-button>
+ * </ov-input-group>
+ * ```
+ */
+@customElement('ov-input-group')
+export class OvInputGroup extends LitElement {
+  /**
+   * Which sides have an attached adornment. Drives the border-radius
+   * adjustment on the slotted input.
+   * 'start' | 'end' | 'both'
+   */
+  @property({ type: String, reflect: true }) attach: InputGroupAttach = 'end';
+
+  static override styles = [
+    baseStyles,
+    css`
+      :host {
+        display: flex;
+        align-items: stretch;
+        width: 100%;
+      }
+
+      /* ---- Slot containers ---- */
+      .slot-wrap {
+        display: contents;   /* transparent wrapper so flex sees children directly */
+      }
+
+      /* All direct slot content aligns to a common height */
+      ::slotted(ov-button),
+      ::slotted(ov-input) {
+        display: flex;
+        align-self: stretch;
+      }
+
+      /* ---- Adornment text (non-interactive prefix/suffix labels) ---- */
+      ::slotted([slot='start']),
+      ::slotted([slot='end']) {
+        display: inline-flex;
+        align-items: center;
+        padding: 0 var(--ov-space-4);
+        background: var(--color-bg-surface-alt);
+        border: 1px solid var(--color-control-border);
+        font-size: var(--ov-fs-sm);
+        color: var(--color-text-secondary);
+        white-space: nowrap;
+        flex: 0 0 auto;
+      }
+
+      /* Start adornment: left-rounded, no right border */
+      ::slotted([slot='start']) {
+        border-right: 0;
+        border-radius: var(--ov-radius-md) 0 0 var(--ov-radius-md);
+      }
+
+      /* End adornment: right-rounded, no left border */
+      ::slotted([slot='end']) {
+        border-left: 0;
+        border-radius: 0 var(--ov-radius-md) var(--ov-radius-md) 0;
+      }
+
+      /* Buttons in start/end slots lose their own radius on the joining side */
+      ::slotted(ov-button[slot='start']) {
+        --_btn-radius-tr: 0;
+        --_btn-radius-br: 0;
+        border-right: 0 !important;
+      }
+      ::slotted(ov-button[slot='end']) {
+        --_btn-radius-tl: 0;
+        --_btn-radius-bl: 0;
+        border-left: 0 !important;
+      }
+
+      /*
+       * The slotted ov-input needs its radius trimmed on joining sides.
+       * We expose --ov-input-radius-* as hooks; the input's own styles
+       * aren't reachable from here, so we use a host-context custom property.
+       */
+      :host([attach='end'])   ::slotted(ov-input) { --ov-input-border-radius: var(--ov-radius-md) 0 0 var(--ov-radius-md); }
+      :host([attach='start']) ::slotted(ov-input) { --ov-input-border-radius: 0 var(--ov-radius-md) var(--ov-radius-md) 0; }
+      :host([attach='both'])  ::slotted(ov-input) { --ov-input-border-radius: 0; }
+
+      /*
+       * Apply the custom property to the wrap inside ov-input via ::part.
+       * This requires ov-input to expose part="wrap", which it does.
+       */
+      ::slotted(ov-input)::part(wrap) {
+        border-radius: var(--ov-input-border-radius, var(--ov-radius-md));
+      }
+    `,
+  ];
+
+  protected override render(): TemplateResult {
+    return html`
+      <slot name="start"></slot>
+      <slot></slot>
+      <slot name="end"></slot>
+    `;
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'ov-input-group': OvInputGroup;
+  }
+}
