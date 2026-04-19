@@ -3,7 +3,7 @@ import { html } from 'lit';
 import './ov-card.js';
 import '../../atoms/button/ov-button.js';
 import '../../atoms/badge/ov-badge.js';
-import '../../atoms/avatar-divider/ov-avatar-divider.js';
+import '../../atoms/avatar/ov-avatar.js';
 import '../../atoms/heading/ov-heading.js';
 import '../../atoms/text/ov-text.js';
 
