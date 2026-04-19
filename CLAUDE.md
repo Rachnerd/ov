@@ -14,17 +14,34 @@ Monorepo containing the OpenValue design system and applications.
 
 Read the relevant skill file before writing or reviewing any `ov-*` element. Each file documents the exact props, slots, events, and valid attribute values for that component.
 
+**Atoms**
 - @packages/ui-components/src/atoms/button/ov-button.md
 - @packages/ui-components/src/atoms/badge/ov-badge.md
 - @packages/ui-components/src/atoms/icon/ov-icon.md
+- @packages/ui-components/src/atoms/spinner/ov-spinner.md
 - @packages/ui-components/src/atoms/input/ov-input.md
 - @packages/ui-components/src/atoms/textarea/ov-textarea.md
 - @packages/ui-components/src/atoms/label/ov-label.md
 - @packages/ui-components/src/atoms/link/ov-link.md
-- @packages/ui-components/src/atoms/selection/ov-selection.md
+- @packages/ui-components/src/atoms/checkbox/ov-checkbox.md
+- @packages/ui-components/src/atoms/radio/ov-radio.md
+- @packages/ui-components/src/atoms/switch/ov-switch.md
 - @packages/ui-components/src/atoms/heading/ov-heading.md
 - @packages/ui-components/src/atoms/text/ov-text.md
-- @packages/ui-components/src/atoms/avatar-divider/ov-avatar-divider.md
+- @packages/ui-components/src/atoms/avatar/ov-avatar.md
+- @packages/ui-components/src/atoms/divider/ov-divider.md
+
+**Molecules**
+- @packages/ui-components/src/molecules/field/ov-field.md
+- @packages/ui-components/src/molecules/alert/ov-alert.md
+- @packages/ui-components/src/molecules/card/ov-card.md
+- @packages/ui-components/src/molecules/breadcrumbs/ov-breadcrumbs.md
+- @packages/ui-components/src/molecules/input-group/ov-input-group.md
+- @packages/ui-components/src/molecules/tabs/ov-tabs.md
+- @packages/ui-components/src/molecules/menu-item/ov-menu-item.md
+- @packages/ui-components/src/molecules/stat/ov-stat.md
+- @packages/ui-components/src/molecules/toast/ov-toast.md
+- @packages/ui-components/src/molecules/empty-state/ov-empty-state.md
 
 ### Generating UI
 
@@ -42,6 +59,15 @@ When asked to build a form:
 - Wrap every label+control pair in `<ov-field>` — never write a bare `<ov-label>` next to a control.
 - Use `<ov-input>` for single-line fields, `<ov-textarea>` for multi-line, `<ov-switch>` / `<ov-checkbox>` / `<ov-radio>` for selections.
 - The primary submit action is `<ov-button type="submit" variant="primary">`.
+
+### Component file structure
+
+Each component lives in its own folder (`atoms/<name>/` or `molecules/<name>/`) containing exactly:
+- `ov-<name>.ts` — the Lit element class
+- `ov-<name>.md` — the skill file (props, slots, events, examples)
+- `ov-<name>.stories.ts` — Storybook stories
+
+Never put multiple components in a single file. Never create a component without all three files.
 
 ### Generating stories
 

@@ -76,15 +76,17 @@ export const InheritColor: Story = {
   `,
 };
 
-export const Spinner: Story = {
+export const ButtonIcon: Story = {
+  name: 'Real-world: Icon in context',
   render: () => html`
-    <div style="display:flex;gap:24px;align-items:center">
-      <ov-spinner size="sm" tone="brand"></ov-spinner>
-      <ov-spinner size="md" tone="brand"></ov-spinner>
-      <ov-spinner size="lg" tone="brand"></ov-spinner>
-      <ov-spinner size="xl" tone="neutral"></ov-spinner>
-      <div style="background:#1D252D;padding:8px;border-radius:8px">
-        <ov-spinner size="md" tone="inverse"></ov-spinner>
+    <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+      <div style="display:inline-flex;align-items:center;gap:6px;padding:8px 14px;background:var(--color-brand,#3D7DC9);color:white;border-radius:8px;font-size:14px;font-weight:500">
+        <ov-icon name="plus" size="sm"></ov-icon>
+        New project
+      </div>
+      <div style="display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border:1px solid #e5e7eb;border-radius:8px;font-size:14px">
+        Export
+        <ov-icon name="arrow-right" size="sm"></ov-icon>
       </div>
     </div>
   `,

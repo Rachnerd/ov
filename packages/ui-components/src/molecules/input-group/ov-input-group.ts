@@ -84,33 +84,24 @@ export class OvInputGroup extends LitElement {
         border-radius: 0 var(--ov-radius-md) var(--ov-radius-md) 0;
       }
 
-      /* Buttons in start/end slots lose their own radius on the joining side */
-      ::slotted(ov-button[slot='start']) {
-        --_btn-radius-tr: 0;
-        --_btn-radius-br: 0;
-        border-right: 0 !important;
-      }
+      /* Flatten input corners on the joining side via an inherited CSS custom property */
+      :host([attach='end'])   ::slotted(ov-input) { --ov-input-radius: var(--ov-radius-md) 0 0 var(--ov-radius-md); }
+      :host([attach='start']) ::slotted(ov-input) { --ov-input-radius: 0 var(--ov-radius-md) var(--ov-radius-md) 0; }
+      :host([attach='both'])  ::slotted(ov-input) { --ov-input-radius: 0; }
+
+      /* Buttons: flatten joining corners via CSS custom property, then overlap
+         the input border by 1px so the two borders merge into one. */
       ::slotted(ov-button[slot='end']) {
-        --_btn-radius-tl: 0;
-        --_btn-radius-bl: 0;
-        border-left: 0 !important;
+        --ov-button-radius: 0 var(--ov-radius-md) var(--ov-radius-md) 0;
+        margin-left: -1px;
+        position: relative;
+        z-index: 1;
       }
-
-      /*
-       * The slotted ov-input needs its radius trimmed on joining sides.
-       * We expose --ov-input-radius-* as hooks; the input's own styles
-       * aren't reachable from here, so we use a host-context custom property.
-       */
-      :host([attach='end'])   ::slotted(ov-input) { --ov-input-border-radius: var(--ov-radius-md) 0 0 var(--ov-radius-md); }
-      :host([attach='start']) ::slotted(ov-input) { --ov-input-border-radius: 0 var(--ov-radius-md) var(--ov-radius-md) 0; }
-      :host([attach='both'])  ::slotted(ov-input) { --ov-input-border-radius: 0; }
-
-      /*
-       * Apply the custom property to the wrap inside ov-input via ::part.
-       * This requires ov-input to expose part="wrap", which it does.
-       */
-      ::slotted(ov-input)::part(wrap) {
-        border-radius: var(--ov-input-border-radius, var(--ov-radius-md));
+      ::slotted(ov-button[slot='start']) {
+        --ov-button-radius: var(--ov-radius-md) 0 0 var(--ov-radius-md);
+        margin-right: -1px;
+        position: relative;
+        z-index: 1;
       }
     `,
   ];

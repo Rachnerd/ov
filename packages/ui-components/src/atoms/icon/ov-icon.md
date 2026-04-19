@@ -1,20 +1,14 @@
-# ov-icon / ov-spinner
+# ov-icon
 
-Two display-only atoms for iconography and loading indication. Color is always `currentColor` so both inherit from surrounding text.
+Renders one of the built-in SVG icons by name, or acts as a sized wrapper for a custom SVG passed via the default slot. Color is always `currentColor` so icons inherit from surrounding text.
 
----
-
-## ov-icon
-
-Renders one of the built-in SVG icons by name, or acts as a sized wrapper for a custom SVG passed via the default slot.
-
-### Tag
+## Tag
 
 ```html
 <ov-icon name="check"></ov-icon>
 ```
 
-### Properties
+## Properties
 
 | Property | Attribute | Type                                                                                                        | Default | Description                                  |
 |----------|-----------|-------------------------------------------------------------------------------------------------------------|---------|----------------------------------------------|
@@ -22,13 +16,13 @@ Renders one of the built-in SVG icons by name, or acts as a sized wrapper for a 
 | `size`   | `size`    | `'sm' \| 'md' \| 'lg' \| 'xl'`                                                                             | `'md'`  | `12 / 16 / 20 / 24 px`                       |
 | `label`  | `label`   | `string`                                                                                                    | `''`    | Accessible label; when set, `role="img"` is applied |
 
-### Slots
+## Slots
 
 | Slot      | Description                                      |
 |-----------|--------------------------------------------------|
 | (default) | Custom SVG to render when `name` is not a built-in |
 
-### Usage examples
+## Usage examples
 
 ```html
 <!-- Built-in icons -->
@@ -65,45 +59,9 @@ Renders one of the built-in SVG icons by name, or acts as a sized wrapper for a 
 </span>
 ```
 
----
-
-## ov-spinner
-
-An animated circular loading indicator.
-
-### Tag
-
-```html
-<ov-spinner></ov-spinner>
-```
-
-### Properties
-
-| Property | Attribute | Type                           | Default   | Description               |
-|----------|-----------|--------------------------------|-----------|---------------------------|
-| `size`   | `size`    | `'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'`    | `14 / 20 / 32 / 40 px`    |
-| `tone`   | `tone`    | `'brand' \| 'neutral' \| 'inverse'` | `'brand'` | Color tone             |
-| `label`  | `label`   | `string`                       | `'Loading'` | `aria-label` text       |
-
-### Usage examples
-
-```html
-<ov-spinner></ov-spinner>
-<ov-spinner size="sm" tone="neutral"></ov-spinner>
-<ov-spinner size="lg" tone="brand"></ov-spinner>
-
-<!-- On a dark background -->
-<div style="background: var(--ov-charcoal)">
-  <ov-spinner tone="inverse"></ov-spinner>
-</div>
-
-<!-- Custom accessible label -->
-<ov-spinner label="Fetching results"></ov-spinner>
-```
-
 ## Rules
 
 - `ov-icon` is decorative by default (`aria-hidden="true"`); only set `label` when the icon conveys meaning not available from surrounding text.
 - Never put text inside `ov-icon` — it is a sizing wrapper only.
-- `ov-spinner` always has `role="progressbar"` — do not wrap it in another ARIA live region.
-- Both elements inherit `currentColor`; set color on a parent element, not directly on the component.
+- Color inherits from `currentColor`; set color on a parent element, not directly on the component.
+- For loading indicators, use `ov-spinner` (see `atoms/spinner/ov-spinner.md`).

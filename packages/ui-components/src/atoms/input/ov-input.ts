@@ -43,7 +43,7 @@ export class OvInput extends LitElement {
         width: 100%;
         background: var(--color-control-bg);
         border: var(--ov-border-thin, 1px) solid var(--color-control-border);
-        border-radius: var(--ov-radius-md);
+        border-radius: var(--ov-input-radius, var(--ov-radius-md));
         padding: 0 var(--ov-space-4);
         transition:
           border-color     var(--ov-duration-fast) var(--ov-ease-out),

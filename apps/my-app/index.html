@@ -4,18 +4,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OpenValue — Sign in</title>
+  <title>OpenValue — Create account</title>
   <style>
     body {
       min-height: 100svh;
       display: grid;
       place-items: center;
       background: var(--color-bg-canvas);
+      padding: var(--ov-space-6) var(--ov-space-4);
     }
 
     .card {
       width: 100%;
-      max-width: 400px;
+      max-width: 480px;
       padding: var(--ov-space-8);
       background: var(--color-bg-surface);
       border: 1px solid var(--color-border-subtle);
@@ -40,6 +41,11 @@
       flex-shrink: 0;
     }
 
+    .card-subtitle {
+      margin-top: var(--ov-space-1);
+      display: block;
+    }
+
     .fields {
       display: flex;
       flex-direction: column;
@@ -47,21 +53,17 @@
       margin-top: var(--ov-space-6);
     }
 
-    .remember-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    .name-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--ov-space-3);
     }
 
     .actions {
       display: flex;
       flex-direction: column;
       gap: var(--ov-space-3);
-      margin-top: var(--ov-space-6);
-    }
-
-.card-subtitle {
-      margin-top: var(--ov-space-1);
+      margin-top: var(--ov-space-2);
     }
 
     .footer {
@@ -84,19 +86,39 @@
         <ov-text variant="eyebrow" tone="brand">OpenValue</ov-text>
       </div>
 
-      <ov-heading level="2" size="h2">Welcome back</ov-heading>
+      <ov-heading level="2" size="h2">Create your account</ov-heading>
       <ov-text class="card-subtitle" variant="body-sm" tone="secondary" as="p">
-        Sign in to your account to continue
+        Start managing your portfolio in minutes
       </ov-text>
 
       <form class="fields" novalidate>
 
-        <ov-field label="Email" for="email" required>
+        <div class="name-row">
+          <ov-field label="First name" for="first-name" required>
+            <ov-input
+              id="first-name"
+              name="first-name"
+              placeholder="Jane"
+              autocomplete="given-name"
+            ></ov-input>
+          </ov-field>
+
+          <ov-field label="Last name" for="last-name" required>
+            <ov-input
+              id="last-name"
+              name="last-name"
+              placeholder="Smith"
+              autocomplete="family-name"
+            ></ov-input>
+          </ov-field>
+        </div>
+
+        <ov-field label="Work email" for="email" required>
           <ov-input
             id="email"
             type="email"
-            placeholder="you@company.com"
             name="email"
+            placeholder="jane@company.com"
             autocomplete="email"
           >
             <ov-icon slot="prefix" name="mail"></ov-icon>
@@ -107,29 +129,34 @@
           <ov-input
             id="password"
             type="password"
-            placeholder="••••••••"
             name="password"
-            autocomplete="current-password"
-          >
-            <ov-icon slot="prefix">
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                <rect x="3" y="7" width="10" height="8" rx="1.5"/>
-                <path d="M5 7V5a3 3 0 0 1 6 0v2"/>
-              </svg>
-            </ov-icon>
-          </ov-input>
+            placeholder="Min. 8 characters"
+            autocomplete="new-password"
+          ></ov-input>
         </ov-field>
 
-        <div class="remember-row">
-          <ov-checkbox name="remember" value="true">Remember me</ov-checkbox>
-          <ov-link href="/forgot-password" variant="brand" size="sm">Forgot password?</ov-link>
-        </div>
+        <ov-field label="Confirm password" for="confirm-password" required>
+          <ov-input
+            id="confirm-password"
+            type="password"
+            name="confirm-password"
+            placeholder="Repeat your password"
+            autocomplete="new-password"
+          ></ov-input>
+        </ov-field>
+
+        <ov-checkbox name="terms" value="accepted" required>
+          <span>I agree to the
+            <ov-link href="/terms" variant="brand" underline="always">Terms of Service</ov-link>
+            and
+            <ov-link href="/privacy" variant="brand" underline="always">Privacy Policy</ov-link>
+          </span>
+        </ov-checkbox>
 
         <div class="actions">
-          <ov-button type="submit" variant="primary" block>Sign in</ov-button>
+          <ov-button type="submit" variant="primary" block>Create account</ov-button>
 
           <ov-divider>or</ov-divider>
-
 
           <ov-button type="button" variant="secondary" block>
             <svg slot="start" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -146,8 +173,8 @@
 
       <div class="footer">
         <ov-text variant="body-sm" tone="secondary">
-          Don't have an account?
-          <ov-link href="/register" variant="brand" underline="always">Create one free</ov-link>
+          Already have an account?
+          <ov-link href="/login" variant="brand" underline="always">Sign in</ov-link>
         </ov-text>
       </div>
 

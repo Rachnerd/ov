@@ -6,19 +6,34 @@ Lit 3 web-component library for the OpenValue design system. Components are cust
 
 Read the relevant skill file before writing or reviewing any `ov-*` element. Each file documents exact props, slots, events, and valid attribute values.
 
+**Atoms**
 - @src/atoms/button/ov-button.md
 - @src/atoms/badge/ov-badge.md
 - @src/atoms/icon/ov-icon.md
+- @src/atoms/spinner/ov-spinner.md
 - @src/atoms/input/ov-input.md
 - @src/atoms/textarea/ov-textarea.md
 - @src/atoms/label/ov-label.md
 - @src/atoms/link/ov-link.md
-- @src/atoms/selection/ov-selection.md
+- @src/atoms/checkbox/ov-checkbox.md
+- @src/atoms/radio/ov-radio.md
+- @src/atoms/switch/ov-switch.md
 - @src/atoms/heading/ov-heading.md
 - @src/atoms/text/ov-text.md
-- @src/atoms/avatar-divider/ov-avatar-divider.md
+- @src/atoms/avatar/ov-avatar.md
+- @src/atoms/divider/ov-divider.md
 
-All skill files are also aggregated in `llms.txt` at the package root.
+**Molecules**
+- @src/molecules/field/ov-field.md
+- @src/molecules/alert/ov-alert.md
+- @src/molecules/card/ov-card.md
+- @src/molecules/breadcrumbs/ov-breadcrumbs.md
+- @src/molecules/input-group/ov-input-group.md
+- @src/molecules/tabs/ov-tabs.md
+- @src/molecules/menu-item/ov-menu-item.md
+- @src/molecules/stat/ov-stat.md
+- @src/molecules/toast/ov-toast.md
+- @src/molecules/empty-state/ov-empty-state.md
 
 ## Generating UI
 
@@ -31,6 +46,15 @@ All skill files are also aggregated in `llms.txt` at the package root.
 - Wrap every label+control pair in `<ov-field>` — never a bare `<ov-label>` next to a control.
 - Single-line → `<ov-input>`, multi-line → `<ov-textarea>`, boolean → `<ov-switch>`, one-of → `<ov-radio>`, many-of → `<ov-checkbox>`.
 - Primary submit: `<ov-button type="submit" variant="primary">`.
+
+## Component file structure
+
+Each component lives in its own folder (`atoms/<name>/` or `molecules/<name>/`) containing exactly:
+- `ov-<name>.ts` — the Lit element class
+- `ov-<name>.md` — the skill file (props, slots, events, examples)
+- `ov-<name>.stories.ts` — Storybook stories
+
+Never put multiple components in a single file. Never create a component without all three files.
 
 ## Generating stories
 

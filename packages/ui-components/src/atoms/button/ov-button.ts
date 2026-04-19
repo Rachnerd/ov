@@ -66,7 +66,7 @@ export class OvButton extends LitElement {
         color: var(--btn-fg);
         background: var(--btn-bg);
         border: var(--ov-border-base, 1.5px) solid var(--btn-border);
-        border-radius: var(--ov-radius-md, 8px);
+        border-radius: var(--ov-button-radius, var(--ov-radius-md, 8px));
         cursor: pointer;
         user-select: none;
         white-space: nowrap;
