@@ -18,9 +18,14 @@ export class OvRadio extends LitElement {
     baseStyles,
     selectionBase,
     css`
+      label {
+        display: flex;
+        align-items: center;
+        gap: var(--ov-space-2);
+      }
       .control {
-        width: 16px; height: 16px;
-        margin-top: 2px;
+        width: 16px; 
+        height: 16px;
         border-radius: 50%;
         background: var(--color-control-bg);
         border: 1.5px solid var(--color-control-border);

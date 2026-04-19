@@ -44,6 +44,8 @@ export class OvInputGroup extends LitElement {
         display: flex;
         align-items: stretch;
         width: 100%;
+        max-height: 44px;
+        overflow: hidden;
       }
 
       /* ---- Slot containers ---- */
@@ -63,19 +65,20 @@ export class OvInputGroup extends LitElement {
       ::slotted([slot='end']) {
         display: inline-flex;
         align-items: center;
-        padding: 0 var(--ov-space-4);
         background: var(--color-bg-surface-alt);
         border: 1px solid var(--color-control-border);
         font-size: var(--ov-fs-sm);
         color: var(--color-text-secondary);
         white-space: nowrap;
         flex: 0 0 auto;
+        overflow: hidden;
       }
 
       /* Start adornment: left-rounded, no right border */
       ::slotted([slot='start']) {
         border-right: 0;
         border-radius: var(--ov-radius-md) 0 0 var(--ov-radius-md);
+        padding: 0 var(--ov-space-4);
       }
 
       /* End adornment: right-rounded, no left border */

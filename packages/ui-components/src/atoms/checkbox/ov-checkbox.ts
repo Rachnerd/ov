@@ -20,9 +20,14 @@ export class OvCheckbox extends LitElement {
     baseStyles,
     selectionBase,
     css`
+      label {
+        display: flex;
+        align-items: center;
+        gap: var(--ov-space-2);
+      }
       .control {
-        width: 16px; height: 16px;
-        margin-top: 3px;
+        width: 16px; 
+        height: 16px;
         border-radius: var(--ov-radius-xs);
         background: var(--color-control-bg);
         border: 1.5px solid var(--color-control-border);

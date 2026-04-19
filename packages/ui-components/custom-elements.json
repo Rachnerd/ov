@@ -303,6 +303,215 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/atoms/button/ov-button.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "<ov-button>",
+          "name": "OvButton",
+          "cssProperties": [
+            {
+              "description": "Background (primary variant).",
+              "name": "--color-brand"
+            },
+            {
+              "description": "Foreground (primary variant).",
+              "name": "--color-text-on-brand"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Button label.",
+              "name": ""
+            },
+            {
+              "description": "Leading icon or element.",
+              "name": "start"
+            },
+            {
+              "description": "Trailing icon or element.",
+              "name": "end"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "ButtonVariant"
+              },
+              "default": "'primary'",
+              "description": "Visual treatment.",
+              "attribute": "variant",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "ButtonSize"
+              },
+              "default": "'md'",
+              "description": "Physical scale.",
+              "attribute": "size",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "ButtonType"
+              },
+              "default": "'button'",
+              "description": "Native button type (for forms).",
+              "attribute": "type"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "When true, the button is non-interactive and styled dimmed.",
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "loading",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Shows a spinner, preserves width, and blocks clicks.",
+              "attribute": "loading",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "block",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "When true, stretches to 100% of parent width.",
+              "attribute": "block",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "_handleClick",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "MouseEvent"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": {
+                "text": "MouseEvent"
+              },
+              "description": "Standard click; suppressed while disabled or loading.",
+              "name": "click"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "variant",
+              "type": {
+                "text": "ButtonVariant"
+              },
+              "default": "'primary'",
+              "description": "Visual treatment.",
+              "fieldName": "variant"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "ButtonSize"
+              },
+              "default": "'md'",
+              "description": "Physical scale.",
+              "fieldName": "size"
+            },
+            {
+              "name": "type",
+              "type": {
+                "text": "ButtonType"
+              },
+              "default": "'button'",
+              "description": "Native button type (for forms).",
+              "fieldName": "type"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "When true, the button is non-interactive and styled dimmed.",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "loading",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Shows a spinner, preserves width, and blocks clicks.",
+              "fieldName": "loading"
+            },
+            {
+              "name": "block",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "When true, stretches to 100% of parent width.",
+              "fieldName": "block"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ov-button",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OvButton",
+          "declaration": {
+            "name": "OvButton",
+            "module": "src/atoms/button/ov-button.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ov-button",
+          "declaration": {
+            "name": "OvButton",
+            "module": "src/atoms/button/ov-button.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/atoms/badge/ov-badge.ts",
       "declarations": [
         {
@@ -589,215 +798,6 @@
           "declaration": {
             "name": "OvCheckbox",
             "module": "src/atoms/checkbox/ov-checkbox.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/atoms/button/ov-button.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "<ov-button>",
-          "name": "OvButton",
-          "cssProperties": [
-            {
-              "description": "Background (primary variant).",
-              "name": "--color-brand"
-            },
-            {
-              "description": "Foreground (primary variant).",
-              "name": "--color-text-on-brand"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Button label.",
-              "name": ""
-            },
-            {
-              "description": "Leading icon or element.",
-              "name": "start"
-            },
-            {
-              "description": "Trailing icon or element.",
-              "name": "end"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "variant",
-              "type": {
-                "text": "ButtonVariant"
-              },
-              "default": "'primary'",
-              "description": "Visual treatment.",
-              "attribute": "variant",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "ButtonSize"
-              },
-              "default": "'md'",
-              "description": "Physical scale.",
-              "attribute": "size",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "type",
-              "type": {
-                "text": "ButtonType"
-              },
-              "default": "'button'",
-              "description": "Native button type (for forms).",
-              "attribute": "type"
-            },
-            {
-              "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "When true, the button is non-interactive and styled dimmed.",
-              "attribute": "disabled",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "loading",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Shows a spinner, preserves width, and blocks clicks.",
-              "attribute": "loading",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "block",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "When true, stretches to 100% of parent width.",
-              "attribute": "block",
-              "reflects": true
-            },
-            {
-              "kind": "method",
-              "name": "_handleClick",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "MouseEvent"
-                  }
-                }
-              ]
-            }
-          ],
-          "events": [
-            {
-              "type": {
-                "text": "MouseEvent"
-              },
-              "description": "Standard click; suppressed while disabled or loading.",
-              "name": "click"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "variant",
-              "type": {
-                "text": "ButtonVariant"
-              },
-              "default": "'primary'",
-              "description": "Visual treatment.",
-              "fieldName": "variant"
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "ButtonSize"
-              },
-              "default": "'md'",
-              "description": "Physical scale.",
-              "fieldName": "size"
-            },
-            {
-              "name": "type",
-              "type": {
-                "text": "ButtonType"
-              },
-              "default": "'button'",
-              "description": "Native button type (for forms).",
-              "fieldName": "type"
-            },
-            {
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "When true, the button is non-interactive and styled dimmed.",
-              "fieldName": "disabled"
-            },
-            {
-              "name": "loading",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Shows a spinner, preserves width, and blocks clicks.",
-              "fieldName": "loading"
-            },
-            {
-              "name": "block",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "When true, stretches to 100% of parent width.",
-              "fieldName": "block"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "ov-button",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "OvButton",
-          "declaration": {
-            "name": "OvButton",
-            "module": "src/atoms/button/ov-button.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "ov-button",
-          "declaration": {
-            "name": "OvButton",
-            "module": "src/atoms/button/ov-button.ts"
           }
         }
       ]

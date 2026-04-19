@@ -1,4 +1,5 @@
 import type { Preview, StoryContext, PartialStoryFn } from '@storybook/web-components';
+import { addons } from '@storybook/preview-api';
 import type { TemplateResult } from 'lit';
 import '@ov/style';
 
@@ -7,6 +8,16 @@ const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 const applyTheme = (theme: string) => {
   document.documentElement.setAttribute('data-theme', theme);
 };
+
+// In docs/autodocs mode, the decorator doesn't re-run on toolbar changes.
+// Listen to the channel directly so theme toggles always take effect.
+try {
+  addons.getChannel().on('globalsUpdated', ({ globals }: { globals: Record<string, unknown> }) => {
+    applyTheme((globals['theme'] as string) ?? (systemDark ? 'dark' : 'light'));
+  });
+} catch {
+  // channel not available in all render contexts
+}
 
 const preview: Preview = {
   globalTypes: {
