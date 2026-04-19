@@ -77,7 +77,62 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/atoms/avatar-divider/ov-avatar-divider.ts",
+      "path": "src/atoms/selection-shared.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "selectionBase",
+          "type": {
+            "text": "CSSResult"
+          },
+          "default": "css` :host { display: inline-flex; align-items: center; gap: var(--ov-space-2); cursor: pointer; user-select: none; font-size: var(--ov-fs-sm); color: var(--color-text-primary); } :host([disabled]) { cursor: not-allowed; opacity: 0.5; } input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; } label { display: inline-flex; align-items: flex-start; gap: var(--ov-space-3); cursor: inherit; } input:focus-visible + .control, input:focus-visible + .track { box-shadow: var(--shadow-focus); } `"
+        },
+        {
+          "kind": "function",
+          "name": "dispatchSelectionChange",
+          "return": {
+            "type": {
+              "text": "void"
+            }
+          },
+          "parameters": [
+            {
+              "name": "el",
+              "type": {
+                "text": "LitElement"
+              }
+            },
+            {
+              "name": "detail",
+              "type": {
+                "text": "SelectionChangeDetail"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "selectionBase",
+          "declaration": {
+            "name": "selectionBase",
+            "module": "src/atoms/selection-shared.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "dispatchSelectionChange",
+          "declaration": {
+            "name": "dispatchSelectionChange",
+            "module": "src/atoms/selection-shared.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/atoms/avatar/ov-avatar.ts",
       "declarations": [
         {
           "kind": "class",
@@ -225,27 +280,51 @@
           },
           "tagName": "ov-avatar",
           "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OvAvatar",
+          "declaration": {
+            "name": "OvAvatar",
+            "module": "src/atoms/avatar/ov-avatar.ts"
+          }
         },
+        {
+          "kind": "custom-element-definition",
+          "name": "ov-avatar",
+          "declaration": {
+            "name": "OvAvatar",
+            "module": "src/atoms/avatar/ov-avatar.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/atoms/badge/ov-badge.ts",
+      "declarations": [
         {
           "kind": "class",
           "description": "",
-          "name": "OvDivider",
-          "members": [
+          "name": "OvBadge",
+          "slots": [
             {
-              "kind": "field",
-              "name": "orientation",
-              "type": {
-                "text": "DividerOrientation"
-              },
-              "default": "'horizontal'",
-              "attribute": "orientation",
-              "reflects": true
+              "description": "Badge content.",
+              "name": ""
             },
+            {
+              "description": "Optional leading status dot (users opt in explicitly).",
+              "name": "dot"
+            }
+          ],
+          "members": [
             {
               "kind": "field",
               "name": "variant",
               "type": {
-                "text": "DividerVariant"
+                "text": "BadgeVariant"
               },
               "default": "'default'",
               "attribute": "variant",
@@ -253,26 +332,166 @@
             },
             {
               "kind": "field",
-              "name": "spacing",
+              "name": "appearance",
+              "type": {
+                "text": "BadgeAppearance"
+              },
+              "default": "'soft'",
+              "attribute": "appearance",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "BadgeSize"
+              },
+              "default": "'md'",
+              "attribute": "size",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "pill",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "pill",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "variant",
+              "type": {
+                "text": "BadgeVariant"
+              },
+              "default": "'default'",
+              "fieldName": "variant"
+            },
+            {
+              "name": "appearance",
+              "type": {
+                "text": "BadgeAppearance"
+              },
+              "default": "'soft'",
+              "fieldName": "appearance"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "BadgeSize"
+              },
+              "default": "'md'",
+              "fieldName": "size"
+            },
+            {
+              "name": "pill",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "pill"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ov-badge",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OvBadge",
+          "declaration": {
+            "name": "OvBadge",
+            "module": "src/atoms/badge/ov-badge.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ov-badge",
+          "declaration": {
+            "name": "OvBadge",
+            "module": "src/atoms/badge/ov-badge.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/atoms/checkbox/ov-checkbox.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "OvCheckbox",
+          "members": [
+            {
+              "kind": "field",
+              "name": "checked",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "checked",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "indeterminate",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "indeterminate",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "required"
+            },
+            {
+              "kind": "field",
+              "name": "name",
               "type": {
                 "text": "string"
               },
               "default": "''",
-              "attribute": "spacing"
+              "attribute": "name",
+              "reflects": true
             },
             {
               "kind": "field",
-              "name": "_hasLabel",
+              "name": "value",
               "type": {
-                "text": "boolean"
+                "text": "string"
               },
-              "privacy": "private",
-              "default": "false",
-              "description": "Reactive state tracking whether the default slot has any nodes."
+              "default": "'on'",
+              "attribute": "value"
             },
             {
               "kind": "method",
-              "name": "_onSlotChange",
+              "name": "_onChange",
               "privacy": "private",
               "return": {
                 "type": {
@@ -289,166 +508,87 @@
               ]
             }
           ],
+          "events": [
+            {
+              "type": {
+                "text": "CustomEvent<{ checked: boolean, value: string }>"
+              },
+              "name": "change"
+            }
+          ],
           "attributes": [
             {
-              "name": "orientation",
+              "name": "checked",
               "type": {
-                "text": "DividerOrientation"
+                "text": "boolean"
               },
-              "default": "'horizontal'",
-              "fieldName": "orientation"
+              "default": "false",
+              "fieldName": "checked"
             },
             {
-              "name": "variant",
+              "name": "indeterminate",
               "type": {
-                "text": "DividerVariant"
+                "text": "boolean"
               },
-              "default": "'default'",
-              "fieldName": "variant"
+              "default": "false",
+              "fieldName": "indeterminate"
             },
             {
-              "name": "spacing",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "required"
+            },
+            {
+              "name": "name",
               "type": {
                 "text": "string"
               },
               "default": "''",
-              "fieldName": "spacing"
+              "fieldName": "name"
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "'on'",
+              "fieldName": "value"
             }
           ],
           "superclass": {
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "ov-divider",
+          "tagName": "ov-checkbox",
           "customElement": true
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "OvAvatar",
+          "name": "OvCheckbox",
           "declaration": {
-            "name": "OvAvatar",
-            "module": "src/atoms/avatar-divider/ov-avatar-divider.ts"
+            "name": "OvCheckbox",
+            "module": "src/atoms/checkbox/ov-checkbox.ts"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "ov-avatar",
+          "name": "ov-checkbox",
           "declaration": {
-            "name": "OvAvatar",
-            "module": "src/atoms/avatar-divider/ov-avatar-divider.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "OvDivider",
-          "declaration": {
-            "name": "OvDivider",
-            "module": "src/atoms/avatar-divider/ov-avatar-divider.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "ov-divider",
-          "declaration": {
-            "name": "OvDivider",
-            "module": "src/atoms/avatar-divider/ov-avatar-divider.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/atoms/heading/ov-heading.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "OvHeading",
-          "members": [
-            {
-              "kind": "field",
-              "name": "level",
-              "type": {
-                "text": "HeadingLevel"
-              },
-              "default": "2",
-              "attribute": "level",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "HeadingSize"
-              },
-              "default": "''",
-              "description": "Visual size override. Empty string → derived from level.",
-              "attribute": "size",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "tone",
-              "type": {
-                "text": "HeadingTone"
-              },
-              "default": "'primary'",
-              "attribute": "tone",
-              "reflects": true
-            }
-          ],
-          "attributes": [
-            {
-              "name": "level",
-              "type": {
-                "text": "HeadingLevel"
-              },
-              "default": "2",
-              "fieldName": "level"
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "HeadingSize"
-              },
-              "default": "''",
-              "description": "Visual size override. Empty string → derived from level.",
-              "fieldName": "size"
-            },
-            {
-              "name": "tone",
-              "type": {
-                "text": "HeadingTone"
-              },
-              "default": "'primary'",
-              "fieldName": "tone"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "ov-heading",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "OvHeading",
-          "declaration": {
-            "name": "OvHeading",
-            "module": "src/atoms/heading/ov-heading.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "ov-heading",
-          "declaration": {
-            "name": "OvHeading",
-            "module": "src/atoms/heading/ov-heading.ts"
+            "name": "OvCheckbox",
+            "module": "src/atoms/checkbox/ov-checkbox.ts"
           }
         }
       ]
@@ -664,28 +804,28 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/atoms/badge/ov-badge.ts",
+      "path": "src/atoms/divider/ov-divider.ts",
       "declarations": [
         {
           "kind": "class",
           "description": "",
-          "name": "OvBadge",
-          "slots": [
-            {
-              "description": "Badge content.",
-              "name": ""
-            },
-            {
-              "description": "Optional leading status dot (users opt in explicitly).",
-              "name": "dot"
-            }
-          ],
+          "name": "OvDivider",
           "members": [
+            {
+              "kind": "field",
+              "name": "orientation",
+              "type": {
+                "text": "DividerOrientation"
+              },
+              "default": "'horizontal'",
+              "attribute": "orientation",
+              "reflects": true
+            },
             {
               "kind": "field",
               "name": "variant",
               "type": {
-                "text": "BadgeVariant"
+                "text": "DividerVariant"
               },
               "default": "'default'",
               "attribute": "variant",
@@ -693,92 +833,185 @@
             },
             {
               "kind": "field",
-              "name": "appearance",
+              "name": "spacing",
               "type": {
-                "text": "BadgeAppearance"
+                "text": "string"
               },
-              "default": "'soft'",
-              "attribute": "appearance",
-              "reflects": true
+              "default": "''",
+              "attribute": "spacing"
             },
             {
               "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "BadgeSize"
-              },
-              "default": "'md'",
-              "attribute": "size",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "pill",
+              "name": "_hasLabel",
               "type": {
                 "text": "boolean"
               },
-              "default": "true",
-              "attribute": "pill",
-              "reflects": true
+              "privacy": "private",
+              "default": "false"
+            },
+            {
+              "kind": "method",
+              "name": "_onSlotChange",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
             }
           ],
           "attributes": [
             {
+              "name": "orientation",
+              "type": {
+                "text": "DividerOrientation"
+              },
+              "default": "'horizontal'",
+              "fieldName": "orientation"
+            },
+            {
               "name": "variant",
               "type": {
-                "text": "BadgeVariant"
+                "text": "DividerVariant"
               },
               "default": "'default'",
               "fieldName": "variant"
             },
             {
-              "name": "appearance",
+              "name": "spacing",
               "type": {
-                "text": "BadgeAppearance"
+                "text": "string"
               },
-              "default": "'soft'",
-              "fieldName": "appearance"
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "BadgeSize"
-              },
-              "default": "'md'",
-              "fieldName": "size"
-            },
-            {
-              "name": "pill",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "fieldName": "pill"
+              "default": "''",
+              "fieldName": "spacing"
             }
           ],
           "superclass": {
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "ov-badge",
+          "tagName": "ov-divider",
           "customElement": true
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "OvBadge",
+          "name": "OvDivider",
           "declaration": {
-            "name": "OvBadge",
-            "module": "src/atoms/badge/ov-badge.ts"
+            "name": "OvDivider",
+            "module": "src/atoms/divider/ov-divider.ts"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "ov-badge",
+          "name": "ov-divider",
           "declaration": {
-            "name": "OvBadge",
-            "module": "src/atoms/badge/ov-badge.ts"
+            "name": "OvDivider",
+            "module": "src/atoms/divider/ov-divider.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/atoms/heading/ov-heading.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "OvHeading",
+          "members": [
+            {
+              "kind": "field",
+              "name": "level",
+              "type": {
+                "text": "HeadingLevel"
+              },
+              "default": "2",
+              "attribute": "level",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "HeadingSize"
+              },
+              "default": "''",
+              "description": "Visual size override. Empty string → derived from level.",
+              "attribute": "size",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "tone",
+              "type": {
+                "text": "HeadingTone"
+              },
+              "default": "'primary'",
+              "attribute": "tone",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "level",
+              "type": {
+                "text": "HeadingLevel"
+              },
+              "default": "2",
+              "fieldName": "level"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "HeadingSize"
+              },
+              "default": "''",
+              "description": "Visual size override. Empty string → derived from level.",
+              "fieldName": "size"
+            },
+            {
+              "name": "tone",
+              "type": {
+                "text": "HeadingTone"
+              },
+              "default": "'primary'",
+              "fieldName": "tone"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ov-heading",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OvHeading",
+          "declaration": {
+            "name": "OvHeading",
+            "module": "src/atoms/heading/ov-heading.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ov-heading",
+          "declaration": {
+            "name": "OvHeading",
+            "module": "src/atoms/heading/ov-heading.ts"
           }
         }
       ]
@@ -1531,155 +1764,8 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/atoms/selection/ov-selection.ts",
+      "path": "src/atoms/radio/ov-radio.ts",
       "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "OvCheckbox",
-          "members": [
-            {
-              "kind": "field",
-              "name": "checked",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "checked",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "indeterminate",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "indeterminate",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "disabled",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "required",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "required"
-            },
-            {
-              "kind": "field",
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "attribute": "name",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "'on'",
-              "attribute": "value"
-            },
-            {
-              "kind": "method",
-              "name": "_onChange",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            }
-          ],
-          "events": [
-            {
-              "type": {
-                "text": "CustomEvent<SelectionChangeDetail>"
-              },
-              "name": "change"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "checked",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "checked"
-            },
-            {
-              "name": "indeterminate",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "indeterminate"
-            },
-            {
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "disabled"
-            },
-            {
-              "name": "required",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "required"
-            },
-            {
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "fieldName": "name"
-            },
-            {
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "'on'",
-              "fieldName": "value"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "ov-checkbox",
-          "customElement": true
-        },
         {
           "kind": "class",
           "description": "",
@@ -1735,6 +1821,14 @@
               }
             }
           ],
+          "events": [
+            {
+              "type": {
+                "text": "CustomEvent<{ checked: true, value: string }>"
+              },
+              "name": "change"
+            }
+          ],
           "attributes": [
             {
               "name": "checked",
@@ -1775,7 +1869,123 @@
           },
           "tagName": "ov-radio",
           "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OvRadio",
+          "declaration": {
+            "name": "OvRadio",
+            "module": "src/atoms/radio/ov-radio.ts"
+          }
         },
+        {
+          "kind": "custom-element-definition",
+          "name": "ov-radio",
+          "declaration": {
+            "name": "OvRadio",
+            "module": "src/atoms/radio/ov-radio.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/atoms/spinner/ov-spinner.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "OvSpinner",
+          "members": [
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "IconSize"
+              },
+              "default": "'md'",
+              "attribute": "size",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "tone",
+              "type": {
+                "text": "SpinnerTone"
+              },
+              "default": "'brand'",
+              "attribute": "tone",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Loading'",
+              "attribute": "label"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "size",
+              "type": {
+                "text": "IconSize"
+              },
+              "default": "'md'",
+              "fieldName": "size"
+            },
+            {
+              "name": "tone",
+              "type": {
+                "text": "SpinnerTone"
+              },
+              "default": "'brand'",
+              "fieldName": "tone"
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Loading'",
+              "fieldName": "label"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ov-spinner",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OvSpinner",
+          "declaration": {
+            "name": "OvSpinner",
+            "module": "src/atoms/spinner/ov-spinner.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ov-spinner",
+          "declaration": {
+            "name": "OvSpinner",
+            "module": "src/atoms/spinner/ov-spinner.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/atoms/switch/ov-switch.ts",
+      "declarations": [
         {
           "kind": "class",
           "description": "",
@@ -1839,6 +2049,14 @@
               ]
             }
           ],
+          "events": [
+            {
+              "type": {
+                "text": "CustomEvent<{ checked: boolean, value: string }>"
+              },
+              "name": "change"
+            }
+          ],
           "attributes": [
             {
               "name": "checked",
@@ -1884,42 +2102,10 @@
       "exports": [
         {
           "kind": "js",
-          "name": "OvCheckbox",
-          "declaration": {
-            "name": "OvCheckbox",
-            "module": "src/atoms/selection/ov-selection.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "ov-checkbox",
-          "declaration": {
-            "name": "OvCheckbox",
-            "module": "src/atoms/selection/ov-selection.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "OvRadio",
-          "declaration": {
-            "name": "OvRadio",
-            "module": "src/atoms/selection/ov-selection.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "ov-radio",
-          "declaration": {
-            "name": "OvRadio",
-            "module": "src/atoms/selection/ov-selection.ts"
-          }
-        },
-        {
-          "kind": "js",
           "name": "OvSwitch",
           "declaration": {
             "name": "OvSwitch",
-            "module": "src/atoms/selection/ov-selection.ts"
+            "module": "src/atoms/switch/ov-switch.ts"
           }
         },
         {
@@ -1927,7 +2113,7 @@
           "name": "ov-switch",
           "declaration": {
             "name": "OvSwitch",
-            "module": "src/atoms/selection/ov-selection.ts"
+            "module": "src/atoms/switch/ov-switch.ts"
           }
         }
       ]
@@ -2678,6 +2864,124 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/molecules/empty-state/ov-empty-state.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "OvEmptyState",
+          "slots": [
+            {
+              "description": "Illustration or ov-icon override.",
+              "name": "icon"
+            },
+            {
+              "description": "Buttons / links below the description.",
+              "name": "actions"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "heading",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "heading"
+            },
+            {
+              "kind": "field",
+              "name": "description",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "description"
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "type": {
+                "text": "BuiltInIconName | ''"
+              },
+              "default": "''",
+              "attribute": "icon"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "attribute": "size",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "heading",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "heading"
+            },
+            {
+              "name": "description",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "description"
+            },
+            {
+              "name": "icon",
+              "type": {
+                "text": "BuiltInIconName | ''"
+              },
+              "default": "''",
+              "fieldName": "icon"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "fieldName": "size"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ov-empty-state",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OvEmptyState",
+          "declaration": {
+            "name": "OvEmptyState",
+            "module": "src/molecules/empty-state/ov-empty-state.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ov-empty-state",
+          "declaration": {
+            "name": "OvEmptyState",
+            "module": "src/molecules/empty-state/ov-empty-state.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/molecules/field/ov-field.ts",
       "declarations": [
         {
@@ -2982,11 +3286,11 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/molecules/misc/ov-molecules-misc.ts",
+      "path": "src/molecules/menu-item/ov-menu-item.ts",
       "declarations": [
         {
           "kind": "class",
-          "description": "<ov-menu-item>\n\nSingle interactive row inside a menu or command palette. Composes a\nleading icon slot, main label, trailing shortcut keys, and a trailing\nelement (badge, arrow, sub-label). Can also render a visual divider.",
+          "description": "",
           "name": "OvMenuItem",
           "slots": [
             {
@@ -3048,7 +3352,6 @@
                 "text": "boolean"
               },
               "default": "false",
-              "description": "When true renders a full-width <hr> separator instead of a normal item.",
               "attribute": "separator",
               "reflects": true
             },
@@ -3075,7 +3378,7 @@
             {
               "name": "select",
               "type": {
-                "text": "CustomEvent"
+                "text": "CustomEvent<{ label: string }>"
               }
             }
           ],
@@ -3118,7 +3421,6 @@
                 "text": "boolean"
               },
               "default": "false",
-              "description": "When true renders a full-width <hr> separator instead of a normal item.",
               "fieldName": "separator"
             }
           ],
@@ -3128,10 +3430,34 @@
           },
           "tagName": "ov-menu-item",
           "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OvMenuItem",
+          "declaration": {
+            "name": "OvMenuItem",
+            "module": "src/molecules/menu-item/ov-menu-item.ts"
+          }
         },
         {
+          "kind": "custom-element-definition",
+          "name": "ov-menu-item",
+          "declaration": {
+            "name": "OvMenuItem",
+            "module": "src/molecules/menu-item/ov-menu-item.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/molecules/stat/ov-stat.ts",
+      "declarations": [
+        {
           "kind": "class",
-          "description": "<ov-stat>\n\nKPI / metric display: a large value with a label, optional delta (↑/↓),\nand optional sub-label. Typical use: dashboard cards, summary panels.",
+          "description": "",
           "name": "OvStat",
           "members": [
             {
@@ -3168,7 +3494,6 @@
                 "text": "string"
               },
               "default": "''",
-              "description": "Numeric change expressed as a formatted string, e.g. \"+12%\" or \"−3\".",
               "attribute": "delta"
             },
             {
@@ -3178,7 +3503,6 @@
                 "text": "StatDelta"
               },
               "default": "'neutral'",
-              "description": "Direction of the delta — drives arrow icon + colour.",
               "attribute": "trend",
               "reflects": true
             },
@@ -3224,7 +3548,6 @@
                 "text": "string"
               },
               "default": "''",
-              "description": "Numeric change expressed as a formatted string, e.g. \"+12%\" or \"−3\".",
               "fieldName": "delta"
             },
             {
@@ -3233,7 +3556,6 @@
                 "text": "StatDelta"
               },
               "default": "'neutral'",
-              "description": "Direction of the delta — drives arrow icon + colour.",
               "fieldName": "trend"
             }
           ],
@@ -3243,297 +3565,15 @@
           },
           "tagName": "ov-stat",
           "customElement": true
-        },
-        {
-          "kind": "class",
-          "description": "<ov-toast>\n\nSelf-dismissing notification. Controls its own visibility and exposes\n`show()` / `hide()` as imperative helpers for programmatic use.\nAuto-dismiss fires after `duration` ms (0 = no auto-dismiss).",
-          "name": "OvToast",
-          "members": [
-            {
-              "kind": "field",
-              "name": "toastId",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "attribute": "toastId"
-            },
-            {
-              "kind": "field",
-              "name": "variant",
-              "type": {
-                "text": "ToastVariant"
-              },
-              "default": "'info'",
-              "attribute": "variant",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "title",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "attribute": "title"
-            },
-            {
-              "kind": "field",
-              "name": "message",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "attribute": "message"
-            },
-            {
-              "kind": "field",
-              "name": "duration",
-              "type": {
-                "text": "number"
-              },
-              "default": "5000",
-              "description": "Auto-dismiss delay in ms. 0 = no auto-dismiss.",
-              "attribute": "duration"
-            },
-            {
-              "kind": "field",
-              "name": "_visible",
-              "type": {
-                "text": "boolean"
-              },
-              "privacy": "private",
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "_timer",
-              "type": {
-                "text": "ReturnType<typeof setTimeout> | null"
-              },
-              "privacy": "private",
-              "default": "null"
-            },
-            {
-              "kind": "field",
-              "name": "_ICONS",
-              "type": {
-                "text": "Record<ToastVariant, TemplateResult>"
-              },
-              "privacy": "private",
-              "static": true,
-              "readonly": true,
-              "default": "{ info: html`<circle cx=\"8\" cy=\"8\" r=\"6\" stroke=\"currentColor\" stroke-width=\"1.6\" fill=\"none\"/><path d=\"M8 7v4\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><circle cx=\"8\" cy=\"5.2\" r=\"0.9\" fill=\"currentColor\"/>`, success: html`<circle cx=\"8\" cy=\"8\" r=\"6\" stroke=\"currentColor\" stroke-width=\"1.6\" fill=\"none\"/><path d=\"M5 8l2 2 4-4\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>`, warning: html`<path d=\"M8 2.5l6 10.5H2L8 2.5z\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linejoin=\"round\" fill=\"none\"/><path d=\"M8 6.5v3\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><circle cx=\"8\" cy=\"11.5\" r=\"0.8\" fill=\"currentColor\"/>`, danger: html`<circle cx=\"8\" cy=\"8\" r=\"6\" stroke=\"currentColor\" stroke-width=\"1.6\" fill=\"none\"/><path d=\"M5.5 5.5l5 5M10.5 5.5l-5 5\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\"/>`, }"
-            },
-            {
-              "kind": "method",
-              "name": "show",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "hide",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "_dismiss",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            }
-          ],
-          "events": [
-            {
-              "name": "dismiss",
-              "type": {
-                "text": "CustomEvent<ToastDismissDetail>"
-              }
-            }
-          ],
-          "attributes": [
-            {
-              "name": "toastId",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "fieldName": "toastId"
-            },
-            {
-              "name": "variant",
-              "type": {
-                "text": "ToastVariant"
-              },
-              "default": "'info'",
-              "fieldName": "variant"
-            },
-            {
-              "name": "title",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "fieldName": "title"
-            },
-            {
-              "name": "message",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "fieldName": "message"
-            },
-            {
-              "name": "duration",
-              "type": {
-                "text": "number"
-              },
-              "default": "5000",
-              "description": "Auto-dismiss delay in ms. 0 = no auto-dismiss.",
-              "fieldName": "duration"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "ov-toast",
-          "customElement": true
-        },
-        {
-          "kind": "class",
-          "description": "<ov-empty-state>\n\nZero-data placeholder. Composes an illustration/icon, heading, body\ncopy, and a primary action slot into a centred layout. Used when a\nlist, table, or search result has nothing to show.",
-          "name": "OvEmptyState",
-          "slots": [
-            {
-              "description": "Illustration or ov-icon override.",
-              "name": "icon"
-            },
-            {
-              "description": "Buttons / links below the description.",
-              "name": "actions"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "heading",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "attribute": "heading"
-            },
-            {
-              "kind": "field",
-              "name": "description",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "attribute": "description"
-            },
-            {
-              "kind": "field",
-              "name": "icon",
-              "type": {
-                "text": "BuiltInIconName | ''"
-              },
-              "default": "''",
-              "description": "One of the built-in icon names, shown when the icon slot is empty.",
-              "attribute": "icon"
-            },
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "'sm' | 'md' | 'lg'"
-              },
-              "default": "'md'",
-              "description": "Size of the container.",
-              "attribute": "size",
-              "reflects": true
-            }
-          ],
-          "attributes": [
-            {
-              "name": "heading",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "fieldName": "heading"
-            },
-            {
-              "name": "description",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "fieldName": "description"
-            },
-            {
-              "name": "icon",
-              "type": {
-                "text": "BuiltInIconName | ''"
-              },
-              "default": "''",
-              "description": "One of the built-in icon names, shown when the icon slot is empty.",
-              "fieldName": "icon"
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "'sm' | 'md' | 'lg'"
-              },
-              "default": "'md'",
-              "description": "Size of the container.",
-              "fieldName": "size"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "ov-empty-state",
-          "customElement": true
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "OvMenuItem",
-          "declaration": {
-            "name": "OvMenuItem",
-            "module": "src/molecules/misc/ov-molecules-misc.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "ov-menu-item",
-          "declaration": {
-            "name": "OvMenuItem",
-            "module": "src/molecules/misc/ov-molecules-misc.ts"
-          }
-        },
-        {
-          "kind": "js",
           "name": "OvStat",
           "declaration": {
             "name": "OvStat",
-            "module": "src/molecules/misc/ov-molecules-misc.ts"
+            "module": "src/molecules/stat/ov-stat.ts"
           }
         },
         {
@@ -3541,39 +3581,7 @@
           "name": "ov-stat",
           "declaration": {
             "name": "OvStat",
-            "module": "src/molecules/misc/ov-molecules-misc.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "OvToast",
-          "declaration": {
-            "name": "OvToast",
-            "module": "src/molecules/misc/ov-molecules-misc.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "ov-toast",
-          "declaration": {
-            "name": "OvToast",
-            "module": "src/molecules/misc/ov-molecules-misc.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "OvEmptyState",
-          "declaration": {
-            "name": "OvEmptyState",
-            "module": "src/molecules/misc/ov-molecules-misc.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "ov-empty-state",
-          "declaration": {
-            "name": "OvEmptyState",
-            "module": "src/molecules/misc/ov-molecules-misc.ts"
+            "module": "src/molecules/stat/ov-stat.ts"
           }
         }
       ]
@@ -3743,6 +3751,196 @@
           "declaration": {
             "name": "OvTabs",
             "module": "src/molecules/tabs/ov-tabs.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/molecules/toast/ov-toast.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "OvToast",
+          "members": [
+            {
+              "kind": "field",
+              "name": "toastId",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "toast-id"
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "ToastVariant"
+              },
+              "default": "'info'",
+              "attribute": "variant",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "title"
+            },
+            {
+              "kind": "field",
+              "name": "message",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "message"
+            },
+            {
+              "kind": "field",
+              "name": "duration",
+              "type": {
+                "text": "number"
+              },
+              "default": "5000",
+              "attribute": "duration"
+            },
+            {
+              "kind": "field",
+              "name": "_visible",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "_timer",
+              "type": {
+                "text": "ReturnType<typeof setTimeout> | null"
+              },
+              "privacy": "private",
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "_ICONS",
+              "type": {
+                "text": "Record<ToastVariant, TemplateResult>"
+              },
+              "privacy": "private",
+              "static": true,
+              "readonly": true,
+              "default": "{ info: html`<circle cx=\"8\" cy=\"8\" r=\"6\" stroke=\"currentColor\" stroke-width=\"1.6\" fill=\"none\"/><path d=\"M8 7v4\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><circle cx=\"8\" cy=\"5.2\" r=\"0.9\" fill=\"currentColor\"/>`, success: html`<circle cx=\"8\" cy=\"8\" r=\"6\" stroke=\"currentColor\" stroke-width=\"1.6\" fill=\"none\"/><path d=\"M5 8l2 2 4-4\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>`, warning: html`<path d=\"M8 2.5l6 10.5H2L8 2.5z\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linejoin=\"round\" fill=\"none\"/><path d=\"M8 6.5v3\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><circle cx=\"8\" cy=\"11.5\" r=\"0.8\" fill=\"currentColor\"/>`, danger: html`<circle cx=\"8\" cy=\"8\" r=\"6\" stroke=\"currentColor\" stroke-width=\"1.6\" fill=\"none\"/><path d=\"M5.5 5.5l5 5M10.5 5.5l-5 5\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\"/>`, }"
+            },
+            {
+              "kind": "method",
+              "name": "show",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "hide",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_dismiss",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "dismiss",
+              "type": {
+                "text": "CustomEvent<ToastDismissDetail>"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "toast-id",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "toastId"
+            },
+            {
+              "name": "variant",
+              "type": {
+                "text": "ToastVariant"
+              },
+              "default": "'info'",
+              "fieldName": "variant"
+            },
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "title"
+            },
+            {
+              "name": "message",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "message"
+            },
+            {
+              "name": "duration",
+              "type": {
+                "text": "number"
+              },
+              "default": "5000",
+              "fieldName": "duration"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ov-toast",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OvToast",
+          "declaration": {
+            "name": "OvToast",
+            "module": "src/molecules/toast/ov-toast.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ov-toast",
+          "declaration": {
+            "name": "OvToast",
+            "module": "src/molecules/toast/ov-toast.ts"
           }
         }
       ]

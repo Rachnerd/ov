@@ -20,7 +20,7 @@ export class OvRadio extends LitElement {
     css`
       .control {
         width: 16px; height: 16px;
-        margin-top: 1px;
+        margin-top: 2px;
         border-radius: 50%;
         background: var(--color-control-bg);
         border: 1.5px solid var(--color-control-border);
