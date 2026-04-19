@@ -3,6 +3,9 @@ import { customElement, property } from 'lit/decorators.js';
 import { baseStyles } from '../../shared-styles.js';
 import type { TextVariant, Tone, FontWeight, TextTag } from '../../tokens.js';
 
+/**
+ * @element ov-text
+ */
 @customElement('ov-text')
 export class OvText extends LitElement {
   @property({ type: String, reflect: true }) variant: TextVariant = 'body';

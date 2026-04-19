@@ -7,7 +7,7 @@ import type {
 } from '../../tokens.js';
 
 /**
- * <ov-avatar>
+ * @element ov-avatar
  */
 @customElement('ov-avatar')
 export class OvAvatar extends LitElement {
@@ -71,7 +71,7 @@ export class OvAvatar extends LitElement {
 
 
 /**
- * <ov-divider>
+ * @element ov-divider
  *
  * Horizontal with optional centred label, or vertical.
  */

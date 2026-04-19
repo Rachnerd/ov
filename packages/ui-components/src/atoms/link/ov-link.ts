@@ -4,7 +4,7 @@ import { baseStyles, focusRing } from '../../shared-styles.js';
 import type { LinkVariant, LinkUnderline, ControlSize } from '../../tokens.js';
 
 /**
- * <ov-link>
+ * @element ov-link
  *
  * Renders a real <a> so SEO and keyboard semantics work, while unifying
  * colour/underline behaviour with the rest of the system.

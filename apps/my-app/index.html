@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OpenValue — Sign in</title>
   <style>
     body {
@@ -60,7 +60,11 @@
       margin-top: var(--ov-space-6);
     }
 
-.footer {
+.card-subtitle {
+      margin-top: var(--ov-space-1);
+    }
+
+    .footer {
       margin-top: var(--ov-space-6);
       text-align: center;
     }
@@ -81,7 +85,7 @@
       </div>
 
       <ov-heading level="2" size="h2">Welcome back</ov-heading>
-      <ov-text variant="body-sm" tone="secondary" as="p" style="margin-top: var(--ov-space-1)">
+      <ov-text class="card-subtitle" variant="body-sm" tone="secondary" as="p">
         Sign in to your account to continue
       </ov-text>
 
@@ -125,6 +129,7 @@
           <ov-button type="submit" variant="primary" block>Sign in</ov-button>
 
           <ov-divider>or</ov-divider>
+
 
           <ov-button type="button" variant="secondary" block>
             <svg slot="start" viewBox="0 0 16 16" fill="none" aria-hidden="true">

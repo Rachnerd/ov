@@ -4,7 +4,7 @@ import { baseStyles } from '../../shared-styles.js';
 import type { BadgeVariant, BadgeAppearance, BadgeSize } from '../../tokens.js';
 
 /**
- * <ov-badge>
+ * @element ov-badge
  *
  * @slot     - Badge content.
  * @slot dot - Optional leading status dot (users opt in explicitly).

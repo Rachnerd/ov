@@ -37,7 +37,7 @@ function isBuiltInIcon(name: string): name is BuiltInIconName {
 }
 
 /**
- * <ov-icon>
+ * @element ov-icon
  *
  * Colour is always `currentColor` so icons inherit from text.
  */
@@ -87,7 +87,7 @@ export class OvIcon extends LitElement {
 
 
 /**
- * <ov-spinner>
+ * @element ov-spinner
  */
 @customElement('ov-spinner')
 export class OvSpinner extends LitElement {

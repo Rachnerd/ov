@@ -51,7 +51,7 @@ function dispatchSelectionChange(
 
 
 /**
- * <ov-checkbox>
+ * @element ov-checkbox
  * @fires {CustomEvent<SelectionChangeDetail>} change
  */
 @customElement('ov-checkbox')
@@ -141,7 +141,7 @@ export class OvCheckbox extends LitElement {
 
 
 /**
- * <ov-radio>
+ * @element ov-radio
  *
  * Groups by shared `name`. Clicking one unchecks its siblings in the same
  * root (document or shadow root).
@@ -212,7 +212,7 @@ export class OvRadio extends LitElement {
 
 
 /**
- * <ov-switch>
+ * @element ov-switch
  */
 @customElement('ov-switch')
 export class OvSwitch extends LitElement {

@@ -32,7 +32,8 @@ When asked to build UI with these components:
 
 - Use only props, slots, and attribute values listed in the skill files. Do not invent variants or props.
 - Use `ov-heading` for all headings — never `ov-text` for heading-level content.
-- Apply design tokens (`var(--color-brand)`, `var(--ov-space-4)`) in inline styles instead of raw hex or pixel values.
+- Apply design tokens (`var(--color-brand)`, `var(--ov-space-4)`) instead of raw hex or pixel values.
+- **Never use `style="..."` attributes on any element.** Define a named class in the `<style>` block (or external stylesheet) instead. The project enforces `no-inline-style` via html-validate.
 
 ### Generating forms
 
@@ -57,6 +58,10 @@ When asked to review `ov-*` usage:
 - **Error**: unknown prop or slot, invalid attribute value, `ov-radio` group missing shared `name`, standalone `ov-label` without `ov-field`.
 - **Warning**: `ov-icon` without `label` as sole content of an interactive element, `target="_blank"` missing `rel="noopener noreferrer"`, `ov-avatar` missing both `name` and `initials`.
 - **Suggestion**: manual label+control pair replaceable with `ov-field`, `disabled` where `loading` is more appropriate, raw color where a token exists.
+
+### Adding or changing a component's API
+
+When a component's attributes or allowed values change, update `.htmlvalidate.json` — it is the single source of truth for both HTML validation and VS Code IntelliSense. `.vscode/html.custom-data.json` is regenerated automatically when `npm run analyze` runs in `packages/ui-components`. Never edit it by hand; it is git-ignored.
 
 ### Importing components
 

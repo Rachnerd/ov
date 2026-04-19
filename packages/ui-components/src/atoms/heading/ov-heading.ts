@@ -3,6 +3,9 @@ import { customElement, property } from 'lit/decorators.js';
 import { baseStyles } from '../../shared-styles.js';
 import type { HeadingLevel, HeadingSize, HeadingTone } from '../../tokens.js';
 
+/**
+ * @element ov-heading
+ */
 @customElement('ov-heading')
 export class OvHeading extends LitElement {
   @property({ type: Number, reflect: true }) level: HeadingLevel = 2;

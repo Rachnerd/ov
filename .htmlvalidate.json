@@ -1,0 +1,340 @@
+{
+  "extends": ["html-validate:recommended"],
+  "rules": {
+    "no-trailing-whitespace": "off",
+    "wcag/h32": "off"
+  },
+  "elements": [
+    "html5",
+    {
+      "ov-button": {
+        "flow": true,
+        "phrasing": true,
+        "attributes": {
+          "variant": {
+            "enum": ["primary", "secondary", "ghost", "inverse", "accent", "danger"]
+          },
+          "size": {
+            "enum": ["sm", "md", "lg"]
+          },
+          "type": {
+            "enum": ["button", "submit", "reset"]
+          },
+          "disabled": { "boolean": true },
+          "loading": { "boolean": true },
+          "block": { "boolean": true }
+        }
+      },
+      "ov-badge": {
+        "flow": true,
+        "phrasing": true,
+        "attributes": {
+          "variant": {
+            "enum": ["default", "brand", "accent", "success", "warning", "danger", "info"]
+          },
+          "appearance": {
+            "enum": ["soft", "solid", "outline"]
+          },
+          "size": {
+            "enum": ["sm", "md"]
+          },
+          "pill": { "boolean": true }
+        }
+      },
+      "ov-icon": {
+        "flow": true,
+        "phrasing": true,
+        "attributes": {
+          "name": {
+            "enum": ["check", "x", "arrow-right", "arrow-left", "search", "mail", "info", "warning", "sun", "moon", "plus", "user", ""]
+          },
+          "size": {
+            "enum": ["sm", "md", "lg", "xl"]
+          },
+          "label": {}
+        }
+      },
+      "ov-spinner": {
+        "flow": true,
+        "phrasing": true,
+        "attributes": {
+          "size": {
+            "enum": ["sm", "md", "lg", "xl"]
+          },
+          "tone": {
+            "enum": ["brand", "neutral", "inverse"]
+          },
+          "label": {}
+        }
+      },
+      "ov-input": {
+        "flow": true,
+        "phrasing": true,
+        "attributes": {
+          "type": {
+            "enum": ["text", "email", "password", "number", "search", "tel", "url"]
+          },
+          "value": {},
+          "placeholder": {},
+          "name": {},
+          "autocomplete": {},
+          "size": {
+            "enum": ["sm", "md", "lg"]
+          },
+          "required": { "boolean": true },
+          "disabled": { "boolean": true },
+          "readonly": { "boolean": true },
+          "invalid": { "boolean": true }
+        }
+      },
+      "ov-textarea": {
+        "flow": true,
+        "phrasing": true,
+        "attributes": {
+          "value": {},
+          "placeholder": {},
+          "name": {},
+          "rows": {},
+          "resize": {
+            "enum": ["none", "vertical", "horizontal", "both"]
+          },
+          "required": { "boolean": true },
+          "disabled": { "boolean": true },
+          "readonly": { "boolean": true },
+          "invalid": { "boolean": true }
+        }
+      },
+      "ov-label": {
+        "flow": true,
+        "phrasing": true,
+        "attributes": {
+          "for": {},
+          "required": { "boolean": true },
+          "size": {
+            "enum": ["sm", "md"]
+          }
+        }
+      },
+      "ov-link": {
+        "flow": true,
+        "phrasing": true,
+        "attributes": {
+          "href": {},
+          "target": {},
+          "rel": {},
+          "download": {},
+          "variant": {
+            "enum": ["default", "subtle", "brand", "inverse"]
+          },
+          "underline": {
+            "enum": ["hover", "always", "none"]
+          },
+          "size": {
+            "enum": ["sm", "md", "lg"]
+          }
+        }
+      },
+      "ov-checkbox": {
+        "flow": true,
+        "phrasing": true,
+        "attributes": {
+          "checked": { "boolean": true },
+          "indeterminate": { "boolean": true },
+          "disabled": { "boolean": true },
+          "required": { "boolean": true },
+          "name": {},
+          "value": {}
+        }
+      },
+      "ov-radio": {
+        "flow": true,
+        "phrasing": true,
+        "attributes": {
+          "checked": { "boolean": true },
+          "disabled": { "boolean": true },
+          "name": {},
+          "value": {}
+        }
+      },
+      "ov-switch": {
+        "flow": true,
+        "phrasing": true,
+        "attributes": {
+          "checked": { "boolean": true },
+          "disabled": { "boolean": true },
+          "name": {},
+          "value": {}
+        }
+      },
+      "ov-heading": {
+        "flow": true,
+        "attributes": {
+          "level": {
+            "enum": ["1", "2", "3", "4", "5", "6"]
+          },
+          "size": {
+            "enum": ["display-1", "display-2", "h1", "h2", "h3", "h4", ""]
+          },
+          "tone": {
+            "enum": ["primary", "secondary", "brand", "accent", "inverse"]
+          }
+        }
+      },
+      "ov-text": {
+        "flow": true,
+        "phrasing": true,
+        "attributes": {
+          "variant": {
+            "enum": ["body", "body-sm", "lead", "caption", "eyebrow", "code"]
+          },
+          "tone": {
+            "enum": ["primary", "secondary", "tertiary", "muted", "brand", "accent", "success", "warning", "danger", "inverse"]
+          },
+          "weight": {
+            "enum": ["light", "regular", "medium", "semibold", "bold", ""]
+          },
+          "as": {
+            "enum": ["span", "p", "div", "small", "strong", "em"]
+          }
+        }
+      },
+      "ov-avatar": {
+        "flow": true,
+        "phrasing": true,
+        "attributes": {
+          "src": {},
+          "alt": {},
+          "name": {},
+          "initials": {},
+          "size": {
+            "enum": ["xs", "sm", "md", "lg", "xl"]
+          },
+          "shape": {
+            "enum": ["circle", "square"]
+          },
+          "tone": {
+            "enum": ["brand", "accent", "neutral"]
+          }
+        }
+      },
+      "ov-divider": {
+        "flow": true,
+        "attributes": {
+          "orientation": {
+            "enum": ["horizontal", "vertical"]
+          },
+          "variant": {
+            "enum": ["default", "subtle", "strong"]
+          },
+          "spacing": {}
+        }
+      },
+      "ov-field": {
+        "flow": true,
+        "attributes": {
+          "label": {},
+          "for": {},
+          "required": { "boolean": true },
+          "disabled": { "boolean": true },
+          "status": {
+            "enum": ["idle", "success", "error", "warning"]
+          },
+          "message": {},
+          "inline": { "boolean": true }
+        }
+      },
+      "ov-alert": {
+        "flow": true,
+        "attributes": {
+          "variant": {
+            "enum": ["info", "success", "warning", "danger"]
+          },
+          "title": {},
+          "dismissible": { "boolean": true }
+        }
+      },
+      "ov-card": {
+        "flow": true,
+        "attributes": {
+          "variant": {
+            "enum": ["default", "brand", "inverse", "inverse-brand"]
+          },
+          "interactive": { "boolean": true },
+          "borderless": { "boolean": true },
+          "flush": { "boolean": true }
+        }
+      },
+      "ov-breadcrumbs": {
+        "flow": true,
+        "attributes": {
+          "max": {}
+        }
+      },
+      "ov-input-group": {
+        "flow": true,
+        "attributes": {
+          "attach": {
+            "enum": ["start", "end", "both"]
+          }
+        }
+      },
+      "ov-tabs": {
+        "flow": true,
+        "attributes": {
+          "active": {},
+          "appearance": {
+            "enum": ["underline", "pills"]
+          },
+          "fill": { "boolean": true }
+        }
+      },
+      "ov-menu-item": {
+        "flow": true,
+        "attributes": {
+          "label": {},
+          "description": {},
+          "disabled": { "boolean": true },
+          "selected": { "boolean": true },
+          "separator": { "boolean": true }
+        }
+      },
+      "ov-stat": {
+        "flow": true,
+        "attributes": {
+          "label": {},
+          "value": {},
+          "sublabel": {},
+          "delta": {},
+          "trend": {
+            "enum": ["up", "down", "neutral"]
+          }
+        }
+      },
+      "ov-toast": {
+        "flow": true,
+        "attributes": {
+          "toast-id": {},
+          "variant": {
+            "enum": ["info", "success", "warning", "danger"]
+          },
+          "title": {},
+          "message": {},
+          "duration": {}
+        }
+      },
+      "ov-empty-state": {
+        "flow": true,
+        "attributes": {
+          "heading": {},
+          "description": {},
+          "icon": {
+            "enum": ["check", "x", "arrow-right", "arrow-left", "search", "mail", "info", "warning", "sun", "moon", "plus", "user", ""]
+          },
+          "size": {
+            "enum": ["sm", "md", "lg"]
+          }
+        }
+      }
+    }
+  ]
+}
