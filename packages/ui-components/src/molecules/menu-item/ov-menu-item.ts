@@ -123,7 +123,7 @@ export class OvMenuItem extends LitElement {
         class="item"
         role="menuitem"
         aria-disabled=${this.disabled ? 'true' : 'false'}
-        aria-selected=${this.selected ? 'true' : 'false'}
+        aria-current=${this.selected ? 'true' : 'false'}
         tabindex=${this.disabled ? '-1' : '0'}
         part="item"
         @click=${this._onClick}

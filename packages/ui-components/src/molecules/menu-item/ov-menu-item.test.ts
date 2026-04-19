@@ -76,9 +76,9 @@ describe('ov-menu-item', () => {
       expect(el.hasAttribute('selected')).to.be.true;
     });
 
-    it('sets aria-selected="true" when selected', async () => {
+    it('sets aria-current="true" when selected', async () => {
       const el = await fixture<OvMenuItem>(html`<ov-menu-item label="Dashboard" selected></ov-menu-item>`);
-      expect(el.shadowRoot!.querySelector('[role="menuitem"]')!.getAttribute('aria-selected')).to.equal('true');
+      expect(el.shadowRoot!.querySelector('[role="menuitem"]')!.getAttribute('aria-current')).to.equal('true');
     });
 
     it('reflects separator attribute', async () => {

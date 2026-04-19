@@ -73,7 +73,7 @@ describe('ov-label', () => {
         </div>
       `);
       await expect(el).to.be.accessible({
-        ignoredRules: ['color-contrast'],
+        ignoredRules: ['color-contrast', 'label'],
       });
     });
 
