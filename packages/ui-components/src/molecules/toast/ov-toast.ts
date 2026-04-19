@@ -9,7 +9,7 @@ import type { ToastVariant, ToastDismissDetail } from '../../molecule-tokens.js'
  */
 @customElement('ov-toast')
 export class OvToast extends LitElement {
-  @property({ type: String }) toastId = '';
+  @property({ type: String, attribute: 'toast-id' }) toastId = '';
   @property({ type: String, reflect: true }) variant: ToastVariant = 'info';
   @property({ type: String }) title = '';
   @property({ type: String }) message = '';

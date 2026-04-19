@@ -7,6 +7,8 @@
   "customElements": "custom-elements.json",
   "scripts": {
     "analyze": "cem analyze && node scripts/generate-html-custom-data.mjs",
+    "test": "wtr --config web-test-runner.config.mjs",
+    "test:watch": "wtr --config web-test-runner.config.mjs --watch",
     "storybook": "npm run analyze && storybook dev -p 6006 --config-dir .storybook",
     "build-storybook": "npm run analyze && storybook build --config-dir .storybook"
   },
@@ -15,11 +17,16 @@
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.11.0",
+    "@open-wc/testing": "^4.0.0",
     "@ov/style": "*",
     "@storybook/addon-essentials": "^8.6.18",
     "@storybook/addon-links": "^8.6.18",
     "@storybook/web-components": "^8.6.18",
     "@storybook/web-components-vite": "^8.6.18",
+    "@types/mocha": "^10.0.10",
+    "@web/dev-server-esbuild": "^1.0.5",
+    "@web/test-runner": "^0.20.2",
+    "@web/test-runner-playwright": "^0.11.1",
     "storybook": "^8.6.18"
   }
 }
