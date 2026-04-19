@@ -68,12 +68,18 @@
     </ov-text>
   </section>
 
-  <ov-office-carousel id="office-carousel" heading="Our offices in 8 cities">
+  <ov-carousel heading="Our offices in 8 cities">
     <ov-text slot="description" variant="body" as="p">
       Present throughout the Netherlands — always close to you.
       <ov-link href="/contact">Contact us</ov-link>.
     </ov-text>
-  </ov-office-carousel>
+    <ov-image-card label="OpenValue Amsterdam"  src="/amsterdam.jpg"  href="#"></ov-image-card>
+    <ov-image-card label="OpenValue Arnhem"     src="/arnhem.jpg"     href="#"></ov-image-card>
+    <ov-image-card label="OpenValue Düsseldorf" src="/dusseldorf.jpg" href="#"></ov-image-card>
+    <ov-image-card label="OpenValue Amsterdam"  src="/amsterdam.jpg"  href="#"></ov-image-card>
+    <ov-image-card label="OpenValue Arnhem"     src="/arnhem.jpg"     href="#"></ov-image-card>
+    <ov-image-card label="OpenValue Düsseldorf" src="/dusseldorf.jpg" href="#"></ov-image-card>
+  </ov-carousel>
 
   <script type="module" src="/src/main.ts"></script>
 
@@ -92,15 +98,6 @@
     document.getElementById('scroll-btn').addEventListener('click', () => {
       document.getElementById('intro').scrollIntoView({ behavior: 'smooth' });
     });
-
-    document.getElementById('office-carousel').items = [
-      { label: 'OpenValue Amsterdam',  src: '/amsterdam.jpg', href: '#' },
-      { label: 'OpenValue Arnhem',  src: '/arnhem.jpg', href: '#' },
-      { label: 'OpenValue Düsseldorf',  src: '/dusseldorf.jpg', href: '#' },
-      { label: 'OpenValue Amsterdam',  src: '/amsterdam.jpg', href: '#' },
-      { label: 'OpenValue Arnhem',  src: '/arnhem.jpg', href: '#' },
-      { label: 'OpenValue Düsseldorf',  src: '/dusseldorf.jpg', href: '#' },
-    ];
   </script>
 
 </body>

@@ -1,46 +1,39 @@
 import { LitElement, html, css, nothing, type TemplateResult } from 'lit';
 import { customElement, property, state, query } from 'lit/decorators.js';
 import { baseStyles } from '../../shared-styles.js';
-import '@ov/ui-components/molecules/office-card/ov-office-card';
 import '@ov/ui-components/atoms/heading/ov-heading';
 
-export interface OfficeItem {
-  label: string;
-  src:   string;
-  href:  string;
-}
-
 /**
- * <ov-office-carousel>
+ * <ov-carousel>
  *
- * An animated carousel showing office city cards. Displays 3 cards at a time
- * with smooth scroll, dot navigation, and optional auto-play.
+ * A generic animated carousel. Place any card elements in the default slot —
+ * the carousel handles layout, smooth scroll, dot navigation, and auto-play.
  *
- * @element ov-office-carousel
+ * @element ov-carousel
  *
+ * @slot           - The card items to display (any element).
  * @slot description - Optional descriptive text rendered below the heading.
  */
-@customElement('ov-office-carousel')
-export class OvOfficeCarousel extends LitElement {
-  /** Section heading. */
+@customElement('ov-carousel')
+export class OvCarousel extends LitElement {
+  /** Optional section heading. */
   @property({ type: String }) heading = '';
 
-  /** List of office items to display. */
-  @property({ type: Array }) items: OfficeItem[] = [];
+  /** Number of items visible at once. */
+  @property({ type: Number, attribute: 'visible-count' }) visibleCount = 3;
 
   /** Auto-play interval in ms. Set to 0 to disable. */
   @property({ type: Number, attribute: 'auto-play-ms' }) autoPlayMs = 4000;
 
   @state() private _current = 0;
+  @state() private _itemCount = 0;
 
   @query('.track') private _track!: HTMLElement;
 
   private _timer: ReturnType<typeof setInterval> | null = null;
 
-  private get _visibleCount() { return 3; }
-
   private get _maxIndex() {
-    return Math.max(0, this.items.length - this._visibleCount);
+    return Math.max(0, this._itemCount - this.visibleCount);
   }
 
   override connectedCallback() {
@@ -51,6 +44,12 @@ export class OvOfficeCarousel extends LitElement {
   override disconnectedCallback() {
     super.disconnectedCallback();
     this._stopAutoPlay();
+  }
+
+  override updated(changed: Map<string, unknown>) {
+    if (changed.has('visibleCount')) {
+      this.style.setProperty('--_vis', String(this.visibleCount));
+    }
   }
 
   private _startAutoPlay() {
@@ -67,28 +66,40 @@ export class OvOfficeCarousel extends LitElement {
 
   private _advance() {
     this._current = this._current >= this._maxIndex ? 0 : this._current + 1;
-    this._scrollToCard(this._current);
+    this._scrollToIndex(this._current);
   }
 
   private _goTo(index: number) {
     this._current = index;
-    this._scrollToCard(index);
+    this._scrollToIndex(index);
     this._stopAutoPlay();
     this._startAutoPlay();
   }
 
-  private _scrollToCard(index: number) {
+  private _scrollToIndex(index: number) {
     if (!this._track) return;
-    const card = this._track.children[index] as HTMLElement | undefined;
-    if (card) {
-      this._track.scrollTo({ left: card.offsetLeft, behavior: 'smooth' });
+    const slot = this._track.querySelector('slot') as HTMLSlotElement | null;
+    if (!slot) return;
+    const items = slot.assignedElements() as HTMLElement[];
+    const target = items[index];
+    if (target) {
+      this._track.scrollTo({ left: target.offsetLeft, behavior: 'smooth' });
     }
+  }
+
+  private _handleSlotChange(e: Event) {
+    const slot = e.target as HTMLSlotElement;
+    this._itemCount = slot.assignedElements().length;
+    this.style.setProperty('--_vis', String(this.visibleCount));
   }
 
   static override styles = [
     baseStyles,
     css`
-      :host { display: block; }
+      :host {
+        display: block;
+        --_vis: 3;
+      }
 
       .wrapper {
         padding: var(--ov-space-16) var(--ov-space-8);
@@ -104,11 +115,6 @@ export class OvOfficeCarousel extends LitElement {
         margin-top: var(--ov-space-4);
       }
 
-      .viewport {
-        overflow: hidden;
-        container-type: inline-size;
-      }
-
       .track {
         display: flex;
         gap: var(--ov-space-5);
@@ -120,9 +126,12 @@ export class OvOfficeCarousel extends LitElement {
 
       .track::-webkit-scrollbar { display: none; }
 
-      .track ov-office-card {
-        flex: 0 0 calc((100cqi - var(--ov-space-5) * 2) / 3);
+      ::slotted(*) {
+        flex: 0 0 calc(
+          (100% - var(--ov-space-5) * (var(--_vis) - 1)) / var(--_vis)
+        );
         scroll-snap-align: start;
+        min-width: 0;
       }
 
       .dots {
@@ -150,14 +159,7 @@ export class OvOfficeCarousel extends LitElement {
   ];
 
   protected override render(): TemplateResult {
-    const dots = this.items.map((_, i) => html`
-      <button
-        class="dot"
-        aria-label="Go to slide ${i + 1}"
-        aria-current=${i === this._current ? 'true' : 'false'}
-        @click=${() => this._goTo(i)}
-      ></button>
-    `);
+    const showDots = this._itemCount > this.visibleCount;
 
     return html`
       <div class="wrapper">
@@ -168,21 +170,22 @@ export class OvOfficeCarousel extends LitElement {
           <slot name="description"></slot>
         </div>
 
-        <div class="viewport">
-          <div class="track">
-            ${this.items.map(item => html`
-              <ov-office-card
-                label=${item.label}
-                src=${item.src}
-                href=${item.href}
-              ></ov-office-card>
-            `)}
-          </div>
+        <div class="track">
+          <slot @slotchange=${this._handleSlotChange}></slot>
         </div>
 
-        ${this.items.length > this._visibleCount
-          ? html`<div class="dots">${dots}</div>`
-          : nothing}
+        ${showDots ? html`
+          <div class="dots">
+            ${Array.from({ length: this._itemCount }, (_, i) => html`
+              <button
+                class="dot"
+                aria-label="Go to slide ${i + 1}"
+                aria-current=${i === this._current ? 'true' : 'false'}
+                @click=${() => this._goTo(i)}
+              ></button>
+            `)}
+          </div>
+        ` : nothing}
       </div>
     `;
   }
@@ -190,6 +193,6 @@ export class OvOfficeCarousel extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'ov-office-carousel': OvOfficeCarousel;
+    'ov-carousel': OvCarousel;
   }
 }

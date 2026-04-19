@@ -136,8 +136,6 @@ export class OvAlert extends LitElement {
         outline: none;
         box-shadow: var(--shadow-focus);
       }
-
-      :host(:not([visible])) { display: none; }
     `,
   ];
 

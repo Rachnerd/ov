@@ -4,19 +4,20 @@ import { baseStyles } from '../../shared-styles.js';
 import '@ov/ui-components/atoms/icon/ov-icon';
 
 /**
- * <ov-office-card>
+ * <ov-image-card>
  *
- * A card displaying a city office: a dark header bar with the city name
- * and an arrow icon, plus a city photo below with a hover zoom effect.
+ * A clickable card composed of a dark title bar (label + directional arrow)
+ * and a photo below. The entire card is a single `<a>` element. The image
+ * scales in on hover.
  *
- * @element ov-office-card
+ * @element ov-image-card
  */
-@customElement('ov-office-card')
-export class OvOfficeCard extends LitElement {
-  /** City or location name shown in the header bar. */
+@customElement('ov-image-card')
+export class OvImageCard extends LitElement {
+  /** Title text shown in the header bar. */
   @property({ type: String }) label = '';
 
-  /** URL of the city photo. */
+  /** URL of the photo. */
   @property({ type: String }) src = '';
 
   /** Link destination when the card is clicked. */
@@ -46,7 +47,7 @@ export class OvOfficeCard extends LitElement {
         background: var(--ov-charcoal, #1e2330);
       }
 
-      .city-name {
+      .label {
         font-family: inherit;
         font-size: var(--ov-fs-base);
         font-weight: var(--ov-fw-semibold, 600);
@@ -68,18 +69,12 @@ export class OvOfficeCard extends LitElement {
         width: 100%;
         aspect-ratio: 16 / 9;
         object-fit: cover;
-        transition: transform 400ms ease;
         max-height: 240px;
+        transition: transform 400ms ease;
       }
 
-      a:hover .photo {
-        transform: scale(1.05);
-      }
-
-      a:hover .arrow {
-        opacity: 1;
-        transform: translateX(3px);
-      }
+      a:hover .photo  { transform: scale(1.05); }
+      a:hover .arrow  { opacity: 1; transform: translateX(3px); }
     `,
   ];
 
@@ -87,10 +82,10 @@ export class OvOfficeCard extends LitElement {
     return html`
       <a href="${this.href}">
         <div class="header">
-          <span class="city-name">${this.label}</span>
+          <span class="label">${this.label}</span>
           <ov-icon class="arrow" name="arrow-right" size="md"></ov-icon>
         </div>
-        <img class="photo" src="${this.src}" alt="${this.label} office" loading="lazy" />
+        <img class="photo" src="${this.src}" alt="" loading="lazy" />
       </a>
     `;
   }
@@ -98,6 +93,6 @@ export class OvOfficeCard extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'ov-office-card': OvOfficeCard;
+    'ov-image-card': OvImageCard;
   }
 }

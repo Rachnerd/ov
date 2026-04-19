@@ -5,4 +5,5 @@ import '@ov/ui-components/atoms/link/ov-link';
 import '@ov/ui-components/atoms/logo/ov-logo';
 import '@ov/ui-components/organisms/nav-bar/ov-nav-bar';
 import '@ov/ui-components/organisms/hero/ov-hero';
-import '@ov/ui-components/organisms/office-carousel/ov-office-carousel';
+import '@ov/ui-components/molecules/image-card/ov-image-card';
+import '@ov/ui-components/organisms/carousel/ov-carousel';
