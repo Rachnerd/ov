@@ -36,6 +36,6 @@ A clickable card composed of a dark title bar with a label and directional arrow
 
 ## Rules
 
-- Always provide `label` — it doubles as the image `alt` text for accessibility.
+- Always provide `label` — it is the visible text that names the card for accessibility. The photo uses `alt=""` (decorative) because `label` already provides the accessible name via the surrounding `<a>`.
 - Always set a meaningful `href`; defaults to `#` which is not useful in production.
 - The card is entirely clickable via the wrapping `<a>` element.

@@ -21,10 +21,10 @@ import type { InputGroupAttach } from '../../molecule-tokens.js';
  *
  * @example
  * ```html
- * <ov-input-group>
- *   <ov-input slot="start" value="https://" readonly></ov-input>
+ * <ov-input-group attach="both">
+ *   <span slot="start">https://</span>
  *   <ov-input placeholder="your-domain.com"></ov-input>
- *   <ov-button slot="end">Copy</ov-button>
+ *   <ov-button slot="end" variant="secondary">Copy</ov-button>
  * </ov-input-group>
  * ```
  */

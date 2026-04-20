@@ -19,9 +19,10 @@ Full-width hero section. Heading size, letter-spacing, uppercase treatment, and 
 
 ## Slots
 
-| Slot      | Description                                                    |
-|-----------|----------------------------------------------------------------|
-| `actions` | CTA buttons/links; laid out as a centred flex row below the subheading |
+| Slot      | Description                                                              |
+|-----------|--------------------------------------------------------------------------|
+| `logo`    | Brand logo displayed above the heading (e.g. `<ov-logo>`)               |
+| `actions` | CTA buttons/links; laid out as a centred flex row below the subheading   |
 
 ## Usage examples
 

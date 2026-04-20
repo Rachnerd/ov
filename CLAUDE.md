@@ -35,6 +35,7 @@ Read the relevant skill file before writing or reviewing any `ov-*` element. Eac
 - @packages/ui-components/src/molecules/field/ov-field.md
 - @packages/ui-components/src/molecules/alert/ov-alert.md
 - @packages/ui-components/src/molecules/card/ov-card.md
+- @packages/ui-components/src/molecules/image-card/ov-image-card.md
 - @packages/ui-components/src/molecules/breadcrumbs/ov-breadcrumbs.md
 - @packages/ui-components/src/molecules/input-group/ov-input-group.md
 - @packages/ui-components/src/molecules/tabs/ov-tabs.md
@@ -42,6 +43,12 @@ Read the relevant skill file before writing or reviewing any `ov-*` element. Eac
 - @packages/ui-components/src/molecules/stat/ov-stat.md
 - @packages/ui-components/src/molecules/toast/ov-toast.md
 - @packages/ui-components/src/molecules/empty-state/ov-empty-state.md
+
+**Organisms**
+- @packages/ui-components/src/organisms/nav-bar/ov-nav-bar.md
+- @packages/ui-components/src/organisms/hero/ov-hero.md
+- @packages/ui-components/src/organisms/carousel/ov-carousel.md
+- @packages/ui-components/src/organisms/page-layout/ov-page-layout.md
 
 ### Generating UI
 
@@ -62,7 +69,7 @@ When asked to build a form:
 
 ### Component file structure
 
-Each component lives in its own folder (`atoms/<name>/` or `molecules/<name>/`) containing exactly:
+Each component lives in its own folder (`atoms/<name>/`, `molecules/<name>/`, or `organisms/<name>/`) containing exactly:
 - `ov-<name>.ts` — the Lit element class
 - `ov-<name>.md` — the skill file (props, slots, events, examples)
 - `ov-<name>.stories.ts` — Storybook stories
@@ -97,4 +104,9 @@ Import components individually by path — there is no barrel export:
 import '@ov/ui-components/atoms/button/ov-button';
 import '@ov/ui-components/atoms/input/ov-input';
 import '@ov/ui-components/molecules/field/ov-field';
+import '@ov/ui-components/molecules/image-card/ov-image-card';
+import '@ov/ui-components/organisms/nav-bar/ov-nav-bar';
+import '@ov/ui-components/organisms/hero/ov-hero';
+import '@ov/ui-components/organisms/carousel/ov-carousel';
+import '@ov/ui-components/organisms/page-layout/ov-page-layout';
 ```

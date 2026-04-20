@@ -35,10 +35,11 @@ A button element with multiple visual variants, sizes, loading and disabled stat
 
 ## CSS custom properties
 
-| Property               | Description                          |
-|------------------------|--------------------------------------|
-| `--color-brand`        | Background for `primary` variant     |
-| `--color-text-on-brand`| Foreground for `primary` variant     |
+| Property               | Description                                                        |
+|------------------------|--------------------------------------------------------------------|
+| `--color-brand`        | Background for `primary` variant                                   |
+| `--color-text-on-brand`| Foreground for `primary` variant                                   |
+| `--ov-button-radius`   | Border radius override; used by `ov-input-group` to flatten corners |
 
 ## Usage examples
 
