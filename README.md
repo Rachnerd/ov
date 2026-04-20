@@ -63,7 +63,11 @@ Because CSS custom properties pierce shadow DOM boundaries, every `ov-*` compone
 
 ### Organisms
 
-`ov-nav-bar` `ov-hero` `ov-carousel` `ov-page-layout`
+`ov-nav-bar` `ov-hero` `ov-carousel`
+
+### Templates
+
+`ov-page-layout`
 
 ## Importing components
 
@@ -77,7 +81,7 @@ import '@ov/ui-components/molecules/image-card/ov-image-card';
 import '@ov/ui-components/organisms/nav-bar/ov-nav-bar';
 import '@ov/ui-components/organisms/hero/ov-hero';
 import '@ov/ui-components/organisms/carousel/ov-carousel';
-import '@ov/ui-components/organisms/page-layout/ov-page-layout';
+import '@ov/ui-components/templates/page-layout/ov-page-layout';
 ```
 
 There is no barrel export — import each component by path.
@@ -114,7 +118,8 @@ ov/
 │       └── src/
 │           ├── atoms/           15 atom components
 │           ├── molecules/       11 molecule components
-│           ├── organisms/       4 organism components
+│           ├── organisms/       3 organism components
+│           ├── templates/       1 template component
 │           ├── shared-styles.ts baseStyles + focusRing
 │           ├── tokens.ts        atom prop type unions
 │           └── molecule-tokens.ts  molecule prop type unions

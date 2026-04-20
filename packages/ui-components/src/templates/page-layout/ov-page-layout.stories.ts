@@ -17,7 +17,7 @@ const NAV_ITEMS = [
 ];
 
 const meta: Meta = {
-  title: 'Organisms/PageLayout',
+  title: 'Templates/PageLayout',
   component: 'ov-page-layout',
   tags: ['autodocs'],
   parameters: { layout: 'fullscreen' },

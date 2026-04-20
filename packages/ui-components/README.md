@@ -14,7 +14,7 @@ import '@ov/ui-components/molecules/image-card/ov-image-card';
 import '@ov/ui-components/organisms/nav-bar/ov-nav-bar';
 import '@ov/ui-components/organisms/hero/ov-hero';
 import '@ov/ui-components/organisms/carousel/ov-carousel';
-import '@ov/ui-components/organisms/page-layout/ov-page-layout';
+import '@ov/ui-components/templates/page-layout/ov-page-layout';
 ```
 
 Also import `@ov/style` once in your app entry — the components rely on its CSS custom properties:
@@ -68,7 +68,12 @@ import '@ov/style';
 | Nav Bar | `<ov-nav-bar>` | Sticky top navigation with wordmark and links |
 | Hero | `<ov-hero>` | Full-width banner with heading and CTA |
 | Carousel | `<ov-carousel>` | Animated slot-based card carousel |
-| Page Layout | `<ov-page-layout>` | Full-page shell with max-width content area |
+
+### Templates
+
+| Component | Tag | Description |
+|-----------|-----|-------------|
+| Page Layout | `<ov-page-layout>` | Full-page structural shell: nav, hero, constrained body, footer |
 
 ## Component skill files
 

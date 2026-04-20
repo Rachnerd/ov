@@ -40,7 +40,9 @@ Read the relevant skill file before writing or reviewing any `ov-*` element. Eac
 - @src/organisms/nav-bar/ov-nav-bar.md
 - @src/organisms/hero/ov-hero.md
 - @src/organisms/carousel/ov-carousel.md
-- @src/organisms/page-layout/ov-page-layout.md
+
+**Templates**
+- @src/templates/page-layout/ov-page-layout.md
 
 ## Generating UI
 
@@ -56,7 +58,7 @@ Read the relevant skill file before writing or reviewing any `ov-*` element. Eac
 
 ## Component file structure
 
-Each component lives in its own folder (`atoms/<name>/`, `molecules/<name>/`, or `organisms/<name>/`) containing exactly:
+Each component lives in its own folder (`atoms/<name>/`, `molecules/<name>/`, `organisms/<name>/`, or `templates/<name>/`) containing exactly:
 - `ov-<name>.ts` — the Lit element class
 - `ov-<name>.md` — the skill file (props, slots, events, examples)
 - `ov-<name>.stories.ts` — Storybook stories
@@ -87,5 +89,5 @@ import '@ov/ui-components/molecules/image-card/ov-image-card';
 import '@ov/ui-components/organisms/nav-bar/ov-nav-bar';
 import '@ov/ui-components/organisms/hero/ov-hero';
 import '@ov/ui-components/organisms/carousel/ov-carousel';
-import '@ov/ui-components/organisms/page-layout/ov-page-layout';
+import '@ov/ui-components/templates/page-layout/ov-page-layout';
 ```
