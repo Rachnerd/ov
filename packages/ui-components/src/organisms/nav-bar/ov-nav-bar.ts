@@ -42,9 +42,6 @@ export class OvNavBar extends LitElement {
     css`
       :host {
         display: block;
-        position: sticky;
-        top: 0;
-        z-index: 100;
       }
 
       nav {

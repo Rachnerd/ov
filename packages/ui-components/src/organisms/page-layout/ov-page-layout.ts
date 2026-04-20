@@ -39,6 +39,15 @@ export class OvPageLayout extends LitElement {
         flex: 0 0 auto;
       }
 
+      /* nav wrapper is sticky so slotted nav bars pin to the top */
+      .nav-wrap {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        width: 100%;
+        flex: 0 0 auto;
+      }
+
       /* constrained body */
       .content {
         flex: 1 1 auto;
@@ -56,7 +65,7 @@ export class OvPageLayout extends LitElement {
       : '';
 
     return html`
-      <div class="full-width"><slot name="nav"></slot></div>
+      <div class="nav-wrap"><slot name="nav"></slot></div>
       <div class="full-width"><slot name="hero"></slot></div>
       <div class="content" style=${style}><slot></slot></div>
       <div class="full-width"><slot name="footer"></slot></div>

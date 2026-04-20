@@ -59,11 +59,16 @@ describe('ov-page-layout', () => {
       expect(el.shadowRoot!.querySelector('.content')).to.exist;
     });
 
-    it('nav and hero wrappers have the .full-width class', async () => {
+    it('hero and footer wrappers have the .full-width class', async () => {
       const el = await fixture<OvPageLayout>(html`<ov-page-layout></ov-page-layout>`);
       const fullWidths = el.shadowRoot!.querySelectorAll('.full-width');
-      // nav, hero, footer
-      expect(fullWidths.length).to.equal(3);
+      // hero, footer
+      expect(fullWidths.length).to.equal(2);
+    });
+
+    it('nav wrapper has the .nav-wrap class (sticky)', async () => {
+      const el = await fixture<OvPageLayout>(html`<ov-page-layout></ov-page-layout>`);
+      expect(el.shadowRoot!.querySelector('.nav-wrap')).to.exist;
     });
 
     it('applies max-width attribute as inline style on content wrapper', async () => {

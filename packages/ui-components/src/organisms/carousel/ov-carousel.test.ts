@@ -43,13 +43,14 @@ describe('ov-carousel', () => {
       expect(el.querySelector('#desc')).to.exist;
     });
 
-    it('renders dot navigation when items exceed visible-count', async () => {
+    it('renders one dot per distinct scroll position (items - visible + 1)', async () => {
+      // 5 items, 3 visible → 3 scroll positions → 3 dots
       const el = await fixture<OvCarousel>(html`
         <ov-carousel auto-play-ms="0">${cards}</ov-carousel>
       `);
       await aTimeout(50);
       const dots = el.shadowRoot!.querySelectorAll('.dot');
-      expect(dots.length).to.equal(5);
+      expect(dots.length).to.equal(3);
     });
 
     it('does not render dots when items equal visible-count', async () => {

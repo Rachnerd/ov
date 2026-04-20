@@ -81,10 +81,15 @@ export class OvCarousel extends LitElement {
     const slot = this._track.querySelector('slot') as HTMLSlotElement | null;
     if (!slot) return;
     const items = slot.assignedElements() as HTMLElement[];
-    const target = items[index];
-    if (target) {
-      this._track.scrollTo({ left: target.offsetLeft, behavior: 'smooth' });
-    }
+    const target = items[index] as HTMLElement | undefined;
+    if (!target) return;
+    // offsetLeft is relative to the light-DOM offsetParent, which crosses the
+    // shadow boundary and gives wrong values. getBoundingClientRect() uses the
+    // actual rendered position so it works correctly for slotted elements.
+    const left = this._track.scrollLeft
+      + target.getBoundingClientRect().left
+      - this._track.getBoundingClientRect().left;
+    this._track.scrollTo({ left: left, behavior: 'smooth' });
   }
 
   private _handleSlotChange(e: Event) {
@@ -159,7 +164,10 @@ export class OvCarousel extends LitElement {
   ];
 
   protected override render(): TemplateResult {
-    const showDots = this._itemCount > this.visibleCount;
+    // Number of distinct scroll positions = items - visible + 1.
+    // This is always <= _itemCount, so dots stay in sync with what's visible.
+    const dotCount = Math.max(0, this._itemCount - this.visibleCount + 1);
+    const showDots = dotCount > 1;
 
     return html`
       <div class="wrapper">
@@ -176,7 +184,7 @@ export class OvCarousel extends LitElement {
 
         ${showDots ? html`
           <div class="dots">
-            ${Array.from({ length: this._itemCount }, (_, i) => html`
+            ${Array.from({ length: dotCount }, (_, i) => html`
               <button
                 class="dot"
                 aria-label="Go to slide ${i + 1}"
