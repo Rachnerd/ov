@@ -32,9 +32,9 @@
     }
 
     .intro {
-      max-width: 820px;
+      /* max-width: 820px; */
       margin: 0 auto;
-      padding: var(--ov-space-12) var(--ov-space-8) var(--ov-space-16);
+      /* padding: var(--ov-space-12) var(--ov-space-8) var(--ov-space-16); */
       text-align: center;
     }
   </style>
@@ -42,44 +42,48 @@
 
 <body data-theme="light">
 
-  <ov-nav-bar logo-href="/" active="/">
-    <ov-logo slot="logo" size="sm"></ov-logo>
-    <ov-button slot="actions" variant="primary" size="sm">Contact</ov-button>
-  </ov-nav-bar>
+  <ov-page-layout>
 
-  <ov-hero src="/banner.jpg" overlay="0.68" subheading="">
-    <ov-logo slot="logo" size="xl"></ov-logo>
-  </ov-hero>
+    <ov-nav-bar slot="nav" logo-href="/" active="/">
+      <ov-logo slot="logo" size="sm"></ov-logo>
+      <ov-button slot="actions" variant="primary" size="sm">Contact</ov-button>
+    </ov-nav-bar>
 
-  <div class="scroll-btn-wrap">
-    <button type="button" class="scroll-btn" id="scroll-btn" aria-label="Scroll to content">
-      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
-        <path d="M5.5 8.5l5.5 5.5 5.5-5.5"
-              stroke="currentColor" stroke-width="2.2"
-              stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </button>
-  </div>
+    <ov-hero slot="hero" src="/banner.jpg" overlay="0.68" subheading="">
+      <ov-logo slot="logo" size="xl"></ov-logo>
+    </ov-hero>
 
-  <section class="intro" id="intro">
-    <ov-text variant="eyebrow" weight="bold" as="p">
-      Over 200 seasoned full stack Java experts, Java champions &amp; JavaOne rockstars.
-      We love to work with the latest open source technology and share what we've learned.
-    </ov-text>
-  </section>
+    <div class="scroll-btn-wrap">
+      <button type="button" class="scroll-btn" id="scroll-btn" aria-label="Scroll to content">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+          <path d="M5.5 8.5l5.5 5.5 5.5-5.5"
+                stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
 
-  <ov-carousel heading="Our offices in 8 cities">
-    <ov-text slot="description" variant="body" as="p">
-      Present throughout the Netherlands — always close to you.
-      <ov-link href="/contact">Contact us</ov-link>.
-    </ov-text>
-    <ov-image-card label="OpenValue Amsterdam"  src="/amsterdam.jpg"  href="#"></ov-image-card>
-    <ov-image-card label="OpenValue Arnhem"     src="/arnhem.jpg"     href="#"></ov-image-card>
-    <ov-image-card label="OpenValue Düsseldorf" src="/dusseldorf.jpg" href="#"></ov-image-card>
-    <ov-image-card label="OpenValue Amsterdam"  src="/amsterdam.jpg"  href="#"></ov-image-card>
-    <ov-image-card label="OpenValue Arnhem"     src="/arnhem.jpg"     href="#"></ov-image-card>
-    <ov-image-card label="OpenValue Düsseldorf" src="/dusseldorf.jpg" href="#"></ov-image-card>
-  </ov-carousel>
+    <section class="intro" id="intro">
+      <ov-text variant="lead" weight="bold" as="p">
+        Over 200 seasoned full stack Java experts, Java champions &amp; JavaOne rockstars.
+        We love to work with the latest open source technology and share what we've learned.
+      </ov-text>
+    </section>
+
+    <ov-carousel heading="Our offices in 8 cities">
+      <ov-text slot="description" variant="body" as="p">
+        Present throughout the Netherlands — always close to you.
+        <ov-link href="/contact">Contact us</ov-link>.
+      </ov-text>
+      <ov-image-card label="OpenValue Amsterdam"  src="/amsterdam.jpg"  href="#"></ov-image-card>
+      <ov-image-card label="OpenValue Arnhem"     src="/arnhem.jpg"     href="#"></ov-image-card>
+      <ov-image-card label="OpenValue Düsseldorf" src="/dusseldorf.jpg" href="#"></ov-image-card>
+      <ov-image-card label="OpenValue Amsterdam"  src="/amsterdam.jpg"  href="#"></ov-image-card>
+      <ov-image-card label="OpenValue Arnhem"     src="/arnhem.jpg"     href="#"></ov-image-card>
+      <ov-image-card label="OpenValue Düsseldorf" src="/dusseldorf.jpg" href="#"></ov-image-card>
+    </ov-carousel>
+
+  </ov-page-layout>
 
   <script type="module" src="/src/main.ts"></script>
 

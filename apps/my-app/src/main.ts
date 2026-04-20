@@ -7,3 +7,4 @@ import '@ov/ui-components/organisms/nav-bar/ov-nav-bar';
 import '@ov/ui-components/organisms/hero/ov-hero';
 import '@ov/ui-components/molecules/image-card/ov-image-card';
 import '@ov/ui-components/organisms/carousel/ov-carousel';
+import '@ov/ui-components/organisms/page-layout/ov-page-layout';
