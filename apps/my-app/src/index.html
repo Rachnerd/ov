@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OpenValue — Tech Tribes</title>
+  <link rel="stylesheet" href="/styles.css">
   <style>
     body { margin: 0; background: var(--color-bg-canvas); }
 
@@ -85,23 +86,23 @@
       <ov-image-card label="OpenValue Zurich" src="/zurich.jpg" href="#"></ov-image-card>
       <ov-image-card label="OpenValue Amsterdam"  src="/amsterdam.jpg"  href="#"></ov-image-card>
       <ov-image-card label="OpenValue Arnhem"     src="/arnhem.jpg"     href="#"></ov-image-card>
-      
+
     </ov-carousel>
 
   </ov-page-layout>
 
-  <script type="module" src="/src/main.ts"></script>
+  <script type="module" src="/main.ts"></script>
 
   <script type="module">
     document.querySelector('ov-nav-bar').items = [
-      { label: 'Home',         href: '/' },
-      { label: 'Services',     href: '/services' },
-      { label: 'Projects',     href: '/projects' },
-      { label: 'Training',     href: '/training' },
-      { label: 'Career',       href: '/career' },
-      { label: 'Speakers',     href: '/speakers' },
-      { label: 'Tech Insights',href: '/tech-insights' },
-      { label: 'About',        href: '/about' },
+      { label: 'Home',          href: '/' },
+      { label: 'Services',      href: '/services.html' },
+      { label: 'Projects',      href: '/projects.html' },
+      { label: 'Training',      href: '/training.html' },
+      { label: 'Career',        href: '/career.html' },
+      { label: 'Speakers',      href: '/speakers.html' },
+      { label: 'Tech Insights', href: '/tech-insights.html' },
+      { label: 'About',         href: '/about.html' },
     ];
 
     document.getElementById('scroll-btn').addEventListener('click', () => {

@@ -1,4 +1,3 @@
-import '@ov/style';
 import '@ov/ui-components/atoms/button/ov-button';
 import '@ov/ui-components/atoms/text/ov-text';
 import '@ov/ui-components/atoms/link/ov-link';
