@@ -424,177 +424,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/atoms/checkbox/ov-checkbox.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "OvCheckbox",
-          "members": [
-            {
-              "kind": "field",
-              "name": "checked",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "checked",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "indeterminate",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "indeterminate",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "disabled",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "required",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "required"
-            },
-            {
-              "kind": "field",
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "attribute": "name",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "'on'",
-              "attribute": "value"
-            },
-            {
-              "kind": "method",
-              "name": "_onChange",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            }
-          ],
-          "events": [
-            {
-              "type": {
-                "text": "CustomEvent<{ checked: boolean, value: string }>"
-              },
-              "name": "change"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "checked",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "checked"
-            },
-            {
-              "name": "indeterminate",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "indeterminate"
-            },
-            {
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "disabled"
-            },
-            {
-              "name": "required",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "required"
-            },
-            {
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "fieldName": "name"
-            },
-            {
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "'on'",
-              "fieldName": "value"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "ov-checkbox",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "OvCheckbox",
-          "declaration": {
-            "name": "OvCheckbox",
-            "module": "src/atoms/checkbox/ov-checkbox.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "ov-checkbox",
-          "declaration": {
-            "name": "OvCheckbox",
-            "module": "src/atoms/checkbox/ov-checkbox.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/atoms/button/ov-button.ts",
       "declarations": [
         {
@@ -798,6 +627,177 @@
           "declaration": {
             "name": "OvButton",
             "module": "src/atoms/button/ov-button.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/atoms/checkbox/ov-checkbox.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "OvCheckbox",
+          "members": [
+            {
+              "kind": "field",
+              "name": "checked",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "checked",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "indeterminate",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "indeterminate",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "required"
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "name",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "'on'",
+              "attribute": "value"
+            },
+            {
+              "kind": "method",
+              "name": "_onChange",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": {
+                "text": "CustomEvent<{ checked: boolean, value: string }>"
+              },
+              "name": "change"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "checked",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "checked"
+            },
+            {
+              "name": "indeterminate",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "indeterminate"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "required"
+            },
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "name"
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "'on'",
+              "fieldName": "value"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ov-checkbox",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OvCheckbox",
+          "declaration": {
+            "name": "OvCheckbox",
+            "module": "src/atoms/checkbox/ov-checkbox.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ov-checkbox",
+          "declaration": {
+            "name": "OvCheckbox",
+            "module": "src/atoms/checkbox/ov-checkbox.ts"
           }
         }
       ]
@@ -1519,6 +1519,85 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/atoms/logo/ov-logo.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "<ov-logo>\n\nThe OpenValue — Tech Tribes white wordmark. Width scales automatically\nto preserve the aspect ratio. Use `variant` when the logo sits on a\nlight background.",
+          "name": "OvLogo",
+          "members": [
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "'xs' | 'sm' | 'md' | 'lg' | 'xl'"
+              },
+              "default": "'md'",
+              "description": "Display size. Controls the rendered height.",
+              "attribute": "size",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "'white'"
+              },
+              "default": "'white'",
+              "description": "Colour variant.\n- `white`  — white wordmark (default; use on dark backgrounds)\n- `color`  — full-colour version (supply a different image if needed)",
+              "attribute": "variant",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "size",
+              "type": {
+                "text": "'xs' | 'sm' | 'md' | 'lg' | 'xl'"
+              },
+              "default": "'md'",
+              "description": "Display size. Controls the rendered height.",
+              "fieldName": "size"
+            },
+            {
+              "name": "variant",
+              "type": {
+                "text": "'white'"
+              },
+              "default": "'white'",
+              "description": "Colour variant.\n- `white`  — white wordmark (default; use on dark backgrounds)\n- `color`  — full-colour version (supply a different image if needed)",
+              "fieldName": "variant"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ov-logo",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OvLogo",
+          "declaration": {
+            "name": "OvLogo",
+            "module": "src/atoms/logo/ov-logo.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ov-logo",
+          "declaration": {
+            "name": "OvLogo",
+            "module": "src/atoms/logo/ov-logo.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/atoms/link/ov-link.ts",
       "declarations": [
         {
@@ -1674,85 +1753,6 @@
           "declaration": {
             "name": "OvLink",
             "module": "src/atoms/link/ov-link.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/atoms/logo/ov-logo.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "<ov-logo>\n\nThe OpenValue — Tech Tribes white wordmark. Width scales automatically\nto preserve the aspect ratio. Use `variant` when the logo sits on a\nlight background.",
-          "name": "OvLogo",
-          "members": [
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "'xs' | 'sm' | 'md' | 'lg' | 'xl'"
-              },
-              "default": "'md'",
-              "description": "Display size. Controls the rendered height.",
-              "attribute": "size",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "variant",
-              "type": {
-                "text": "'white'"
-              },
-              "default": "'white'",
-              "description": "Colour variant.\n- `white`  — white wordmark (default; use on dark backgrounds)\n- `color`  — full-colour version (supply a different image if needed)",
-              "attribute": "variant",
-              "reflects": true
-            }
-          ],
-          "attributes": [
-            {
-              "name": "size",
-              "type": {
-                "text": "'xs' | 'sm' | 'md' | 'lg' | 'xl'"
-              },
-              "default": "'md'",
-              "description": "Display size. Controls the rendered height.",
-              "fieldName": "size"
-            },
-            {
-              "name": "variant",
-              "type": {
-                "text": "'white'"
-              },
-              "default": "'white'",
-              "description": "Colour variant.\n- `white`  — white wordmark (default; use on dark backgrounds)\n- `color`  — full-colour version (supply a different image if needed)",
-              "fieldName": "variant"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "ov-logo",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "OvLogo",
-          "declaration": {
-            "name": "OvLogo",
-            "module": "src/atoms/logo/ov-logo.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "ov-logo",
-          "declaration": {
-            "name": "OvLogo",
-            "module": "src/atoms/logo/ov-logo.ts"
           }
         }
       ]
@@ -2613,99 +2613,6 @@
           "declaration": {
             "name": "OvAlert",
             "module": "src/molecules/alert/ov-alert.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/molecules/breadcrumbs/ov-breadcrumbs.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "<ov-breadcrumbs>\n\nAccepts an array of { label, href? } items and renders a semantic\n<nav aria-label=\"Breadcrumb\"><ol> trail with chevron separators.\nThe last item is always current-page (aria-current=\"page\", no link).",
-          "name": "OvBreadcrumbs",
-          "slots": [
-            {
-              "description": "Custom separator element; overrides the default chevron.",
-              "name": "separator"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "items",
-              "type": {
-                "text": "BreadcrumbItem[]"
-              },
-              "default": "[]",
-              "description": "Ordered list of items. Last item = current page.",
-              "attribute": "items"
-            },
-            {
-              "kind": "field",
-              "name": "max",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "description": "Show the collapsed \"…\" version once more than `max` items exist.",
-              "attribute": "max"
-            },
-            {
-              "kind": "method",
-              "name": "_visibleItems",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "BreadcrumbItem[]"
-                }
-              }
-            }
-          ],
-          "attributes": [
-            {
-              "name": "items",
-              "type": {
-                "text": "BreadcrumbItem[]"
-              },
-              "default": "[]",
-              "description": "Ordered list of items. Last item = current page.",
-              "fieldName": "items"
-            },
-            {
-              "name": "max",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "description": "Show the collapsed \"…\" version once more than `max` items exist.",
-              "fieldName": "max"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "ov-breadcrumbs",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "OvBreadcrumbs",
-          "declaration": {
-            "name": "OvBreadcrumbs",
-            "module": "src/molecules/breadcrumbs/ov-breadcrumbs.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "ov-breadcrumbs",
-          "declaration": {
-            "name": "OvBreadcrumbs",
-            "module": "src/molecules/breadcrumbs/ov-breadcrumbs.ts"
           }
         }
       ]
@@ -3679,6 +3586,268 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/molecules/tabs/ov-tabs.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "<ov-tabs>\n\nAccessible tab list. Items are supplied as a typed array so consumers\ncan't accidentally pass malformed data. Keyboard navigation follows\nthe ARIA Authoring Practices Guide pattern: ← / → move between tabs,\nHome / End jump to first / last, Tab exits the tab list.",
+          "name": "OvTabs",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tabs",
+              "type": {
+                "text": "TabItem[]"
+              },
+              "default": "[]",
+              "description": "Full list of tab descriptors.",
+              "attribute": "tabs"
+            },
+            {
+              "kind": "field",
+              "name": "active",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Key of the active tab. Defaults to the first item.",
+              "attribute": "active",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "appearance",
+              "type": {
+                "text": "'underline' | 'pills'"
+              },
+              "default": "'underline'",
+              "description": "Visual style of the tab bar.",
+              "attribute": "appearance",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "fill",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Stretch tabs to fill the full width.",
+              "attribute": "fill",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "_select",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "key",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_onKeydown",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "KeyboardEvent"
+                  }
+                },
+                {
+                  "name": "key",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "change",
+              "type": {
+                "text": "CustomEvent<TabChangeDetail>"
+              },
+              "description": "Emits whenever the active tab changes, with `detail.key` set to the new tab's key."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "tabs",
+              "type": {
+                "text": "TabItem[]"
+              },
+              "default": "[]",
+              "description": "Full list of tab descriptors.",
+              "fieldName": "tabs"
+            },
+            {
+              "name": "active",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Key of the active tab. Defaults to the first item.",
+              "fieldName": "active"
+            },
+            {
+              "name": "appearance",
+              "type": {
+                "text": "'underline' | 'pills'"
+              },
+              "default": "'underline'",
+              "description": "Visual style of the tab bar.",
+              "fieldName": "appearance"
+            },
+            {
+              "name": "fill",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Stretch tabs to fill the full width.",
+              "fieldName": "fill"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ov-tabs",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OvTabs",
+          "declaration": {
+            "name": "OvTabs",
+            "module": "src/molecules/tabs/ov-tabs.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ov-tabs",
+          "declaration": {
+            "name": "OvTabs",
+            "module": "src/molecules/tabs/ov-tabs.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/molecules/breadcrumbs/ov-breadcrumbs.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "<ov-breadcrumbs>\n\nAccepts an array of { label, href? } items and renders a semantic\n<nav aria-label=\"Breadcrumb\"><ol> trail with chevron separators.\nThe last item is always current-page (aria-current=\"page\", no link).",
+          "name": "OvBreadcrumbs",
+          "slots": [
+            {
+              "description": "Custom separator element; overrides the default chevron.",
+              "name": "separator"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "items",
+              "type": {
+                "text": "BreadcrumbItem[]"
+              },
+              "default": "[]",
+              "description": "Ordered list of items. Last item = current page.",
+              "attribute": "items"
+            },
+            {
+              "kind": "field",
+              "name": "max",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "description": "Show the collapsed \"…\" version once more than `max` items exist.",
+              "attribute": "max"
+            },
+            {
+              "kind": "method",
+              "name": "_visibleItems",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "BreadcrumbItem[]"
+                }
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "items",
+              "type": {
+                "text": "BreadcrumbItem[]"
+              },
+              "default": "[]",
+              "description": "Ordered list of items. Last item = current page.",
+              "fieldName": "items"
+            },
+            {
+              "name": "max",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "description": "Show the collapsed \"…\" version once more than `max` items exist.",
+              "fieldName": "max"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ov-breadcrumbs",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OvBreadcrumbs",
+          "declaration": {
+            "name": "OvBreadcrumbs",
+            "module": "src/molecules/breadcrumbs/ov-breadcrumbs.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ov-breadcrumbs",
+          "declaration": {
+            "name": "OvBreadcrumbs",
+            "module": "src/molecules/breadcrumbs/ov-breadcrumbs.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/molecules/toast/ov-toast.ts",
       "declarations": [
         {
@@ -3863,300 +4032,6 @@
           "declaration": {
             "name": "OvToast",
             "module": "src/molecules/toast/ov-toast.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/molecules/tabs/ov-tabs.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "<ov-tabs>\n\nAccessible tab list. Items are supplied as a typed array so consumers\ncan't accidentally pass malformed data. Keyboard navigation follows\nthe ARIA Authoring Practices Guide pattern: ← / → move between tabs,\nHome / End jump to first / last, Tab exits the tab list.",
-          "name": "OvTabs",
-          "members": [
-            {
-              "kind": "field",
-              "name": "tabs",
-              "type": {
-                "text": "TabItem[]"
-              },
-              "default": "[]",
-              "description": "Full list of tab descriptors.",
-              "attribute": "tabs"
-            },
-            {
-              "kind": "field",
-              "name": "active",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Key of the active tab. Defaults to the first item.",
-              "attribute": "active",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "appearance",
-              "type": {
-                "text": "'underline' | 'pills'"
-              },
-              "default": "'underline'",
-              "description": "Visual style of the tab bar.",
-              "attribute": "appearance",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "fill",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Stretch tabs to fill the full width.",
-              "attribute": "fill",
-              "reflects": true
-            },
-            {
-              "kind": "method",
-              "name": "_select",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "key",
-                  "type": {
-                    "text": "string"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_onKeydown",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "KeyboardEvent"
-                  }
-                },
-                {
-                  "name": "key",
-                  "type": {
-                    "text": "string"
-                  }
-                }
-              ]
-            }
-          ],
-          "events": [
-            {
-              "name": "change",
-              "type": {
-                "text": "CustomEvent<TabChangeDetail>"
-              },
-              "description": "Emits whenever the active tab changes, with `detail.key` set to the new tab's key."
-            }
-          ],
-          "attributes": [
-            {
-              "name": "tabs",
-              "type": {
-                "text": "TabItem[]"
-              },
-              "default": "[]",
-              "description": "Full list of tab descriptors.",
-              "fieldName": "tabs"
-            },
-            {
-              "name": "active",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Key of the active tab. Defaults to the first item.",
-              "fieldName": "active"
-            },
-            {
-              "name": "appearance",
-              "type": {
-                "text": "'underline' | 'pills'"
-              },
-              "default": "'underline'",
-              "description": "Visual style of the tab bar.",
-              "fieldName": "appearance"
-            },
-            {
-              "name": "fill",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Stretch tabs to fill the full width.",
-              "fieldName": "fill"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "ov-tabs",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "OvTabs",
-          "declaration": {
-            "name": "OvTabs",
-            "module": "src/molecules/tabs/ov-tabs.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "ov-tabs",
-          "declaration": {
-            "name": "OvTabs",
-            "module": "src/molecules/tabs/ov-tabs.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/organisms/hero/ov-hero.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "<ov-hero>\n\nFull-width hero section. All typography (heading size, letter-spacing,\nuppercase treatment, colour) is encapsulated. Consumers pass text via\nprops and optional CTA buttons via the `actions` slot.",
-          "name": "OvHero",
-          "slots": [
-            {
-              "description": "Brand logo displayed above the heading / subheading (e.g. ov-logo).",
-              "name": "logo"
-            },
-            {
-              "description": "Optional CTA buttons / links displayed below the subheading.",
-              "name": "actions"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "heading",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Main display heading text.",
-              "attribute": "heading"
-            },
-            {
-              "kind": "field",
-              "name": "subheading",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Subtitle rendered below the heading.",
-              "attribute": "subheading"
-            },
-            {
-              "kind": "field",
-              "name": "src",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Background image URL. Omit for a solid dark fill.",
-              "attribute": "src"
-            },
-            {
-              "kind": "field",
-              "name": "overlay",
-              "type": {
-                "text": "number"
-              },
-              "default": "0.55",
-              "description": "Opacity of the dark overlay placed on top of the image (0–1).",
-              "attribute": "overlay"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "heading",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Main display heading text.",
-              "fieldName": "heading"
-            },
-            {
-              "name": "subheading",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Subtitle rendered below the heading.",
-              "fieldName": "subheading"
-            },
-            {
-              "name": "src",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Background image URL. Omit for a solid dark fill.",
-              "fieldName": "src"
-            },
-            {
-              "name": "overlay",
-              "type": {
-                "text": "number"
-              },
-              "default": "0.55",
-              "description": "Opacity of the dark overlay placed on top of the image (0–1).",
-              "fieldName": "overlay"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "ov-hero",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "OvHero",
-          "declaration": {
-            "name": "OvHero",
-            "module": "src/organisms/hero/ov-hero.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "ov-hero",
-          "declaration": {
-            "name": "OvHero",
-            "module": "src/organisms/hero/ov-hero.ts"
           }
         }
       ]
@@ -4364,82 +4239,125 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/templates/page-layout/ov-page-layout.ts",
+      "path": "src/organisms/hero/ov-hero.ts",
       "declarations": [
         {
           "kind": "class",
-          "description": "<ov-page-layout>\n\nPage-level layout shell. The `nav`, `hero`, and `footer` slots stretch\nto the full viewport width. Everything in the default slot is capped at\n`--ov-page-max-width` (default 1200 px) and centred with `margin-inline: auto`.",
-          "name": "OvPageLayout",
-          "cssProperties": [
-            {
-              "description": "Max width of the body content area (default: 1200px).",
-              "name": "--ov-page-max-width"
-            }
-          ],
+          "description": "<ov-hero>\n\nFull-width hero section. All typography (heading size, letter-spacing,\nuppercase treatment, colour) is encapsulated. Consumers pass text via\nprops and optional CTA buttons via the `actions` slot.",
+          "name": "OvHero",
           "slots": [
             {
-              "description": "Full-width sticky header / navigation bar.",
-              "name": "nav"
+              "description": "Brand logo displayed above the heading / subheading (e.g. ov-logo).",
+              "name": "logo"
             },
             {
-              "description": "Full-width hero section directly below the nav.",
-              "name": "hero"
-            },
-            {
-              "description": "Page body content; constrained to max-width and centred.",
-              "name": ""
-            },
-            {
-              "description": "Full-width footer at the bottom of the page.",
-              "name": "footer"
+              "description": "Optional CTA buttons / links displayed below the subheading.",
+              "name": "actions"
             }
           ],
           "members": [
             {
               "kind": "field",
-              "name": "maxWidth",
+              "name": "heading",
               "type": {
                 "text": "string"
               },
               "default": "''",
-              "description": "Max width of the constrained content area. Overrides `--ov-page-max-width`.",
-              "attribute": "max-width"
+              "description": "Main display heading text.",
+              "attribute": "heading"
+            },
+            {
+              "kind": "field",
+              "name": "subheading",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Subtitle rendered below the heading.",
+              "attribute": "subheading"
+            },
+            {
+              "kind": "field",
+              "name": "src",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Background image URL. Omit for a solid dark fill.",
+              "attribute": "src"
+            },
+            {
+              "kind": "field",
+              "name": "overlay",
+              "type": {
+                "text": "number"
+              },
+              "default": "0.55",
+              "description": "Opacity of the dark overlay placed on top of the image (0–1).",
+              "attribute": "overlay"
             }
           ],
           "attributes": [
             {
-              "name": "max-width",
+              "name": "heading",
               "type": {
                 "text": "string"
               },
               "default": "''",
-              "description": "Max width of the constrained content area. Overrides `--ov-page-max-width`.",
-              "fieldName": "maxWidth"
+              "description": "Main display heading text.",
+              "fieldName": "heading"
+            },
+            {
+              "name": "subheading",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Subtitle rendered below the heading.",
+              "fieldName": "subheading"
+            },
+            {
+              "name": "src",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Background image URL. Omit for a solid dark fill.",
+              "fieldName": "src"
+            },
+            {
+              "name": "overlay",
+              "type": {
+                "text": "number"
+              },
+              "default": "0.55",
+              "description": "Opacity of the dark overlay placed on top of the image (0–1).",
+              "fieldName": "overlay"
             }
           ],
           "superclass": {
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "ov-page-layout",
+          "tagName": "ov-hero",
           "customElement": true
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "OvPageLayout",
+          "name": "OvHero",
           "declaration": {
-            "name": "OvPageLayout",
-            "module": "src/templates/page-layout/ov-page-layout.ts"
+            "name": "OvHero",
+            "module": "src/organisms/hero/ov-hero.ts"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "ov-page-layout",
+          "name": "ov-hero",
           "declaration": {
-            "name": "OvPageLayout",
-            "module": "src/templates/page-layout/ov-page-layout.ts"
+            "name": "OvHero",
+            "module": "src/organisms/hero/ov-hero.ts"
           }
         }
       ]
@@ -4584,6 +4502,88 @@
           "declaration": {
             "name": "OvNavBar",
             "module": "src/organisms/nav-bar/ov-nav-bar.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/templates/page-layout/ov-page-layout.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "<ov-page-layout>\n\nPage-level layout shell. The `nav`, `hero`, and `footer` slots stretch\nto the full viewport width. Everything in the default slot is capped at\n`--ov-page-max-width` (default 1200 px) and centred with `margin-inline: auto`.",
+          "name": "OvPageLayout",
+          "cssProperties": [
+            {
+              "description": "Max width of the body content area (default: 1200px).",
+              "name": "--ov-page-max-width"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Full-width sticky header / navigation bar.",
+              "name": "nav"
+            },
+            {
+              "description": "Full-width hero section directly below the nav.",
+              "name": "hero"
+            },
+            {
+              "description": "Page body content; constrained to max-width and centred.",
+              "name": ""
+            },
+            {
+              "description": "Full-width footer at the bottom of the page.",
+              "name": "footer"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "maxWidth",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Max width of the constrained content area. Overrides `--ov-page-max-width`.",
+              "attribute": "max-width"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "max-width",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Max width of the constrained content area. Overrides `--ov-page-max-width`.",
+              "fieldName": "maxWidth"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ov-page-layout",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OvPageLayout",
+          "declaration": {
+            "name": "OvPageLayout",
+            "module": "src/templates/page-layout/ov-page-layout.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ov-page-layout",
+          "declaration": {
+            "name": "OvPageLayout",
+            "module": "src/templates/page-layout/ov-page-layout.ts"
           }
         }
       ]

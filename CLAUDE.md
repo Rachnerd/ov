@@ -23,6 +23,7 @@ Read the relevant skill file before writing or reviewing any `ov-*` element. Eac
 - @packages/ui-components/src/atoms/textarea/ov-textarea.md
 - @packages/ui-components/src/atoms/label/ov-label.md
 - @packages/ui-components/src/atoms/link/ov-link.md
+- @packages/ui-components/src/atoms/nav-link/ov-nav-link.md
 - @packages/ui-components/src/atoms/checkbox/ov-checkbox.md
 - @packages/ui-components/src/atoms/radio/ov-radio.md
 - @packages/ui-components/src/atoms/switch/ov-switch.md

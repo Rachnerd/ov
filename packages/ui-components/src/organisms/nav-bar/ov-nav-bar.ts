@@ -1,6 +1,9 @@
 import { LitElement, html, css, nothing, type TemplateResult } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property, state, query } from 'lit/decorators.js';
 import { baseStyles } from '../../shared-styles.js';
+import '../../atoms/button/ov-button.js';
+import '../../atoms/nav-link/ov-nav-link.js';
+import '../../molecules/menu-item/ov-menu-item.js';
 
 export interface NavItem {
   label: string;
@@ -10,39 +13,188 @@ export interface NavItem {
 /**
  * <ov-nav-bar>
  *
- * Sticky top navigation bar. Accepts brand name, tagline, and a list of
- * navigation items as structured data. All link and logo typography is
- * encapsulated — no external CSS is required.
+ * Sticky top navigation bar with priority+ overflow: items that fit are shown
+ * inline; the rest collapse into a hamburger dropdown.
  *
  * @element ov-nav-bar
  *
- * @slot logo    - Custom logo image / SVG override. When empty the
- *                 `brand` and `tagline` props render the text wordmark.
+ * @slot logo    - Custom logo image / SVG override.
  * @slot actions - CTA buttons on the far right (e.g. ov-button).
  */
 @customElement('ov-nav-bar')
 export class OvNavBar extends LitElement {
-  /** Primary brand name shown in the wordmark. */
   @property({ type: String }) brand = '';
-
-  /** Sub-brand or tagline shown beneath the brand name. */
   @property({ type: String }) tagline = '';
-
-  /** href the logo links to. */
   @property({ type: String, attribute: 'logo-href' }) logoHref = '/';
-
-  /** Navigation items rendered as links. Set as a JS property — not an attribute. */
   @property({ type: Array }) items: NavItem[] = [];
-
-  /** href of the currently active item. Marks it with `aria-current="page"`. */
   @property({ type: String }) active = '';
+
+  @state() private _overflowStart = 999;
+  @state() private _menuOpen = false;
+
+  @query('.links') private _linksEl!: HTMLElement;
+
+  private _ro!: ResizeObserver;
+  private _linkWidths: number[] = [];
+  private _linkGap = 24;
+
+  // Hamburger button width (icon 20px + padding 2×10px) + one gap unit
+  private get _moreBtnReserve() {
+    return 40 + this._linkGap;
+  }
+
+  private _onDocClick = (e: Event) => {
+    if (!e.composedPath().includes(this)) {
+      this._menuOpen = false;
+    }
+  };
+
+  override firstUpdated() {
+    this._linkGap = parseFloat(getComputedStyle(this._linksEl).columnGap) || 24;
+    this._cacheWidths();
+
+    this._ro = new ResizeObserver(() => {
+      if (this._menuOpen) this._menuOpen = false;
+      this._compute();
+    });
+    this._ro.observe(this._linksEl);
+    this._compute();
+  }
+
+  override updated(changed: Map<PropertyKey, unknown>) {
+    // When items change after first render, reset to all-visible, re-measure.
+    if (changed.has('items') && this._linksEl && this._overflowStart !== 999) {
+      this._overflowStart = 999;
+      requestAnimationFrame(() => {
+        this._cacheWidths();
+        this._compute();
+      });
+    }
+
+    if (this._menuOpen) {
+      document.addEventListener('click', this._onDocClick);
+    } else {
+      document.removeEventListener('click', this._onDocClick);
+    }
+  }
+
+  override disconnectedCallback() {
+    super.disconnectedCallback();
+    this._ro?.disconnect();
+    document.removeEventListener('click', this._onDocClick);
+  }
+
+  private _cacheWidths() {
+    const links = [...this._linksEl.querySelectorAll<HTMLElement>('ov-nav-link')];
+    this._linkWidths = links.map(l => l.offsetWidth);
+  }
+
+  private _compute() {
+    const containerWidth = this._linksEl.clientWidth;
+    const gap = this._linkGap;
+    const reserve = this._moreBtnReserve;
+
+    let used = 0;
+    let overflowStart = this._linkWidths.length;
+
+    for (let i = 0; i < this._linkWidths.length; i++) {
+      used += (i > 0 ? gap : 0) + this._linkWidths[i];
+      const hasMore = i < this._linkWidths.length - 1;
+      if (used + (hasMore ? reserve : 0) > containerWidth) {
+        overflowStart = i;
+        break;
+      }
+    }
+
+    if (overflowStart !== this._overflowStart) {
+      this._overflowStart = overflowStart;
+    }
+  }
+
+  private _toggleMenu(e: Event) {
+    e.stopPropagation();
+    this._menuOpen = !this._menuOpen;
+  }
+
+  private _navigate(href: string) {
+    this._menuOpen = false;
+    window.location.href = href;
+  }
+
+  protected override render(): TemplateResult {
+    const homeHref = this.logoHref || '/';
+    const anyOverflow = this._overflowStart < this.items.length;
+    // When any item overflows, home is served by the logo — exclude it from the dropdown.
+    const dropdownItems = this.items
+      .slice(this._overflowStart)
+      .filter(item => !anyOverflow || item.href !== homeHref);
+    const showHamburger = dropdownItems.length > 0;
+
+    return html`
+      <nav aria-label="Main navigation">
+
+        <a class="logo-link" href=${this.logoHref}
+           aria-label="${this.brand}${this.tagline ? ' — ' + this.tagline : ''}, home">
+          <slot name="logo">
+            ${this.brand   ? html`<span class="logo-name">${this.brand}</span>`     : nothing}
+            ${this.tagline ? html`<span class="logo-tagline">${this.tagline}</span>` : nothing}
+          </slot>
+        </a>
+
+        <div class="links">
+          ${this.items.map((item, i) => {
+            const overflowed = i >= this._overflowStart;
+            // Also hide the home item from the inline bar once any overflow exists.
+            const hidden = overflowed || (anyOverflow && item.href === homeHref);
+            return html`
+              <ov-nav-link
+                href=${item.href}
+                ?active=${item.href === this.active}
+                ?hidden=${hidden}
+              >${item.label}</ov-nav-link>
+            `;
+          })}
+
+          <div class="more-wrap${showHamburger ? '' : ' hidden'}">
+            <ov-button
+              class="more-btn"
+              variant="ghost"
+              size="sm"
+              aria-label="More navigation items"
+              aria-expanded=${String(this._menuOpen)}
+              aria-haspopup="menu"
+              @click=${this._toggleMenu}
+            >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M3 5.5h14M3 10h14M3 14.5h14"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </ov-button>
+          </div>
+        </div>
+
+        ${this._menuOpen && showHamburger ? html`
+          <div class="overflow-menu" role="menu">
+            ${dropdownItems.map(item => html`
+              <ov-menu-item
+                label=${item.label}
+                ?selected=${item.href === this.active}
+                @select=${() => this._navigate(item.href)}
+              ></ov-menu-item>
+            `)}
+          </div>
+        ` : nothing}
+
+        <div class="actions"><slot name="actions"></slot></div>
+
+      </nav>
+    `;
+  }
 
   static override styles = [
     baseStyles,
     css`
-      :host {
-        display: block;
-      }
+      :host { display: block; }
 
       nav {
         display: flex;
@@ -50,6 +202,7 @@ export class OvNavBar extends LitElement {
         min-height: 60px;
         padding: 0 var(--ov-space-8);
         background: var(--ov-charcoal, #1e2330);
+        position: relative;
       }
 
       /* ── Logo ── */
@@ -75,7 +228,7 @@ export class OvNavBar extends LitElement {
         opacity: 0.65;
       }
 
-      /* ── Nav links ── */
+      /* ── Nav links container ── */
       .links {
         flex: 1 1 auto;
         display: flex;
@@ -85,53 +238,50 @@ export class OvNavBar extends LitElement {
         margin: 0 var(--ov-space-8);
         overflow: hidden;
       }
-      .link {
-        font-size: var(--ov-fs-xs);
-        font-weight: var(--ov-fw-semibold, 600);
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: white;
-        text-decoration: none;
-        white-space: nowrap;
-        padding-bottom: 2px;
-        border-bottom: 2px solid transparent;
-        transition: border-color var(--ov-duration-fast) var(--ov-ease-out);
+
+      /* ── More button wrapper ── */
+      .more-wrap {
+        flex: 0 0 auto;
+        position: relative;
       }
-      .link:hover                 { border-bottom-color: var(--color-brand); }
-      .link[aria-current='page']  { border-bottom-color: var(--color-brand); }
+      .more-wrap.hidden { display: none; }
+
+      /* ── ov-button (ghost) themed for dark nav background ── */
+      .more-btn {
+        --color-text-primary:     white;
+        --color-bg-surface-muted: rgba(255, 255, 255, 0.12);
+        --color-bg-surface-alt:   rgba(255, 255, 255, 0.2);        
+      }
+
+      /* ── Overflow dropdown — anchored to <nav>, not .more-wrap ── */
+      .overflow-menu {
+        position: absolute;
+        top: 100%;
+        right: var(--ov-space-8);
+        background: var(--ov-charcoal, #1e2330);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--ov-radius-md);
+        padding: var(--ov-space-1);
+        min-width: 180px;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        box-shadow: var(--shadow-lg, 0 8px 24px rgba(0, 0, 0, 0.35));
+      }
+
+      /* ── ov-menu-item themed for dark dropdown background ── */
+      .overflow-menu ov-menu-item {
+        --color-text-primary:   rgba(255, 255, 255, 0.92);
+        --color-text-tertiary:  rgba(255, 255, 255, 0.45);
+        --color-bg-surface-muted: rgba(255, 255, 255, 0.1);
+        --color-brand-subtle:   rgba(255, 255, 255, 0.15);
+        --color-border-subtle:  rgba(255, 255, 255, 0.1);
+      }
 
       /* ── Actions slot ── */
       .actions { flex: 0 0 auto; }
     `,
   ];
-
-  protected override render(): TemplateResult {
-    return html`
-      <nav aria-label="Main navigation">
-
-        <a class="logo-link" href=${this.logoHref}
-           aria-label="${this.brand}${this.tagline ? ' — ' + this.tagline : ''}, home">
-          <slot name="logo">
-            ${this.brand   ? html`<span class="logo-name">${this.brand}</span>`       : nothing}
-            ${this.tagline ? html`<span class="logo-tagline">${this.tagline}</span>` : nothing}
-          </slot>
-        </a>
-
-        <div class="links">
-          ${this.items.map(item => html`
-            <a
-              class="link"
-              href=${item.href}
-              aria-current=${item.href === this.active ? 'page' : nothing}
-            >${item.label}</a>
-          `)}
-        </div>
-
-        <div class="actions"><slot name="actions"></slot></div>
-
-      </nav>
-    `;
-  }
 }
 
 declare global {

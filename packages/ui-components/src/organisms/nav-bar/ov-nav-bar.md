@@ -1,6 +1,6 @@
 # ov-nav-bar
 
-Sticky top navigation bar. All typography — wordmark, nav link style, active underline — is fully encapsulated. Consumers pass structured data via props; no external CSS is needed.
+Sticky top navigation bar with priority+ overflow. Items that fit in the available space are shown inline left-to-right; items that don't fit collapse into a hamburger dropdown. All typography is fully encapsulated — no external CSS is needed.
 
 ## Tag
 
@@ -63,3 +63,7 @@ interface NavItem {
 - `items` is an array property — set it in JavaScript, not as an HTML attribute.
 - Set `active` to the exact `href` string of the current page to show the underline indicator.
 - Use the `logo` slot only for image/SVG logos; for text wordmarks prefer `brand` + `tagline` props.
+- Inline nav links are rendered as `ov-nav-link` atoms — do not add custom `<a>` elements inside the bar.
+- Overflow is computed automatically via `ResizeObserver` — no manual breakpoints needed.
+- Overflow is computed automatically via `ResizeObserver` — no manual breakpoints needed.
+- Items are measured on first render; if `items` changes after mount the component re-measures automatically.

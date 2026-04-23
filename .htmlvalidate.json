@@ -288,6 +288,14 @@
           "fill": { "boolean": true }
         }
       },
+      "ov-nav-link": {
+        "flow": true,
+        "phrasing": true,
+        "attributes": {
+          "href": {},
+          "active": { "boolean": true }
+        }
+      },
       "ov-menu-item": {
         "flow": true,
         "attributes": {
