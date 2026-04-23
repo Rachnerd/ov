@@ -155,20 +155,20 @@ export class OvNavBar extends LitElement {
               >${item.label}</ov-nav-link>
             `;
           })}
+        </div>
 
-          <div class="more-wrap${showHamburger ? '' : ' hidden'}">
-            <ov-button
-              class="more-btn"
-              variant="ghost"
-              size="sm"
-              aria-label="More navigation items"
-              aria-expanded=${String(this._menuOpen)}
-              aria-haspopup="menu"
-              @click=${this._toggleMenu}
-            >
-              <ov-icon name="menu" size="lg"></ov-icon>
-            </ov-button>
-          </div>
+        <div class="more-wrap${showHamburger ? '' : ' hidden'}">
+          <ov-button
+            class="more-btn"
+            variant="ghost"
+            size="sm"
+            aria-label="More navigation items"
+            aria-expanded=${String(this._menuOpen)}
+            aria-haspopup="menu"
+            @click=${this._toggleMenu}
+          >
+            <ov-icon name="menu" size="xl"></ov-icon>
+          </ov-button>
         </div>
 
         ${this._menuOpen && showHamburger ? html`
@@ -255,10 +255,10 @@ export class OvNavBar extends LitElement {
         overflow: hidden;
       }
 
-      /* ── More button wrapper ── */
+      /* ── More button wrapper — direct nav flex child so it is never clipped ── */
       .more-wrap {
         flex: 0 0 auto;
-        position: relative;
+        margin-right: var(--ov-space-2);
       }
       .more-wrap.hidden { display: none; }
 
