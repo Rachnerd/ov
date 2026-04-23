@@ -1,6 +1,6 @@
 # ov-logo
 
-The OpenValue — Tech Tribes white wordmark. Width is always derived from the aspect ratio so only `size` needs to be set.
+The OpenValue — Tech Tribes white wordmark. Height is driven by the `--ov-logo-height` CSS custom property, which the `size` prop sets as a default. Any parent can override `--ov-logo-height` directly — with a media query, container token, or inline style — without touching the `size` prop.
 
 ## Tag
 
@@ -10,14 +10,29 @@ The OpenValue — Tech Tribes white wordmark. Width is always derived from the a
 
 ## Properties
 
-| Property  | Attribute | Type                              | Default  | Description                                         |
-|-----------|-----------|-----------------------------------|----------|-----------------------------------------------------|
-| `size`    | `size`    | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'`   | Height: 20 / 28 / 44 / 72 / 108 px (width auto)   |
-| `variant` | `variant` | `'white'`                         | `'white'` | Colour treatment (white for dark backgrounds)      |
+| Property  | Attribute | Type                                    | Default  | Description                                          |
+|-----------|-----------|-----------------------------------------|----------|------------------------------------------------------|
+| `size`    | `size`    | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'`   | Named height preset (see CSS custom properties)      |
+| `variant` | `variant` | `'white'`                               | `'white'` | Colour treatment (white for dark backgrounds)       |
+
+## CSS custom properties
+
+| Property           | Default  | Description                                                    |
+|--------------------|----------|----------------------------------------------------------------|
+| `--ov-logo-height` | `44px`   | Rendered height; width is always `auto` (aspect ratio kept)   |
+
+Named size presets set `--ov-logo-height` to: `xs` → 20 px · `sm` → 28 px · `md` → 44 px · `lg` → 72 px · `xl` → 108 px.
 
 ## Usage examples
 
 ```html
+<!-- Named sizes -->
+<ov-logo size="xs"></ov-logo>
+<ov-logo size="sm"></ov-logo>
+<ov-logo size="md"></ov-logo>
+<ov-logo size="lg"></ov-logo>
+<ov-logo size="xl"></ov-logo>
+
 <!-- In the nav bar -->
 <ov-nav-bar active="/">
   <ov-logo slot="logo" size="sm"></ov-logo>
@@ -29,12 +44,17 @@ The OpenValue — Tech Tribes white wordmark. Width is always derived from the a
   <ov-logo slot="logo" size="lg"></ov-logo>
 </ov-hero>
 
-<!-- Standalone -->
-<ov-logo size="xl"></ov-logo>
+<!-- Parent overrides height via CSS token (responsive example) -->
+<style>
+  .hero-logo { --ov-logo-height: 72px; }
+  @media (max-width: 639px) { .hero-logo { --ov-logo-height: 40px; } }
+</style>
+<ov-logo class="hero-logo"></ov-logo>
 ```
 
 ## Rules
 
 - `ov-logo` is `display: inline-flex`; wrap it in a block container to control flow layout.
 - The logo is always white — place it only on dark or brand-coloured backgrounds.
+- Override `--ov-logo-height` on the element or a parent selector to get any size without changing the `size` prop.
 - Do not set an explicit `width` — it is calculated automatically from the height and aspect ratio.
