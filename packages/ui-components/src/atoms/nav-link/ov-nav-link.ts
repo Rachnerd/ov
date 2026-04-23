@@ -37,15 +37,15 @@ export class OvNavLink extends LitElement {
 
       a {
         font-size: var(--ov-fs-xs);
-        font-weight: var(--ov-fw-semibold, 600);
-        letter-spacing: 0.08em;
+        font-weight: var(--ov-fw-semibold);
+        letter-spacing: var(--ov-ls-wider);
         text-transform: uppercase;
         color: var(--ov-nav-link-color, white);
         text-decoration: none;
         white-space: nowrap;
-        padding-bottom: 2px;
-        border-bottom: 2px solid transparent;
-        border-radius: 2px;
+        padding-bottom: var(--ov-border-thick);
+        border-bottom: var(--ov-border-thick) solid transparent;
+        border-radius: var(--ov-radius-xs);
         transition: border-color var(--ov-duration-fast) var(--ov-ease-out);
       }
 

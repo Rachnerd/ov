@@ -199,9 +199,9 @@ export class OvNavBar extends LitElement {
       nav {
         display: flex;
         align-items: center;
-        min-height: 60px;
+        min-height: var(--ov-space-16);
         padding: 0 var(--ov-space-8);
-        background: var(--ov-charcoal, #1e2330);
+        background: var(--ov-charcoal);
         position: relative;
       }
 
@@ -211,19 +211,19 @@ export class OvNavBar extends LitElement {
         display: flex;
         flex-direction: column;
         line-height: 1;
-        gap: 3px;
-        color: white;
+        gap: var(--ov-space-1);
+        color: var(--color-text-inverse);
         text-decoration: none;
       }
       .logo-name {
         font-size: var(--ov-fs-base);
-        font-weight: var(--ov-fw-bold, 700);
-        letter-spacing: 0.12em;
+        font-weight: var(--ov-fw-bold);
+        letter-spacing: var(--ov-ls-widest);
         text-transform: uppercase;
       }
       .logo-tagline {
         font-size: var(--ov-fs-xs);
-        letter-spacing: 0.25em;
+        letter-spacing: var(--ov-ls-display);
         text-transform: uppercase;
         opacity: 0.65;
       }
@@ -258,15 +258,15 @@ export class OvNavBar extends LitElement {
         position: absolute;
         top: 100%;
         right: var(--ov-space-8);
-        background: var(--ov-charcoal, #1e2330);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: var(--ov-charcoal);
+        border: var(--ov-border-thin) solid rgba(255, 255, 255, 0.1);
         border-radius: var(--ov-radius-md);
         padding: var(--ov-space-1);
         min-width: 180px;
-        z-index: 10;
+        z-index: var(--ov-z-raised);
         display: flex;
         flex-direction: column;
-        box-shadow: var(--shadow-lg, 0 8px 24px rgba(0, 0, 0, 0.35));
+        box-shadow: var(--shadow-lg);
       }
 
       /* ── ov-menu-item themed for dark dropdown background ── */

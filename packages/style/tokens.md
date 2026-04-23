@@ -235,6 +235,7 @@ Full reference for all tokens in `@ov/style`. See [CLAUDE.md](./CLAUDE.md) for u
 | `--ov-ls-wide` | 0.04em |
 | `--ov-ls-wider` | 0.08em |
 | `--ov-ls-widest` | 0.14em |
+| `--ov-ls-display` | 0.25em |
 
 ---
 
