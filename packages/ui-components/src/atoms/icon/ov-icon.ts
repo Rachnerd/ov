@@ -29,6 +29,7 @@ const ICON_PATHS: Record<BuiltInIconName, SVGTemplateResult> = {
   moon:          svg`<path d="M13 9.5A5.5 5.5 0 1 1 6.5 3a4.5 4.5 0 0 0 6.5 6.5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" fill="none"/>`,
   plus:          svg`<path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>`,
   user:          svg`<circle cx="8" cy="5.5" r="2.5" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M2.5 13c0-3 2.5-5 5.5-5s5.5 2 5.5 5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>`,
+  menu:          svg`<path d="M2 4.5h12M2 8h12M2 11.5h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>`,
 };
 
 /** Runtime type guard — narrows an arbitrary string to BuiltInIconName. */

@@ -2,6 +2,7 @@ import { LitElement, html, css, nothing, type TemplateResult } from 'lit';
 import { customElement, property, state, query } from 'lit/decorators.js';
 import { baseStyles } from '../../shared-styles.js';
 import '../../atoms/button/ov-button.js';
+import '../../atoms/icon/ov-icon.js';
 import '../../atoms/nav-link/ov-nav-link.js';
 import '../../molecules/menu-item/ov-menu-item.js';
 
@@ -165,10 +166,7 @@ export class OvNavBar extends LitElement {
               aria-haspopup="menu"
               @click=${this._toggleMenu}
             >
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                <path d="M3 5.5h14M3 10h14M3 14.5h14"
-                      stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
+              <ov-icon name="menu" size="lg"></ov-icon>
             </ov-button>
           </div>
         </div>

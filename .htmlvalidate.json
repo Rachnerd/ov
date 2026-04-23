@@ -46,7 +46,7 @@
         "phrasing": true,
         "attributes": {
           "name": {
-            "enum": ["check", "x", "arrow-right", "arrow-left", "search", "mail", "info", "warning", "sun", "moon", "plus", "user", ""]
+            "enum": ["check", "x", "arrow-right", "arrow-left", "search", "mail", "info", "warning", "sun", "moon", "plus", "user", "menu", ""]
           },
           "size": {
             "enum": ["sm", "md", "lg", "xl"]
@@ -336,7 +336,7 @@
           "heading": {},
           "description": {},
           "icon": {
-            "enum": ["check", "x", "arrow-right", "arrow-left", "search", "mail", "info", "warning", "sun", "moon", "plus", "user", ""]
+            "enum": ["check", "x", "arrow-right", "arrow-left", "search", "mail", "info", "warning", "sun", "moon", "plus", "user", "menu", ""]
           },
           "size": {
             "enum": ["sm", "md", "lg"]

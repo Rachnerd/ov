@@ -12,7 +12,7 @@ Renders one of the built-in SVG icons by name, or acts as a sized wrapper for a 
 
 | Property | Attribute | Type                                                                                                        | Default | Description                                  |
 |----------|-----------|-------------------------------------------------------------------------------------------------------------|---------|----------------------------------------------|
-| `name`   | `name`    | `'check' \| 'x' \| 'arrow-right' \| 'arrow-left' \| 'search' \| 'mail' \| 'info' \| 'warning' \| 'sun' \| 'moon' \| 'plus' \| 'user' \| ''` | `''`    | Built-in icon name; empty falls back to slot |
+| `name`   | `name`    | `'check' \| 'x' \| 'arrow-right' \| 'arrow-left' \| 'search' \| 'mail' \| 'info' \| 'warning' \| 'sun' \| 'moon' \| 'plus' \| 'user' \| 'menu' \| ''` | `''`    | Built-in icon name; empty falls back to slot |
 | `size`   | `size`    | `'sm' \| 'md' \| 'lg' \| 'xl'`                                                                             | `'md'`  | `12 / 16 / 20 / 24 px`                       |
 | `label`  | `label`   | `string`                                                                                                    | `''`    | Accessible label; when set, `role="img"` is applied |
 
@@ -38,6 +38,7 @@ Renders one of the built-in SVG icons by name, or acts as a sized wrapper for a 
 <ov-icon name="arrow-left"></ov-icon>
 <ov-icon name="sun"></ov-icon>
 <ov-icon name="moon"></ov-icon>
+<ov-icon name="menu"></ov-icon>
 
 <!-- Sizes -->
 <ov-icon name="user" size="sm"></ov-icon>

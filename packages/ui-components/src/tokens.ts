@@ -117,7 +117,7 @@ export type BadgeSize = 'sm' | 'md';
  */
 export const BUILT_IN_ICON_NAMES = [
   'check', 'x', 'arrow-right', 'arrow-left', 'search', 'mail',
-  'info', 'warning', 'sun', 'moon', 'plus', 'user',
+  'info', 'warning', 'sun', 'moon', 'plus', 'user', 'menu',
 ] as const;
 
 export type BuiltInIconName = typeof BUILT_IN_ICON_NAMES[number];
