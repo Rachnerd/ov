@@ -79,7 +79,7 @@ export class OvHero extends LitElement {
         letter-spacing: 0.15em;
         text-transform: uppercase;
         color: white;
-        line-height: 1;
+        line-height: var(--ov-lh-none);
       }
 
       /* subheading */

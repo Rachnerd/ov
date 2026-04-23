@@ -134,7 +134,7 @@ export class OvTabs extends LitElement {
         color: var(--color-text-secondary);
         font-size: 11px;
         font-weight: var(--ov-fw-semibold);
-        line-height: 1;
+        line-height: var(--ov-lh-none);
       }
       .tab.active .count {
         background: var(--color-brand-subtle);

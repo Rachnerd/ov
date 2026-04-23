@@ -116,6 +116,7 @@
    --ov-fs-3xl: clamp(3rem, 2.5rem + 2.5vw, 4.5rem);
 
    /* Line heights */
+   --ov-lh-none: 1;
    --ov-lh-tight: 1.1;
    --ov-lh-snug: 1.25;
    --ov-lh-normal: 1.5;

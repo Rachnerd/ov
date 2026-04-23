@@ -62,7 +62,7 @@ export class OvButton extends LitElement {
         font-size: var(--ov-fs-sm);
         font-weight: var(--ov-fw-semibold, 600);
         letter-spacing: var(--ov-ls-wide, 0.04em);
-        line-height: 1;
+        line-height: var(--ov-lh-none);
         color: var(--btn-fg);
         background: var(--btn-bg);
         border: var(--ov-border-base, 1.5px) solid var(--btn-border);

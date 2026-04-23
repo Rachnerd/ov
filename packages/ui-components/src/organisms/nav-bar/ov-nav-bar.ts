@@ -194,14 +194,32 @@ export class OvNavBar extends LitElement {
   static override styles = [
     baseStyles,
     css`
-      :host { display: block; }
+      /* ── Nav-bar local tokens ── */
+      :host {
+        display: block;
+
+        /* Structure */
+        --ov-nav-bar-height:         var(--ov-space-16);
+        --ov-nav-bar-bg:             var(--ov-charcoal);
+        --ov-nav-bar-dropdown-width: 180px;
+        --ov-nav-bar-tagline-opacity: 0.65;
+
+        /* Dark-surface colour scale — override to retheme the bar */
+        --ov-nav-bar-fg:             var(--ov-white);
+        --ov-nav-bar-fg-dim:         rgba(255, 255, 255, 0.92);
+        --ov-nav-bar-fg-muted:       rgba(255, 255, 255, 0.45);
+        --ov-nav-bar-surface:        rgba(255, 255, 255, 0.12);
+        --ov-nav-bar-surface-alt:    rgba(255, 255, 255, 0.2);
+        --ov-nav-bar-border:         rgba(255, 255, 255, 0.1);
+        --ov-nav-bar-brand-subtle:   rgba(255, 255, 255, 0.15);
+      }
 
       nav {
         display: flex;
         align-items: center;
-        min-height: var(--ov-space-16);
+        min-height: var(--ov-nav-bar-height);
         padding: 0 var(--ov-space-8);
-        background: var(--ov-charcoal);
+        background: var(--ov-nav-bar-bg);
         position: relative;
       }
 
@@ -210,9 +228,9 @@ export class OvNavBar extends LitElement {
         flex: 0 0 auto;
         display: flex;
         flex-direction: column;
-        line-height: 1;
+        line-height: var(--ov-lh-none);
         gap: var(--ov-space-1);
-        color: var(--color-text-inverse);
+        color: var(--ov-nav-bar-fg);
         text-decoration: none;
       }
       .logo-name {
@@ -225,7 +243,7 @@ export class OvNavBar extends LitElement {
         font-size: var(--ov-fs-xs);
         letter-spacing: var(--ov-ls-display);
         text-transform: uppercase;
-        opacity: 0.65;
+        opacity: var(--ov-nav-bar-tagline-opacity);
       }
 
       /* ── Nav links container ── */
@@ -248,9 +266,9 @@ export class OvNavBar extends LitElement {
 
       /* ── ov-button (ghost) themed for dark nav background ── */
       .more-btn {
-        --color-text-primary:     white;
-        --color-bg-surface-muted: rgba(255, 255, 255, 0.12);
-        --color-bg-surface-alt:   rgba(255, 255, 255, 0.2);        
+        --color-text-primary:     var(--ov-nav-bar-fg);
+        --color-bg-surface-muted: var(--ov-nav-bar-surface);
+        --color-bg-surface-alt:   var(--ov-nav-bar-surface-alt);
       }
 
       /* ── Overflow dropdown — anchored to <nav>, not .more-wrap ── */
@@ -258,11 +276,11 @@ export class OvNavBar extends LitElement {
         position: absolute;
         top: 100%;
         right: var(--ov-space-8);
-        background: var(--ov-charcoal);
-        border: var(--ov-border-thin) solid rgba(255, 255, 255, 0.1);
+        background: var(--ov-nav-bar-bg);
+        border: var(--ov-border-thin) solid var(--ov-nav-bar-border);
         border-radius: var(--ov-radius-md);
         padding: var(--ov-space-1);
-        min-width: 180px;
+        min-width: var(--ov-nav-bar-dropdown-width);
         z-index: var(--ov-z-raised);
         display: flex;
         flex-direction: column;
@@ -271,11 +289,11 @@ export class OvNavBar extends LitElement {
 
       /* ── ov-menu-item themed for dark dropdown background ── */
       .overflow-menu ov-menu-item {
-        --color-text-primary:   rgba(255, 255, 255, 0.92);
-        --color-text-tertiary:  rgba(255, 255, 255, 0.45);
-        --color-bg-surface-muted: rgba(255, 255, 255, 0.1);
-        --color-brand-subtle:   rgba(255, 255, 255, 0.15);
-        --color-border-subtle:  rgba(255, 255, 255, 0.1);
+        --color-text-primary:     var(--ov-nav-bar-fg-dim);
+        --color-text-tertiary:    var(--ov-nav-bar-fg-muted);
+        --color-bg-surface-muted: var(--ov-nav-bar-border);
+        --color-brand-subtle:     var(--ov-nav-bar-brand-subtle);
+        --color-border-subtle:    var(--ov-nav-bar-border);
       }
 
       /* ── Actions slot ── */

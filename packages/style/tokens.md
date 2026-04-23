@@ -220,6 +220,7 @@ Full reference for all tokens in `@ov/style`. See [CLAUDE.md](./CLAUDE.md) for u
 
 | Token | Value |
 |-------|-------|
+| `--ov-lh-none` | 1 |
 | `--ov-lh-tight` | 1.1 |
 | `--ov-lh-snug` | 1.25 |
 | `--ov-lh-normal` | 1.5 |
