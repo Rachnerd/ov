@@ -10,7 +10,7 @@ const meta: Meta = {
       control: 'select',
       options: [
         'check', 'x', 'arrow-right', 'arrow-left', 'search', 'mail',
-        'info', 'warning', 'sun', 'moon', 'plus', 'user',
+        'info', 'warning', 'sun', 'moon', 'plus', 'user', 'menu',
       ],
     },
     size: { control: 'select', options: ['sm', 'md', 'lg', 'xl'] },
@@ -30,7 +30,7 @@ export const Default: Story = {
 export const AllIcons: Story = {
   render: () => html`
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:16px">
-      ${['check', 'x', 'arrow-right', 'arrow-left', 'search', 'mail', 'info', 'warning', 'sun', 'moon', 'plus', 'user'].map(
+      ${['check', 'x', 'arrow-right', 'arrow-left', 'search', 'mail', 'info', 'warning', 'sun', 'moon', 'plus', 'user', 'menu'].map(
         (name) => html`
           <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:12px;border:1px solid #e5e7eb;border-radius:8px">
             <ov-icon name=${name} size="lg"></ov-icon>
