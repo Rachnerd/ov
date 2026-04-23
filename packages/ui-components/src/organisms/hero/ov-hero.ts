@@ -1,6 +1,7 @@
 import { LitElement, html, css, nothing, type TemplateResult } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { baseStyles } from '../../shared-styles.js';
+import '../../atoms/heading/ov-heading.js';
 
 /**
  * <ov-hero>
@@ -31,18 +32,31 @@ export class OvHero extends LitElement {
   static override styles = [
     baseStyles,
     css`
-      :host { display: block; }
+      :host {
+        display: block;
+
+        /* Local component tokens */
+        --ov-hero-height:          36vh;
+        --ov-hero-bg:              var(--ov-charcoal);
+        --ov-hero-clip-path:       polygon(0 0, 100% 0, 100% 88%, 0 100%);
+        --ov-hero-content-z:       1;
+        --ov-hero-heading-size:    clamp(3rem, 10vw, 7rem);
+        --ov-hero-fg-muted:        rgba(255, 255, 255, 0.8);
+        --ov-hero-subheading-ls:   0.45em;
+
+        /* Inject fluid heading size into ov-heading shadow DOM */
+        --ov-heading-hero-size:    var(--ov-hero-heading-size);
+      }
 
       section {
         position: relative;
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 36vh;
+        height: var(--ov-hero-height);
         overflow: hidden;
-        background: var(--ov-charcoal, #1e2330);
-        /* diagonal bottom edge */
-        clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
+        background: var(--ov-hero-bg);
+        clip-path: var(--ov-hero-clip-path);
       }
 
       /* background image layer */
@@ -58,28 +72,16 @@ export class OvHero extends LitElement {
       .overlay {
         position: absolute;
         inset: 0;
-        background: var(--ov-charcoal, #1e2330);
+        background: var(--ov-hero-bg);
       }
 
       /* content layer */
       .content {
         position: relative;
-        z-index: 1;
+        z-index: var(--ov-hero-content-z);
         text-align: center;
         padding: var(--ov-space-16) var(--ov-space-8) var(--ov-space-8);
         width: 100%;
-      }
-
-      /* heading */
-      .heading {
-        margin: 0;
-        font-family: inherit;
-        font-size: clamp(3rem, 10vw, 7rem);
-        font-weight: var(--ov-fw-bold, 700);
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        color: white;
-        line-height: var(--ov-lh-none);
       }
 
       /* subheading */
@@ -87,10 +89,10 @@ export class OvHero extends LitElement {
         display: block;
         margin-top: var(--ov-space-3);
         font-size: var(--ov-fs-sm);
-        font-weight: var(--ov-fw-regular, 400);
-        letter-spacing: 0.45em;
+        font-weight: var(--ov-fw-regular);
+        letter-spacing: var(--ov-hero-subheading-ls);
         text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.8);
+        color: var(--ov-hero-fg-muted);
       }
 
       /* logo slot wrapper */
@@ -132,7 +134,7 @@ export class OvHero extends LitElement {
         <div class="content">
           <div class="logo-area"><slot name="logo"></slot></div>
           ${this.heading
-            ? html`<h1 class="heading">${this.heading}</h1>`
+            ? html`<ov-heading level="1" size="hero" tone="inverse">${this.heading}</ov-heading>`
             : nothing}
           ${this.subheading
             ? html`<span class="subheading">${this.subheading}</span>`

@@ -7,7 +7,7 @@ const meta: Meta = {
   component: 'ov-heading',
   argTypes: {
     level:  { control: { type: 'select' }, options: [1, 2, 3, 4, 5, 6] },
-    size:   { control: { type: 'select' }, options: ['', 'display-1', 'display-2', 'h1', 'h2', 'h3', 'h4'] },
+    size:   { control: { type: 'select' }, options: ['', 'display-1', 'display-2', 'h1', 'h2', 'h3', 'h4', 'hero'] },
     tone:   { control: { type: 'select' }, options: ['primary', 'secondary', 'brand', 'accent', 'inverse'] },
   },
   args: { level: 2, size: '', tone: 'primary' },
@@ -40,6 +40,9 @@ export const Levels: Story = {
 export const DisplaySizes: Story = {
   render: () => html`
     <div style="display:flex;flex-direction:column;gap:var(--ov-space-5)">
+      <div style="background:var(--ov-charcoal);padding:var(--ov-space-6)">
+        <ov-heading level="1" size="hero" tone="inverse">Hero Display</ov-heading>
+      </div>
       <ov-heading level="1" size="display-1">Display 1 — Bold Vision</ov-heading>
       <ov-heading level="2" size="display-2">Display 2 — Strategic Insight</ov-heading>
       <ov-heading level="2" size="h1">H1 size on H2 element</ov-heading>
