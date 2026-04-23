@@ -49,8 +49,8 @@ export class OvImageCard extends LitElement {
 
       .label {
         font-family: inherit;
-        font-size: var(--ov-fs-base);
-        font-weight: var(--ov-fw-semibold, 600);
+        font-size: var(--ov-fs-sm);
+        font-weight: var(--ov-fw-bold);
         letter-spacing: 0.04em;
         text-transform: uppercase;
         color: white;
