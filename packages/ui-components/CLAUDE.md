@@ -2,6 +2,12 @@
 
 Lit 3 web-component library for the OpenValue design system. Components are custom elements (`ov-*`) split into atoms and molecules.
 
+## Authoring skill
+
+Read this before creating or changing any component:
+
+@src/authoring.md
+
 ## Skill files
 
 Read the relevant skill file before writing or reviewing any `ov-*` element. Each file documents exact props, slots, events, and valid attribute values.

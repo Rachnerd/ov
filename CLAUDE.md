@@ -10,6 +10,12 @@ Monorepo containing the OpenValue design system and applications.
 
 ## UI Components
 
+### Authoring skill
+
+Read this before creating or changing any component:
+
+@packages/ui-components/src/authoring.md
+
 ### Skill files
 
 Read the relevant skill file before writing or reviewing any `ov-*` element. Each file documents the exact props, slots, events, and valid attribute values for that component.
