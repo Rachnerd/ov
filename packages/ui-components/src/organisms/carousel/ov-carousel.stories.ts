@@ -22,11 +22,15 @@ const meta: Meta = {
   argTypes: {
     heading:      { control: 'text' },
     visibleCount: { control: { type: 'number', min: 1, max: 5 } },
+    countMd:      { control: { type: 'number', min: 1, max: 5 } },
+    countSm:      { control: { type: 'number', min: 1, max: 5 } },
     autoPlayMs:   { control: { type: 'number', min: 0, step: 500 } },
   },
   args: {
     heading:      'Featured cities',
     visibleCount: 3,
+    countMd:      2,
+    countSm:      1,
     autoPlayMs:   4000,
   },
 };
@@ -39,6 +43,8 @@ export const Default: Story = {
     <ov-carousel
       heading=${args['heading']}
       visible-count=${args['visibleCount']}
+      count-md=${args['countMd']}
+      count-sm=${args['countSm']}
       auto-play-ms=${args['autoPlayMs']}
     >
       ${ITEMS}
@@ -83,6 +89,15 @@ export const FewItems: Story = {
       <ov-image-card label="Amsterdam"  src="/banner.jpg" href="#"></ov-image-card>
       <ov-image-card label="Rotterdam"  src="/banner.jpg" href="#"></ov-image-card>
       <ov-image-card label="Eindhoven"  src="/banner.jpg" href="#"></ov-image-card>
+    </ov-carousel>
+  `,
+};
+
+export const ResponsiveCounts: Story = {
+  name: 'Responsive counts (resize to see)',
+  render: () => html`
+    <ov-carousel heading="Resize this panel" visible-count="4" count-md="2" count-sm="1">
+      ${ITEMS}
     </ov-carousel>
   `,
 };

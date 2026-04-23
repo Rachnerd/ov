@@ -9,6 +9,9 @@ import '@ov/ui-components/atoms/heading/ov-heading';
  * A generic animated carousel. Place any card elements in the default slot —
  * the carousel handles layout, smooth scroll, dot navigation, and auto-play.
  *
+ * Responsive by default: uses a ResizeObserver to switch between
+ * count-sm / count-md / visible-count based on its own rendered width.
+ *
  * @element ov-carousel
  *
  * @slot           - The card items to display (any element).
@@ -19,36 +22,64 @@ export class OvCarousel extends LitElement {
   /** Optional section heading. */
   @property({ type: String }) heading = '';
 
-  /** Number of items visible at once. */
+  /** Items visible at full width (≥ 1024 px). */
   @property({ type: Number, attribute: 'visible-count' }) visibleCount = 3;
+
+  /** Items visible at medium width (640 – 1023 px). */
+  @property({ type: Number, attribute: 'count-md' }) countMd = 2;
+
+  /** Items visible at small width (< 640 px). */
+  @property({ type: Number, attribute: 'count-sm' }) countSm = 1;
 
   /** Auto-play interval in ms. Set to 0 to disable. */
   @property({ type: Number, attribute: 'auto-play-ms' }) autoPlayMs = 4000;
 
   @state() private _current = 0;
   @state() private _itemCount = 0;
+  @state() private _effectiveVis = 3;
 
   @query('.track') private _track!: HTMLElement;
 
+  private _ro!: ResizeObserver;
   private _timer: ReturnType<typeof setInterval> | null = null;
 
   private get _maxIndex() {
-    return Math.max(0, this._itemCount - this.visibleCount);
+    return Math.max(0, this._itemCount - this._effectiveVis);
+  }
+
+  private _pickCount(width: number): number {
+    if (width < 640)  return this.countSm;
+    if (width < 1024) return this.countMd;
+    return this.visibleCount;
+  }
+
+  private _syncVis(width: number) {
+    const count = this._pickCount(width);
+    if (count !== this._effectiveVis) this._effectiveVis = count;
+    this.style.setProperty('--_vis', String(count));
   }
 
   override connectedCallback() {
     super.connectedCallback();
+    // Pre-seed from viewport width to avoid a flash of 3-item layout on mobile.
+    this._syncVis(window.innerWidth);
+    this._ro = new ResizeObserver(entries => {
+      this._syncVis(entries[0].contentRect.width);
+    });
+    this._ro.observe(this);
     this._startAutoPlay();
   }
 
   override disconnectedCallback() {
     super.disconnectedCallback();
+    this._ro?.disconnect();
     this._stopAutoPlay();
   }
 
   override updated(changed: Map<string, unknown>) {
-    if (changed.has('visibleCount')) {
-      this.style.setProperty('--_vis', String(this.visibleCount));
+    // Re-sync when any count prop changes after initial render.
+    if (changed.has('visibleCount') || changed.has('countMd') || changed.has('countSm')) {
+      this._syncVis(this.getBoundingClientRect().width || window.innerWidth);
     }
   }
 
@@ -95,7 +126,6 @@ export class OvCarousel extends LitElement {
   private _handleSlotChange(e: Event) {
     const slot = e.target as HTMLSlotElement;
     this._itemCount = slot.assignedElements().length;
-    this.style.setProperty('--_vis', String(this.visibleCount));
   }
 
   static override styles = [
@@ -164,9 +194,7 @@ export class OvCarousel extends LitElement {
   ];
 
   protected override render(): TemplateResult {
-    // Number of distinct scroll positions = items - visible + 1.
-    // This is always <= _itemCount, so dots stay in sync with what's visible.
-    const dotCount = Math.max(0, this._itemCount - this.visibleCount + 1);
+    const dotCount = Math.max(0, this._itemCount - this._effectiveVis + 1);
     const showDots = dotCount > 1;
 
     return html`

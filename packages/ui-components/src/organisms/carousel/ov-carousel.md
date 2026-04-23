@@ -13,11 +13,13 @@ A generic animated carousel. Place any card elements in the default slot — the
 
 ## Properties
 
-| Property       | Attribute       | Type     | Default | Description                                        |
-|----------------|-----------------|----------|---------|----------------------------------------------------|
-| `heading`      | `heading`       | `string` | `''`    | Optional section heading                           |
-| `visibleCount` | `visible-count` | `number` | `3`     | Number of items visible at once                    |
-| `autoPlayMs`   | `auto-play-ms`  | `number` | `4000`  | Auto-play interval in ms; set to `0` to disable    |
+| Property       | Attribute       | Type     | Default | Description                                                |
+|----------------|-----------------|----------|---------|------------------------------------------------------------|
+| `heading`      | `heading`       | `string` | `''`    | Optional section heading                                   |
+| `visibleCount` | `visible-count` | `number` | `3`     | Items visible at full width (≥ 1024 px)                    |
+| `countMd`      | `count-md`      | `number` | `2`     | Items visible at medium width (640 – 1023 px)              |
+| `countSm`      | `count-sm`      | `number` | `1`     | Items visible at small width (< 640 px)                    |
+| `autoPlayMs`   | `auto-play-ms`  | `number` | `4000`  | Auto-play interval in ms; set to `0` to disable            |
 
 ## Slots
 
