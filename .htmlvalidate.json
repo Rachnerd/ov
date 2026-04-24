@@ -2,7 +2,9 @@
   "extends": ["html-validate:recommended"],
   "rules": {
     "no-trailing-whitespace": "off",
-    "wcag/h32": "off"
+    "wcag/h32": "off",
+    "doctype-style": ["error", { "style": "lowercase" }],
+    "void-style": ["error", { "style": "selfclosing" }]
   },
   "elements": [
     "html5",
@@ -12,7 +14,14 @@
         "phrasing": true,
         "attributes": {
           "variant": {
-            "enum": ["primary", "secondary", "ghost", "inverse", "accent", "danger"]
+            "enum": [
+              "primary",
+              "secondary",
+              "ghost",
+              "inverse",
+              "accent",
+              "danger"
+            ]
           },
           "size": {
             "enum": ["sm", "md", "lg"]
@@ -30,7 +39,15 @@
         "phrasing": true,
         "attributes": {
           "variant": {
-            "enum": ["default", "brand", "accent", "success", "warning", "danger", "info"]
+            "enum": [
+              "default",
+              "brand",
+              "accent",
+              "success",
+              "warning",
+              "danger",
+              "info"
+            ]
           },
           "appearance": {
             "enum": ["soft", "solid", "outline"]
@@ -46,7 +63,22 @@
         "phrasing": true,
         "attributes": {
           "name": {
-            "enum": ["check", "x", "arrow-right", "arrow-left", "search", "mail", "info", "warning", "sun", "moon", "plus", "user", "menu", ""]
+            "enum": [
+              "check",
+              "x",
+              "arrow-right",
+              "arrow-left",
+              "search",
+              "mail",
+              "info",
+              "warning",
+              "sun",
+              "moon",
+              "plus",
+              "user",
+              "menu",
+              ""
+            ]
           },
           "size": {
             "enum": ["sm", "md", "lg", "xl"]
@@ -72,7 +104,15 @@
         "phrasing": true,
         "attributes": {
           "type": {
-            "enum": ["text", "email", "password", "number", "search", "tel", "url"]
+            "enum": [
+              "text",
+              "email",
+              "password",
+              "number",
+              "search",
+              "tel",
+              "url"
+            ]
           },
           "value": {},
           "placeholder": {},
@@ -173,7 +213,16 @@
             "enum": ["1", "2", "3", "4", "5", "6"]
           },
           "size": {
-            "enum": ["display-1", "display-2", "h1", "h2", "h3", "h4", "hero", ""]
+            "enum": [
+              "display-1",
+              "display-2",
+              "h1",
+              "h2",
+              "h3",
+              "h4",
+              "hero",
+              ""
+            ]
           },
           "tone": {
             "enum": ["primary", "secondary", "brand", "accent", "inverse"]
@@ -188,7 +237,18 @@
             "enum": ["body", "body-sm", "lead", "caption", "eyebrow", "code"]
           },
           "tone": {
-            "enum": ["primary", "secondary", "tertiary", "muted", "brand", "accent", "success", "warning", "danger", "inverse"]
+            "enum": [
+              "primary",
+              "secondary",
+              "tertiary",
+              "muted",
+              "brand",
+              "accent",
+              "success",
+              "warning",
+              "danger",
+              "inverse"
+            ]
           },
           "weight": {
             "enum": ["light", "regular", "medium", "semibold", "bold", ""]
@@ -336,7 +396,22 @@
           "heading": {},
           "description": {},
           "icon": {
-            "enum": ["check", "x", "arrow-right", "arrow-left", "search", "mail", "info", "warning", "sun", "moon", "plus", "user", "menu", ""]
+            "enum": [
+              "check",
+              "x",
+              "arrow-right",
+              "arrow-left",
+              "search",
+              "mail",
+              "info",
+              "warning",
+              "sun",
+              "moon",
+              "plus",
+              "user",
+              "menu",
+              ""
+            ]
           },
           "size": {
             "enum": ["sm", "md", "lg"]
