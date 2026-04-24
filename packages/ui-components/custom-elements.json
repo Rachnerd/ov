@@ -132,177 +132,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/atoms/avatar/ov-avatar.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "OvAvatar",
-          "members": [
-            {
-              "kind": "field",
-              "name": "src",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "attribute": "src"
-            },
-            {
-              "kind": "field",
-              "name": "alt",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "attribute": "alt"
-            },
-            {
-              "kind": "field",
-              "name": "initials",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "attribute": "initials"
-            },
-            {
-              "kind": "field",
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "attribute": "name"
-            },
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "AvatarSize"
-              },
-              "default": "'md'",
-              "attribute": "size",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "shape",
-              "type": {
-                "text": "AvatarShape"
-              },
-              "default": "'circle'",
-              "attribute": "shape",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "tone",
-              "type": {
-                "text": "AvatarTone"
-              },
-              "default": "'brand'",
-              "attribute": "tone",
-              "reflects": true
-            },
-            {
-              "kind": "method",
-              "name": "_deriveInitials",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "string"
-                }
-              }
-            }
-          ],
-          "attributes": [
-            {
-              "name": "src",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "fieldName": "src"
-            },
-            {
-              "name": "alt",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "fieldName": "alt"
-            },
-            {
-              "name": "initials",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "fieldName": "initials"
-            },
-            {
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "fieldName": "name"
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "AvatarSize"
-              },
-              "default": "'md'",
-              "fieldName": "size"
-            },
-            {
-              "name": "shape",
-              "type": {
-                "text": "AvatarShape"
-              },
-              "default": "'circle'",
-              "fieldName": "shape"
-            },
-            {
-              "name": "tone",
-              "type": {
-                "text": "AvatarTone"
-              },
-              "default": "'brand'",
-              "fieldName": "tone"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "ov-avatar",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "OvAvatar",
-          "declaration": {
-            "name": "OvAvatar",
-            "module": "src/atoms/avatar/ov-avatar.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "ov-avatar",
-          "declaration": {
-            "name": "OvAvatar",
-            "module": "src/atoms/avatar/ov-avatar.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/atoms/badge/ov-badge.ts",
       "declarations": [
         {
@@ -627,6 +456,177 @@
           "declaration": {
             "name": "OvButton",
             "module": "src/atoms/button/ov-button.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/atoms/avatar/ov-avatar.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "OvAvatar",
+          "members": [
+            {
+              "kind": "field",
+              "name": "src",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "src"
+            },
+            {
+              "kind": "field",
+              "name": "alt",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "alt"
+            },
+            {
+              "kind": "field",
+              "name": "initials",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "initials"
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "name"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "AvatarSize"
+              },
+              "default": "'md'",
+              "attribute": "size",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "shape",
+              "type": {
+                "text": "AvatarShape"
+              },
+              "default": "'circle'",
+              "attribute": "shape",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "tone",
+              "type": {
+                "text": "AvatarTone"
+              },
+              "default": "'brand'",
+              "attribute": "tone",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "_deriveInitials",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "src",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "src"
+            },
+            {
+              "name": "alt",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "alt"
+            },
+            {
+              "name": "initials",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "initials"
+            },
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "name"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "AvatarSize"
+              },
+              "default": "'md'",
+              "fieldName": "size"
+            },
+            {
+              "name": "shape",
+              "type": {
+                "text": "AvatarShape"
+              },
+              "default": "'circle'",
+              "fieldName": "shape"
+            },
+            {
+              "name": "tone",
+              "type": {
+                "text": "AvatarTone"
+              },
+              "default": "'brand'",
+              "fieldName": "tone"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ov-avatar",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OvAvatar",
+          "declaration": {
+            "name": "OvAvatar",
+            "module": "src/atoms/avatar/ov-avatar.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ov-avatar",
+          "declaration": {
+            "name": "OvAvatar",
+            "module": "src/atoms/avatar/ov-avatar.ts"
           }
         }
       ]
@@ -1012,6 +1012,98 @@
           "declaration": {
             "name": "OvHeading",
             "module": "src/atoms/heading/ov-heading.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/atoms/icon/ov-icon.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "OvIcon",
+          "members": [
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "IconName"
+              },
+              "default": "''",
+              "attribute": "name",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "IconSize"
+              },
+              "default": "'md'",
+              "attribute": "size",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "label"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "type": {
+                "text": "IconName"
+              },
+              "default": "''",
+              "fieldName": "name"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "IconSize"
+              },
+              "default": "'md'",
+              "fieldName": "size"
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "label"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ov-icon",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OvIcon",
+          "declaration": {
+            "name": "OvIcon",
+            "module": "src/atoms/icon/ov-icon.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ov-icon",
+          "declaration": {
+            "name": "OvIcon",
+            "module": "src/atoms/icon/ov-icon.ts"
           }
         }
       ]
@@ -1421,98 +1513,6 @@
           "declaration": {
             "name": "OvLabel",
             "module": "src/atoms/label/ov-label.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/atoms/icon/ov-icon.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "OvIcon",
-          "members": [
-            {
-              "kind": "field",
-              "name": "name",
-              "type": {
-                "text": "IconName"
-              },
-              "default": "''",
-              "attribute": "name",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "IconSize"
-              },
-              "default": "'md'",
-              "attribute": "size",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "attribute": "label"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "name",
-              "type": {
-                "text": "IconName"
-              },
-              "default": "''",
-              "fieldName": "name"
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "IconSize"
-              },
-              "default": "'md'",
-              "fieldName": "size"
-            },
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "fieldName": "label"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "ov-icon",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "OvIcon",
-          "declaration": {
-            "name": "OvIcon",
-            "module": "src/atoms/icon/ov-icon.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "ov-icon",
-          "declaration": {
-            "name": "OvIcon",
-            "module": "src/atoms/icon/ov-icon.ts"
           }
         }
       ]
@@ -1961,98 +1961,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/atoms/spinner/ov-spinner.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "OvSpinner",
-          "members": [
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "IconSize"
-              },
-              "default": "'md'",
-              "attribute": "size",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "tone",
-              "type": {
-                "text": "SpinnerTone"
-              },
-              "default": "'brand'",
-              "attribute": "tone",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "default": "'Loading'",
-              "attribute": "label"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "size",
-              "type": {
-                "text": "IconSize"
-              },
-              "default": "'md'",
-              "fieldName": "size"
-            },
-            {
-              "name": "tone",
-              "type": {
-                "text": "SpinnerTone"
-              },
-              "default": "'brand'",
-              "fieldName": "tone"
-            },
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "default": "'Loading'",
-              "fieldName": "label"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "ov-spinner",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "OvSpinner",
-          "declaration": {
-            "name": "OvSpinner",
-            "module": "src/atoms/spinner/ov-spinner.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "ov-spinner",
-          "declaration": {
-            "name": "OvSpinner",
-            "module": "src/atoms/spinner/ov-spinner.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/atoms/switch/ov-switch.ts",
       "declarations": [
         {
@@ -2183,6 +2091,98 @@
           "declaration": {
             "name": "OvSwitch",
             "module": "src/atoms/switch/ov-switch.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/atoms/spinner/ov-spinner.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "OvSpinner",
+          "members": [
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "IconSize"
+              },
+              "default": "'md'",
+              "attribute": "size",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "tone",
+              "type": {
+                "text": "SpinnerTone"
+              },
+              "default": "'brand'",
+              "attribute": "tone",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Loading'",
+              "attribute": "label"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "size",
+              "type": {
+                "text": "IconSize"
+              },
+              "default": "'md'",
+              "fieldName": "size"
+            },
+            {
+              "name": "tone",
+              "type": {
+                "text": "SpinnerTone"
+              },
+              "default": "'brand'",
+              "fieldName": "tone"
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Loading'",
+              "fieldName": "label"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ov-spinner",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OvSpinner",
+          "declaration": {
+            "name": "OvSpinner",
+            "module": "src/atoms/spinner/ov-spinner.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ov-spinner",
+          "declaration": {
+            "name": "OvSpinner",
+            "module": "src/atoms/spinner/ov-spinner.ts"
           }
         }
       ]
@@ -2693,118 +2693,240 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/molecules/empty-state/ov-empty-state.ts",
+      "path": "src/molecules/breadcrumbs/ov-breadcrumbs.ts",
       "declarations": [
         {
           "kind": "class",
-          "description": "",
-          "name": "OvEmptyState",
+          "description": "<ov-breadcrumbs>\n\nAccepts an array of { label, href? } items and renders a semantic\n<nav aria-label=\"Breadcrumb\"><ol> trail with chevron separators.\nThe last item is always current-page (aria-current=\"page\", no link).",
+          "name": "OvBreadcrumbs",
           "slots": [
             {
-              "description": "Illustration or ov-icon override.",
-              "name": "icon"
-            },
-            {
-              "description": "Buttons / links below the description.",
-              "name": "actions"
+              "description": "Custom separator element; overrides the default chevron.",
+              "name": "separator"
             }
           ],
           "members": [
             {
               "kind": "field",
-              "name": "heading",
+              "name": "items",
               "type": {
-                "text": "string"
+                "text": "BreadcrumbItem[]"
               },
-              "default": "''",
-              "attribute": "heading"
+              "default": "[]",
+              "description": "Ordered list of items. Last item = current page.",
+              "attribute": "items"
             },
             {
               "kind": "field",
-              "name": "description",
+              "name": "max",
               "type": {
-                "text": "string"
+                "text": "number"
               },
-              "default": "''",
-              "attribute": "description"
+              "default": "0",
+              "description": "Show the collapsed \"…\" version once more than `max` items exist.",
+              "attribute": "max"
             },
             {
-              "kind": "field",
-              "name": "icon",
-              "type": {
-                "text": "BuiltInIconName | ''"
-              },
-              "default": "''",
-              "attribute": "icon"
-            },
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "'sm' | 'md' | 'lg'"
-              },
-              "default": "'md'",
-              "attribute": "size",
-              "reflects": true
+              "kind": "method",
+              "name": "_visibleItems",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "BreadcrumbItem[]"
+                }
+              }
             }
           ],
           "attributes": [
             {
-              "name": "heading",
+              "name": "items",
               "type": {
-                "text": "string"
+                "text": "BreadcrumbItem[]"
               },
-              "default": "''",
-              "fieldName": "heading"
+              "default": "[]",
+              "description": "Ordered list of items. Last item = current page.",
+              "fieldName": "items"
             },
             {
-              "name": "description",
+              "name": "max",
               "type": {
-                "text": "string"
+                "text": "number"
               },
-              "default": "''",
-              "fieldName": "description"
-            },
-            {
-              "name": "icon",
-              "type": {
-                "text": "BuiltInIconName | ''"
-              },
-              "default": "''",
-              "fieldName": "icon"
-            },
-            {
-              "name": "size",
-              "type": {
-                "text": "'sm' | 'md' | 'lg'"
-              },
-              "default": "'md'",
-              "fieldName": "size"
+              "default": "0",
+              "description": "Show the collapsed \"…\" version once more than `max` items exist.",
+              "fieldName": "max"
             }
           ],
           "superclass": {
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "ov-empty-state",
+          "tagName": "ov-breadcrumbs",
           "customElement": true
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "OvEmptyState",
+          "name": "OvBreadcrumbs",
           "declaration": {
-            "name": "OvEmptyState",
-            "module": "src/molecules/empty-state/ov-empty-state.ts"
+            "name": "OvBreadcrumbs",
+            "module": "src/molecules/breadcrumbs/ov-breadcrumbs.ts"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "ov-empty-state",
+          "name": "ov-breadcrumbs",
           "declaration": {
-            "name": "OvEmptyState",
-            "module": "src/molecules/empty-state/ov-empty-state.ts"
+            "name": "OvBreadcrumbs",
+            "module": "src/molecules/breadcrumbs/ov-breadcrumbs.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/molecules/card/ov-card.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "<ov-card>\n\nStructured surface molecule composed of three named regions: header,\nbody, and footer. Maps directly to the four approved colour combos\nfrom the brand guidelines.",
+          "name": "OvCard",
+          "cssProperties": [
+            {
+              "description": "Inner padding (default --ov-space-6).",
+              "name": "--ov-card-padding"
+            },
+            {
+              "description": "Gap between header / body / footer.",
+              "name": "--ov-card-gap"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Card header (titles, eyebrow, avatar row).",
+              "name": "header"
+            },
+            {
+              "description": "Card body content.",
+              "name": ""
+            },
+            {
+              "description": "Card footer (actions, metadata, pagination).",
+              "name": "footer"
+            },
+            {
+              "description": "Full-bleed image/video placed above the header.",
+              "name": "media"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "CardVariant"
+              },
+              "default": "'default'",
+              "description": "'default'       → charcoal on white (light) / charcoal on charcoal (dark)\n'brand'         → white on blue\n'inverse'       → white on charcoal\n'inverse-brand' → blue on charcoal",
+              "attribute": "variant",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "interactive",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Adds a hover elevation + translateY transform.",
+              "attribute": "interactive",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "borderless",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Removes the border.",
+              "attribute": "borderless",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "flush",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Removes all padding — useful when the card is purely a surface.",
+              "attribute": "flush",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "variant",
+              "type": {
+                "text": "CardVariant"
+              },
+              "default": "'default'",
+              "description": "'default'       → charcoal on white (light) / charcoal on charcoal (dark)\n'brand'         → white on blue\n'inverse'       → white on charcoal\n'inverse-brand' → blue on charcoal",
+              "fieldName": "variant"
+            },
+            {
+              "name": "interactive",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Adds a hover elevation + translateY transform.",
+              "fieldName": "interactive"
+            },
+            {
+              "name": "borderless",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Removes the border.",
+              "fieldName": "borderless"
+            },
+            {
+              "name": "flush",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Removes all padding — useful when the card is purely a surface.",
+              "fieldName": "flush"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ov-card",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OvCard",
+          "declaration": {
+            "name": "OvCard",
+            "module": "src/molecules/card/ov-card.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ov-card",
+          "declaration": {
+            "name": "OvCard",
+            "module": "src/molecules/card/ov-card.ts"
           }
         }
       ]
@@ -3138,6 +3260,124 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/molecules/empty-state/ov-empty-state.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "OvEmptyState",
+          "slots": [
+            {
+              "description": "Illustration or ov-icon override.",
+              "name": "icon"
+            },
+            {
+              "description": "Buttons / links below the description.",
+              "name": "actions"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "heading",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "heading"
+            },
+            {
+              "kind": "field",
+              "name": "description",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "description"
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "type": {
+                "text": "BuiltInIconName | ''"
+              },
+              "default": "''",
+              "attribute": "icon"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "attribute": "size",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "heading",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "heading"
+            },
+            {
+              "name": "description",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "description"
+            },
+            {
+              "name": "icon",
+              "type": {
+                "text": "BuiltInIconName | ''"
+              },
+              "default": "''",
+              "fieldName": "icon"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "fieldName": "size"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ov-empty-state",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OvEmptyState",
+          "declaration": {
+            "name": "OvEmptyState",
+            "module": "src/molecules/empty-state/ov-empty-state.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ov-empty-state",
+          "declaration": {
+            "name": "OvEmptyState",
+            "module": "src/molecules/empty-state/ov-empty-state.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/molecules/input-group/ov-input-group.ts",
       "declarations": [
         {
@@ -3205,6 +3445,141 @@
           "declaration": {
             "name": "OvInputGroup",
             "module": "src/molecules/input-group/ov-input-group.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/molecules/stat/ov-stat.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "OvStat",
+          "members": [
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "label"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "sublabel",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "sublabel"
+            },
+            {
+              "kind": "field",
+              "name": "delta",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "delta"
+            },
+            {
+              "kind": "field",
+              "name": "trend",
+              "type": {
+                "text": "StatDelta"
+              },
+              "default": "'neutral'",
+              "attribute": "trend",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "_arrowPath",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "TemplateResult | typeof nothing"
+                }
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "label"
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "value"
+            },
+            {
+              "name": "sublabel",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "sublabel"
+            },
+            {
+              "name": "delta",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "delta"
+            },
+            {
+              "name": "trend",
+              "type": {
+                "text": "StatDelta"
+              },
+              "default": "'neutral'",
+              "fieldName": "trend"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ov-stat",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OvStat",
+          "declaration": {
+            "name": "OvStat",
+            "module": "src/molecules/stat/ov-stat.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ov-stat",
+          "declaration": {
+            "name": "OvStat",
+            "module": "src/molecules/stat/ov-stat.ts"
           }
         }
       ]
@@ -3372,381 +3747,6 @@
           "declaration": {
             "name": "OvMenuItem",
             "module": "src/molecules/menu-item/ov-menu-item.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/molecules/card/ov-card.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "<ov-card>\n\nStructured surface molecule composed of three named regions: header,\nbody, and footer. Maps directly to the four approved colour combos\nfrom the brand guidelines.",
-          "name": "OvCard",
-          "cssProperties": [
-            {
-              "description": "Inner padding (default --ov-space-6).",
-              "name": "--ov-card-padding"
-            },
-            {
-              "description": "Gap between header / body / footer.",
-              "name": "--ov-card-gap"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Card header (titles, eyebrow, avatar row).",
-              "name": "header"
-            },
-            {
-              "description": "Card body content.",
-              "name": ""
-            },
-            {
-              "description": "Card footer (actions, metadata, pagination).",
-              "name": "footer"
-            },
-            {
-              "description": "Full-bleed image/video placed above the header.",
-              "name": "media"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "variant",
-              "type": {
-                "text": "CardVariant"
-              },
-              "default": "'default'",
-              "description": "'default'       → charcoal on white (light) / charcoal on charcoal (dark)\n'brand'         → white on blue\n'inverse'       → white on charcoal\n'inverse-brand' → blue on charcoal",
-              "attribute": "variant",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "interactive",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Adds a hover elevation + translateY transform.",
-              "attribute": "interactive",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "borderless",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Removes the border.",
-              "attribute": "borderless",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "flush",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Removes all padding — useful when the card is purely a surface.",
-              "attribute": "flush",
-              "reflects": true
-            }
-          ],
-          "attributes": [
-            {
-              "name": "variant",
-              "type": {
-                "text": "CardVariant"
-              },
-              "default": "'default'",
-              "description": "'default'       → charcoal on white (light) / charcoal on charcoal (dark)\n'brand'         → white on blue\n'inverse'       → white on charcoal\n'inverse-brand' → blue on charcoal",
-              "fieldName": "variant"
-            },
-            {
-              "name": "interactive",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Adds a hover elevation + translateY transform.",
-              "fieldName": "interactive"
-            },
-            {
-              "name": "borderless",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Removes the border.",
-              "fieldName": "borderless"
-            },
-            {
-              "name": "flush",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Removes all padding — useful when the card is purely a surface.",
-              "fieldName": "flush"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "ov-card",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "OvCard",
-          "declaration": {
-            "name": "OvCard",
-            "module": "src/molecules/card/ov-card.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "ov-card",
-          "declaration": {
-            "name": "OvCard",
-            "module": "src/molecules/card/ov-card.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/molecules/breadcrumbs/ov-breadcrumbs.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "<ov-breadcrumbs>\n\nAccepts an array of { label, href? } items and renders a semantic\n<nav aria-label=\"Breadcrumb\"><ol> trail with chevron separators.\nThe last item is always current-page (aria-current=\"page\", no link).",
-          "name": "OvBreadcrumbs",
-          "slots": [
-            {
-              "description": "Custom separator element; overrides the default chevron.",
-              "name": "separator"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "items",
-              "type": {
-                "text": "BreadcrumbItem[]"
-              },
-              "default": "[]",
-              "description": "Ordered list of items. Last item = current page.",
-              "attribute": "items"
-            },
-            {
-              "kind": "field",
-              "name": "max",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "description": "Show the collapsed \"…\" version once more than `max` items exist.",
-              "attribute": "max"
-            },
-            {
-              "kind": "method",
-              "name": "_visibleItems",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "BreadcrumbItem[]"
-                }
-              }
-            }
-          ],
-          "attributes": [
-            {
-              "name": "items",
-              "type": {
-                "text": "BreadcrumbItem[]"
-              },
-              "default": "[]",
-              "description": "Ordered list of items. Last item = current page.",
-              "fieldName": "items"
-            },
-            {
-              "name": "max",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "description": "Show the collapsed \"…\" version once more than `max` items exist.",
-              "fieldName": "max"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "ov-breadcrumbs",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "OvBreadcrumbs",
-          "declaration": {
-            "name": "OvBreadcrumbs",
-            "module": "src/molecules/breadcrumbs/ov-breadcrumbs.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "ov-breadcrumbs",
-          "declaration": {
-            "name": "OvBreadcrumbs",
-            "module": "src/molecules/breadcrumbs/ov-breadcrumbs.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/molecules/stat/ov-stat.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "OvStat",
-          "members": [
-            {
-              "kind": "field",
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "attribute": "label"
-            },
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "attribute": "value"
-            },
-            {
-              "kind": "field",
-              "name": "sublabel",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "attribute": "sublabel"
-            },
-            {
-              "kind": "field",
-              "name": "delta",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "attribute": "delta"
-            },
-            {
-              "kind": "field",
-              "name": "trend",
-              "type": {
-                "text": "StatDelta"
-              },
-              "default": "'neutral'",
-              "attribute": "trend",
-              "reflects": true
-            },
-            {
-              "kind": "method",
-              "name": "_arrowPath",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "TemplateResult | typeof nothing"
-                }
-              }
-            }
-          ],
-          "attributes": [
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "fieldName": "label"
-            },
-            {
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "fieldName": "value"
-            },
-            {
-              "name": "sublabel",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "fieldName": "sublabel"
-            },
-            {
-              "name": "delta",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "fieldName": "delta"
-            },
-            {
-              "name": "trend",
-              "type": {
-                "text": "StatDelta"
-              },
-              "default": "'neutral'",
-              "fieldName": "trend"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "ov-stat",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "OvStat",
-          "declaration": {
-            "name": "OvStat",
-            "module": "src/molecules/stat/ov-stat.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "ov-stat",
-          "declaration": {
-            "name": "OvStat",
-            "module": "src/molecules/stat/ov-stat.ts"
           }
         }
       ]
@@ -4106,6 +4106,293 @@
           "declaration": {
             "name": "OvToast",
             "module": "src/molecules/toast/ov-toast.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/organisms/carousel/ov-carousel.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "<ov-carousel>\n\nA generic animated carousel. Place any card elements in the default slot —\nthe carousel handles layout, smooth scroll, dot navigation, and auto-play.\n\nResponsive by default: uses a ResizeObserver to switch between\ncount-sm / count-md / visible-count based on its own rendered width.",
+          "name": "OvCarousel",
+          "slots": [
+            {
+              "description": "The card items to display (any element).",
+              "name": ""
+            },
+            {
+              "description": "Optional descriptive text rendered below the heading.",
+              "name": "description"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "heading",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Optional section heading.",
+              "attribute": "heading"
+            },
+            {
+              "kind": "field",
+              "name": "visibleCount",
+              "type": {
+                "text": "number"
+              },
+              "default": "3",
+              "description": "Items visible at full width (≥ 1024 px).",
+              "attribute": "visible-count"
+            },
+            {
+              "kind": "field",
+              "name": "countMd",
+              "type": {
+                "text": "number"
+              },
+              "default": "2",
+              "description": "Items visible at medium width (640 – 1023 px).",
+              "attribute": "count-md"
+            },
+            {
+              "kind": "field",
+              "name": "countSm",
+              "type": {
+                "text": "number"
+              },
+              "default": "1",
+              "description": "Items visible at small width (< 640 px).",
+              "attribute": "count-sm"
+            },
+            {
+              "kind": "field",
+              "name": "autoPlayMs",
+              "type": {
+                "text": "number"
+              },
+              "default": "4000",
+              "description": "Auto-play interval in ms. Set to 0 to disable.",
+              "attribute": "auto-play-ms"
+            },
+            {
+              "kind": "field",
+              "name": "_current",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "private",
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "_itemCount",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "private",
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "_effectiveVis",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "private",
+              "default": "3"
+            },
+            {
+              "kind": "field",
+              "name": "_track",
+              "type": {
+                "text": "HTMLElement"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_ro",
+              "type": {
+                "text": "ResizeObserver"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_timer",
+              "type": {
+                "text": "ReturnType<typeof setInterval> | null"
+              },
+              "privacy": "private",
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "_maxIndex",
+              "privacy": "private",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_pickCount",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "width",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_syncVis",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "width",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_startAutoPlay",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_stopAutoPlay",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_advance",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_goTo",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "index",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_scrollToIndex",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "index",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleSlotChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            }
+          ],
+          "attributes": [
+            {
+              "name": "heading",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Optional section heading.",
+              "fieldName": "heading"
+            },
+            {
+              "name": "visible-count",
+              "type": {
+                "text": "number"
+              },
+              "default": "3",
+              "description": "Items visible at full width (≥ 1024 px).",
+              "fieldName": "visibleCount"
+            },
+            {
+              "name": "count-md",
+              "type": {
+                "text": "number"
+              },
+              "default": "2",
+              "description": "Items visible at medium width (640 – 1023 px).",
+              "fieldName": "countMd"
+            },
+            {
+              "name": "count-sm",
+              "type": {
+                "text": "number"
+              },
+              "default": "1",
+              "description": "Items visible at small width (< 640 px).",
+              "fieldName": "countSm"
+            },
+            {
+              "name": "auto-play-ms",
+              "type": {
+                "text": "number"
+              },
+              "default": "4000",
+              "description": "Auto-play interval in ms. Set to 0 to disable.",
+              "fieldName": "autoPlayMs"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ov-carousel",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OvCarousel",
+          "declaration": {
+            "name": "OvCarousel",
+            "module": "src/organisms/carousel/ov-carousel.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ov-carousel",
+          "declaration": {
+            "name": "OvCarousel",
+            "module": "src/organisms/carousel/ov-carousel.ts"
           }
         }
       ]
@@ -4517,293 +4804,6 @@
           "declaration": {
             "name": "OvPageLayout",
             "module": "src/templates/page-layout/ov-page-layout.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/organisms/carousel/ov-carousel.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "<ov-carousel>\n\nA generic animated carousel. Place any card elements in the default slot —\nthe carousel handles layout, smooth scroll, dot navigation, and auto-play.\n\nResponsive by default: uses a ResizeObserver to switch between\ncount-sm / count-md / visible-count based on its own rendered width.",
-          "name": "OvCarousel",
-          "slots": [
-            {
-              "description": "The card items to display (any element).",
-              "name": ""
-            },
-            {
-              "description": "Optional descriptive text rendered below the heading.",
-              "name": "description"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "heading",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Optional section heading.",
-              "attribute": "heading"
-            },
-            {
-              "kind": "field",
-              "name": "visibleCount",
-              "type": {
-                "text": "number"
-              },
-              "default": "3",
-              "description": "Items visible at full width (≥ 1024 px).",
-              "attribute": "visible-count"
-            },
-            {
-              "kind": "field",
-              "name": "countMd",
-              "type": {
-                "text": "number"
-              },
-              "default": "2",
-              "description": "Items visible at medium width (640 – 1023 px).",
-              "attribute": "count-md"
-            },
-            {
-              "kind": "field",
-              "name": "countSm",
-              "type": {
-                "text": "number"
-              },
-              "default": "1",
-              "description": "Items visible at small width (< 640 px).",
-              "attribute": "count-sm"
-            },
-            {
-              "kind": "field",
-              "name": "autoPlayMs",
-              "type": {
-                "text": "number"
-              },
-              "default": "4000",
-              "description": "Auto-play interval in ms. Set to 0 to disable.",
-              "attribute": "auto-play-ms"
-            },
-            {
-              "kind": "field",
-              "name": "_current",
-              "type": {
-                "text": "number"
-              },
-              "privacy": "private",
-              "default": "0"
-            },
-            {
-              "kind": "field",
-              "name": "_itemCount",
-              "type": {
-                "text": "number"
-              },
-              "privacy": "private",
-              "default": "0"
-            },
-            {
-              "kind": "field",
-              "name": "_effectiveVis",
-              "type": {
-                "text": "number"
-              },
-              "privacy": "private",
-              "default": "3"
-            },
-            {
-              "kind": "field",
-              "name": "_track",
-              "type": {
-                "text": "HTMLElement"
-              },
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "_ro",
-              "type": {
-                "text": "ResizeObserver"
-              },
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "_timer",
-              "type": {
-                "text": "ReturnType<typeof setInterval> | null"
-              },
-              "privacy": "private",
-              "default": "null"
-            },
-            {
-              "kind": "field",
-              "name": "_maxIndex",
-              "privacy": "private",
-              "readonly": true
-            },
-            {
-              "kind": "method",
-              "name": "_pickCount",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "number"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "width",
-                  "type": {
-                    "text": "number"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_syncVis",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "width",
-                  "type": {
-                    "text": "number"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_startAutoPlay",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "_stopAutoPlay",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "_advance",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "_goTo",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "index",
-                  "type": {
-                    "text": "number"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_scrollToIndex",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "index",
-                  "type": {
-                    "text": "number"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_handleSlotChange",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            }
-          ],
-          "attributes": [
-            {
-              "name": "heading",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Optional section heading.",
-              "fieldName": "heading"
-            },
-            {
-              "name": "visible-count",
-              "type": {
-                "text": "number"
-              },
-              "default": "3",
-              "description": "Items visible at full width (≥ 1024 px).",
-              "fieldName": "visibleCount"
-            },
-            {
-              "name": "count-md",
-              "type": {
-                "text": "number"
-              },
-              "default": "2",
-              "description": "Items visible at medium width (640 – 1023 px).",
-              "fieldName": "countMd"
-            },
-            {
-              "name": "count-sm",
-              "type": {
-                "text": "number"
-              },
-              "default": "1",
-              "description": "Items visible at small width (< 640 px).",
-              "fieldName": "countSm"
-            },
-            {
-              "name": "auto-play-ms",
-              "type": {
-                "text": "number"
-              },
-              "default": "4000",
-              "description": "Auto-play interval in ms. Set to 0 to disable.",
-              "fieldName": "autoPlayMs"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "ov-carousel",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "OvCarousel",
-          "declaration": {
-            "name": "OvCarousel",
-            "module": "src/organisms/carousel/ov-carousel.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "ov-carousel",
-          "declaration": {
-            "name": "OvCarousel",
-            "module": "src/organisms/carousel/ov-carousel.ts"
           }
         }
       ]

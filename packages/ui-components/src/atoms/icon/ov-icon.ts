@@ -13,7 +13,6 @@ import {
   type BuiltInIconName,
   type IconName,
   type IconSize,
-  type SpinnerTone,
 } from '../../tokens.js';
 
 /**
