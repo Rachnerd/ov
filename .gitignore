@@ -45,3 +45,4 @@ Thumbs.db
 .vscode/html.custom-data.json
 
 *.tsbuildinfo
+custom-elements.json
