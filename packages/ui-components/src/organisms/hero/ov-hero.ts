@@ -40,12 +40,8 @@ export class OvHero extends LitElement {
         --ov-hero-bg: var(--ov-charcoal);
         --ov-hero-clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
         --ov-hero-content-z: 1;
-        --ov-hero-heading-size: clamp(3rem, 10vw, 7rem);
         --ov-hero-fg-muted: rgba(255, 255, 255, 0.8);
         --ov-hero-subheading-ls: 0.45em;
-
-        /* Inject fluid heading size into ov-heading shadow DOM */
-        --ov-heading-hero-size: var(--ov-hero-heading-size);
       }
 
       section {

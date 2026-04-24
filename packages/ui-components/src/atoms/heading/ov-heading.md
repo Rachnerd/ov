@@ -10,11 +10,11 @@ Renders the correct `<h1>`–`<h6>` element while allowing the visual size to be
 
 ## Properties
 
-| Property | Attribute | Type                                                          | Default | Description                                          |
-|----------|-----------|---------------------------------------------------------------|---------|------------------------------------------------------|
-| `level`  | `level`   | `1 \| 2 \| 3 \| 4 \| 5 \| 6`                                | `2`     | Semantic heading level (`<h1>`–`<h6>`)               |
-| `size`   | `size`    | `'' \| 'display-1' \| 'display-2' \| 'h1' \| 'h2' \| 'h3' \| 'h4' \| 'hero'` | `''`    | Visual size override; empty inherits from `level` |
-| `tone`   | `tone`    | `'primary' \| 'secondary' \| 'brand' \| 'accent' \| 'inverse'` | `'primary'` | Text color                                 |
+| Property | Attribute | Type                                                               | Default     | Description                                       |
+| -------- | --------- | ------------------------------------------------------------------ | ----------- | ------------------------------------------------- |
+| `level`  | `level`   | `1 \| 2 \| 3 \| 4 \| 5 \| 6`                                       | `2`         | Semantic heading level (`<h1>`–`<h6>`)            |
+| `size`   | `size`    | `'' \| 'display-1' \| 'display-2' \| 'h1' \| 'h2' \| 'h3' \| 'h4'` | `''`        | Visual size override; empty inherits from `level` |
+| `tone`   | `tone`    | `'primary' \| 'secondary' \| 'brand' \| 'accent' \| 'inverse'`     | `'primary'` | Text color                                        |
 
 ## Importing
 
@@ -34,7 +34,6 @@ import '@ov/ui-components/atoms/heading/ov-heading';
 <ov-heading level="6">Eyebrow / category</ov-heading>
 
 <!-- Size overrides (semantic level stays correct) -->
-<ov-heading level="1" size="hero" tone="inverse">Hero headline</ov-heading>
 <ov-heading level="2" size="display-1">Display 1</ov-heading>
 <ov-heading level="2" size="display-2">Section hero</ov-heading>
 <ov-heading level="3" size="h2">Visually promoted subsection</ov-heading>
@@ -55,4 +54,3 @@ import '@ov/ui-components/atoms/heading/ov-heading';
 - Use `ov-heading` for all headings — never `ov-text` with a large size — so the document outline stays correct.
 - `level` controls the rendered HTML element (`<h1>`–`<h6>`); `size` is purely visual.
 - `inverse` is designed for dark backgrounds only.
-- `size="hero"` renders fluid uppercase display text. Font-size is controlled via the `--ov-heading-hero-size` CSS custom property (set by the consuming organism); defaults to `--ov-fs-3xl`.

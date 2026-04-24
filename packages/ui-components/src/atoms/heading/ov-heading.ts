@@ -82,15 +82,6 @@ export class OvHeading extends LitElement {
         font-size: var(--ov-fs-base);
       }
 
-      /* Hero-scale display; font-size is injected by the consuming organism */
-      :host([size='hero']) :is(h1, h2, h3, h4, h5, h6) {
-        font-size: var(--ov-heading-hero-size, var(--ov-fs-3xl));
-        font-weight: var(--ov-fw-bold);
-        letter-spacing: var(--ov-ls-widest);
-        text-transform: uppercase;
-        line-height: var(--ov-lh-none);
-      }
-
       /* Defaults when size is unset */
       :host(:not([size])) h1 {
         font-weight: var(--ov-fw-semibold);

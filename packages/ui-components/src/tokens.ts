@@ -61,8 +61,7 @@ export type HeadingSize =
   | 'h1'
   | 'h2'
   | 'h3'
-  | 'h4'
-  | 'hero'; // fluid hero display; font-size controlled by --ov-heading-hero-size
+  | 'h4';
 
 export type Tone =
   | 'primary'

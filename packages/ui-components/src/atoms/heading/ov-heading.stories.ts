@@ -50,11 +50,6 @@ export const Levels: Story = {
 export const DisplaySizes: Story = {
   render: () => html`
     <div style="display:flex;flex-direction:column;gap:var(--ov-space-5)">
-      <div style="background:var(--ov-charcoal);padding:var(--ov-space-6)">
-        <ov-heading level="1" size="hero" tone="inverse"
-          >Hero Display</ov-heading
-        >
-      </div>
       <ov-heading level="1" size="display-1"
         >Display 1 — Bold Vision</ov-heading
       >
