@@ -30,7 +30,7 @@
   ],
   "scripts": {
     "generate": "node scripts/generate-wrappers.mjs",
-    "build": "ng-packagr -p ng-package.json",
+    "build": "npm run generate && ng-packagr -p ng-package.json",
     "test": "jest"
   },
   "peerDependencies": {
