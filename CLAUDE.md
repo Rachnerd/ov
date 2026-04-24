@@ -6,7 +6,7 @@ Monorepo containing the OpenValue design system and applications.
 
 - `packages/ui-components` — Lit 3 web-component library (`ov-*` custom elements)
 - `packages/style` — Design token CSS (`@ov/style`)
-- `apps/my-app` — Vite application consuming the components
+- `apps/website` — Vite application consuming the components
 
 ## UI Components
 
@@ -21,6 +21,7 @@ Read this before creating or changing any component:
 Read the relevant skill file before writing or reviewing any `ov-*` element. Each file documents the exact props, slots, events, and valid attribute values for that component.
 
 **Atoms**
+
 - @packages/ui-components/src/atoms/button/ov-button.md
 - @packages/ui-components/src/atoms/badge/ov-badge.md
 - @packages/ui-components/src/atoms/icon/ov-icon.md
@@ -39,6 +40,7 @@ Read the relevant skill file before writing or reviewing any `ov-*` element. Eac
 - @packages/ui-components/src/atoms/divider/ov-divider.md
 
 **Molecules**
+
 - @packages/ui-components/src/molecules/field/ov-field.md
 - @packages/ui-components/src/molecules/alert/ov-alert.md
 - @packages/ui-components/src/molecules/card/ov-card.md
@@ -52,11 +54,13 @@ Read the relevant skill file before writing or reviewing any `ov-*` element. Eac
 - @packages/ui-components/src/molecules/empty-state/ov-empty-state.md
 
 **Organisms**
+
 - @packages/ui-components/src/organisms/nav-bar/ov-nav-bar.md
 - @packages/ui-components/src/organisms/hero/ov-hero.md
 - @packages/ui-components/src/organisms/carousel/ov-carousel.md
 
 **Templates**
+
 - @packages/ui-components/src/templates/page-layout/ov-page-layout.md
 
 ### Generating UI
@@ -79,6 +83,7 @@ When asked to build a form:
 ### Component file structure
 
 Each component lives in its own folder (`atoms/<name>/`, `molecules/<name>/`, `organisms/<name>/`, or `templates/<name>/`) containing exactly:
+
 - `ov-<name>.ts` — the Lit element class
 - `ov-<name>.md` — the skill file (props, slots, events, examples)
 - `ov-<name>.stories.ts` — Storybook stories

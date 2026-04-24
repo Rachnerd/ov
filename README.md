@@ -4,11 +4,11 @@ Monorepo containing the OpenValue design system and a Vite demo application.
 
 ## Packages
 
-| Package | Description |
-|---------|-------------|
-| [`packages/style`](./packages/style) | Design token CSS — `@ov/style` |
+| Package                                              | Description                                       |
+| ---------------------------------------------------- | ------------------------------------------------- |
+| [`packages/style`](./packages/style)                 | Design token CSS — `@ov/style`                    |
 | [`packages/ui-components`](./packages/ui-components) | Lit 3 web-component library — `@ov/ui-components` |
-| [`apps/my-app`](./apps/my-app) | Vite demo application |
+| [`apps/website`](./apps/website)                     | Vite demo application                             |
 
 ## Quick start
 
@@ -17,7 +17,7 @@ Monorepo containing the OpenValue design system and a Vite demo application.
 npm install
 
 # Start the demo app  →  http://localhost:5173
-cd apps/my-app && npm run dev
+cd apps/website && npm run dev
 
 # Component explorer (Storybook)  →  http://localhost:6006
 cd packages/ui-components && npm run storybook
@@ -44,9 +44,15 @@ Styling is driven by a **two-tier CSS custom property system** in `@ov/style`:
 Switching themes is a single attribute on `<html>`:
 
 ```html
-<html data-theme="light">   <!-- force light -->
-<html data-theme="dark">    <!-- force dark  -->
-<html>                      <!-- follow OS preference (default) -->
+<html data-theme="light">
+  <!-- force light -->
+  <html data-theme="dark">
+    <!-- force dark  -->
+    <html>
+      <!-- follow OS preference (default) -->
+    </html>
+  </html>
+</html>
 ```
 
 Because CSS custom properties pierce shadow DOM boundaries, every `ov-*` component re-themes automatically — no component needs to know about dark mode.
@@ -72,7 +78,7 @@ Because CSS custom properties pierce shadow DOM boundaries, every `ov-*` compone
 ## Importing components
 
 ```ts
-import '@ov/style';  // design tokens — import once in app entry
+import '@ov/style'; // design tokens — import once in app entry
 
 import '@ov/ui-components/atoms/button/ov-button';
 import '@ov/ui-components/atoms/input/ov-input';
@@ -91,11 +97,15 @@ There is no barrel export — import each component by path.
 Every variant, size, and tone is a string-literal union exported from `tokens.ts` / `molecule-tokens.ts`. `HTMLElementTagNameMap` augmentation means `document.querySelector('ov-button')` returns a typed `OvButton`.
 
 ```ts
-import type { ButtonVariant, FieldStatus, TabItem } from '@ov/ui-components/src/tokens.js';
+import type {
+  ButtonVariant,
+  FieldStatus,
+  TabItem,
+} from '@ov/ui-components/src/tokens.js';
 
 const btn = document.querySelector('ov-button')!;
-btn.variant = 'danger';     // ✓
-btn.variant = 'prumary';    // ✗ TS error — not assignable to ButtonVariant
+btn.variant = 'danger'; // ✓
+btn.variant = 'prumary'; // ✗ TS error — not assignable to ButtonVariant
 ```
 
 ## Repository structure
@@ -103,7 +113,7 @@ btn.variant = 'prumary';    // ✗ TS error — not assignable to ButtonVariant
 ```
 ov/
 ├── apps/
-│   └── my-app/                  Vite demo application
+│   └── website/                  Vite demo application
 ├── packages/
 │   ├── style/                   @ov/style
 │   │   ├── tokens/              primitives.css · semantic.css · motion.css
