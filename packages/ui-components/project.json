@@ -2,8 +2,14 @@
   "name": "@ov/ui-components",
   "targets": {
     "build": {
-      "command": "npm run build && npm run analyze && npm run build-storybook",
+      "executor": "nx:run-commands",
       "options": {
+        "commands": [
+          "npm run analyze",
+          "npm run build",
+          "npm run build-storybook"
+        ],
+        "parallel": true,
         "cwd": "packages/ui-components"
       }
     },
