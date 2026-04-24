@@ -27,52 +27,52 @@ import '@ov/style';
 
 ### Atoms
 
-| Component | Tag | Description |
-|-----------|-----|-------------|
-| Button | `<ov-button>` | Multi-variant action button with loading state |
-| Badge | `<ov-badge>` | Inline status label |
-| Icon | `<ov-icon>` | Built-in SVG icons or custom slot |
-| Spinner | `<ov-spinner>` | Animated loading indicator |
-| Input | `<ov-input>` | Single-line text field |
-| Textarea | `<ov-textarea>` | Multi-line text field |
-| Label | `<ov-label>` | Accessible form label |
-| Link | `<ov-link>` | Semantic anchor with design-system styles |
-| Checkbox | `<ov-checkbox>` | Custom checkbox |
-| Radio | `<ov-radio>` | Custom radio button |
-| Switch | `<ov-switch>` | Toggle switch |
-| Heading | `<ov-heading>` | `h1`–`h6` with independent visual size |
-| Text | `<ov-text>` | Body copy with variant and tone control |
-| Avatar | `<ov-avatar>` | User image or derived initials |
-| Divider | `<ov-divider>` | Horizontal or vertical separator |
+| Component | Tag             | Description                                    |
+| --------- | --------------- | ---------------------------------------------- |
+| Button    | `<ov-button>`   | Multi-variant action button with loading state |
+| Badge     | `<ov-badge>`    | Inline status label                            |
+| Icon      | `<ov-icon>`     | Built-in SVG icons or custom slot              |
+| Spinner   | `<ov-spinner>`  | Animated loading indicator                     |
+| Input     | `<ov-input>`    | Single-line text field                         |
+| Textarea  | `<ov-textarea>` | Multi-line text field                          |
+| Label     | `<ov-label>`    | Accessible form label                          |
+| Link      | `<ov-link>`     | Semantic anchor with design-system styles      |
+| Checkbox  | `<ov-checkbox>` | Custom checkbox                                |
+| Radio     | `<ov-radio>`    | Custom radio button                            |
+| Switch    | `<ov-switch>`   | Toggle switch                                  |
+| Heading   | `<ov-heading>`  | `h1`–`h6` with independent visual size         |
+| Text      | `<ov-text>`     | Body copy with variant and tone control        |
+| Avatar    | `<ov-avatar>`   | User image or derived initials                 |
+| Divider   | `<ov-divider>`  | Horizontal or vertical separator               |
 
 ### Molecules
 
-| Component | Tag | Description |
-|-----------|-----|-------------|
-| Field | `<ov-field>` | Label + control + validation message wrapper |
-| Alert | `<ov-alert>` | Contextual feedback banner |
-| Card | `<ov-card>` | Structured content surface |
-| Image Card | `<ov-image-card>` | Clickable photo card with title bar |
-| Breadcrumbs | `<ov-breadcrumbs>` | Navigation trail |
-| Input Group | `<ov-input-group>` | Input fused with prefix/suffix buttons |
-| Tabs | `<ov-tabs>` | Accessible tab list |
-| Menu Item | `<ov-menu-item>` | Row for dropdowns and command palettes |
-| Stat | `<ov-stat>` | Metric display with trend delta |
-| Toast | `<ov-toast>` | Auto-dismissing notification |
-| Empty State | `<ov-empty-state>` | Placeholder for empty lists or views |
+| Component   | Tag                | Description                                  |
+| ----------- | ------------------ | -------------------------------------------- |
+| Field       | `<ov-field>`       | Label + control + validation message wrapper |
+| Alert       | `<ov-alert>`       | Contextual feedback banner                   |
+| Card        | `<ov-card>`        | Structured content surface                   |
+| Image Card  | `<ov-image-card>`  | Clickable photo card with title bar          |
+| Breadcrumbs | `<ov-breadcrumbs>` | Navigation trail                             |
+| Input Group | `<ov-input-group>` | Input fused with prefix/suffix buttons       |
+| Tabs        | `<ov-tabs>`        | Accessible tab list                          |
+| Menu Item   | `<ov-menu-item>`   | Row for dropdowns and command palettes       |
+| Stat        | `<ov-stat>`        | Metric display with trend delta              |
+| Toast       | `<ov-toast>`       | Auto-dismissing notification                 |
+| Empty State | `<ov-empty-state>` | Placeholder for empty lists or views         |
 
 ### Organisms
 
-| Component | Tag | Description |
-|-----------|-----|-------------|
-| Nav Bar | `<ov-nav-bar>` | Sticky top navigation with wordmark and links |
-| Hero | `<ov-hero>` | Full-width banner with heading and CTA |
-| Carousel | `<ov-carousel>` | Animated slot-based card carousel |
+| Component | Tag             | Description                                   |
+| --------- | --------------- | --------------------------------------------- |
+| Nav Bar   | `<ov-nav-bar>`  | Sticky top navigation with wordmark and links |
+| Hero      | `<ov-hero>`     | Full-width banner with heading and CTA        |
+| Carousel  | `<ov-carousel>` | Animated slot-based card carousel             |
 
 ### Templates
 
-| Component | Tag | Description |
-|-----------|-----|-------------|
+| Component   | Tag                | Description                                                     |
+| ----------- | ------------------ | --------------------------------------------------------------- |
 | Page Layout | `<ov-page-layout>` | Full-page structural shell: nav, hero, constrained body, footer |
 
 ## Component skill files
@@ -98,11 +98,15 @@ npm run test:watch
 
 # Regenerate custom-elements.json manifest and VS Code IntelliSense data
 npm run analyze
+
+# After running analyze, regenerate Angular wrappers in packages/ui-components-angular
+cd ../ui-components-angular && npm run generate
 ```
 
 ## Storybook
 
 Storybook runs at `http://localhost:6006`. Every component has:
+
 - A `Default` story driven by `args` (controls panel)
 - Stories for each major variant axis
 - A `States` story

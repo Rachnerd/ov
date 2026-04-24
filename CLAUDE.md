@@ -6,7 +6,9 @@ Monorepo containing the OpenValue design system and applications.
 
 - `packages/ui-components` — Lit 3 web-component library (`ov-*` custom elements)
 - `packages/style` — Design token CSS (`@ov/style`)
+- `packages/ui-components-angular` — Generated Angular wrappers (`@ov/ui-components-angular`)
 - `apps/website` — Vite application consuming the components
+- `apps/website-angular` — Angular application consuming the Angular wrappers
 
 ## UI Components
 

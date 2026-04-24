@@ -4,11 +4,13 @@ Monorepo containing the OpenValue design system and a Vite demo application.
 
 ## Packages
 
-| Package                                              | Description                                       |
-| ---------------------------------------------------- | ------------------------------------------------- |
-| [`packages/style`](./packages/style)                 | Design token CSS — `@ov/style`                    |
-| [`packages/ui-components`](./packages/ui-components) | Lit 3 web-component library — `@ov/ui-components` |
-| [`apps/website`](./apps/website)                     | Vite demo application                             |
+| Package                                                              | Description                                              |
+| -------------------------------------------------------------------- | -------------------------------------------------------- |
+| [`packages/style`](./packages/style)                                 | Design token CSS — `@ov/style`                           |
+| [`packages/ui-components`](./packages/ui-components)                 | Lit 3 web-component library — `@ov/ui-components`        |
+| [`packages/ui-components-angular`](./packages/ui-components-angular) | Generated Angular wrappers — `@ov/ui-components-angular` |
+| [`apps/website`](./apps/website)                                     | Vite demo application                                    |
+| [`apps/website-angular`](./apps/website-angular)                     | Angular demo application                                 |
 
 ## Quick start
 
@@ -16,14 +18,20 @@ Monorepo containing the OpenValue design system and a Vite demo application.
 # Install all dependencies (workspace root)
 npm install
 
-# Start the demo app  →  http://localhost:5173
+# Start the Vite demo app  →  http://localhost:5173
 cd apps/website && npm run dev
+
+# Start the Angular demo app  →  http://localhost:4200
+cd apps/website-angular && npm start
 
 # Component explorer (Storybook)  →  http://localhost:6006
 cd packages/ui-components && npm run storybook
 
 # Unit tests
 cd packages/ui-components && npm test
+
+# Regenerate Angular wrapper components (run after changing ui-components)
+cd packages/ui-components-angular && npm run generate
 ```
 
 ## Architecture
@@ -113,7 +121,8 @@ btn.variant = 'prumary'; // ✗ TS error — not assignable to ButtonVariant
 ```
 ov/
 ├── apps/
-│   └── website/                  Vite demo application
+│   ├── website/                  Vite demo application
+│   └── website-angular/          Angular demo application
 ├── packages/
 │   ├── style/                   @ov/style
 │   │   ├── tokens/              primitives.css · semantic.css · motion.css
@@ -124,15 +133,24 @@ ov/
 │   │   ├── CLAUDE.md            usage rules and best practices
 │   │   ├── tokens.md            complete token reference
 │   │   └── README.md
-│   └── ui-components/           @ov/ui-components
+│   ├── ui-components/           @ov/ui-components
+│   │   └── src/
+│   │       ├── atoms/           16 atom components
+│   │       ├── molecules/       11 molecule components
+│   │       ├── organisms/       3 organism components
+│   │       ├── templates/       1 template component
+│   │       ├── shared-styles.ts baseStyles + focusRing
+│   │       ├── tokens.ts        atom prop type unions
+│   │       └── molecule-tokens.ts  molecule prop type unions
+│   └── ui-components-angular/   @ov/ui-components-angular
+│       ├── atoms/               generated Angular wrappers (one subdir per component)
+│       ├── molecules/
+│       ├── organisms/
+│       ├── templates/
+│       ├── scripts/
+│       │   └── generate-wrappers.mjs  reads custom-elements.json, emits wrappers
 │       └── src/
-│           ├── atoms/           15 atom components
-│           ├── molecules/       11 molecule components
-│           ├── organisms/       3 organism components
-│           ├── templates/       1 template component
-│           ├── shared-styles.ts baseStyles + focusRing
-│           ├── tokens.ts        atom prop type unions
-│           └── molecule-tokens.ts  molecule prop type unions
+│           └── utils.ts         applyProps · listen helpers
 └── CLAUDE.md                    AI assistant guidance
 ```
 
