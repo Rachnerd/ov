@@ -46,6 +46,7 @@ const OFFICE_CARDS = [
     OvButtonComponent,
   ],
   templateUrl: './home.component.html',
+  styleUrl: './home.component.css',
 })
 export class HomeComponent {
   navItems = NAV_ITEMS;
