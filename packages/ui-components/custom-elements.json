@@ -58,9 +58,9 @@
           "kind": "variable",
           "name": "BUILT_IN_ICON_NAMES",
           "type": {
-            "text": "[\n  'check', 'x', 'arrow-right', 'arrow-left', 'search', 'mail',\n  'info', 'warning', 'sun', 'moon', 'plus', 'user',\n]"
+            "text": "[\n  'check', 'x', 'arrow-right', 'arrow-left', 'search', 'mail',\n  'info', 'warning', 'sun', 'moon', 'plus', 'user', 'menu',\n]"
           },
-          "default": "[ 'check', 'x', 'arrow-right', 'arrow-left', 'search', 'mail', 'info', 'warning', 'sun', 'moon', 'plus', 'user', ]",
+          "default": "[ 'check', 'x', 'arrow-right', 'arrow-left', 'search', 'mail', 'info', 'warning', 'sun', 'moon', 'plus', 'user', 'menu', ]",
           "description": "Keys for the built-in icon sprite. Kept as a readonly tuple so we can\nderive the literal union and also ship the runtime list if needed."
         }
       ],
@@ -1519,85 +1519,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/atoms/logo/ov-logo.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "<ov-logo>\n\nThe OpenValue — Tech Tribes white wordmark. Width scales automatically\nto preserve the aspect ratio. Use `variant` when the logo sits on a\nlight background.",
-          "name": "OvLogo",
-          "members": [
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "'xs' | 'sm' | 'md' | 'lg' | 'xl'"
-              },
-              "default": "'md'",
-              "description": "Display size. Controls the rendered height.",
-              "attribute": "size",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "variant",
-              "type": {
-                "text": "'white'"
-              },
-              "default": "'white'",
-              "description": "Colour variant.\n- `white`  — white wordmark (default; use on dark backgrounds)\n- `color`  — full-colour version (supply a different image if needed)",
-              "attribute": "variant",
-              "reflects": true
-            }
-          ],
-          "attributes": [
-            {
-              "name": "size",
-              "type": {
-                "text": "'xs' | 'sm' | 'md' | 'lg' | 'xl'"
-              },
-              "default": "'md'",
-              "description": "Display size. Controls the rendered height.",
-              "fieldName": "size"
-            },
-            {
-              "name": "variant",
-              "type": {
-                "text": "'white'"
-              },
-              "default": "'white'",
-              "description": "Colour variant.\n- `white`  — white wordmark (default; use on dark backgrounds)\n- `color`  — full-colour version (supply a different image if needed)",
-              "fieldName": "variant"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "ov-logo",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "OvLogo",
-          "declaration": {
-            "name": "OvLogo",
-            "module": "src/atoms/logo/ov-logo.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "ov-logo",
-          "declaration": {
-            "name": "OvLogo",
-            "module": "src/atoms/logo/ov-logo.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/atoms/link/ov-link.ts",
       "declarations": [
         {
@@ -1759,6 +1680,159 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/atoms/logo/ov-logo.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "<ov-logo>\n\nThe OpenValue — Tech Tribes white wordmark. Height is driven by the\n`--ov-logo-height` CSS custom property so any parent can override it\nwith a media query or container token without changing the `size` prop.",
+          "name": "OvLogo",
+          "members": [
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "'xs' | 'sm' | 'md' | 'lg' | 'xl'"
+              },
+              "default": "'md'",
+              "description": "Named size preset. Sets `--ov-logo-height`; overrideable by the parent via CSS.",
+              "attribute": "size",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "'white'"
+              },
+              "default": "'white'",
+              "description": "Colour variant.\n- `white` — white wordmark (default; use on dark backgrounds)",
+              "attribute": "variant",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "size",
+              "type": {
+                "text": "'xs' | 'sm' | 'md' | 'lg' | 'xl'"
+              },
+              "default": "'md'",
+              "description": "Named size preset. Sets `--ov-logo-height`; overrideable by the parent via CSS.",
+              "fieldName": "size"
+            },
+            {
+              "name": "variant",
+              "type": {
+                "text": "'white'"
+              },
+              "default": "'white'",
+              "description": "Colour variant.\n- `white` — white wordmark (default; use on dark backgrounds)",
+              "fieldName": "variant"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ov-logo",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OvLogo",
+          "declaration": {
+            "name": "OvLogo",
+            "module": "src/atoms/logo/ov-logo.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ov-logo",
+          "declaration": {
+            "name": "OvLogo",
+            "module": "src/atoms/logo/ov-logo.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/atoms/nav-link/ov-nav-link.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "OvNavLink",
+          "members": [
+            {
+              "kind": "field",
+              "name": "href",
+              "type": {
+                "text": "string"
+              },
+              "default": "'#'",
+              "attribute": "href"
+            },
+            {
+              "kind": "field",
+              "name": "active",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "active",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "href",
+              "type": {
+                "text": "string"
+              },
+              "default": "'#'",
+              "fieldName": "href"
+            },
+            {
+              "name": "active",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "active"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ov-nav-link",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OvNavLink",
+          "declaration": {
+            "name": "OvNavLink",
+            "module": "src/atoms/nav-link/ov-nav-link.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ov-nav-link",
+          "declaration": {
+            "name": "OvNavLink",
+            "module": "src/atoms/nav-link/ov-nav-link.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/atoms/radio/ov-radio.ts",
       "declarations": [
         {
@@ -1887,234 +1961,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/atoms/spinner/ov-spinner.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "OvSpinner",
-          "members": [
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "IconSize"
-              },
-              "default": "'md'",
-              "attribute": "size",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "tone",
-              "type": {
-                "text": "SpinnerTone"
-              },
-              "default": "'brand'",
-              "attribute": "tone",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "default": "'Loading'",
-              "attribute": "label"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "size",
-              "type": {
-                "text": "IconSize"
-              },
-              "default": "'md'",
-              "fieldName": "size"
-            },
-            {
-              "name": "tone",
-              "type": {
-                "text": "SpinnerTone"
-              },
-              "default": "'brand'",
-              "fieldName": "tone"
-            },
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "default": "'Loading'",
-              "fieldName": "label"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "ov-spinner",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "OvSpinner",
-          "declaration": {
-            "name": "OvSpinner",
-            "module": "src/atoms/spinner/ov-spinner.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "ov-spinner",
-          "declaration": {
-            "name": "OvSpinner",
-            "module": "src/atoms/spinner/ov-spinner.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/atoms/switch/ov-switch.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "OvSwitch",
-          "members": [
-            {
-              "kind": "field",
-              "name": "checked",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "checked",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "disabled",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "attribute": "name",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "'on'",
-              "attribute": "value"
-            },
-            {
-              "kind": "method",
-              "name": "_onChange",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            }
-          ],
-          "events": [
-            {
-              "type": {
-                "text": "CustomEvent<{ checked: boolean, value: string }>"
-              },
-              "name": "change"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "checked",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "checked"
-            },
-            {
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "disabled"
-            },
-            {
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "fieldName": "name"
-            },
-            {
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "'on'",
-              "fieldName": "value"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "ov-switch",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "OvSwitch",
-          "declaration": {
-            "name": "OvSwitch",
-            "module": "src/atoms/switch/ov-switch.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "ov-switch",
-          "declaration": {
-            "name": "OvSwitch",
-            "module": "src/atoms/switch/ov-switch.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/atoms/text/ov-text.ts",
       "declarations": [
         {
@@ -2219,6 +2065,151 @@
           "declaration": {
             "name": "OvText",
             "module": "src/atoms/text/ov-text.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/molecules/alert/ov-alert.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "<ov-alert>\n\nContextual feedback message. Composes an icon, title, body copy, and an\noptional dismiss button into one cohesive unit.",
+          "name": "OvAlert",
+          "cssProperties": [
+            {
+              "description": "Border radius override.",
+              "name": "--ov-alert-radius"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Alert body copy.",
+              "name": ""
+            },
+            {
+              "description": "Custom title markup; overrides the `title` property.",
+              "name": "title"
+            },
+            {
+              "description": "Optional call-to-action links or buttons below the body.",
+              "name": "actions"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "AlertVariant"
+              },
+              "default": "'info'",
+              "attribute": "variant",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Main title text.",
+              "attribute": "title"
+            },
+            {
+              "kind": "field",
+              "name": "dismissible",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "When true a ✕ button appears and `dismiss` event fires on click.",
+              "attribute": "dismissible",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "_visible",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "true",
+              "description": "Controls visibility; toggled by dismiss interaction."
+            },
+            {
+              "kind": "method",
+              "name": "_dismiss",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "dismiss",
+              "type": {
+                "text": "CustomEvent<void>"
+              },
+              "description": "When the user clicks the ✕ button."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "variant",
+              "type": {
+                "text": "AlertVariant"
+              },
+              "default": "'info'",
+              "fieldName": "variant"
+            },
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Main title text.",
+              "fieldName": "title"
+            },
+            {
+              "name": "dismissible",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "When true a ✕ button appears and `dismiss` event fires on click.",
+              "fieldName": "dismissible"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ov-alert",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OvAlert",
+          "declaration": {
+            "name": "OvAlert",
+            "module": "src/molecules/alert/ov-alert.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ov-alert",
+          "declaration": {
+            "name": "OvAlert",
+            "module": "src/molecules/alert/ov-alert.ts"
           }
         }
       ]
@@ -2474,145 +2465,93 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/molecules/alert/ov-alert.ts",
+      "path": "src/molecules/breadcrumbs/ov-breadcrumbs.ts",
       "declarations": [
         {
           "kind": "class",
-          "description": "<ov-alert>\n\nContextual feedback message. Composes an icon, title, body copy, and an\noptional dismiss button into one cohesive unit.",
-          "name": "OvAlert",
-          "cssProperties": [
-            {
-              "description": "Border radius override.",
-              "name": "--ov-alert-radius"
-            }
-          ],
+          "description": "<ov-breadcrumbs>\n\nAccepts an array of { label, href? } items and renders a semantic\n<nav aria-label=\"Breadcrumb\"><ol> trail with chevron separators.\nThe last item is always current-page (aria-current=\"page\", no link).",
+          "name": "OvBreadcrumbs",
           "slots": [
             {
-              "description": "Alert body copy.",
-              "name": ""
-            },
-            {
-              "description": "Custom title markup; overrides the `title` property.",
-              "name": "title"
-            },
-            {
-              "description": "Optional call-to-action links or buttons below the body.",
-              "name": "actions"
+              "description": "Custom separator element; overrides the default chevron.",
+              "name": "separator"
             }
           ],
           "members": [
             {
               "kind": "field",
-              "name": "variant",
+              "name": "items",
               "type": {
-                "text": "AlertVariant"
+                "text": "BreadcrumbItem[]"
               },
-              "default": "'info'",
-              "attribute": "variant",
-              "reflects": true
+              "default": "[]",
+              "description": "Ordered list of items. Last item = current page.",
+              "attribute": "items"
             },
             {
               "kind": "field",
-              "name": "title",
+              "name": "max",
               "type": {
-                "text": "string"
+                "text": "number"
               },
-              "default": "''",
-              "description": "Main title text.",
-              "attribute": "title"
-            },
-            {
-              "kind": "field",
-              "name": "dismissible",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "When true a ✕ button appears and `dismiss` event fires on click.",
-              "attribute": "dismissible",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "_visible",
-              "type": {
-                "text": "boolean"
-              },
-              "privacy": "private",
-              "default": "true",
-              "description": "Controls visibility; toggled by dismiss interaction."
+              "default": "0",
+              "description": "Show the collapsed \"…\" version once more than `max` items exist.",
+              "attribute": "max"
             },
             {
               "kind": "method",
-              "name": "_dismiss",
+              "name": "_visibleItems",
               "privacy": "private",
               "return": {
                 "type": {
-                  "text": "void"
+                  "text": "BreadcrumbItem[]"
                 }
               }
             }
           ],
-          "events": [
-            {
-              "name": "dismiss",
-              "type": {
-                "text": "CustomEvent<void>"
-              },
-              "description": "When the user clicks the ✕ button."
-            }
-          ],
           "attributes": [
             {
-              "name": "variant",
+              "name": "items",
               "type": {
-                "text": "AlertVariant"
+                "text": "BreadcrumbItem[]"
               },
-              "default": "'info'",
-              "fieldName": "variant"
+              "default": "[]",
+              "description": "Ordered list of items. Last item = current page.",
+              "fieldName": "items"
             },
             {
-              "name": "title",
+              "name": "max",
               "type": {
-                "text": "string"
+                "text": "number"
               },
-              "default": "''",
-              "description": "Main title text.",
-              "fieldName": "title"
-            },
-            {
-              "name": "dismissible",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "When true a ✕ button appears and `dismiss` event fires on click.",
-              "fieldName": "dismissible"
+              "default": "0",
+              "description": "Show the collapsed \"…\" version once more than `max` items exist.",
+              "fieldName": "max"
             }
           ],
           "superclass": {
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "ov-alert",
+          "tagName": "ov-breadcrumbs",
           "customElement": true
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "OvAlert",
+          "name": "OvBreadcrumbs",
           "declaration": {
-            "name": "OvAlert",
-            "module": "src/molecules/alert/ov-alert.ts"
+            "name": "OvBreadcrumbs",
+            "module": "src/molecules/breadcrumbs/ov-breadcrumbs.ts"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "ov-alert",
+          "name": "ov-breadcrumbs",
           "declaration": {
-            "name": "OvAlert",
-            "module": "src/molecules/alert/ov-alert.ts"
+            "name": "OvBreadcrumbs",
+            "module": "src/molecules/breadcrumbs/ov-breadcrumbs.ts"
           }
         }
       ]
@@ -2760,6 +2699,234 @@
           "declaration": {
             "name": "OvCard",
             "module": "src/molecules/card/ov-card.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/atoms/spinner/ov-spinner.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "OvSpinner",
+          "members": [
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "IconSize"
+              },
+              "default": "'md'",
+              "attribute": "size",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "tone",
+              "type": {
+                "text": "SpinnerTone"
+              },
+              "default": "'brand'",
+              "attribute": "tone",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Loading'",
+              "attribute": "label"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "size",
+              "type": {
+                "text": "IconSize"
+              },
+              "default": "'md'",
+              "fieldName": "size"
+            },
+            {
+              "name": "tone",
+              "type": {
+                "text": "SpinnerTone"
+              },
+              "default": "'brand'",
+              "fieldName": "tone"
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Loading'",
+              "fieldName": "label"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ov-spinner",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OvSpinner",
+          "declaration": {
+            "name": "OvSpinner",
+            "module": "src/atoms/spinner/ov-spinner.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ov-spinner",
+          "declaration": {
+            "name": "OvSpinner",
+            "module": "src/atoms/spinner/ov-spinner.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/atoms/switch/ov-switch.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "OvSwitch",
+          "members": [
+            {
+              "kind": "field",
+              "name": "checked",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "checked",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "name",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "'on'",
+              "attribute": "value"
+            },
+            {
+              "kind": "method",
+              "name": "_onChange",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": {
+                "text": "CustomEvent<{ checked: boolean, value: string }>"
+              },
+              "name": "change"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "checked",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "checked"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "name"
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "'on'",
+              "fieldName": "value"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ov-switch",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OvSwitch",
+          "declaration": {
+            "name": "OvSwitch",
+            "module": "src/atoms/switch/ov-switch.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ov-switch",
+          "declaration": {
+            "name": "OvSwitch",
+            "module": "src/atoms/switch/ov-switch.ts"
           }
         }
       ]
@@ -3115,79 +3282,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/molecules/input-group/ov-input-group.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "<ov-input-group>\n\nVisually fuses an ov-input with attached buttons or text adornments,\nproducing a single compound control (search bar, URL copier, promo-code\nentry, unit suffix, etc.).\n\nThe group collapses inner borders and border-radii so the combined\nshape reads as one element. The input always fills remaining space.",
-          "name": "OvInputGroup",
-          "slots": [
-            {
-              "description": "The ov-input (required — exactly one).",
-              "name": ""
-            },
-            {
-              "description": "ov-button or plain text attached to the left edge.",
-              "name": "start"
-            },
-            {
-              "description": "ov-button or plain text attached to the right edge.",
-              "name": "end"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "attach",
-              "type": {
-                "text": "InputGroupAttach"
-              },
-              "default": "'end'",
-              "description": "Which sides have an attached adornment. Drives the border-radius\nadjustment on the slotted input.\n'start' | 'end' | 'both'",
-              "attribute": "attach",
-              "reflects": true
-            }
-          ],
-          "attributes": [
-            {
-              "name": "attach",
-              "type": {
-                "text": "InputGroupAttach"
-              },
-              "default": "'end'",
-              "description": "Which sides have an attached adornment. Drives the border-radius\nadjustment on the slotted input.\n'start' | 'end' | 'both'",
-              "fieldName": "attach"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "ov-input-group",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "OvInputGroup",
-          "declaration": {
-            "name": "OvInputGroup",
-            "module": "src/molecules/input-group/ov-input-group.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "ov-input-group",
-          "declaration": {
-            "name": "OvInputGroup",
-            "module": "src/molecules/input-group/ov-input-group.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/molecules/image-card/ov-image-card.ts",
       "declarations": [
         {
@@ -3278,6 +3372,79 @@
           "declaration": {
             "name": "OvImageCard",
             "module": "src/molecules/image-card/ov-image-card.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/molecules/input-group/ov-input-group.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "<ov-input-group>\n\nVisually fuses an ov-input with attached buttons or text adornments,\nproducing a single compound control (search bar, URL copier, promo-code\nentry, unit suffix, etc.).\n\nThe group collapses inner borders and border-radii so the combined\nshape reads as one element. The input always fills remaining space.",
+          "name": "OvInputGroup",
+          "slots": [
+            {
+              "description": "The ov-input (required — exactly one).",
+              "name": ""
+            },
+            {
+              "description": "ov-button or plain text attached to the left edge.",
+              "name": "start"
+            },
+            {
+              "description": "ov-button or plain text attached to the right edge.",
+              "name": "end"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "attach",
+              "type": {
+                "text": "InputGroupAttach"
+              },
+              "default": "'end'",
+              "description": "Which sides have an attached adornment. Drives the border-radius\nadjustment on the slotted input.\n'start' | 'end' | 'both'",
+              "attribute": "attach",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "attach",
+              "type": {
+                "text": "InputGroupAttach"
+              },
+              "default": "'end'",
+              "description": "Which sides have an attached adornment. Drives the border-radius\nadjustment on the slotted input.\n'start' | 'end' | 'both'",
+              "fieldName": "attach"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ov-input-group",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OvInputGroup",
+          "declaration": {
+            "name": "OvInputGroup",
+            "module": "src/molecules/input-group/ov-input-group.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ov-input-group",
+          "declaration": {
+            "name": "OvInputGroup",
+            "module": "src/molecules/input-group/ov-input-group.ts"
           }
         }
       ]
@@ -3445,141 +3612,6 @@
           "declaration": {
             "name": "OvMenuItem",
             "module": "src/molecules/menu-item/ov-menu-item.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/molecules/stat/ov-stat.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "OvStat",
-          "members": [
-            {
-              "kind": "field",
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "attribute": "label"
-            },
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "attribute": "value"
-            },
-            {
-              "kind": "field",
-              "name": "sublabel",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "attribute": "sublabel"
-            },
-            {
-              "kind": "field",
-              "name": "delta",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "attribute": "delta"
-            },
-            {
-              "kind": "field",
-              "name": "trend",
-              "type": {
-                "text": "StatDelta"
-              },
-              "default": "'neutral'",
-              "attribute": "trend",
-              "reflects": true
-            },
-            {
-              "kind": "method",
-              "name": "_arrowPath",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "TemplateResult | typeof nothing"
-                }
-              }
-            }
-          ],
-          "attributes": [
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "fieldName": "label"
-            },
-            {
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "fieldName": "value"
-            },
-            {
-              "name": "sublabel",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "fieldName": "sublabel"
-            },
-            {
-              "name": "delta",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "fieldName": "delta"
-            },
-            {
-              "name": "trend",
-              "type": {
-                "text": "StatDelta"
-              },
-              "default": "'neutral'",
-              "fieldName": "trend"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "ov-stat",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "OvStat",
-          "declaration": {
-            "name": "OvStat",
-            "module": "src/molecules/stat/ov-stat.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "ov-stat",
-          "declaration": {
-            "name": "OvStat",
-            "module": "src/molecules/stat/ov-stat.ts"
           }
         }
       ]
@@ -3755,93 +3787,287 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/molecules/breadcrumbs/ov-breadcrumbs.ts",
+      "path": "src/organisms/carousel/ov-carousel.ts",
       "declarations": [
         {
           "kind": "class",
-          "description": "<ov-breadcrumbs>\n\nAccepts an array of { label, href? } items and renders a semantic\n<nav aria-label=\"Breadcrumb\"><ol> trail with chevron separators.\nThe last item is always current-page (aria-current=\"page\", no link).",
-          "name": "OvBreadcrumbs",
+          "description": "<ov-carousel>\n\nA generic animated carousel. Place any card elements in the default slot —\nthe carousel handles layout, smooth scroll, dot navigation, and auto-play.\n\nResponsive by default: uses a ResizeObserver to switch between\ncount-sm / count-md / visible-count based on its own rendered width.",
+          "name": "OvCarousel",
           "slots": [
             {
-              "description": "Custom separator element; overrides the default chevron.",
-              "name": "separator"
+              "description": "The card items to display (any element).",
+              "name": ""
+            },
+            {
+              "description": "Optional descriptive text rendered below the heading.",
+              "name": "description"
             }
           ],
           "members": [
             {
               "kind": "field",
-              "name": "items",
+              "name": "heading",
               "type": {
-                "text": "BreadcrumbItem[]"
+                "text": "string"
               },
-              "default": "[]",
-              "description": "Ordered list of items. Last item = current page.",
-              "attribute": "items"
+              "default": "''",
+              "description": "Optional section heading.",
+              "attribute": "heading"
             },
             {
               "kind": "field",
-              "name": "max",
+              "name": "visibleCount",
               "type": {
                 "text": "number"
               },
-              "default": "0",
-              "description": "Show the collapsed \"…\" version once more than `max` items exist.",
-              "attribute": "max"
+              "default": "3",
+              "description": "Items visible at full width (≥ 1024 px).",
+              "attribute": "visible-count"
+            },
+            {
+              "kind": "field",
+              "name": "countMd",
+              "type": {
+                "text": "number"
+              },
+              "default": "2",
+              "description": "Items visible at medium width (640 – 1023 px).",
+              "attribute": "count-md"
+            },
+            {
+              "kind": "field",
+              "name": "countSm",
+              "type": {
+                "text": "number"
+              },
+              "default": "1",
+              "description": "Items visible at small width (< 640 px).",
+              "attribute": "count-sm"
+            },
+            {
+              "kind": "field",
+              "name": "autoPlayMs",
+              "type": {
+                "text": "number"
+              },
+              "default": "4000",
+              "description": "Auto-play interval in ms. Set to 0 to disable.",
+              "attribute": "auto-play-ms"
+            },
+            {
+              "kind": "field",
+              "name": "_current",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "private",
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "_itemCount",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "private",
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "_effectiveVis",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "private",
+              "default": "3"
+            },
+            {
+              "kind": "field",
+              "name": "_track",
+              "type": {
+                "text": "HTMLElement"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_ro",
+              "type": {
+                "text": "ResizeObserver"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_timer",
+              "type": {
+                "text": "ReturnType<typeof setInterval> | null"
+              },
+              "privacy": "private",
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "_maxIndex",
+              "privacy": "private",
+              "readonly": true
             },
             {
               "kind": "method",
-              "name": "_visibleItems",
+              "name": "_pickCount",
               "privacy": "private",
               "return": {
                 "type": {
-                  "text": "BreadcrumbItem[]"
+                  "text": "number"
                 }
-              }
+              },
+              "parameters": [
+                {
+                  "name": "width",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_syncVis",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "width",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_startAutoPlay",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_stopAutoPlay",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_advance",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_goTo",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "index",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_scrollToIndex",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "index",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleSlotChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
             }
           ],
           "attributes": [
             {
-              "name": "items",
+              "name": "heading",
               "type": {
-                "text": "BreadcrumbItem[]"
+                "text": "string"
               },
-              "default": "[]",
-              "description": "Ordered list of items. Last item = current page.",
-              "fieldName": "items"
+              "default": "''",
+              "description": "Optional section heading.",
+              "fieldName": "heading"
             },
             {
-              "name": "max",
+              "name": "visible-count",
               "type": {
                 "text": "number"
               },
-              "default": "0",
-              "description": "Show the collapsed \"…\" version once more than `max` items exist.",
-              "fieldName": "max"
+              "default": "3",
+              "description": "Items visible at full width (≥ 1024 px).",
+              "fieldName": "visibleCount"
+            },
+            {
+              "name": "count-md",
+              "type": {
+                "text": "number"
+              },
+              "default": "2",
+              "description": "Items visible at medium width (640 – 1023 px).",
+              "fieldName": "countMd"
+            },
+            {
+              "name": "count-sm",
+              "type": {
+                "text": "number"
+              },
+              "default": "1",
+              "description": "Items visible at small width (< 640 px).",
+              "fieldName": "countSm"
+            },
+            {
+              "name": "auto-play-ms",
+              "type": {
+                "text": "number"
+              },
+              "default": "4000",
+              "description": "Auto-play interval in ms. Set to 0 to disable.",
+              "fieldName": "autoPlayMs"
             }
           ],
           "superclass": {
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "ov-breadcrumbs",
+          "tagName": "ov-carousel",
           "customElement": true
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "OvBreadcrumbs",
+          "name": "OvCarousel",
           "declaration": {
-            "name": "OvBreadcrumbs",
-            "module": "src/molecules/breadcrumbs/ov-breadcrumbs.ts"
+            "name": "OvCarousel",
+            "module": "src/organisms/carousel/ov-carousel.ts"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "ov-breadcrumbs",
+          "name": "ov-carousel",
           "declaration": {
-            "name": "OvBreadcrumbs",
-            "module": "src/molecules/breadcrumbs/ov-breadcrumbs.ts"
+            "name": "OvCarousel",
+            "module": "src/organisms/carousel/ov-carousel.ts"
           }
         }
       ]
@@ -4038,207 +4264,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/organisms/carousel/ov-carousel.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "<ov-carousel>\n\nA generic animated carousel. Place any card elements in the default slot —\nthe carousel handles layout, smooth scroll, dot navigation, and auto-play.",
-          "name": "OvCarousel",
-          "slots": [
-            {
-              "description": "The card items to display (any element).",
-              "name": ""
-            },
-            {
-              "description": "Optional descriptive text rendered below the heading.",
-              "name": "description"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "heading",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Optional section heading.",
-              "attribute": "heading"
-            },
-            {
-              "kind": "field",
-              "name": "visibleCount",
-              "type": {
-                "text": "number"
-              },
-              "default": "3",
-              "description": "Number of items visible at once.",
-              "attribute": "visible-count"
-            },
-            {
-              "kind": "field",
-              "name": "autoPlayMs",
-              "type": {
-                "text": "number"
-              },
-              "default": "4000",
-              "description": "Auto-play interval in ms. Set to 0 to disable.",
-              "attribute": "auto-play-ms"
-            },
-            {
-              "kind": "field",
-              "name": "_current",
-              "type": {
-                "text": "number"
-              },
-              "privacy": "private",
-              "default": "0"
-            },
-            {
-              "kind": "field",
-              "name": "_itemCount",
-              "type": {
-                "text": "number"
-              },
-              "privacy": "private",
-              "default": "0"
-            },
-            {
-              "kind": "field",
-              "name": "_track",
-              "type": {
-                "text": "HTMLElement"
-              },
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "_timer",
-              "type": {
-                "text": "ReturnType<typeof setInterval> | null"
-              },
-              "privacy": "private",
-              "default": "null"
-            },
-            {
-              "kind": "field",
-              "name": "_maxIndex",
-              "privacy": "private",
-              "readonly": true
-            },
-            {
-              "kind": "method",
-              "name": "_startAutoPlay",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "_stopAutoPlay",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "_advance",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "_goTo",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "index",
-                  "type": {
-                    "text": "number"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_scrollToIndex",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "index",
-                  "type": {
-                    "text": "number"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_handleSlotChange",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            }
-          ],
-          "attributes": [
-            {
-              "name": "heading",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Optional section heading.",
-              "fieldName": "heading"
-            },
-            {
-              "name": "visible-count",
-              "type": {
-                "text": "number"
-              },
-              "default": "3",
-              "description": "Number of items visible at once.",
-              "fieldName": "visibleCount"
-            },
-            {
-              "name": "auto-play-ms",
-              "type": {
-                "text": "number"
-              },
-              "default": "4000",
-              "description": "Auto-play interval in ms. Set to 0 to disable.",
-              "fieldName": "autoPlayMs"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "ov-carousel",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "OvCarousel",
-          "declaration": {
-            "name": "OvCarousel",
-            "module": "src/organisms/carousel/ov-carousel.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "ov-carousel",
-          "declaration": {
-            "name": "OvCarousel",
-            "module": "src/organisms/carousel/ov-carousel.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/organisms/hero/ov-hero.ts",
       "declarations": [
         {
@@ -4364,15 +4389,150 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/molecules/stat/ov-stat.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "OvStat",
+          "members": [
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "label"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "sublabel",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "sublabel"
+            },
+            {
+              "kind": "field",
+              "name": "delta",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "delta"
+            },
+            {
+              "kind": "field",
+              "name": "trend",
+              "type": {
+                "text": "StatDelta"
+              },
+              "default": "'neutral'",
+              "attribute": "trend",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "_arrowPath",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "TemplateResult | typeof nothing"
+                }
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "label"
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "value"
+            },
+            {
+              "name": "sublabel",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "sublabel"
+            },
+            {
+              "name": "delta",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "delta"
+            },
+            {
+              "name": "trend",
+              "type": {
+                "text": "StatDelta"
+              },
+              "default": "'neutral'",
+              "fieldName": "trend"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ov-stat",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OvStat",
+          "declaration": {
+            "name": "OvStat",
+            "module": "src/molecules/stat/ov-stat.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ov-stat",
+          "declaration": {
+            "name": "OvStat",
+            "module": "src/molecules/stat/ov-stat.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/organisms/nav-bar/ov-nav-bar.ts",
       "declarations": [
         {
           "kind": "class",
-          "description": "<ov-nav-bar>\n\nSticky top navigation bar. Accepts brand name, tagline, and a list of\nnavigation items as structured data. All link and logo typography is\nencapsulated — no external CSS is required.",
+          "description": "<ov-nav-bar>\n\nSticky top navigation bar. Nav links are shown inline when the component\nwidth exceeds `--ov-nav-bar-breakpoint` (default 768 px); below it a\nhamburger button opens a dropdown containing all items.",
           "name": "OvNavBar",
           "slots": [
             {
-              "description": "Custom logo image / SVG override. When empty the `brand` and `tagline` props render the text wordmark.",
+              "description": "Custom logo image / SVG override.",
               "name": "logo"
             },
             {
@@ -4388,7 +4548,6 @@
                 "text": "string"
               },
               "default": "''",
-              "description": "Primary brand name shown in the wordmark.",
               "attribute": "brand"
             },
             {
@@ -4398,7 +4557,6 @@
                 "text": "string"
               },
               "default": "''",
-              "description": "Sub-brand or tagline shown beneath the brand name.",
               "attribute": "tagline"
             },
             {
@@ -4408,7 +4566,6 @@
                 "text": "string"
               },
               "default": "'/'",
-              "description": "href the logo links to.",
               "attribute": "logo-href"
             },
             {
@@ -4418,7 +4575,6 @@
                 "text": "NavItem[]"
               },
               "default": "[]",
-              "description": "Navigation items rendered as links. Set as a JS property — not an attribute.",
               "attribute": "items"
             },
             {
@@ -4428,8 +4584,69 @@
                 "text": "string"
               },
               "default": "''",
-              "description": "href of the currently active item. Marks it with `aria-current=\"page\"`.",
               "attribute": "active"
+            },
+            {
+              "kind": "field",
+              "name": "_menuOpen",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "_isMobile",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "_ro",
+              "type": {
+                "text": "ResizeObserver"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_onDocClick",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_checkBreakpoint",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_toggleMenu",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_navigate",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "href",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
             }
           ],
           "attributes": [
@@ -4439,7 +4656,6 @@
                 "text": "string"
               },
               "default": "''",
-              "description": "Primary brand name shown in the wordmark.",
               "fieldName": "brand"
             },
             {
@@ -4448,7 +4664,6 @@
                 "text": "string"
               },
               "default": "''",
-              "description": "Sub-brand or tagline shown beneath the brand name.",
               "fieldName": "tagline"
             },
             {
@@ -4457,7 +4672,6 @@
                 "text": "string"
               },
               "default": "'/'",
-              "description": "href the logo links to.",
               "fieldName": "logoHref"
             },
             {
@@ -4466,7 +4680,6 @@
                 "text": "NavItem[]"
               },
               "default": "[]",
-              "description": "Navigation items rendered as links. Set as a JS property — not an attribute.",
               "fieldName": "items"
             },
             {
@@ -4475,7 +4688,6 @@
                 "text": "string"
               },
               "default": "''",
-              "description": "href of the currently active item. Marks it with `aria-current=\"page\"`.",
               "fieldName": "active"
             }
           ],

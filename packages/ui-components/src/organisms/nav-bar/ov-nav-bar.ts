@@ -14,8 +14,9 @@ export interface NavItem {
 /**
  * <ov-nav-bar>
  *
- * Sticky top navigation bar with priority+ overflow: items that fit are shown
- * inline; the rest collapse into a hamburger dropdown.
+ * Sticky top navigation bar. Items that fit in the available space are shown
+ * inline; when any item overflows the links container a hamburger button
+ * appears containing all items.
  *
  * @element ov-nav-bar
  *
@@ -30,19 +31,12 @@ export class OvNavBar extends LitElement {
   @property({ type: Array }) items: NavItem[] = [];
   @property({ type: String }) active = '';
 
-  @state() private _overflowStart = 999;
   @state() private _menuOpen = false;
+  @state() private _hasOverflow = false;
 
   @query('.links') private _linksEl!: HTMLElement;
 
   private _ro!: ResizeObserver;
-  private _linkWidths: number[] = [];
-  private _linkGap = 24;
-
-  // Hamburger button width (icon 20px + padding 2×10px) + one gap unit
-  private get _moreBtnReserve() {
-    return 40 + this._linkGap;
-  }
 
   private _onDocClick = (e: Event) => {
     if (!e.composedPath().includes(this)) {
@@ -51,27 +45,12 @@ export class OvNavBar extends LitElement {
   };
 
   override firstUpdated() {
-    this._linkGap = parseFloat(getComputedStyle(this._linksEl).columnGap) || 24;
-    this._cacheWidths();
-
-    this._ro = new ResizeObserver(() => {
-      if (this._menuOpen) this._menuOpen = false;
-      this._compute();
-    });
+    this._ro = new ResizeObserver(() => this._checkOverflow());
     this._ro.observe(this._linksEl);
-    requestAnimationFrame(() => this._compute());
+    this._checkOverflow();
   }
 
-  override updated(changed: Map<PropertyKey, unknown>) {
-    // When items change after first render, reset to all-visible, re-measure.
-    if (changed.has('items') && this._linksEl && this._overflowStart !== 999) {
-      this._overflowStart = 999;
-      requestAnimationFrame(() => {
-        this._cacheWidths();
-        this._compute();
-      });
-    }
-
+  override updated() {
     if (this._menuOpen) {
       document.addEventListener('click', this._onDocClick);
     } else {
@@ -85,30 +64,24 @@ export class OvNavBar extends LitElement {
     document.removeEventListener('click', this._onDocClick);
   }
 
-  private _cacheWidths() {
+  private _checkOverflow() {
     const links = [...this._linksEl.querySelectorAll<HTMLElement>('ov-nav-link')];
-    this._linkWidths = links.map(l => l.offsetWidth);
-  }
 
-  private _compute() {
-    const containerWidth = this._linksEl.clientWidth;
-    const gap = this._linkGap;
-    const reserve = this._moreBtnReserve;
+    // Reset all to visible so measurements reflect natural widths
+    links.forEach(l => l.removeAttribute('hidden'));
 
-    let used = 0;
-    let overflowStart = this._linkWidths.length;
+    const containerRight = this._linksEl.getBoundingClientRect().right;
+    const hasOverflow = links.some(l => l.getBoundingClientRect().right > containerRight);
 
-    for (let i = 0; i < this._linkWidths.length; i++) {
-      used += (i > 0 ? gap : 0) + this._linkWidths[i];
-      const hasMore = i < this._linkWidths.length - 1;
-      if (used + (hasMore ? reserve : 0) > containerWidth) {
-        overflowStart = i;
-        break;
-      }
+    if (hasOverflow) {
+      // Hamburger button will occupy ~52 px — hide items that no longer fit
+      const fittingRight = containerRight - 52;
+      links.forEach(l => l.toggleAttribute('hidden', l.getBoundingClientRect().right > fittingRight));
     }
 
-    if (overflowStart !== this._overflowStart) {
-      this._overflowStart = overflowStart;
+    if (hasOverflow !== this._hasOverflow) {
+      this._hasOverflow = hasOverflow;
+      if (!hasOverflow) this._menuOpen = false;
     }
   }
 
@@ -123,14 +96,6 @@ export class OvNavBar extends LitElement {
   }
 
   protected override render(): TemplateResult {
-    const homeHref = this.logoHref || '/';
-    const anyOverflow = this._overflowStart < this.items.length;
-    // When any item overflows, home is served by the logo — exclude it from the dropdown.
-    const dropdownItems = this.items
-      .slice(this._overflowStart)
-      .filter(item => !anyOverflow || item.href !== homeHref);
-    const showHamburger = dropdownItems.length > 0;
-
     return html`
       <nav aria-label="Main navigation">
 
@@ -143,26 +108,21 @@ export class OvNavBar extends LitElement {
         </a>
 
         <div class="links">
-          ${this.items.map((item, i) => {
-            const overflowed = i >= this._overflowStart;
-            // Also hide the home item from the inline bar once any overflow exists.
-            const hidden = overflowed || (anyOverflow && item.href === homeHref);
-            return html`
-              <ov-nav-link
-                href=${item.href}
-                ?active=${item.href === this.active}
-                ?hidden=${hidden}
-              >${item.label}</ov-nav-link>
-            `;
-          })}
+          <span class="links-spacer"></span>
+          ${this.items.map(item => html`
+            <ov-nav-link
+              href=${item.href}
+              ?active=${item.href === this.active}
+            >${item.label}</ov-nav-link>
+          `)}
         </div>
 
-        <div class="more-wrap${showHamburger ? '' : ' hidden'}">
+        <div class="more-wrap" ?hidden=${!this._hasOverflow}>
           <ov-button
             class="more-btn"
             variant="ghost"
             size="sm"
-            aria-label="More navigation items"
+            aria-label="Open navigation menu"
             aria-expanded=${String(this._menuOpen)}
             aria-haspopup="menu"
             @click=${this._toggleMenu}
@@ -171,9 +131,9 @@ export class OvNavBar extends LitElement {
           </ov-button>
         </div>
 
-        ${this._menuOpen && showHamburger ? html`
+        ${this._menuOpen ? html`
           <div class="overflow-menu" role="menu">
-            ${dropdownItems.map(item => html`
+            ${this.items.map(item => html`
               <ov-menu-item
                 label=${item.label}
                 ?selected=${item.href === this.active}
@@ -244,23 +204,27 @@ export class OvNavBar extends LitElement {
         opacity: var(--ov-nav-bar-tagline-opacity);
       }
 
-      /* ── Nav links container ── */
+      /* ── Nav links — clips items that don't fit; overflow triggers hamburger ── */
       .links {
         flex: 1 1 auto;
         display: flex;
         align-items: center;
-        justify-content: flex-end;
         gap: var(--ov-space-6);
         margin: 0 var(--ov-space-8);
         overflow: hidden;
       }
+      /* Spacer pushes items right; shrinks to 0 before items overflow */
+      .links-spacer { flex: 1 1 auto; }
 
-      /* ── More button wrapper — direct nav flex child so it is never clipped ── */
+      /* Prevent links from shrinking so they actually overflow the container */
+      .links ov-nav-link { flex-shrink: 0; }
+
+      /* ── Hamburger — [hidden] when no overflow ── */
+      [hidden] { display: none !important; }
       .more-wrap {
         flex: 0 0 auto;
         margin-right: var(--ov-space-2);
       }
-      .more-wrap.hidden { display: none; }
 
       /* ── ov-button (ghost) themed for dark nav background ── */
       .more-btn {
@@ -269,7 +233,7 @@ export class OvNavBar extends LitElement {
         --color-bg-surface-alt:   var(--ov-nav-bar-surface-alt);
       }
 
-      /* ── Overflow dropdown — anchored to <nav>, not .more-wrap ── */
+      /* ── Dropdown — anchored to <nav> ── */
       .overflow-menu {
         position: absolute;
         top: 100%;

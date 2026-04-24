@@ -1,6 +1,6 @@
 # ov-nav-bar
 
-Sticky top navigation bar with priority+ overflow. Items that fit in the available space are shown inline left-to-right; items that don't fit collapse into a hamburger dropdown. All typography is fully encapsulated — no external CSS is needed.
+Sticky top navigation bar. Items that fit in the available width are shown inline; when any item overflows the links area a hamburger button appears containing all items. All typography is fully encapsulated — no external CSS is needed.
 
 ## Tag
 
@@ -64,6 +64,4 @@ interface NavItem {
 - Set `active` to the exact `href` string of the current page to show the underline indicator.
 - Use the `logo` slot only for image/SVG logos; for text wordmarks prefer `brand` + `tagline` props.
 - Inline nav links are rendered as `ov-nav-link` atoms — do not add custom `<a>` elements inside the bar.
-- Overflow is computed automatically via `ResizeObserver` — no manual breakpoints needed.
-- Overflow is computed automatically via `ResizeObserver` — no manual breakpoints needed.
-- Items are measured on first render; if `items` changes after mount the component re-measures automatically.
+- The hamburger appears automatically when items overflow — no breakpoint configuration needed.
