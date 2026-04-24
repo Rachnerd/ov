@@ -9,7 +9,7 @@
  * Run:  node scripts/generate-wrappers.mjs
  */
 
-import { readFileSync, writeFileSync, mkdirSync } from 'fs';
+import { readFileSync, writeFileSync, mkdirSync, rmSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -293,6 +293,10 @@ function generateWrapper({ tagName, modulePath, fields, events }) {
 }
 
 // ── Main ─────────────────────────────────────────────────────────────────────
+
+for (const tier of ['atoms', 'molecules', 'organisms', 'templates']) {
+  rmSync(join(ANGULAR_PKG, tier), { recursive: true, force: true });
+}
 
 const cem = JSON.parse(
   readFileSync(join(UI_PKG, 'custom-elements.json'), 'utf8'),
