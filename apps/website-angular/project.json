@@ -1,0 +1,10 @@
+{
+  "name": "website-angular",
+  "targets": {
+    "build": {
+      "dependsOn": [
+        { "projects": ["@ov/ui-components-angular"], "target": "build" }
+      ]
+    }
+  }
+}

@@ -5,7 +5,8 @@
       "command": "npm run build",
       "options": {
         "cwd": "packages/ui-components-angular"
-      }
+      },
+      "dependsOn": [{ "projects": ["@ov/ui-components"], "target": "build" }]
     },
     "test": {
       "command": "jest --passWithNoTests",

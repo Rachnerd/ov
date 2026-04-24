@@ -1,0 +1,8 @@
+{
+  "name": "website",
+  "targets": {
+    "build": {
+      "dependsOn": [{ "projects": ["@ov/ui-components"], "target": "build" }]
+    }
+  }
+}
