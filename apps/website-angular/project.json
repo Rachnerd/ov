@@ -5,6 +5,13 @@
       "dependsOn": [
         { "projects": ["@ov/ui-components-angular"], "target": "build" }
       ]
+    },
+    "prod": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npm run build && npx live-server dist/website-angular/browser --port=3001",
+        "cwd": "apps/website-angular"
+      }
     }
   }
 }

@@ -5,6 +5,7 @@
   "scripts": {
     "prepare": "husky",
     "start": "nx run-many --target=start",
+    "prod": "nx run-many --target=prod",
     "build": "nx run-many --target=build",
     "test": "nx run-many --target=test"
   },

@@ -24,6 +24,12 @@
       "options": {
         "cwd": "packages/ui-components"
       }
+    },
+    "prod": {
+      "command": "npm run prod",
+      "options": {
+        "cwd": "packages/ui-components"
+      }
     }
   }
 }

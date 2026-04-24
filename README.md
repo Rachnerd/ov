@@ -18,16 +18,38 @@ Monorepo containing the OpenValue design system and a Vite demo application.
 # Install all dependencies (workspace root)
 npm install
 
-# Start the Vite demo app  →  http://localhost:5173
+# Start all dev servers in parallel (Vite + Angular)
+npm start
+
+# Build all packages
+npm run build
+
+# Test all packages
+npm test
+
+# Start production server of all packages
+npm run prod
+```
+
+Individual targets:
+
+```bash
+# Vite demo app  →  http://localhost:5173
 cd apps/website && npm run dev
 
-# Start the Angular demo app  →  http://localhost:4200
+# Vite prod preview  →  http://localhost:3000  (builds then serves dist/)
+cd apps/website && npm run prod
+
+# Angular demo app  →  http://localhost:4200
 cd apps/website-angular && npm start
+
+# Angular prod preview  →  http://localhost:3001  (builds then serves dist/)
+cd apps/website-angular && npm run prod
 
 # Component explorer (Storybook)  →  http://localhost:6006
 cd packages/ui-components && npm run storybook
 
-# Unit tests
+# Unit tests for ui-components only
 cd packages/ui-components && npm test
 
 # Regenerate Angular wrapper components (run after changing ui-components)

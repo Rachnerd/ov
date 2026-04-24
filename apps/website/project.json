@@ -3,6 +3,13 @@
   "targets": {
     "build": {
       "dependsOn": [{ "projects": ["@ov/ui-components"], "target": "build" }]
+    },
+    "prod": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npm run build && npx live-server dist --port=3000",
+        "cwd": "apps/website"
+      }
     }
   }
 }

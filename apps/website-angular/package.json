@@ -2,9 +2,9 @@
   "name": "website-angular",
   "version": "1.0.0",
   "scripts": {
-    "start": "npm run build && npx live-server dist/website-angular/browser --port=3001",
+    "prod": "npm run build && npx live-server dist/website-angular/browser --port=3001",
     "build": "ng build",
-    "dev": "ng serve",
+    "start": "ng serve -o",
     "test": "jest"
   },
   "dependencies": {
