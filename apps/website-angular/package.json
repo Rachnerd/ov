@@ -2,7 +2,7 @@
   "name": "website-angular",
   "version": "1.0.0",
   "scripts": {
-    "start": "ng serve",
+    "start": "npm run build && npx live-server dist/website-angular/browser --port=3001",
     "build": "ng build",
     "dev": "ng serve",
     "test": "jest"

@@ -45,6 +45,7 @@
   "sideEffects": true,
   "customElements": "custom-elements.json",
   "scripts": {
+    "start": "storybook dev -p 6006 --config-dir .storybook",
     "analyze": "cem analyze && node scripts/generate-html-custom-data.mjs",
     "build": "tsc -p tsconfig.build.json",
     "test": "wtr --config web-test-runner.config.mjs --fail-on-unhandled-errors",

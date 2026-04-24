@@ -4,8 +4,9 @@
   "license": "MIT",
   "scripts": {
     "prepare": "husky",
-    "build": "nx run-many --target=build --output-style=stream",
-    "test": "nx run-many --target=test --output-style=stream"
+    "start": "nx run-many --target=start",
+    "build": "nx run-many --target=build",
+    "test": "nx run-many --target=test"
   },
   "private": true,
   "devDependencies": {

@@ -2,6 +2,7 @@
   "name": "website",
   "version": "1.0.0",
   "scripts": {
+    "start": "npm run build && npx live-server dist --port=3000",
     "dev": "vite",
     "build": "tsc && vite build --emptyOutDir",
     "preview": "vite preview",

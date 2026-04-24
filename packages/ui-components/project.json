@@ -18,6 +18,12 @@
       "options": {
         "cwd": "packages/ui-components"
       }
+    },
+    "start": {
+      "command": "npm start",
+      "options": {
+        "cwd": "packages/ui-components"
+      }
     }
   }
 }
