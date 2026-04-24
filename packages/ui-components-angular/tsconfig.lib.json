@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "inlineSources": true,
+    "sourceMap": true,
+    "declarationMap": true
+  },
+  "angularCompilerOptions": {
+    "compilationMode": "partial"
+  },
+  "exclude": ["node_modules", "src/**/*.spec.ts", "setup-jest.ts"]
+}

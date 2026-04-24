@@ -17,26 +17,7 @@
     "target": "ES2022",
     "module": "ES2022",
     "useDefineForClassFields": false,
-    "lib": ["ES2022", "dom", "dom.iterable"],
-    "paths": {
-      "@ov/ui-components-angular/module": [
-        "../../packages/ui-components-angular/src/lib/module.ts"
-      ],
-      "@ov/ui-components-angular/atoms/*": [
-        "../../packages/ui-components-angular/src/lib/atoms/*"
-      ],
-      "@ov/ui-components-angular/molecules/*": [
-        "../../packages/ui-components-angular/src/lib/molecules/*"
-      ],
-      "@ov/ui-components-angular/organisms/*": [
-        "../../packages/ui-components-angular/src/lib/organisms/*"
-      ],
-      "@ov/ui-components-angular/templates/*": [
-        "../../packages/ui-components-angular/src/lib/templates/*"
-      ],
-      "@ov/ui-components/*": ["../../packages/ui-components/src/*"],
-      "@ov/style": ["../../packages/style/index.css"]
-    }
+    "lib": ["ES2022", "dom", "dom.iterable"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

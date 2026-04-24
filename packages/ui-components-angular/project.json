@@ -2,7 +2,7 @@
   "name": "@ov/ui-components-angular",
   "targets": {
     "build": {
-      "command": "npm run generate",
+      "command": "npm run build",
       "options": {
         "cwd": "packages/ui-components-angular"
       }

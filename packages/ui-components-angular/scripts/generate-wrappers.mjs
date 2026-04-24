@@ -4,7 +4,6 @@
  *
  * Reads packages/ui-components/custom-elements.json and generates Angular
  * wrapper components into packages/ui-components-angular/src/lib/.
- * Also regenerates module.ts to keep the barrel export in sync.
  *
  * Run:  node scripts/generate-wrappers.mjs
  */
@@ -80,10 +79,10 @@ const CONST_ARRAYS = parseConstArrays(_tokensSource);
  *  - Substitutes known PascalCase type aliases recursively
  */
 function fullyResolve(typeText, visited = new Set()) {
-  // Expand typeof X[number] (as const array types)
+  // Expand typeof X[number] and (typeof X)[number] (as const array types)
   typeText = typeText.replace(
-    /typeof (\w+)\[number\]/g,
-    (_, name) => CONST_ARRAYS[name] ?? `typeof ${name}[number]`,
+    /\(?typeof (\w+)\)?\[number\]/g,
+    (_, name) => CONST_ARRAYS[name] ?? `(typeof ${name})[number]`,
   );
   // Substitute remaining PascalCase type name references
   typeText = typeText.replace(/\b([A-Z][A-Za-z0-9]+)\b/g, (match) => {
@@ -210,9 +209,9 @@ function generateWrapper({ tagName, modulePath, fields, events }) {
   out.push(`  ${ngImports.join(',\n  ')},`);
   out.push(`} from '@angular/core';`);
   if (utilImports.length) {
-    out.push(`import { ${utilImports.join(', ')} } from '../../utils.js';`);
+    out.push(`import { ${utilImports.join(', ')} } from '../../utils';`);
   }
-  out.push(`import '@ov/ui-components/${litImport}';`);
+  out.push(`import '@ov/ui-components/${litImport}.js';`);
   out.push('');
 
   for (const [name, body] of neededInterfaces) {

@@ -3,27 +3,27 @@
   "version": "1.0.0",
   "type": "module",
   "files": [
-    "atoms/",
-    "organisms/",
-    "molecules/",
-    "templates/"
+    "dist/src/atoms/",
+    "dist/src/organisms/",
+    "dist/src/molecules/",
+    "dist/src/templates/"
   ],
   "exports": {
     "./atoms/*": {
-      "import": "./atoms/*",
-      "types": "./atoms/*"
+      "import": "./dist/src/atoms/*",
+      "types": "./dist/src/atoms/*"
     },
     "./organisms/*": {
-      "import": "./organisms/*",
-      "types": "./organisms/*"
+      "import": "./dist/src/organisms/*",
+      "types": "./dist/src/organisms/*"
     },
     "./molecules/*": {
-      "import": "./molecules/*",
-      "types": "./molecules/*"
+      "import": "./dist/src/molecules/*",
+      "types": "./dist/src/molecules/*"
     },
     "./templates/*": {
-      "import": "./templates/*",
-      "types": "./templates/*"
+      "import": "./dist/src/templates/*",
+      "types": "./dist/src/templates/*"
     }
   },
   "typesVersions": {
@@ -42,7 +42,7 @@
       ]
     }
   },
-  "sideEffects": false,
+  "sideEffects": true,
   "customElements": "custom-elements.json",
   "scripts": {
     "analyze": "cem analyze && node scripts/generate-html-custom-data.mjs",

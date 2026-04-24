@@ -1,15 +1,15 @@
 {
   "name": "@ov/ui-components-angular",
   "version": "1.0.0",
+  "main": "./dist/fesm2022/ov-ui-components-angular.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "generate": "node scripts/generate-wrappers.mjs",
+    "build": "npm run generate && ng-packagr -p ng-package.json",
     "test": "jest"
-  },
-  "exports": {
-    "./atoms/*": "./src/lib/atoms/*.ts",
-    "./molecules/*": "./src/lib/molecules/*.ts",
-    "./organisms/*": "./src/lib/organisms/*.ts",
-    "./templates/*": "./src/lib/templates/*.ts"
   },
   "peerDependencies": {
     "@angular/common": ">=18",
@@ -18,11 +18,14 @@
   },
   "devDependencies": {
     "@angular/common": "^18.0.0",
+    "@angular/compiler": "^18.0.0",
+    "@angular/compiler-cli": "^18.0.0",
     "@angular/core": "^18.0.0",
     "@types/jest": "^29.5.14",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^30.3.0",
     "jest-preset-angular": "^14.6.2",
+    "ng-packagr": "^18.0.0",
     "ts-jest": "^29.4.9"
   }
 }
