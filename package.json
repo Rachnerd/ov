@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "prepare": "husky",
-    "build": "node scripts/build.mjs"
+    "build": "nx run-many --target=build --output-style=stream"
   },
   "private": true,
   "devDependencies": {

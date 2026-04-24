@@ -1,0 +1,11 @@
+{
+  "name": "@ov/ui-components",
+  "targets": {
+    "build": {
+      "command": "npm run analyze",
+      "options": {
+        "cwd": "packages/ui-components"
+      }
+    }
+  }
+}

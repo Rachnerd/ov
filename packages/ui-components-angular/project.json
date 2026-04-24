@@ -1,0 +1,11 @@
+{
+  "name": "@ov/ui-components-angular",
+  "targets": {
+    "build": {
+      "command": "npm run generate",
+      "options": {
+        "cwd": "packages/ui-components-angular"
+      }
+    }
+  }
+}
