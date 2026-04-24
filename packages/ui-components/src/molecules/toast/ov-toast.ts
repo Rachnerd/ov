@@ -11,7 +11,7 @@ import type { ToastVariant, ToastDismissDetail } from '../../molecule-tokens.js'
 export class OvToast extends LitElement {
   @property({ type: String, attribute: 'toast-id' }) toastId = '';
   @property({ type: String, reflect: true }) variant: ToastVariant = 'info';
-  @property({ type: String }) title = '';
+  @property({ type: String }) override title = '';
   @property({ type: String }) message = '';
   @property({ type: Number }) duration = 5000;
 

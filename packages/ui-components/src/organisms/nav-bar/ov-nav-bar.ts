@@ -59,7 +59,7 @@ export class OvNavBar extends LitElement {
       this._compute();
     });
     this._ro.observe(this._linksEl);
-    this._compute();
+    requestAnimationFrame(() => this._compute());
   }
 
   override updated(changed: Map<PropertyKey, unknown>) {

@@ -10,7 +10,7 @@ export function applyProps(
 ): void {
   for (const [key, value] of Object.entries(props)) {
     if (value !== undefined) {
-      (el.nativeElement as Record<string, unknown>)[key] = value;
+      (el.nativeElement as unknown as Record<string, unknown>)[key] = value;
     }
   }
 }

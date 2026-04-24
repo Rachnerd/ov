@@ -1,0 +1,39 @@
+<ov-page-layout>
+
+  <ov-nav-bar slot="nav" logo-href="/" active="/" [items]="navItems">
+    <ov-logo slot="logo" size="sm"></ov-logo>
+    <ov-button slot="actions" variant="primary" size="sm">Contact</ov-button>
+  </ov-nav-bar>
+
+  <ov-hero slot="hero" src="/banner.jpg" [overlay]="0.68" subheading="">
+    <ov-logo slot="logo" size="xl"></ov-logo>
+  </ov-hero>
+
+  <div class="scroll-btn-wrap">
+    <button type="button" class="scroll-btn" (click)="scrollToIntro()" aria-label="Scroll to content">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+        <path d="M5.5 8.5l5.5 5.5 5.5-5.5"
+              stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </div>
+
+  <section class="intro" id="intro">
+    <ov-text variant="lead" weight="bold" as="p">
+      Over 200 seasoned full stack Java experts, Java champions &amp; JavaOne rockstars.
+      We love to work with the latest open source technology and share what we've learned.
+    </ov-text>
+  </section>
+
+  <ov-carousel heading="Our offices in 8 cities">
+    <ov-text slot="description" variant="body" as="p">
+      Present throughout the Netherlands — always close to you.
+      <ov-link href="/contact">Contact us</ov-link>.
+    </ov-text>
+    @for (card of officeCards; track card.label + card.src) {
+      <ov-image-card [label]="card.label" [src]="card.src" [href]="card.href"></ov-image-card>
+    }
+  </ov-carousel>
+
+</ov-page-layout>
