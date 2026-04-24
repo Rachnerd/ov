@@ -4,6 +4,14 @@ import { resolve } from 'path';
 export default defineConfig({
   root: resolve(__dirname, 'src'),
   publicDir: resolve(__dirname, 'public'),
+  resolve: {
+    alias: [
+      {
+        find: /^@ov\/ui-components\/(.*)/,
+        replacement: `${resolve(__dirname, '../../packages/ui-components/src')}/$1`,
+      },
+    ],
+  },
   server: {
     port: 3000,
   },

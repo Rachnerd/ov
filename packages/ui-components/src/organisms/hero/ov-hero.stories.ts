@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 import './ov-hero.js';
-import '@ov/ui-components/atoms/button/ov-button';
-import '@ov/ui-components/atoms/logo/ov-logo';
+import '../../atoms/button/ov-button';
+import '../../atoms/logo/ov-logo';
 
 const meta: Meta = {
   title: 'Organisms/Hero',

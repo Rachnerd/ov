@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 import './ov-page-layout.js';
-import '@ov/ui-components/organisms/nav-bar/ov-nav-bar';
-import '@ov/ui-components/organisms/hero/ov-hero';
-import '@ov/ui-components/organisms/carousel/ov-carousel';
-import '@ov/ui-components/molecules/image-card/ov-image-card';
-import '@ov/ui-components/atoms/logo/ov-logo';
-import '@ov/ui-components/atoms/button/ov-button';
-import '@ov/ui-components/atoms/text/ov-text';
-import '@ov/ui-components/atoms/heading/ov-heading';
+import '../../organisms/nav-bar/ov-nav-bar';
+import '../../organisms/hero/ov-hero';
+import '../../organisms/carousel/ov-carousel';
+import '../../molecules/image-card/ov-image-card';
+import '../../atoms/logo/ov-logo';
+import '../../atoms/button/ov-button';
+import '../../atoms/text/ov-text';
+import '../../atoms/heading/ov-heading';
 
 const NAV_ITEMS = [
   { label: 'Home', href: '/' },

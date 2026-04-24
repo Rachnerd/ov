@@ -2,26 +2,47 @@
   "name": "@ov/ui-components",
   "version": "1.0.0",
   "type": "module",
+  "files": [
+    "atoms/",
+    "organisms/",
+    "molecules/",
+    "templates/"
+  ],
   "exports": {
-    "./*": {
-      "@ov/source": "./src/*.ts",
-      "types": "./dist/*.d.ts",
-      "import": "./dist/*.js"
+    "./atoms/*": {
+      "import": "./atoms/*",
+      "types": "./atoms/*"
+    },
+    "./organisms/*": {
+      "import": "./organisms/*",
+      "types": "./organisms/*"
+    },
+    "./molecules/*": {
+      "import": "./molecules/*",
+      "types": "./molecules/*"
+    },
+    "./templates/*": {
+      "import": "./templates/*",
+      "types": "./templates/*"
     }
   },
-  "files": [
-    "dist/**/*.js",
-    "dist/**/*.d.ts",
-    "dist/**/*.js.map",
-    "dist/**/*.d.ts.map",
-    "custom-elements.json"
-  ],
-  "sideEffects": [
-    "./dist/atoms/**/*.js",
-    "./dist/molecules/**/*.js",
-    "./dist/organisms/**/*.js",
-    "./dist/templates/**/*.js"
-  ],
+  "typesVersions": {
+    "*": {
+      "atoms/*": [
+        "dist/src/atoms/*"
+      ],
+      "organisms/*": [
+        "dist/src/organisms/*"
+      ],
+      "molecules/*": [
+        "dist/src/molecules/*"
+      ],
+      "templates/*": [
+        "dist/src/templates/*"
+      ]
+    }
+  },
+  "sideEffects": false,
   "customElements": "custom-elements.json",
   "scripts": {
     "analyze": "cem analyze && node scripts/generate-html-custom-data.mjs",

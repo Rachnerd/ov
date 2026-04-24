@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 import './ov-carousel.js';
-import '@ov/ui-components/molecules/image-card/ov-image-card';
-import '@ov/ui-components/atoms/text/ov-text';
-import '@ov/ui-components/atoms/link/ov-link';
+import '../../molecules/image-card/ov-image-card';
+import '../../atoms/text/ov-text';
+import '../../atoms/link/ov-link';
 
 const ITEMS = html`
   <ov-image-card label="Amsterdam" src="/banner.jpg" href="#"></ov-image-card>
