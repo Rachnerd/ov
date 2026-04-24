@@ -1,12 +1,14 @@
 {
   "name": "@ov/ui-components-angular",
   "version": "1.0.0",
+  "scripts": {
+    "generate": "node scripts/generate-wrappers.mjs"
+  },
   "exports": {
     "./atoms/*": "./src/lib/atoms/*.ts",
     "./molecules/*": "./src/lib/molecules/*.ts",
     "./organisms/*": "./src/lib/organisms/*.ts",
-    "./templates/*": "./src/lib/templates/*.ts",
-    "./module": "./src/lib/module.ts"
+    "./templates/*": "./src/lib/templates/*.ts"
   },
   "peerDependencies": {
     "@angular/common": ">=18",

@@ -1,6 +1,13 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { OvComponentsModule } from '@ov/ui-components-angular/module';
-import '@ov/ui-components/atoms/logo/ov-logo';
+import { Component } from '@angular/core';
+import { OvPageLayoutComponent } from '@ov/ui-components-angular/templates/ov-page-layout';
+import { OvNavBarComponent } from '@ov/ui-components-angular/organisms/ov-nav-bar';
+import { OvHeroComponent } from '@ov/ui-components-angular/organisms/ov-hero';
+import { OvTextComponent } from '@ov/ui-components-angular/atoms/ov-text';
+import { OvLinkComponent } from '@ov/ui-components-angular/atoms/ov-link';
+import { OvImageCardComponent } from '@ov/ui-components-angular/molecules/ov-image-card';
+import { OvCarouselComponent } from '@ov/ui-components-angular/organisms/ov-carousel';
+import { OvLogoComponent } from '@ov/ui-components-angular/atoms/ov-logo';
+import { OvButtonComponent } from '@ov/ui-components-angular/atoms/ov-button';
 
 const NAV_ITEMS = [
   { label: 'Home',          href: '/' },
@@ -27,8 +34,7 @@ const OFFICE_CARDS = [
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [OvComponentsModule],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  imports: [OvPageLayoutComponent, OvNavBarComponent, OvHeroComponent, OvTextComponent, OvLinkComponent, OvImageCardComponent, OvCarouselComponent, OvLogoComponent, OvButtonComponent],
   templateUrl: './home.component.html',
 })
 export class HomeComponent {
