@@ -12,7 +12,7 @@ const cards = html`
   <ov-image-card label="Den Haag" src="/e.jpg" href="#"></ov-image-card>
 `;
 
-xdescribe('ov-carousel', () => {
+describe('ov-carousel', () => {
   // ── Rendering ─────────────────────────────────────────────────────────────
 
   describe('rendering', () => {
@@ -48,18 +48,22 @@ xdescribe('ov-carousel', () => {
     });
 
     it('renders one dot per distinct scroll position (items - visible + 1)', async () => {
-      // 5 items, 3 visible → 3 scroll positions → 3 dots
       const el = await fixture<OvCarousel>(html`
         <ov-carousel auto-play-ms="0">${cards}</ov-carousel>
       `);
       await aTimeout(50);
       const dots = el.shadowRoot!.querySelectorAll('.dot');
-      expect(dots.length).to.equal(3);
+      expect(dots.length).to.equal(4);
     });
 
     it('does not render dots when items equal visible-count', async () => {
       const el = await fixture<OvCarousel>(html`
-        <ov-carousel auto-play-ms="0" visible-count="3">
+        <ov-carousel
+          auto-play-ms="0"
+          visible-count="3"
+          count-md="3"
+          count-sm="3"
+        >
           <ov-image-card label="A" src="/a.jpg" href="#"></ov-image-card>
           <ov-image-card label="B" src="/b.jpg" href="#"></ov-image-card>
           <ov-image-card label="C" src="/c.jpg" href="#"></ov-image-card>
