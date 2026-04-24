@@ -13,7 +13,9 @@ describe('ov-card', () => {
     });
 
     it('projects default slot content into the body region', async () => {
-      const el = await fixture<OvCard>(html`<ov-card><p id="body-text">Hello</p></ov-card>`);
+      const el = await fixture<OvCard>(
+        html`<ov-card><p id="body-text">Hello</p></ov-card>`,
+      );
       expect(el.querySelector('#body-text')).to.exist;
     });
 
@@ -40,7 +42,7 @@ describe('ov-card', () => {
     it('projects media slot content', async () => {
       const el = await fixture<OvCard>(html`
         <ov-card>
-          <img slot="media" id="media-img" src="/img.jpg" alt="Photo">
+          <img slot="media" id="media-img" src="/img.jpg" alt="Photo" />
           Body
         </ov-card>
       `);
@@ -57,17 +59,23 @@ describe('ov-card', () => {
     });
 
     it('reflects variant attribute', async () => {
-      const el = await fixture<OvCard>(html`<ov-card variant="brand">Body</ov-card>`);
+      const el = await fixture<OvCard>(
+        html`<ov-card variant="brand">Body</ov-card>`,
+      );
       expect(el.getAttribute('variant')).to.equal('brand');
     });
 
     it('reflects interactive attribute', async () => {
-      const el = await fixture<OvCard>(html`<ov-card interactive>Body</ov-card>`);
+      const el = await fixture<OvCard>(
+        html`<ov-card interactive>Body</ov-card>`,
+      );
       expect(el.hasAttribute('interactive')).to.be.true;
     });
 
     it('reflects borderless attribute', async () => {
-      const el = await fixture<OvCard>(html`<ov-card borderless>Body</ov-card>`);
+      const el = await fixture<OvCard>(
+        html`<ov-card borderless>Body</ov-card>`,
+      );
       expect(el.hasAttribute('borderless')).to.be.true;
     });
 

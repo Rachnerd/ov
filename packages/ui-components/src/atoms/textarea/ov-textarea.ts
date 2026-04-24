@@ -21,14 +21,18 @@ export class OvTextarea extends LitElement {
   @property({ type: Boolean, reflect: true }) readonly = false;
   @property({ type: Boolean, reflect: true }) invalid = false;
 
-  @property({ type: String, reflect: true }) resize: TextareaResize = 'vertical';
+  @property({ type: String, reflect: true }) resize: TextareaResize =
+    'vertical';
 
   @query('textarea') private _textarea!: HTMLTextAreaElement;
 
   static override styles = [
     baseStyles,
     css`
-      :host { display: block; width: 100%; }
+      :host {
+        display: block;
+        width: 100%;
+      }
 
       textarea {
         width: 100%;
@@ -42,12 +46,16 @@ export class OvTextarea extends LitElement {
         line-height: var(--ov-lh-normal);
         outline: 0;
         transition:
-          border-color     var(--ov-duration-fast) var(--ov-ease-out),
+          border-color var(--ov-duration-fast) var(--ov-ease-out),
           background-color var(--ov-duration-fast) var(--ov-ease-out),
-          box-shadow       var(--ov-duration-fast) var(--ov-ease-out);
+          box-shadow var(--ov-duration-fast) var(--ov-ease-out);
       }
-      textarea::placeholder { color: var(--color-text-muted); }
-      textarea:hover:not(:disabled) { border-color: var(--color-control-border-hover); }
+      textarea::placeholder {
+        color: var(--color-text-muted);
+      }
+      textarea:hover:not(:disabled) {
+        border-color: var(--color-control-border-hover);
+      }
       textarea:focus-visible {
         border-color: var(--color-border-focus);
         box-shadow: var(--shadow-focus);
@@ -58,13 +66,25 @@ export class OvTextarea extends LitElement {
         cursor: not-allowed;
       }
 
-      :host([invalid]) textarea { border-color: var(--color-danger); }
-      :host([invalid]) textarea:focus-visible { box-shadow: 0 0 0 3px var(--color-danger-bg); }
+      :host([invalid]) textarea {
+        border-color: var(--color-danger);
+      }
+      :host([invalid]) textarea:focus-visible {
+        box-shadow: 0 0 0 3px var(--color-danger-bg);
+      }
 
-      :host([resize='none'])       textarea { resize: none; }
-      :host([resize='horizontal']) textarea { resize: horizontal; }
-      :host([resize='both'])       textarea { resize: both; }
-      textarea { resize: vertical; }
+      :host([resize='none']) textarea {
+        resize: none;
+      }
+      :host([resize='horizontal']) textarea {
+        resize: horizontal;
+      }
+      :host([resize='both']) textarea {
+        resize: both;
+      }
+      textarea {
+        resize: vertical;
+      }
     `,
   ];
 
@@ -72,9 +92,13 @@ export class OvTextarea extends LitElement {
     const target = e.target as HTMLTextAreaElement;
     this.value = target.value;
     const detail: InputChangeDetail = { value: this.value };
-    this.dispatchEvent(new CustomEvent<InputChangeDetail>('input', {
-      detail, bubbles: true, composed: true,
-    }));
+    this.dispatchEvent(
+      new CustomEvent<InputChangeDetail>('input', {
+        detail,
+        bubbles: true,
+        composed: true,
+      }),
+    );
   }
 
   override focus(options?: FocusOptions): void {

@@ -16,10 +16,9 @@ export class OvNavLink extends LitElement {
 
   protected override render(): TemplateResult {
     return html`
-      <a
-        href=${this.href}
-        aria-current=${this.active ? 'page' : nothing}
-      ><slot></slot></a>
+      <a href=${this.href} aria-current=${this.active ? 'page' : nothing}
+        ><slot></slot
+      ></a>
     `;
   }
 
@@ -33,7 +32,9 @@ export class OvNavLink extends LitElement {
         flex: 0 0 auto;
       }
 
-      :host([hidden]) { display: none !important; }
+      :host([hidden]) {
+        display: none !important;
+      }
 
       a {
         font-size: var(--ov-fs-xs);
@@ -49,8 +50,12 @@ export class OvNavLink extends LitElement {
         transition: border-color var(--ov-duration-fast) var(--ov-ease-out);
       }
 
-      a:hover { border-bottom-color: var(--color-brand); }
-      :host([active]) a { border-bottom-color: var(--color-brand); }
+      a:hover {
+        border-bottom-color: var(--color-brand);
+      }
+      :host([active]) a {
+        border-bottom-color: var(--color-brand);
+      }
     `,
   ];
 }

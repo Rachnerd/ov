@@ -8,14 +8,15 @@ const meta: Meta = {
   title: 'Molecules/EmptyState',
   component: 'ov-empty-state',
   argTypes: {
-    heading:     { control: 'text' },
+    heading: { control: 'text' },
     description: { control: 'text' },
-    icon:        { control: 'text' },
-    size:        { control: 'select', options: ['sm', 'md', 'lg'] },
+    icon: { control: 'text' },
+    size: { control: 'select', options: ['sm', 'md', 'lg'] },
   },
   args: {
     heading: 'No results found',
-    description: 'Try adjusting your search or filters to find what you\'re looking for.',
+    description:
+      "Try adjusting your search or filters to find what you're looking for.",
     icon: 'search',
     size: 'md',
   },
@@ -39,16 +40,40 @@ export const Sizes: Story = {
   render: () => html`
     <div style="display:flex;flex-direction:column;gap:40px">
       <div style="border:1px dashed #e5e7eb;border-radius:8px;padding:8px">
-        <p style="margin:0 0 4px;font-size:12px;color:#9ca3af;text-align:center">sm</p>
-        <ov-empty-state size="sm" heading="Nothing here" description="This list is currently empty."></ov-empty-state>
+        <p
+          style="margin:0 0 4px;font-size:12px;color:#9ca3af;text-align:center"
+        >
+          sm
+        </p>
+        <ov-empty-state
+          size="sm"
+          heading="Nothing here"
+          description="This list is currently empty."
+        ></ov-empty-state>
       </div>
       <div style="border:1px dashed #e5e7eb;border-radius:8px;padding:8px">
-        <p style="margin:0 0 4px;font-size:12px;color:#9ca3af;text-align:center">md</p>
-        <ov-empty-state size="md" heading="No results" description="Try adjusting your search."></ov-empty-state>
+        <p
+          style="margin:0 0 4px;font-size:12px;color:#9ca3af;text-align:center"
+        >
+          md
+        </p>
+        <ov-empty-state
+          size="md"
+          heading="No results"
+          description="Try adjusting your search."
+        ></ov-empty-state>
       </div>
       <div style="border:1px dashed #e5e7eb;border-radius:8px;padding:8px">
-        <p style="margin:0 0 4px;font-size:12px;color:#9ca3af;text-align:center">lg</p>
-        <ov-empty-state size="lg" heading="Welcome aboard!" description="Let's get started by creating your first item."></ov-empty-state>
+        <p
+          style="margin:0 0 4px;font-size:12px;color:#9ca3af;text-align:center"
+        >
+          lg
+        </p>
+        <ov-empty-state
+          size="lg"
+          heading="Welcome aboard!"
+          description="Let's get started by creating your first item."
+        ></ov-empty-state>
       </div>
     </div>
   `,
@@ -57,8 +82,15 @@ export const Sizes: Story = {
 export const States: Story = {
   render: () => html`
     <div style="display:flex;flex-direction:column;gap:40px">
-      <ov-empty-state heading="Default icon" description="Uses the built-in dashed box."></ov-empty-state>
-      <ov-empty-state icon="search" heading="Built-in icon" description="Using the icon prop."></ov-empty-state>
+      <ov-empty-state
+        heading="Default icon"
+        description="Uses the built-in dashed box."
+      ></ov-empty-state>
+      <ov-empty-state
+        icon="search"
+        heading="Built-in icon"
+        description="Using the icon prop."
+      ></ov-empty-state>
       <ov-empty-state icon="mail" heading="With action">
         <ov-button slot="actions" variant="primary">
           <ov-icon slot="start" name="plus"></ov-icon>

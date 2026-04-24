@@ -56,10 +56,7 @@ export const Truncated: Story = {
 export const SingleLevel: Story = {
   render: () => html`
     <ov-breadcrumbs
-      .items=${[
-        { label: 'Dashboard', href: '/' },
-        { label: 'Settings' },
-      ]}
+      .items=${[{ label: 'Dashboard', href: '/' }, { label: 'Settings' }]}
     ></ov-breadcrumbs>
   `,
 };

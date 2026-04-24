@@ -1,111 +1,129 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Services — OpenValue Tech Tribes</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+      body {
+        margin: 0;
+        background: var(--color-bg-canvas);
+      }
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Services — OpenValue Tech Tribes</title>
-  <link rel="stylesheet" href="/styles.css">
-  <style>
-    body { margin: 0; background: var(--color-bg-canvas); }
+      .services-intro {
+        text-align: center;
+        padding: var(--ov-space-12) var(--ov-space-8) var(--ov-space-6);
+      }
 
-    .services-intro {
-      text-align: center;
-      padding: var(--ov-space-12) var(--ov-space-8) var(--ov-space-6);
-    }
+      .services-intro ov-text {
+        display: block;
+        margin-top: var(--ov-space-3);
+      }
 
-    .services-intro ov-text {
-      display: block;
-      margin-top: var(--ov-space-3);
-    }
+      .service-section {
+        padding: var(--ov-space-8) var(--ov-space-8) var(--ov-space-12);
+      }
 
-    .service-section {
-      padding: var(--ov-space-8) var(--ov-space-8) var(--ov-space-12);
-    }
+      .service-section ov-heading {
+        display: block;
+        margin-bottom: var(--ov-space-4);
+      }
 
-    .service-section ov-heading {
-      display: block;
-      margin-bottom: var(--ov-space-4);
-    }
+      .service-list {
+        margin: 0;
+        padding-left: var(--ov-space-6);
+      }
 
-    .service-list {
-      margin: 0;
-      padding-left: var(--ov-space-6);
-    }
+      .service-list li {
+        font-family: var(--ov-font-primary);
+        font-size: var(--ov-fs-base);
+        color: var(--color-text-primary);
+        line-height: var(--ov-lh-relaxed);
+        margin-bottom: var(--ov-space-2);
+      }
+    </style>
+  </head>
 
-    .service-list li {
-      font-family: var(--ov-font-primary);
-      font-size: var(--ov-fs-base);
-      color: var(--color-text-primary);
-      line-height: var(--ov-lh-relaxed);
-      margin-bottom: var(--ov-space-2);
-    }
-  </style>
-</head>
+  <body data-theme="light">
+    <ov-page-layout max-width="1000px">
+      <ov-nav-bar slot="nav" logo-href="/" active="/services.html">
+        <ov-logo slot="logo" size="sm"></ov-logo>
+        <ov-button slot="actions" variant="primary" size="sm"
+          >Contact</ov-button
+        >
+      </ov-nav-bar>
 
-<body data-theme="light">
+      <ov-hero slot="hero" src="/banner.jpg" overlay="0.68">
+        <ov-logo slot="logo" size="xl"></ov-logo>
+      </ov-hero>
 
-  <ov-page-layout max-width="1000px">
+      <section class="services-intro">
+        <ov-heading level="2">Services</ov-heading>
+        <ov-text variant="body" as="p"
+          >We provide the following services:</ov-text
+        >
+      </section>
 
-    <ov-nav-bar slot="nav" logo-href="/" active="/services.html">
-      <ov-logo slot="logo" size="sm"></ov-logo>
-      <ov-button slot="actions" variant="primary" size="sm">Contact</ov-button>
-    </ov-nav-bar>
+      <section class="service-section">
+        <ov-heading level="3">Software development services</ov-heading>
+        <ul class="service-list">
+          <li>
+            Expert Full Stack Java Software consultants on a contract basis or
+            via our team-as-a-service proposition
+          </li>
+          <li>In house bespoke software development and Proof of concepts</li>
+          <li>
+            Application modernization services (lower maintenance cost, renew
+            architecture and improve code base)
+          </li>
+          <li>
+            Code reviews, architecture reviews &amp; technical due diligence
+            services (read more <ov-link href="#">here</ov-link>)
+          </li>
+          <li>Cloud migration and optimization advice</li>
+        </ul>
+      </section>
 
-    <ov-hero slot="hero" src="/banner.jpg" overlay="0.68">
-      <ov-logo slot="logo" size="xl"></ov-logo>
-    </ov-hero>
+      <section class="service-section">
+        <ov-heading level="3">Training</ov-heading>
+        <ul class="service-list">
+          <li>
+            Public and in-company training courses on Java, Spring, Kubernetes,
+            and more
+          </li>
+          <li>
+            Tailored workshop programmes aligned to your team's skill gaps
+          </li>
+          <li>Certified trainers with hands-on industry experience</li>
+        </ul>
+      </section>
 
-    <section class="services-intro">
-      <ov-heading level="2">Services</ov-heading>
-      <ov-text variant="body" as="p">We provide the following services:</ov-text>
-    </section>
+      <section class="service-section">
+        <ov-heading level="3">Speakers &amp; knowledge sharing</ov-heading>
+        <ul class="service-list">
+          <li>
+            Conference speakers and Java champions available for your event
+          </li>
+          <li>Internal tech talks and lunch-and-learn sessions</li>
+          <li>OpenValue Tech Insights blog and community contributions</li>
+        </ul>
+      </section>
+    </ov-page-layout>
 
-    <section class="service-section">
-      <ov-heading level="3">Software development services</ov-heading>
-      <ul class="service-list">
-        <li>Expert Full Stack Java Software consultants on a contract basis or via our team-as-a-service proposition</li>
-        <li>In house bespoke software development and Proof of concepts</li>
-        <li>Application modernization services (lower maintenance cost, renew architecture and improve code base)</li>
-        <li>Code reviews, architecture reviews &amp; technical due diligence services (read more <ov-link href="#">here</ov-link>)</li>
-        <li>Cloud migration and optimization advice</li>
-      </ul>
-    </section>
+    <script type="module" src="/main.ts"></script>
 
-    <section class="service-section">
-      <ov-heading level="3">Training</ov-heading>
-      <ul class="service-list">
-        <li>Public and in-company training courses on Java, Spring, Kubernetes, and more</li>
-        <li>Tailored workshop programmes aligned to your team's skill gaps</li>
-        <li>Certified trainers with hands-on industry experience</li>
-      </ul>
-    </section>
-
-    <section class="service-section">
-      <ov-heading level="3">Speakers &amp; knowledge sharing</ov-heading>
-      <ul class="service-list">
-        <li>Conference speakers and Java champions available for your event</li>
-        <li>Internal tech talks and lunch-and-learn sessions</li>
-        <li>OpenValue Tech Insights blog and community contributions</li>
-      </ul>
-    </section>
-
-  </ov-page-layout>
-
-  <script type="module" src="/main.ts"></script>
-
-  <script type="module">
-    document.querySelector('ov-nav-bar').items = [
-      { label: 'Home',          href: '/' },
-      { label: 'Services',      href: '/services.html' },
-      { label: 'Projects',      href: '/projects.html' },
-      { label: 'Training',      href: '/training.html' },
-      { label: 'Career',        href: '/career.html' },
-      { label: 'Speakers',      href: '/speakers.html' },
-      { label: 'Tech Insights', href: '/tech-insights.html' },
-      { label: 'About',         href: '/about.html' },
-    ];
-  </script>
-
-</body>
+    <script type="module">
+      document.querySelector('ov-nav-bar').items = [
+        { label: 'Home', href: '/' },
+        { label: 'Services', href: '/services.html' },
+        { label: 'Projects', href: '/projects.html' },
+        { label: 'Training', href: '/training.html' },
+        { label: 'Career', href: '/career.html' },
+        { label: 'Speakers', href: '/speakers.html' },
+        { label: 'Tech Insights', href: '/tech-insights.html' },
+        { label: 'About', href: '/about.html' },
+      ];
+    </script>
+  </body>
 </html>

@@ -65,9 +65,15 @@ export const PromoCode: Story = {
 export const NewsletterSignup: Story = {
   name: 'Real-world: Email capture',
   render: () => html`
-    <div style="max-width:480px;padding:32px;background:#1D252D;border-radius:12px">
-      <div style="color:white;font-size:18px;font-weight:600;margin-bottom:4px">Stay ahead of the market</div>
-      <div style="color:#9ca3af;font-size:13px;margin-bottom:16px">Weekly insights delivered to your inbox</div>
+    <div
+      style="max-width:480px;padding:32px;background:#1D252D;border-radius:12px"
+    >
+      <div style="color:white;font-size:18px;font-weight:600;margin-bottom:4px">
+        Stay ahead of the market
+      </div>
+      <div style="color:#9ca3af;font-size:13px;margin-bottom:16px">
+        Weekly insights delivered to your inbox
+      </div>
       <ov-input-group attach="end">
         <ov-input type="email" placeholder="your@email.com"></ov-input>
         <ov-button slot="end" variant="accent">Subscribe</ov-button>

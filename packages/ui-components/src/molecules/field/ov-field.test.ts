@@ -12,7 +12,7 @@ describe('ov-field', () => {
     it('renders a label from the label property', async () => {
       const el = await fixture<OvField>(html`
         <ov-field label="Email address">
-          <input type="email">
+          <input type="email" />
         </ov-field>
       `);
       // ov-label renders inside the label-wrap
@@ -22,7 +22,7 @@ describe('ov-field', () => {
     it('shows a required asterisk when required', async () => {
       const el = await fixture<OvField>(html`
         <ov-field label="Name" required>
-          <input type="text">
+          <input type="text" />
         </ov-field>
       `);
       expect(el.hasAttribute('required')).to.be.true;
@@ -31,7 +31,7 @@ describe('ov-field', () => {
     it('renders slotted control in the control-wrap', async () => {
       const el = await fixture<OvField>(html`
         <ov-field label="Name">
-          <input type="text" id="ctrl">
+          <input type="text" id="ctrl" />
         </ov-field>
       `);
       expect(el.querySelector('#ctrl')).to.exist;
@@ -40,7 +40,7 @@ describe('ov-field', () => {
     it('renders status message when status is set', async () => {
       const el = await fixture<OvField>(html`
         <ov-field label="Email" status="error" message="Invalid email.">
-          <input type="email">
+          <input type="email" />
         </ov-field>
       `);
       expect(el.shadowRoot!.querySelector('.message')).to.exist;
@@ -49,7 +49,7 @@ describe('ov-field', () => {
     it('renders help text when status is idle', async () => {
       const el = await fixture<OvField>(html`
         <ov-field label="Password">
-          <input type="password">
+          <input type="password" />
           <span slot="help">Min. 8 characters</span>
         </ov-field>
       `);
@@ -63,7 +63,7 @@ describe('ov-field', () => {
     it('reflects status attribute', async () => {
       const el = await fixture<OvField>(html`
         <ov-field label="Email" status="error">
-          <input type="email">
+          <input type="email" />
         </ov-field>
       `);
       expect(el.getAttribute('status')).to.equal('error');
@@ -81,7 +81,7 @@ describe('ov-field', () => {
     it('updates status reactively', async () => {
       const el = await fixture<OvField>(html`
         <ov-field label="Email">
-          <input type="email">
+          <input type="email" />
         </ov-field>
       `);
       el.status = 'error';
@@ -124,7 +124,11 @@ describe('ov-field', () => {
     it('passes axe for a labelled input field', async () => {
       const el = await fixture(html`
         <ov-field label="Email address">
-          <ov-input type="email" name="email" aria-label="Email address"></ov-input>
+          <ov-input
+            type="email"
+            name="email"
+            aria-label="Email address"
+          ></ov-input>
         </ov-field>
       `);
       await expect(el).to.be.accessible({
@@ -135,7 +139,11 @@ describe('ov-field', () => {
     it('passes axe for error state', async () => {
       const el = await fixture(html`
         <ov-field label="Email" status="error" message="Invalid email.">
-          <ov-input type="email" aria-label="Email" aria-describedby="field-msg"></ov-input>
+          <ov-input
+            type="email"
+            aria-label="Email"
+            aria-describedby="field-msg"
+          ></ov-input>
         </ov-field>
       `);
       await expect(el).to.be.accessible({
@@ -146,7 +154,7 @@ describe('ov-field', () => {
     it('error message has role="alert"', async () => {
       const el = await fixture<OvField>(html`
         <ov-field label="Email" status="error" message="Required.">
-          <input type="email">
+          <input type="email" />
         </ov-field>
       `);
       const msg = el.shadowRoot!.querySelector('.message')!;
@@ -156,7 +164,7 @@ describe('ov-field', () => {
     it('non-error message has role="status"', async () => {
       const el = await fixture<OvField>(html`
         <ov-field label="Name" status="success" message="Looks good!">
-          <input type="text">
+          <input type="text" />
         </ov-field>
       `);
       const msg = el.shadowRoot!.querySelector('.message')!;

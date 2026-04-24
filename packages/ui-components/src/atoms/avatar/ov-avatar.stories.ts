@@ -6,12 +6,12 @@ const meta: Meta = {
   title: 'Atoms/Avatar',
   component: 'ov-avatar',
   argTypes: {
-    size:  { control: 'select', options: ['xs', 'sm', 'md', 'lg', 'xl'] },
+    size: { control: 'select', options: ['xs', 'sm', 'md', 'lg', 'xl'] },
     shape: { control: 'select', options: ['circle', 'square'] },
-    tone:  { control: 'select', options: ['brand', 'accent', 'neutral'] },
-    name:  { control: 'text' },
+    tone: { control: 'select', options: ['brand', 'accent', 'neutral'] },
+    name: { control: 'text' },
     initials: { control: 'text' },
-    src:  { control: 'text' },
+    src: { control: 'text' },
   },
   args: {
     name: 'Sarah Kim',
@@ -83,10 +83,26 @@ export const AvatarStack: Story = {
   render: () => html`
     <div style="display:flex;align-items:center;gap:12px">
       <div style="display:flex">
-        <ov-avatar name="Alice W" tone="brand" style="margin-right:-8px;border:2px solid white;border-radius:50%"></ov-avatar>
-        <ov-avatar name="Bob M" tone="accent" style="margin-right:-8px;border:2px solid white;border-radius:50%"></ov-avatar>
-        <ov-avatar name="Carol S" tone="neutral" style="margin-right:-8px;border:2px solid white;border-radius:50%"></ov-avatar>
-        <ov-avatar initials="+4" tone="neutral" style="border:2px solid white;border-radius:50%"></ov-avatar>
+        <ov-avatar
+          name="Alice W"
+          tone="brand"
+          style="margin-right:-8px;border:2px solid white;border-radius:50%"
+        ></ov-avatar>
+        <ov-avatar
+          name="Bob M"
+          tone="accent"
+          style="margin-right:-8px;border:2px solid white;border-radius:50%"
+        ></ov-avatar>
+        <ov-avatar
+          name="Carol S"
+          tone="neutral"
+          style="margin-right:-8px;border:2px solid white;border-radius:50%"
+        ></ov-avatar>
+        <ov-avatar
+          initials="+4"
+          tone="neutral"
+          style="border:2px solid white;border-radius:50%"
+        ></ov-avatar>
       </div>
       <span style="font-size:13px;color:#6b7280">8 team members</span>
     </div>

@@ -7,7 +7,10 @@ const meta: Meta = {
   title: 'Atoms/Input',
   component: 'ov-input',
   argTypes: {
-    type: { control: 'select', options: ['text', 'email', 'password', 'number', 'search', 'tel', 'url'] },
+    type: {
+      control: 'select',
+      options: ['text', 'email', 'password', 'number', 'search', 'tel', 'url'],
+    },
     size: { control: 'select', options: ['sm', 'md', 'lg'] },
     placeholder: { control: 'text' },
     value: { control: 'text' },
@@ -84,15 +87,23 @@ export const States: Story = {
 export const LoginForm: Story = {
   name: 'Real-world: Login form',
   render: () => html`
-    <div style="max-width:360px;display:flex;flex-direction:column;gap:16px;padding:24px;border:1px solid #e5e7eb;border-radius:12px">
+    <div
+      style="max-width:360px;display:flex;flex-direction:column;gap:16px;padding:24px;border:1px solid #e5e7eb;border-radius:12px"
+    >
       <div>
-        <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px">Email</label>
+        <label
+          style="display:block;font-size:13px;font-weight:500;margin-bottom:6px"
+          >Email</label
+        >
         <ov-input type="email" placeholder="you@company.com">
           <ov-icon slot="prefix" name="mail"></ov-icon>
         </ov-input>
       </div>
       <div>
-        <label style="display:block;font-size:13px;font-weight:500;margin-bottom:6px">Password</label>
+        <label
+          style="display:block;font-size:13px;font-weight:500;margin-bottom:6px"
+          >Password</label
+        >
         <ov-input type="password" placeholder="••••••••">
           <ov-icon slot="prefix" name="user"></ov-icon>
         </ov-input>

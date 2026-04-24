@@ -7,9 +7,9 @@ const meta: Meta = {
   title: 'Atoms/Label',
   component: 'ov-label',
   argTypes: {
-    size:     { control: 'select', options: ['sm', 'md'] },
+    size: { control: 'select', options: ['sm', 'md'] },
     required: { control: 'boolean' },
-    for:      { control: 'text' },
+    for: { control: 'text' },
   },
   args: {
     size: 'md',
@@ -27,7 +27,8 @@ export const Default: Story = {
       for=${args['for'] || ''}
       size=${args['size']}
       ?required=${args['required']}
-    >Email address</ov-label>
+      >Email address</ov-label
+    >
   `,
 };
 
@@ -75,7 +76,11 @@ export const FormField: Story = {
     <div style="display:flex;flex-direction:column;gap:16px;max-width:360px">
       <div style="display:flex;flex-direction:column;gap:6px">
         <ov-label for="email" required>Email address</ov-label>
-        <ov-input id="email" type="email" placeholder="you@example.com"></ov-input>
+        <ov-input
+          id="email"
+          type="email"
+          placeholder="you@example.com"
+        ></ov-input>
       </div>
       <div style="display:flex;flex-direction:column;gap:6px">
         <ov-label for="pw" required>

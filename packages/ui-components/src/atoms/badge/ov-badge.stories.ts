@@ -8,7 +8,15 @@ const meta: Meta = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['default', 'brand', 'accent', 'success', 'warning', 'danger', 'info'],
+      options: [
+        'default',
+        'brand',
+        'accent',
+        'success',
+        'warning',
+        'danger',
+        'info',
+      ],
     },
     appearance: { control: 'select', options: ['soft', 'solid', 'outline'] },
     size: { control: 'select', options: ['sm', 'md'] },
@@ -27,7 +35,8 @@ export const Default: Story = {
       appearance=${args['appearance']}
       size=${args['size']}
       ?pill=${args['pill']}
-    >New</ov-badge>
+      >New</ov-badge
+    >
   `,
 };
 
@@ -75,15 +84,24 @@ export const WithStatusDot: Story = {
   render: () => html`
     <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
       <ov-badge variant="success">
-        <span slot="dot" style="width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block"></span>
+        <span
+          slot="dot"
+          style="width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block"
+        ></span>
         Online
       </ov-badge>
       <ov-badge variant="warning">
-        <span slot="dot" style="width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block"></span>
+        <span
+          slot="dot"
+          style="width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block"
+        ></span>
         Away
       </ov-badge>
       <ov-badge variant="danger">
-        <span slot="dot" style="width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block"></span>
+        <span
+          slot="dot"
+          style="width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block"
+        ></span>
         Offline
       </ov-badge>
     </div>
@@ -94,21 +112,31 @@ export const RealWorldUsage: Story = {
   name: 'Real-world: Status labels',
   render: () => html`
     <div style="display:flex;flex-direction:column;gap:16px;max-width:500px">
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border:1px solid #e5e7eb;border-radius:8px">
+      <div
+        style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border:1px solid #e5e7eb;border-radius:8px"
+      >
         <span style="font-size:14px;font-weight:500">Quarterly Report Q1</span>
         <ov-badge variant="success" size="sm">Published</ov-badge>
       </div>
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border:1px solid #e5e7eb;border-radius:8px">
+      <div
+        style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border:1px solid #e5e7eb;border-radius:8px"
+      >
         <span style="font-size:14px;font-weight:500">2024 Annual Forecast</span>
         <ov-badge variant="warning" size="sm">Draft</ov-badge>
       </div>
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border:1px solid #e5e7eb;border-radius:8px">
+      <div
+        style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border:1px solid #e5e7eb;border-radius:8px"
+      >
         <span style="font-size:14px;font-weight:500">Market Analysis</span>
         <ov-badge variant="info" size="sm">In Review</ov-badge>
       </div>
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border:1px solid #e5e7eb;border-radius:8px">
+      <div
+        style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border:1px solid #e5e7eb;border-radius:8px"
+      >
         <span style="font-size:14px;font-weight:500">Legacy Budget 2022</span>
-        <ov-badge variant="default" appearance="outline" size="sm">Archived</ov-badge>
+        <ov-badge variant="default" appearance="outline" size="sm"
+          >Archived</ov-badge
+        >
       </div>
     </div>
   `,

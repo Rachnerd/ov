@@ -60,8 +60,9 @@ export class OvImageCard extends LitElement {
       .arrow {
         color: white;
         opacity: 0.7;
-        transition: opacity var(--ov-duration-fast, 150ms),
-                    transform var(--ov-duration-fast, 150ms);
+        transition:
+          opacity var(--ov-duration-fast, 150ms),
+          transform var(--ov-duration-fast, 150ms);
       }
 
       .photo {
@@ -73,8 +74,13 @@ export class OvImageCard extends LitElement {
         transition: transform 400ms ease;
       }
 
-      a:hover .photo  { transform: scale(1.05); }
-      a:hover .arrow  { opacity: 1; transform: translateX(3px); }
+      a:hover .photo {
+        transform: scale(1.05);
+      }
+      a:hover .arrow {
+        opacity: 1;
+        transform: translateX(3px);
+      }
     `,
   ];
 

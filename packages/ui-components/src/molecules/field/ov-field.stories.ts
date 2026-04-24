@@ -10,7 +10,10 @@ const meta: Meta = {
   component: 'ov-field',
   argTypes: {
     label: { control: 'text' },
-    status: { control: 'select', options: ['idle', 'success', 'error', 'warning'] },
+    status: {
+      control: 'select',
+      options: ['idle', 'success', 'error', 'warning'],
+    },
     message: { control: 'text' },
     required: { control: 'boolean' },
     inline: { control: 'boolean' },
@@ -57,11 +60,21 @@ export const ValidationStates: Story = {
         <ov-input id="f2" value="user@company.com" type="email"></ov-input>
       </ov-field>
 
-      <ov-field label="Password" status="warning" message="Weak password — try adding symbols." for="f3">
+      <ov-field
+        label="Password"
+        status="warning"
+        message="Weak password — try adding symbols."
+        for="f3"
+      >
         <ov-input id="f3" type="password" value="password123"></ov-input>
       </ov-field>
 
-      <ov-field label="Confirm email" status="error" message="Email addresses do not match." for="f4">
+      <ov-field
+        label="Confirm email"
+        status="error"
+        message="Email addresses do not match."
+        for="f4"
+      >
         <ov-input id="f4" type="email" value="different@email.com"></ov-input>
       </ov-field>
     </div>
@@ -103,24 +116,42 @@ export const InlineLayout: Story = {
 export const CompleteForm: Story = {
   name: 'Real-world: Registration form',
   render: () => html`
-    <div style="max-width:440px;padding:32px;border:1px solid #e5e7eb;border-radius:16px">
+    <div
+      style="max-width:440px;padding:32px;border:1px solid #e5e7eb;border-radius:16px"
+    >
       <div style="margin-bottom:24px">
-        <div style="font-size:22px;font-weight:700;margin-bottom:4px">Create your account</div>
-        <div style="font-size:14px;color:#6b7280">Start your 14-day free trial</div>
+        <div style="font-size:22px;font-weight:700;margin-bottom:4px">
+          Create your account
+        </div>
+        <div style="font-size:14px;color:#6b7280">
+          Start your 14-day free trial
+        </div>
       </div>
       <div style="display:flex;flex-direction:column;gap:16px">
         <ov-field label="Full name" required for="reg-name">
           <ov-input id="reg-name" placeholder="Jane Smith"></ov-input>
         </ov-field>
-        <ov-field label="Work email" required status="error" message="Please enter a valid work email." for="reg-email">
-          <ov-input id="reg-email" type="email" value="jane@gmail.com"></ov-input>
+        <ov-field
+          label="Work email"
+          required
+          status="error"
+          message="Please enter a valid work email."
+          for="reg-email"
+        >
+          <ov-input
+            id="reg-email"
+            type="email"
+            value="jane@gmail.com"
+          ></ov-input>
         </ov-field>
         <ov-field label="Company" required for="reg-company">
           <ov-input id="reg-company" placeholder="Your company name"></ov-input>
         </ov-field>
         <ov-field label="Password" required for="reg-pw">
           <ov-input id="reg-pw" type="password"></ov-input>
-          <span slot="help">At least 8 characters with a number and symbol.</span>
+          <span slot="help"
+            >At least 8 characters with a number and symbol.</span
+          >
         </ov-field>
       </div>
     </div>

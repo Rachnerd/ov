@@ -13,12 +13,16 @@ describe('ov-label', () => {
     });
 
     it('projects slot content into the label', async () => {
-      const el = await fixture<OvLabel>(html`<ov-label>Email address</ov-label>`);
+      const el = await fixture<OvLabel>(
+        html`<ov-label>Email address</ov-label>`,
+      );
       expect(el.textContent!.trim()).to.equal('Email address');
     });
 
     it('renders required asterisk when required', async () => {
-      const el = await fixture<OvLabel>(html`<ov-label required>Name</ov-label>`);
+      const el = await fixture<OvLabel>(
+        html`<ov-label required>Name</ov-label>`,
+      );
       expect(el.shadowRoot!.querySelector('.required')).to.exist;
     });
 
@@ -38,8 +42,12 @@ describe('ov-label', () => {
     });
 
     it('sets for attribute on the inner label element', async () => {
-      const el = await fixture<OvLabel>(html`<ov-label for="email-input">Email</ov-label>`);
-      expect(el.shadowRoot!.querySelector('label')!.getAttribute('for')).to.equal('email-input');
+      const el = await fixture<OvLabel>(
+        html`<ov-label for="email-input">Email</ov-label>`,
+      );
+      expect(
+        el.shadowRoot!.querySelector('label')!.getAttribute('for'),
+      ).to.equal('email-input');
     });
   });
 
@@ -47,12 +55,16 @@ describe('ov-label', () => {
 
   describe('properties and attributes', () => {
     it('reflects required attribute', async () => {
-      const el = await fixture<OvLabel>(html`<ov-label required>Name</ov-label>`);
+      const el = await fixture<OvLabel>(
+        html`<ov-label required>Name</ov-label>`,
+      );
       expect(el.hasAttribute('required')).to.be.true;
     });
 
     it('reflects size attribute', async () => {
-      const el = await fixture<OvLabel>(html`<ov-label size="sm">Search</ov-label>`);
+      const el = await fixture<OvLabel>(
+        html`<ov-label size="sm">Search</ov-label>`,
+      );
       expect(el.getAttribute('size')).to.equal('sm');
     });
 
@@ -69,7 +81,7 @@ describe('ov-label', () => {
       const el = await fixture(html`
         <div>
           <ov-label for="t">Email address</ov-label>
-          <input id="t" type="email">
+          <input id="t" type="email" />
         </div>
       `);
       await expect(el).to.be.accessible({
@@ -78,8 +90,12 @@ describe('ov-label', () => {
     });
 
     it('required asterisk is aria-hidden', async () => {
-      const el = await fixture<OvLabel>(html`<ov-label required>Name</ov-label>`);
-      expect(el.shadowRoot!.querySelector('.required')!.getAttribute('aria-hidden')).to.equal('true');
+      const el = await fixture<OvLabel>(
+        html`<ov-label required>Name</ov-label>`,
+      );
+      expect(
+        el.shadowRoot!.querySelector('.required')!.getAttribute('aria-hidden'),
+      ).to.equal('true');
     });
   });
 });

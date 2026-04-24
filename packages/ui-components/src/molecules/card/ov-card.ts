@@ -42,14 +42,16 @@ export class OvCard extends LitElement {
   static override styles = [
     baseStyles,
     css`
-      :host { display: block; }
+      :host {
+        display: block;
+      }
 
       .card {
-        --_bg:     var(--color-bg-surface);
-        --_fg:     var(--color-text-primary);
+        --_bg: var(--color-bg-surface);
+        --_fg: var(--color-text-primary);
         --_border: var(--color-border-subtle);
-        --_p:      var(--ov-card-padding, var(--ov-space-6));
-        --_gap:    var(--ov-card-gap, var(--ov-space-4));
+        --_p: var(--ov-card-padding, var(--ov-space-6));
+        --_gap: var(--ov-card-gap, var(--ov-space-4));
 
         background: var(--_bg);
         color: var(--_fg);
@@ -61,28 +63,30 @@ export class OvCard extends LitElement {
         flex-direction: column;
         transition:
           box-shadow var(--ov-duration-base) var(--ov-ease-out),
-          transform  var(--ov-duration-base) var(--ov-ease-out);
+          transform var(--ov-duration-base) var(--ov-ease-out);
       }
 
       /* Variants */
       :host([variant='brand']) .card {
-        --_bg:     var(--color-brand);
-        --_fg:     var(--color-text-on-brand);
+        --_bg: var(--color-brand);
+        --_fg: var(--color-text-on-brand);
         --_border: transparent;
       }
       :host([variant='inverse']) .card {
-        --_bg:     var(--ov-charcoal);
-        --_fg:     var(--ov-white);
+        --_bg: var(--ov-charcoal);
+        --_fg: var(--ov-white);
         --_border: transparent;
       }
       :host([variant='inverse-brand']) .card {
-        --_bg:     var(--ov-charcoal);
-        --_fg:     var(--ov-blue-400);
+        --_bg: var(--ov-charcoal);
+        --_fg: var(--ov-blue-400);
         --_border: transparent;
       }
 
       /* Interactive */
-      :host([interactive]) .card { cursor: pointer; }
+      :host([interactive]) .card {
+        cursor: pointer;
+      }
       :host([interactive]) .card:hover {
         box-shadow: var(--shadow-md);
         transform: translateY(-2px);
@@ -93,7 +97,10 @@ export class OvCard extends LitElement {
       }
 
       /* Modifiers */
-      :host([borderless]) .card { border-color: transparent; box-shadow: none; }
+      :host([borderless]) .card {
+        border-color: transparent;
+        box-shadow: none;
+      }
 
       /* ---- Regions ---- */
       .media ::slotted(*) {
@@ -106,7 +113,9 @@ export class OvCard extends LitElement {
       .header {
         padding: var(--_p) var(--_p) 0;
       }
-      .header:empty { display: none; }
+      .header:empty {
+        display: none;
+      }
 
       .body {
         padding: var(--_p);
@@ -114,10 +123,14 @@ export class OvCard extends LitElement {
       }
       :host([flush]) .header,
       :host([flush]) .body,
-      :host([flush]) .footer { padding: 0; }
+      :host([flush]) .footer {
+        padding: 0;
+      }
 
       /* When header has content, reduce top padding on body */
-      .header:not(:empty) + .body { padding-top: var(--_gap); }
+      .header:not(:empty) + .body {
+        padding-top: var(--_gap);
+      }
 
       .footer {
         padding: 0 var(--_p) var(--_p);
@@ -125,7 +138,9 @@ export class OvCard extends LitElement {
         align-items: center;
         gap: var(--ov-space-3);
       }
-      .footer:empty { display: none; }
+      .footer:empty {
+        display: none;
+      }
 
       /* Divider between body and footer */
       .footer:not(:empty) {
@@ -136,7 +151,7 @@ export class OvCard extends LitElement {
       :host([variant='brand']) .footer:not(:empty),
       :host([variant='inverse']) .footer:not(:empty),
       :host([variant='inverse-brand']) .footer:not(:empty) {
-        border-top-color: rgba(255,255,255,0.15);
+        border-top-color: rgba(255, 255, 255, 0.15);
       }
     `,
   ];
@@ -146,7 +161,7 @@ export class OvCard extends LitElement {
       <div class="card" part="card">
         <div class="media"><slot name="media"></slot></div>
         <div class="header" part="header"><slot name="header"></slot></div>
-        <div class="body"   part="body"  ><slot></slot></div>
+        <div class="body" part="body"><slot></slot></div>
         <div class="footer" part="footer"><slot name="footer"></slot></div>
       </div>
     `;

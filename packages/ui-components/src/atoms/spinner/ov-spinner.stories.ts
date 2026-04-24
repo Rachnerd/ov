@@ -6,8 +6,8 @@ const meta: Meta = {
   title: 'Atoms/Spinner',
   component: 'ov-spinner',
   argTypes: {
-    size:  { control: 'select', options: ['sm', 'md', 'lg', 'xl'] },
-    tone:  { control: 'select', options: ['brand', 'neutral', 'inverse'] },
+    size: { control: 'select', options: ['sm', 'md', 'lg', 'xl'] },
+    tone: { control: 'select', options: ['brand', 'neutral', 'inverse'] },
     label: { control: 'text' },
   },
   args: {
@@ -46,7 +46,9 @@ export const Tones: Story = {
     <div style="display:flex;gap:16px;align-items:center">
       <ov-spinner tone="brand"></ov-spinner>
       <ov-spinner tone="neutral"></ov-spinner>
-      <div style="background:var(--ov-charcoal,#1d252d);padding:12px;border-radius:8px">
+      <div
+        style="background:var(--ov-charcoal,#1d252d);padding:12px;border-radius:8px"
+      >
         <ov-spinner tone="inverse"></ov-spinner>
       </div>
     </div>
@@ -67,11 +69,15 @@ export const InlineWithText: Story = {
   name: 'Real-world: Loading state in button',
   render: () => html`
     <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
-      <div style="display:inline-flex;align-items:center;gap:8px;padding:10px 16px;background:var(--color-brand,#2563eb);color:white;border-radius:8px;font-size:14px;font-weight:500">
+      <div
+        style="display:inline-flex;align-items:center;gap:8px;padding:10px 16px;background:var(--color-brand,#2563eb);color:white;border-radius:8px;font-size:14px;font-weight:500"
+      >
         <ov-spinner size="sm" tone="inverse" label="Saving"></ov-spinner>
         Saving…
       </div>
-      <div style="display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border:1px solid #e5e7eb;border-radius:8px;font-size:14px">
+      <div
+        style="display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border:1px solid #e5e7eb;border-radius:8px;font-size:14px"
+      >
         <ov-spinner size="sm" tone="neutral" label="Loading"></ov-spinner>
         Loading data…
       </div>

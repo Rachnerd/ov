@@ -28,7 +28,9 @@ describe('ov-button', () => {
     });
 
     it('shows spinner markup when loading', async () => {
-      const el = await fixture<OvButton>(html`<ov-button loading>Saving</ov-button>`);
+      const el = await fixture<OvButton>(
+        html`<ov-button loading>Saving</ov-button>`,
+      );
       expect(el.shadowRoot!.querySelector('.spinner')).to.exist;
     });
 
@@ -48,23 +50,33 @@ describe('ov-button', () => {
     });
 
     it('reflects variant to attribute', async () => {
-      const el = await fixture<OvButton>(html`<ov-button variant="danger">Delete</ov-button>`);
+      const el = await fixture<OvButton>(
+        html`<ov-button variant="danger">Delete</ov-button>`,
+      );
       expect(el.getAttribute('variant')).to.equal('danger');
     });
 
     it('reflects size to attribute', async () => {
-      const el = await fixture<OvButton>(html`<ov-button size="lg">Large</ov-button>`);
+      const el = await fixture<OvButton>(
+        html`<ov-button size="lg">Large</ov-button>`,
+      );
       expect(el.getAttribute('size')).to.equal('lg');
     });
 
     it('reflects disabled to attribute and disables native button', async () => {
-      const el = await fixture<OvButton>(html`<ov-button disabled>No</ov-button>`);
+      const el = await fixture<OvButton>(
+        html`<ov-button disabled>No</ov-button>`,
+      );
       expect(el.hasAttribute('disabled')).to.be.true;
-      expect(el.shadowRoot!.querySelector<HTMLButtonElement>('button')!.disabled).to.be.true;
+      expect(
+        el.shadowRoot!.querySelector<HTMLButtonElement>('button')!.disabled,
+      ).to.be.true;
     });
 
     it('reflects loading to attribute', async () => {
-      const el = await fixture<OvButton>(html`<ov-button loading>Wait</ov-button>`);
+      const el = await fixture<OvButton>(
+        html`<ov-button loading>Wait</ov-button>`,
+      );
       expect(el.hasAttribute('loading')).to.be.true;
     });
 
@@ -72,12 +84,18 @@ describe('ov-button', () => {
       const el = await fixture<OvButton>(html`<ov-button>X</ov-button>`);
       el.disabled = true;
       await elementUpdated(el);
-      expect(el.shadowRoot!.querySelector<HTMLButtonElement>('button')!.disabled).to.be.true;
+      expect(
+        el.shadowRoot!.querySelector<HTMLButtonElement>('button')!.disabled,
+      ).to.be.true;
     });
 
     it('sets native button type attribute', async () => {
-      const el = await fixture<OvButton>(html`<ov-button type="submit">Submit</ov-button>`);
-      expect(el.shadowRoot!.querySelector<HTMLButtonElement>('button')!.type).to.equal('submit');
+      const el = await fixture<OvButton>(
+        html`<ov-button type="submit">Submit</ov-button>`,
+      );
+      expect(
+        el.shadowRoot!.querySelector<HTMLButtonElement>('button')!.type,
+      ).to.equal('submit');
     });
   });
 
@@ -85,21 +103,31 @@ describe('ov-button', () => {
 
   describe('states', () => {
     it('stops click propagation when disabled', async () => {
-      const el = await fixture<OvButton>(html`<ov-button disabled>No</ov-button>`);
+      const el = await fixture<OvButton>(
+        html`<ov-button disabled>No</ov-button>`,
+      );
       let clicked = false;
-      el.addEventListener('click', () => { clicked = true; });
+      el.addEventListener('click', () => {
+        clicked = true;
+      });
       // Dispatch directly on shadow button to bypass native disabled suppression
-      el.shadowRoot!.querySelector('button')!
-        .dispatchEvent(new MouseEvent('click', { bubbles: true, composed: true }));
+      el.shadowRoot!.querySelector('button')!.dispatchEvent(
+        new MouseEvent('click', { bubbles: true, composed: true }),
+      );
       expect(clicked).to.be.false;
     });
 
     it('stops click propagation when loading', async () => {
-      const el = await fixture<OvButton>(html`<ov-button loading>Wait</ov-button>`);
+      const el = await fixture<OvButton>(
+        html`<ov-button loading>Wait</ov-button>`,
+      );
       let clicked = false;
-      el.addEventListener('click', () => { clicked = true; });
-      el.shadowRoot!.querySelector('button')!
-        .dispatchEvent(new MouseEvent('click', { bubbles: true, composed: true }));
+      el.addEventListener('click', () => {
+        clicked = true;
+      });
+      el.shadowRoot!.querySelector('button')!.dispatchEvent(
+        new MouseEvent('click', { bubbles: true, composed: true }),
+      );
       expect(clicked).to.be.false;
     });
 
@@ -122,18 +150,28 @@ describe('ov-button', () => {
     });
 
     it('sets aria-busy="true" when loading', async () => {
-      const el = await fixture<OvButton>(html`<ov-button loading>Loading</ov-button>`);
-      expect(el.shadowRoot!.querySelector('button')!.getAttribute('aria-busy')).to.equal('true');
+      const el = await fixture<OvButton>(
+        html`<ov-button loading>Loading</ov-button>`,
+      );
+      expect(
+        el.shadowRoot!.querySelector('button')!.getAttribute('aria-busy'),
+      ).to.equal('true');
     });
 
     it('sets aria-busy="false" when not loading', async () => {
       const el = await fixture<OvButton>(html`<ov-button>Go</ov-button>`);
-      expect(el.shadowRoot!.querySelector('button')!.getAttribute('aria-busy')).to.equal('false');
+      expect(
+        el.shadowRoot!.querySelector('button')!.getAttribute('aria-busy'),
+      ).to.equal('false');
     });
 
     it('sets aria-disabled="true" when disabled', async () => {
-      const el = await fixture<OvButton>(html`<ov-button disabled>Disabled</ov-button>`);
-      expect(el.shadowRoot!.querySelector('button')!.getAttribute('aria-disabled')).to.equal('true');
+      const el = await fixture<OvButton>(
+        html`<ov-button disabled>Disabled</ov-button>`,
+      );
+      expect(
+        el.shadowRoot!.querySelector('button')!.getAttribute('aria-disabled'),
+      ).to.equal('true');
     });
   });
 });

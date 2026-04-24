@@ -7,10 +7,10 @@ const meta: Meta = {
   title: 'Atoms/Checkbox',
   component: 'ov-checkbox',
   argTypes: {
-    checked:       { control: 'boolean' },
+    checked: { control: 'boolean' },
     indeterminate: { control: 'boolean' },
-    disabled:      { control: 'boolean' },
-    required:      { control: 'boolean' },
+    disabled: { control: 'boolean' },
+    required: { control: 'boolean' },
   },
   args: {
     checked: false,
@@ -30,7 +30,8 @@ export const Default: Story = {
       ?indeterminate=${args['indeterminate']}
       ?disabled=${args['disabled']}
       ?required=${args['required']}
-    >Receive email updates</ov-checkbox>
+      >Receive email updates</ov-checkbox
+    >
   `,
 };
 
@@ -50,7 +51,11 @@ export const RichLabel: Story = {
   name: 'Rich label (with links)',
   render: () => html`
     <ov-checkbox name="terms" value="accepted" required>
-      <span>I agree to the <ov-link href="/terms" variant="brand">Terms of Service</ov-link> and <ov-link href="/privacy" variant="brand">Privacy Policy</ov-link></span>
+      <span
+        >I agree to the
+        <ov-link href="/terms" variant="brand">Terms of Service</ov-link> and
+        <ov-link href="/privacy" variant="brand">Privacy Policy</ov-link></span
+      >
     </ov-checkbox>
   `,
 };
@@ -59,11 +64,17 @@ export const CheckboxGroup: Story = {
   name: 'Real-world: Multi-select options',
   render: () => html`
     <div style="display:flex;flex-direction:column;gap:10px">
-      <p style="margin:0 0 4px;font-size:13px;font-weight:600">Notification preferences</p>
-      <ov-checkbox name="notif" value="email" checked>Email notifications</ov-checkbox>
+      <p style="margin:0 0 4px;font-size:13px;font-weight:600">
+        Notification preferences
+      </p>
+      <ov-checkbox name="notif" value="email" checked
+        >Email notifications</ov-checkbox
+      >
       <ov-checkbox name="notif" value="sms">SMS alerts</ov-checkbox>
       <ov-checkbox name="notif" value="push">Push notifications</ov-checkbox>
-      <ov-checkbox name="notif" value="marketing" disabled>Marketing emails (unavailable)</ov-checkbox>
+      <ov-checkbox name="notif" value="marketing" disabled
+        >Marketing emails (unavailable)</ov-checkbox
+      >
     </div>
   `,
 };

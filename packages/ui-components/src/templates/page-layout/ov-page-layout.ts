@@ -60,9 +60,7 @@ export class OvPageLayout extends LitElement {
   ];
 
   protected override render(): TemplateResult {
-    const style = this.maxWidth
-      ? `--ov-page-max-width: ${this.maxWidth}`
-      : '';
+    const style = this.maxWidth ? `--ov-page-max-width: ${this.maxWidth}` : '';
 
     return html`
       <div class="nav-wrap"><slot name="nav"></slot></div>

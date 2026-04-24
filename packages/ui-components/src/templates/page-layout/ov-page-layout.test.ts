@@ -8,7 +8,9 @@ describe('ov-page-layout', () => {
 
   describe('rendering', () => {
     it('renders four slot wrappers', async () => {
-      const el = await fixture<OvPageLayout>(html`<ov-page-layout></ov-page-layout>`);
+      const el = await fixture<OvPageLayout>(
+        html`<ov-page-layout></ov-page-layout>`,
+      );
       const slots = el.shadowRoot!.querySelectorAll('slot');
       // nav, hero, default, footer
       expect(slots.length).to.equal(4);
@@ -55,19 +57,25 @@ describe('ov-page-layout', () => {
 
   describe('layout structure', () => {
     it('content wrapper has the .content class', async () => {
-      const el = await fixture<OvPageLayout>(html`<ov-page-layout></ov-page-layout>`);
+      const el = await fixture<OvPageLayout>(
+        html`<ov-page-layout></ov-page-layout>`,
+      );
       expect(el.shadowRoot!.querySelector('.content')).to.exist;
     });
 
     it('hero and footer wrappers have the .full-width class', async () => {
-      const el = await fixture<OvPageLayout>(html`<ov-page-layout></ov-page-layout>`);
+      const el = await fixture<OvPageLayout>(
+        html`<ov-page-layout></ov-page-layout>`,
+      );
       const fullWidths = el.shadowRoot!.querySelectorAll('.full-width');
       // hero, footer
       expect(fullWidths.length).to.equal(2);
     });
 
     it('nav wrapper has the .nav-wrap class (sticky)', async () => {
-      const el = await fixture<OvPageLayout>(html`<ov-page-layout></ov-page-layout>`);
+      const el = await fixture<OvPageLayout>(
+        html`<ov-page-layout></ov-page-layout>`,
+      );
       expect(el.shadowRoot!.querySelector('.nav-wrap')).to.exist;
     });
 
@@ -80,7 +88,9 @@ describe('ov-page-layout', () => {
     });
 
     it('content wrapper has no inline style when max-width is not set', async () => {
-      const el = await fixture<OvPageLayout>(html`<ov-page-layout></ov-page-layout>`);
+      const el = await fixture<OvPageLayout>(
+        html`<ov-page-layout></ov-page-layout>`,
+      );
       const content = el.shadowRoot!.querySelector<HTMLElement>('.content')!;
       expect(content.getAttribute('style') ?? '').to.equal('');
     });
@@ -90,12 +100,16 @@ describe('ov-page-layout', () => {
 
   describe('properties and attributes', () => {
     it('defaults maxWidth to empty string', async () => {
-      const el = await fixture<OvPageLayout>(html`<ov-page-layout></ov-page-layout>`);
+      const el = await fixture<OvPageLayout>(
+        html`<ov-page-layout></ov-page-layout>`,
+      );
       expect(el.maxWidth).to.equal('');
     });
 
     it('reads max-width attribute', async () => {
-      const el = await fixture<OvPageLayout>(html`<ov-page-layout max-width="960px"></ov-page-layout>`);
+      const el = await fixture<OvPageLayout>(
+        html`<ov-page-layout max-width="960px"></ov-page-layout>`,
+      );
       expect(el.maxWidth).to.equal('960px');
     });
   });

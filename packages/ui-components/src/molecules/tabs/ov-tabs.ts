@@ -25,8 +25,8 @@ export class OvTabs extends LitElement {
   @property({ type: String, reflect: true }) active = '';
 
   /** Visual style of the tab bar. */
-  @property({ type: String, reflect: true }) appearance:
-    'underline' | 'pills' = 'underline';
+  @property({ type: String, reflect: true }) appearance: 'underline' | 'pills' =
+    'underline';
 
   /** Stretch tabs to fill the full width. */
   @property({ type: Boolean, reflect: true }) fill = false;
@@ -41,7 +41,9 @@ export class OvTabs extends LitElement {
   static override styles = [
     baseStyles,
     css`
-      :host { display: block; }
+      :host {
+        display: block;
+      }
 
       .tablist {
         display: flex;
@@ -49,7 +51,9 @@ export class OvTabs extends LitElement {
         position: relative;
         gap: 0;
       }
-      :host([fill]) .tablist { width: 100%; }
+      :host([fill]) .tablist {
+        width: 100%;
+      }
 
       /* ── Underline appearance ────────────────────── */
       :host([appearance='underline']) .tablist {
@@ -59,11 +63,12 @@ export class OvTabs extends LitElement {
       :host([appearance='underline']) .tab {
         position: relative;
         padding: var(--ov-space-3) var(--ov-space-4);
-        margin-bottom: -2px;          /* overlap parent border */
+        margin-bottom: -2px; /* overlap parent border */
         border-bottom: 2px solid transparent;
         color: var(--color-text-secondary);
-        transition: color var(--ov-duration-fast) var(--ov-ease-out),
-                    border-color var(--ov-duration-fast) var(--ov-ease-out);
+        transition:
+          color var(--ov-duration-fast) var(--ov-ease-out),
+          border-color var(--ov-duration-fast) var(--ov-ease-out);
       }
       :host([appearance='underline']) .tab:hover:not(.disabled) {
         color: var(--color-text-primary);
@@ -84,8 +89,9 @@ export class OvTabs extends LitElement {
         border-radius: var(--ov-radius-md);
         padding: var(--ov-space-2) var(--ov-space-4);
         color: var(--color-text-secondary);
-        transition: background-color var(--ov-duration-fast) var(--ov-ease-out),
-                    color            var(--ov-duration-fast) var(--ov-ease-out);
+        transition:
+          background-color var(--ov-duration-fast) var(--ov-ease-out),
+          color var(--ov-duration-fast) var(--ov-ease-out);
       }
       :host([appearance='pills']) .tab:hover:not(.disabled) {
         background: var(--color-bg-surface);
@@ -113,14 +119,20 @@ export class OvTabs extends LitElement {
         user-select: none;
         flex: 0 0 auto;
       }
-      :host([fill]) .tab { flex: 1 1 0; justify-content: center; }
+      :host([fill]) .tab {
+        flex: 1 1 0;
+        justify-content: center;
+      }
 
       .tab.disabled {
         opacity: 0.45;
         cursor: not-allowed;
         pointer-events: none;
       }
-      .tab:focus-visible { box-shadow: var(--shadow-focus); border-radius: var(--ov-radius-sm); }
+      .tab:focus-visible {
+        box-shadow: var(--shadow-focus);
+        border-radius: var(--ov-radius-sm);
+      }
 
       .count {
         display: inline-flex;
@@ -148,11 +160,13 @@ export class OvTabs extends LitElement {
     const tab = this.tabs.find((t) => t.key === key);
     if (!tab || tab.disabled) return;
     this.active = key;
-    this.dispatchEvent(new CustomEvent<TabChangeDetail>('change', {
-      detail: { key },
-      bubbles: true,
-      composed: true,
-    }));
+    this.dispatchEvent(
+      new CustomEvent<TabChangeDetail>('change', {
+        detail: { key },
+        bubbles: true,
+        composed: true,
+      }),
+    );
   }
 
   private _onKeydown(e: KeyboardEvent, key: string): void {
@@ -161,9 +175,10 @@ export class OvTabs extends LitElement {
     let next: TabItem | undefined;
 
     if (e.key === 'ArrowRight') next = enabled[idx + 1] ?? enabled[0];
-    if (e.key === 'ArrowLeft')  next = enabled[idx - 1] ?? enabled[enabled.length - 1];
-    if (e.key === 'Home')       next = enabled[0];
-    if (e.key === 'End')        next = enabled[enabled.length - 1];
+    if (e.key === 'ArrowLeft')
+      next = enabled[idx - 1] ?? enabled[enabled.length - 1];
+    if (e.key === 'Home') next = enabled[0];
+    if (e.key === 'End') next = enabled[enabled.length - 1];
 
     if (next) {
       e.preventDefault();
@@ -187,7 +202,9 @@ export class OvTabs extends LitElement {
           const isActive = tab.key === this.active;
           return html`
             <button
-              class="tab ${isActive ? 'active' : ''} ${tab.disabled ? 'disabled' : ''}"
+              class="tab ${isActive ? 'active' : ''} ${tab.disabled
+                ? 'disabled'
+                : ''}"
               role="tab"
               data-key=${tab.key}
               aria-selected=${isActive ? 'true' : 'false'}

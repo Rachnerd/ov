@@ -10,16 +10,19 @@ const meta: Meta = {
   tags: ['autodocs'],
   parameters: { layout: 'fullscreen' },
   argTypes: {
-    heading:    { control: 'text' },
+    heading: { control: 'text' },
     subheading: { control: 'text' },
-    src:        { control: 'text', description: 'Background image URL' },
-    overlay:    { control: { type: 'range', min: 0, max: 1, step: 0.05 }, description: 'Dark overlay opacity' },
+    src: { control: 'text', description: 'Background image URL' },
+    overlay: {
+      control: { type: 'range', min: 0, max: 1, step: 0.05 },
+      description: 'Dark overlay opacity',
+    },
   },
   args: {
-    heading:    '',
+    heading: '',
     subheading: '',
-    src:        '',
-    overlay:    0.55,
+    src: '',
+    overlay: 0.55,
   },
 };
 
@@ -55,8 +58,12 @@ export const WithActions: Story = {
   render: () => html`
     <ov-hero subheading="Tech Tribes">
       <ov-logo slot="logo" size="lg"></ov-logo>
-      <ov-button slot="actions" variant="primary" size="lg">Get in touch</ov-button>
-      <ov-button slot="actions" variant="inverse" size="lg">Our services</ov-button>
+      <ov-button slot="actions" variant="primary" size="lg"
+        >Get in touch</ov-button
+      >
+      <ov-button slot="actions" variant="inverse" size="lg"
+        >Our services</ov-button
+      >
     </ov-hero>
   `,
 };

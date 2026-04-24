@@ -24,7 +24,7 @@ export class OvRadio extends LitElement {
         gap: var(--ov-space-2);
       }
       .control {
-        width: 16px; 
+        width: 16px;
         height: 16px;
         border-radius: 50%;
         background: var(--color-control-bg);
@@ -35,24 +35,35 @@ export class OvRadio extends LitElement {
         flex: 0 0 auto;
         transition: border-color var(--ov-duration-fast) var(--ov-ease-out);
       }
-      :host(:hover:not([disabled])) .control { border-color: var(--color-control-border-hover); }
-      :host([checked]) .control { border-color: var(--color-brand); }
+      :host(:hover:not([disabled])) .control {
+        border-color: var(--color-control-border-hover);
+      }
+      :host([checked]) .control {
+        border-color: var(--color-brand);
+      }
       .dot {
-        width: 8px; height: 8px;
+        width: 8px;
+        height: 8px;
         border-radius: 50%;
         background: var(--color-brand);
         transform: scale(0);
         transition: transform var(--ov-duration-fast) var(--ov-ease-spring);
       }
-      :host([checked]) .dot { transform: scale(1); }
+      :host([checked]) .dot {
+        transform: scale(1);
+      }
     `,
   ];
 
   private _onChange(): void {
     if (this.name) {
       const root = this.getRootNode() as Document | ShadowRoot;
-      const siblings = root.querySelectorAll<OvRadio>(`ov-radio[name="${this.name}"]`);
-      siblings.forEach((r) => { if (r !== this) r.checked = false; });
+      const siblings = root.querySelectorAll<OvRadio>(
+        `ov-radio[name="${this.name}"]`,
+      );
+      siblings.forEach((r) => {
+        if (r !== this) r.checked = false;
+      });
     }
     this.checked = true;
     dispatchSelectionChange(this, { checked: true, value: this.value });

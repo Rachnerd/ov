@@ -5,117 +5,117 @@
 
 /* Text */
 .ov-text-primary {
-   color: var(--color-text-primary);
+  color: var(--color-text-primary);
 }
 
 .ov-text-secondary {
-   color: var(--color-text-secondary);
+  color: var(--color-text-secondary);
 }
 
 .ov-text-tertiary {
-   color: var(--color-text-tertiary);
+  color: var(--color-text-tertiary);
 }
 
 .ov-text-muted {
-   color: var(--color-text-muted);
+  color: var(--color-text-muted);
 }
 
 .ov-text-brand {
-   color: var(--color-brand);
+  color: var(--color-brand);
 }
 
 .ov-text-accent {
-   color: var(--color-accent);
+  color: var(--color-accent);
 }
 
 .ov-text-inverse {
-   color: var(--color-text-inverse);
+  color: var(--color-text-inverse);
 }
 
 .ov-text-success {
-   color: var(--color-success);
+  color: var(--color-success);
 }
 
 .ov-text-warning {
-   color: var(--color-warning);
+  color: var(--color-warning);
 }
 
 .ov-text-danger {
-   color: var(--color-danger);
+  color: var(--color-danger);
 }
 
 /* Text alignment */
 .ov-text-center {
-   text-align: center;
+  text-align: center;
 }
 
 .ov-text-right {
-   text-align: right;
+  text-align: right;
 }
 
 .ov-text-uppercase {
-   text-transform: uppercase;
-   letter-spacing: var(--ov-ls-widest);
+  text-transform: uppercase;
+  letter-spacing: var(--ov-ls-widest);
 }
 
 /* Font weight */
 .ov-fw-light {
-   font-weight: var(--ov-fw-light);
+  font-weight: var(--ov-fw-light);
 }
 
 .ov-fw-regular {
-   font-weight: var(--ov-fw-regular);
+  font-weight: var(--ov-fw-regular);
 }
 
 .ov-fw-medium {
-   font-weight: var(--ov-fw-medium);
+  font-weight: var(--ov-fw-medium);
 }
 
 .ov-fw-semibold {
-   font-weight: var(--ov-fw-semibold);
+  font-weight: var(--ov-fw-semibold);
 }
 
 .ov-fw-bold {
-   font-weight: var(--ov-fw-bold);
+  font-weight: var(--ov-fw-bold);
 }
 
 /* Background */
 .ov-bg-canvas {
-   background: var(--color-bg-canvas);
+  background: var(--color-bg-canvas);
 }
 
 .ov-bg-surface {
-   background: var(--color-bg-surface);
+  background: var(--color-bg-surface);
 }
 
 .ov-bg-surface-alt {
-   background: var(--color-bg-surface-alt);
+  background: var(--color-bg-surface-alt);
 }
 
 .ov-bg-brand {
-   background: var(--color-brand);
-   color: var(--color-text-on-brand);
+  background: var(--color-brand);
+  color: var(--color-text-on-brand);
 }
 
 .ov-bg-accent {
-   background: var(--color-accent);
-   color: var(--color-text-on-accent);
+  background: var(--color-accent);
+  color: var(--color-text-on-accent);
 }
 
 .ov-bg-inverse {
-   background: var(--color-bg-inverse);
-   color: var(--color-text-inverse);
+  background: var(--color-bg-inverse);
+  color: var(--color-text-inverse);
 }
 
 /* Borders */
 .ov-border {
-   border: var(--ov-border-thin) solid var(--color-border-default);
+  border: var(--ov-border-thin) solid var(--color-border-default);
 }
 
 .ov-border-subtle {
-   border: var(--ov-border-thin) solid var(--color-border-subtle);
+  border: var(--ov-border-thin) solid var(--color-border-subtle);
 }
 
 .ov-border-strong {
-   border: var(--ov-border-thin) solid var(--color-border-strong);
+  border: var(--ov-border-thin) solid var(--color-border-strong);
 }

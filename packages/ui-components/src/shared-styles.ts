@@ -12,13 +12,23 @@ import { css, CSSResult } from 'lit';
 export const baseStyles: CSSResult = css`
   :host {
     box-sizing: border-box;
-    font-family: var(--ov-font-primary,
-      'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
-    color: var(--color-text-primary, #1D252D);
+    font-family: var(
+      --ov-font-primary,
+      'Montserrat',
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      sans-serif
+    );
+    color: var(--color-text-primary, #1d252d);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  *, *::before, *::after { box-sizing: inherit; }
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
 
   @media (prefers-reduced-motion: reduce) {
     :host * {

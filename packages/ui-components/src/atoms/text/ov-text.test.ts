@@ -13,7 +13,9 @@ describe('ov-text', () => {
     });
 
     it('renders <p> when as="p"', async () => {
-      const el = await fixture<OvText>(html`<ov-text as="p">Paragraph</ov-text>`);
+      const el = await fixture<OvText>(
+        html`<ov-text as="p">Paragraph</ov-text>`,
+      );
       expect(el.shadowRoot!.querySelector('p.t')).to.exist;
     });
 
@@ -23,7 +25,9 @@ describe('ov-text', () => {
     });
 
     it('renders <strong> when as="strong"', async () => {
-      const el = await fixture<OvText>(html`<ov-text as="strong">Bold</ov-text>`);
+      const el = await fixture<OvText>(
+        html`<ov-text as="strong">Bold</ov-text>`,
+      );
       expect(el.shadowRoot!.querySelector('strong.t')).to.exist;
     });
 
@@ -33,7 +37,9 @@ describe('ov-text', () => {
     });
 
     it('renders <small> when as="small"', async () => {
-      const el = await fixture<OvText>(html`<ov-text as="small">Fine print</ov-text>`);
+      const el = await fixture<OvText>(
+        html`<ov-text as="small">Fine print</ov-text>`,
+      );
       expect(el.shadowRoot!.querySelector('small.t')).to.exist;
     });
 
@@ -60,17 +66,23 @@ describe('ov-text', () => {
     });
 
     it('reflects variant attribute', async () => {
-      const el = await fixture<OvText>(html`<ov-text variant="caption">Caption</ov-text>`);
+      const el = await fixture<OvText>(
+        html`<ov-text variant="caption">Caption</ov-text>`,
+      );
       expect(el.getAttribute('variant')).to.equal('caption');
     });
 
     it('reflects tone attribute', async () => {
-      const el = await fixture<OvText>(html`<ov-text tone="danger">Error text</ov-text>`);
+      const el = await fixture<OvText>(
+        html`<ov-text tone="danger">Error text</ov-text>`,
+      );
       expect(el.getAttribute('tone')).to.equal('danger');
     });
 
     it('reflects weight attribute', async () => {
-      const el = await fixture<OvText>(html`<ov-text weight="semibold">Notice</ov-text>`);
+      const el = await fixture<OvText>(
+        html`<ov-text weight="semibold">Notice</ov-text>`,
+      );
       expect(el.getAttribute('weight')).to.equal('semibold');
     });
   });
@@ -79,21 +91,27 @@ describe('ov-text', () => {
 
   describe('accessibility', () => {
     it('passes axe for body variant', async () => {
-      const el = await fixture(html`<ov-text variant="body" as="p">Standard copy.</ov-text>`);
+      const el = await fixture(
+        html`<ov-text variant="body" as="p">Standard copy.</ov-text>`,
+      );
       await expect(el).to.be.accessible({
         ignoredRules: ['color-contrast'],
       });
     });
 
     it('passes axe for eyebrow variant', async () => {
-      const el = await fixture(html`<ov-text variant="eyebrow">Market Update</ov-text>`);
+      const el = await fixture(
+        html`<ov-text variant="eyebrow">Market Update</ov-text>`,
+      );
       await expect(el).to.be.accessible({
         ignoredRules: ['color-contrast'],
       });
     });
 
     it('passes axe for code variant', async () => {
-      const el = await fixture(html`<ov-text variant="code">portfolio.sync()</ov-text>`);
+      const el = await fixture(
+        html`<ov-text variant="code">portfolio.sync()</ov-text>`,
+      );
       await expect(el).to.be.accessible({
         ignoredRules: ['color-contrast'],
       });

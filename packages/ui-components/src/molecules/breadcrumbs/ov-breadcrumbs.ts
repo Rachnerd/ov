@@ -20,14 +20,17 @@ export class OvBreadcrumbs extends LitElement {
   @property({ type: Array }) items: BreadcrumbItem[] = [];
 
   /** Show the collapsed "…" version once more than `max` items exist. */
-  @property({ type: Number }) max = 0;   // 0 = no limit
+  @property({ type: Number }) max = 0; // 0 = no limit
 
   static override styles = [
     baseStyles,
     css`
-      :host { display: block; }
+      :host {
+        display: block;
+      }
 
-      nav { }
+      nav {
+      }
 
       ol {
         display: flex;
@@ -53,7 +56,10 @@ export class OvBreadcrumbs extends LitElement {
         border-radius: 2px;
         padding: 0 2px;
       }
-      a:hover { color: var(--color-text-primary); text-decoration: underline; }
+      a:hover {
+        color: var(--color-text-primary);
+        text-decoration: underline;
+      }
       a:focus-visible {
         outline: none;
         box-shadow: var(--shadow-focus);
@@ -104,19 +110,34 @@ export class OvBreadcrumbs extends LitElement {
                 ${isEllipsis
                   ? html`<span class="ellipsis" aria-hidden="true">…</span>`
                   : isLast
-                  ? html`<span class="current" aria-current="page">${item.label}</span>`
-                  : html`<a href=${item.href ?? '#'} part="link">${item.label}</a>`
-                }
-                ${!isLast ? html`
-                  <span class="sep" aria-hidden="true">
-                    <slot name="separator">
-                      <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
-                        <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.6"
-                              stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                    </slot>
-                  </span>
-                ` : null}
+                    ? html`<span class="current" aria-current="page"
+                        >${item.label}</span
+                      >`
+                    : html`<a href=${item.href ?? '#'} part="link"
+                        >${item.label}</a
+                      >`}
+                ${!isLast
+                  ? html`
+                      <span class="sep" aria-hidden="true">
+                        <slot name="separator">
+                          <svg
+                            width="12"
+                            height="12"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                          >
+                            <path
+                              d="M6 4l4 4-4 4"
+                              stroke="currentColor"
+                              stroke-width="1.6"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            />
+                          </svg>
+                        </slot>
+                      </span>
+                    `
+                  : null}
               </li>
             `;
           })}

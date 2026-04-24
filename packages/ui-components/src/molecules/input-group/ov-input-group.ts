@@ -50,7 +50,7 @@ export class OvInputGroup extends LitElement {
 
       /* ---- Slot containers ---- */
       .slot-wrap {
-        display: contents;   /* transparent wrapper so flex sees children directly */
+        display: contents; /* transparent wrapper so flex sees children directly */
       }
 
       /* All direct slot content aligns to a common height */
@@ -88,9 +88,15 @@ export class OvInputGroup extends LitElement {
       }
 
       /* Flatten input corners on the joining side via an inherited CSS custom property */
-      :host([attach='end'])   ::slotted(ov-input) { --ov-input-radius: var(--ov-radius-md) 0 0 var(--ov-radius-md); }
-      :host([attach='start']) ::slotted(ov-input) { --ov-input-radius: 0 var(--ov-radius-md) var(--ov-radius-md) 0; }
-      :host([attach='both'])  ::slotted(ov-input) { --ov-input-radius: 0; }
+      :host([attach='end']) ::slotted(ov-input) {
+        --ov-input-radius: var(--ov-radius-md) 0 0 var(--ov-radius-md);
+      }
+      :host([attach='start']) ::slotted(ov-input) {
+        --ov-input-radius: 0 var(--ov-radius-md) var(--ov-radius-md) 0;
+      }
+      :host([attach='both']) ::slotted(ov-input) {
+        --ov-input-radius: 0;
+      }
 
       /* Buttons: flatten joining corners via CSS custom property, then overlap
          the input border by 1px so the two borders merge into one. */

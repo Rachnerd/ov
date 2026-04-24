@@ -26,7 +26,7 @@ export class OvCheckbox extends LitElement {
         gap: var(--ov-space-2);
       }
       .control {
-        width: 16px; 
+        width: 16px;
         height: 16px;
         border-radius: var(--ov-radius-xs);
         background: var(--color-control-bg);
@@ -37,28 +37,39 @@ export class OvCheckbox extends LitElement {
         flex: 0 0 auto;
         transition:
           background-color var(--ov-duration-fast) var(--ov-ease-out),
-          border-color     var(--ov-duration-fast) var(--ov-ease-out);
+          border-color var(--ov-duration-fast) var(--ov-ease-out);
       }
-      :host(:hover:not([disabled])) .control { border-color: var(--color-control-border-hover); }
-      :host([checked]) .control, :host([indeterminate]) .control {
+      :host(:hover:not([disabled])) .control {
+        border-color: var(--color-control-border-hover);
+      }
+      :host([checked]) .control,
+      :host([indeterminate]) .control {
         background: var(--color-brand);
         border-color: var(--color-brand);
       }
       .check {
-        width: 12px; height: 12px;
+        width: 12px;
+        height: 12px;
         color: var(--color-text-on-brand);
         opacity: 0;
         transition: opacity var(--ov-duration-fast) var(--ov-ease-out);
       }
-      :host([checked]) .check { opacity: 1; }
+      :host([checked]) .check {
+        opacity: 1;
+      }
       .dash {
-        width: 9px; height: 2px;
+        width: 9px;
+        height: 2px;
         background: var(--color-text-on-brand);
         border-radius: 1px;
         display: none;
       }
-      :host([indeterminate]) .dash  { display: block; }
-      :host([indeterminate]) .check { display: none; }
+      :host([indeterminate]) .dash {
+        display: block;
+      }
+      :host([indeterminate]) .check {
+        display: none;
+      }
     `,
   ];
 
@@ -88,8 +99,13 @@ export class OvCheckbox extends LitElement {
         />
         <span class="control" aria-hidden="true">
           <svg class="check" viewBox="0 0 16 16" fill="none">
-            <path d="M3 8l3 3 6-6" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round"/>
+            <path
+              d="M3 8l3 3 6-6"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
           </svg>
           <span class="dash"></span>
         </span>

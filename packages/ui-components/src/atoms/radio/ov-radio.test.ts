@@ -8,12 +8,18 @@ describe('ov-radio', () => {
 
   describe('rendering', () => {
     it('renders a hidden native radio input', async () => {
-      const el = await fixture<OvRadio>(html`<ov-radio name="plan" value="free">Free</ov-radio>`);
-      expect(el.shadowRoot!.querySelector<HTMLInputElement>('input[type="radio"]')).to.exist;
+      const el = await fixture<OvRadio>(
+        html`<ov-radio name="plan" value="free">Free</ov-radio>`,
+      );
+      expect(
+        el.shadowRoot!.querySelector<HTMLInputElement>('input[type="radio"]'),
+      ).to.exist;
     });
 
     it('projects label text through the default slot', async () => {
-      const el = await fixture<OvRadio>(html`<ov-radio name="plan" value="pro">Pro plan</ov-radio>`);
+      const el = await fixture<OvRadio>(
+        html`<ov-radio name="plan" value="pro">Pro plan</ov-radio>`,
+      );
       expect(el.textContent!.trim()).to.equal('Pro plan');
     });
   });
@@ -22,20 +28,28 @@ describe('ov-radio', () => {
 
   describe('properties and attributes', () => {
     it('defaults to unchecked', async () => {
-      const el = await fixture<OvRadio>(html`<ov-radio name="p" value="a">Option A</ov-radio>`);
+      const el = await fixture<OvRadio>(
+        html`<ov-radio name="p" value="a">Option A</ov-radio>`,
+      );
       expect(el.checked).to.be.false;
     });
 
     it('reflects checked attribute', async () => {
-      const el = await fixture<OvRadio>(html`<ov-radio name="p" value="a" checked>Option A</ov-radio>`);
+      const el = await fixture<OvRadio>(
+        html`<ov-radio name="p" value="a" checked>Option A</ov-radio>`,
+      );
       expect(el.checked).to.be.true;
-      expect(el.shadowRoot!.querySelector<HTMLInputElement>('input')!.checked).to.be.true;
+      expect(el.shadowRoot!.querySelector<HTMLInputElement>('input')!.checked)
+        .to.be.true;
     });
 
     it('reflects disabled attribute', async () => {
-      const el = await fixture<OvRadio>(html`<ov-radio name="p" value="a" disabled>Option A</ov-radio>`);
+      const el = await fixture<OvRadio>(
+        html`<ov-radio name="p" value="a" disabled>Option A</ov-radio>`,
+      );
       expect(el.hasAttribute('disabled')).to.be.true;
-      expect(el.shadowRoot!.querySelector<HTMLInputElement>('input')!.disabled).to.be.true;
+      expect(el.shadowRoot!.querySelector<HTMLInputElement>('input')!.disabled)
+        .to.be.true;
     });
   });
 
@@ -43,7 +57,9 @@ describe('ov-radio', () => {
 
   describe('events', () => {
     it('dispatches "change" event with checked=true and value', async () => {
-      const el = await fixture<OvRadio>(html`<ov-radio name="plan" value="pro">Pro</ov-radio>`);
+      const el = await fixture<OvRadio>(
+        html`<ov-radio name="plan" value="pro">Pro</ov-radio>`,
+      );
       const input = el.shadowRoot!.querySelector<HTMLInputElement>('input')!;
 
       let detail: { checked: boolean; value: string } | null = null;
@@ -57,7 +73,9 @@ describe('ov-radio', () => {
     });
 
     it('sets checked=true on the element after change', async () => {
-      const el = await fixture<OvRadio>(html`<ov-radio name="plan" value="pro">Pro</ov-radio>`);
+      const el = await fixture<OvRadio>(
+        html`<ov-radio name="plan" value="pro">Pro</ov-radio>`,
+      );
       const input = el.shadowRoot!.querySelector<HTMLInputElement>('input')!;
       input.dispatchEvent(new Event('change', { bubbles: true }));
       await elementUpdated(el);
@@ -76,8 +94,11 @@ describe('ov-radio', () => {
         </div>
       `);
 
-      const [free, pro] = Array.from(container.querySelectorAll<OvRadio>('ov-radio'));
-      const proInput = pro.shadowRoot!.querySelector<HTMLInputElement>('input')!;
+      const [free, pro] = Array.from(
+        container.querySelectorAll<OvRadio>('ov-radio'),
+      );
+      const proInput =
+        pro.shadowRoot!.querySelector<HTMLInputElement>('input')!;
 
       proInput.dispatchEvent(new Event('change', { bubbles: true }));
       await elementUpdated(free!);
@@ -104,7 +125,9 @@ describe('ov-radio', () => {
     });
 
     it('native input is accessible (not display:none)', async () => {
-      const el = await fixture<OvRadio>(html`<ov-radio name="p" value="a">Option</ov-radio>`);
+      const el = await fixture<OvRadio>(
+        html`<ov-radio name="p" value="a">Option</ov-radio>`,
+      );
       const input = el.shadowRoot!.querySelector<HTMLInputElement>('input')!;
       expect(getComputedStyle(input).display).to.not.equal('none');
     });

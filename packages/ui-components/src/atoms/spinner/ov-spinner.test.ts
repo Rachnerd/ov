@@ -33,7 +33,9 @@ describe('ov-spinner', () => {
     });
 
     it('reflects size attribute', async () => {
-      const el = await fixture<OvSpinner>(html`<ov-spinner size="lg"></ov-spinner>`);
+      const el = await fixture<OvSpinner>(
+        html`<ov-spinner size="lg"></ov-spinner>`,
+      );
       expect(el.getAttribute('size')).to.equal('lg');
     });
 
@@ -43,7 +45,9 @@ describe('ov-spinner', () => {
     });
 
     it('reflects tone attribute', async () => {
-      const el = await fixture<OvSpinner>(html`<ov-spinner tone="neutral"></ov-spinner>`);
+      const el = await fixture<OvSpinner>(
+        html`<ov-spinner tone="neutral"></ov-spinner>`,
+      );
       expect(el.getAttribute('tone')).to.equal('neutral');
     });
 
@@ -53,15 +57,21 @@ describe('ov-spinner', () => {
     });
 
     it('applies label as aria-label on SVG', async () => {
-      const el = await fixture<OvSpinner>(html`<ov-spinner label="Saving changes"></ov-spinner>`);
-      expect(el.shadowRoot!.querySelector('svg')!.getAttribute('aria-label')).to.equal('Saving changes');
+      const el = await fixture<OvSpinner>(
+        html`<ov-spinner label="Saving changes"></ov-spinner>`,
+      );
+      expect(
+        el.shadowRoot!.querySelector('svg')!.getAttribute('aria-label'),
+      ).to.equal('Saving changes');
     });
 
     it('updates aria-label reactively', async () => {
       const el = await fixture<OvSpinner>(html`<ov-spinner></ov-spinner>`);
       el.label = 'Fetching data';
       await elementUpdated(el);
-      expect(el.shadowRoot!.querySelector('svg')!.getAttribute('aria-label')).to.equal('Fetching data');
+      expect(
+        el.shadowRoot!.querySelector('svg')!.getAttribute('aria-label'),
+      ).to.equal('Fetching data');
     });
   });
 
@@ -69,7 +79,9 @@ describe('ov-spinner', () => {
 
   describe('accessibility', () => {
     it('passes axe', async () => {
-      const el = await fixture(html`<ov-spinner label="Loading content"></ov-spinner>`);
+      const el = await fixture(
+        html`<ov-spinner label="Loading content"></ov-spinner>`,
+      );
       await expect(el).to.be.accessible({
         ignoredRules: ['color-contrast'],
       });

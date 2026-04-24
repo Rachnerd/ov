@@ -4,9 +4,9 @@ import type { OvNavBar } from './ov-nav-bar.js';
 import './ov-nav-bar.js';
 
 const ITEMS = [
-  { label: 'Home',     href: '/' },
+  { label: 'Home', href: '/' },
   { label: 'Services', href: '/services' },
-  { label: 'About',    href: '/about' },
+  { label: 'About', href: '/about' },
 ];
 
 describe('ov-nav-bar', () => {
@@ -19,21 +19,31 @@ describe('ov-nav-bar', () => {
     });
 
     it('renders a link for each item', async () => {
-      const el = await fixture<OvNavBar>(html`<ov-nav-bar .items=${ITEMS}></ov-nav-bar>`);
+      const el = await fixture<OvNavBar>(
+        html`<ov-nav-bar .items=${ITEMS}></ov-nav-bar>`,
+      );
       const links = el.shadowRoot!.querySelectorAll('a.link');
       expect(links.length).to.equal(ITEMS.length);
     });
 
     it('renders the correct label text for each link', async () => {
-      const el = await fixture<OvNavBar>(html`<ov-nav-bar .items=${ITEMS}></ov-nav-bar>`);
-      const links = Array.from(el.shadowRoot!.querySelectorAll<HTMLAnchorElement>('a.link'));
+      const el = await fixture<OvNavBar>(
+        html`<ov-nav-bar .items=${ITEMS}></ov-nav-bar>`,
+      );
+      const links = Array.from(
+        el.shadowRoot!.querySelectorAll<HTMLAnchorElement>('a.link'),
+      );
       expect(links[0].textContent!.trim()).to.equal('Home');
       expect(links[1].textContent!.trim()).to.equal('Services');
     });
 
     it('renders the correct href for each link', async () => {
-      const el = await fixture<OvNavBar>(html`<ov-nav-bar .items=${ITEMS}></ov-nav-bar>`);
-      const links = Array.from(el.shadowRoot!.querySelectorAll<HTMLAnchorElement>('a.link'));
+      const el = await fixture<OvNavBar>(
+        html`<ov-nav-bar .items=${ITEMS}></ov-nav-bar>`,
+      );
+      const links = Array.from(
+        el.shadowRoot!.querySelectorAll<HTMLAnchorElement>('a.link'),
+      );
       expect(links[0].getAttribute('href')).to.equal('/');
       expect(links[1].getAttribute('href')).to.equal('/services');
     });
@@ -80,8 +90,11 @@ describe('ov-nav-bar', () => {
     });
 
     it('sets logo link href from logo-href attribute', async () => {
-      const el = await fixture<OvNavBar>(html`<ov-nav-bar logo-href="/home"></ov-nav-bar>`);
-      const logoLink = el.shadowRoot!.querySelector<HTMLAnchorElement>('.logo-link')!;
+      const el = await fixture<OvNavBar>(
+        html`<ov-nav-bar logo-href="/home"></ov-nav-bar>`,
+      );
+      const logoLink =
+        el.shadowRoot!.querySelector<HTMLAnchorElement>('.logo-link')!;
       expect(logoLink.getAttribute('href')).to.equal('/home');
     });
 
@@ -91,7 +104,9 @@ describe('ov-nav-bar', () => {
     });
 
     it('updates links reactively when items changes', async () => {
-      const el = await fixture<OvNavBar>(html`<ov-nav-bar .items=${ITEMS}></ov-nav-bar>`);
+      const el = await fixture<OvNavBar>(
+        html`<ov-nav-bar .items=${ITEMS}></ov-nav-bar>`,
+      );
       el.items = [{ label: 'New', href: '/new' }];
       await elementUpdated(el);
       const links = el.shadowRoot!.querySelectorAll('a.link');
@@ -107,8 +122,12 @@ describe('ov-nav-bar', () => {
       const el = await fixture<OvNavBar>(html`
         <ov-nav-bar .items=${ITEMS} active="/services"></ov-nav-bar>
       `);
-      const links = Array.from(el.shadowRoot!.querySelectorAll<HTMLAnchorElement>('a.link'));
-      const activeLink = links.find(a => a.getAttribute('href') === '/services');
+      const links = Array.from(
+        el.shadowRoot!.querySelectorAll<HTMLAnchorElement>('a.link'),
+      );
+      const activeLink = links.find(
+        (a) => a.getAttribute('href') === '/services',
+      );
       expect(activeLink!.getAttribute('aria-current')).to.equal('page');
     });
 
@@ -116,8 +135,10 @@ describe('ov-nav-bar', () => {
       const el = await fixture<OvNavBar>(html`
         <ov-nav-bar .items=${ITEMS} active="/services"></ov-nav-bar>
       `);
-      const links = Array.from(el.shadowRoot!.querySelectorAll<HTMLAnchorElement>('a.link'));
-      const homeLink = links.find(a => a.getAttribute('href') === '/');
+      const links = Array.from(
+        el.shadowRoot!.querySelectorAll<HTMLAnchorElement>('a.link'),
+      );
+      const homeLink = links.find((a) => a.getAttribute('href') === '/');
       expect(homeLink!.hasAttribute('aria-current')).to.be.false;
     });
 
@@ -127,8 +148,10 @@ describe('ov-nav-bar', () => {
       `);
       el.active = '/about';
       await elementUpdated(el);
-      const links = Array.from(el.shadowRoot!.querySelectorAll<HTMLAnchorElement>('a.link'));
-      const aboutLink = links.find(a => a.getAttribute('href') === '/about');
+      const links = Array.from(
+        el.shadowRoot!.querySelectorAll<HTMLAnchorElement>('a.link'),
+      );
+      const aboutLink = links.find((a) => a.getAttribute('href') === '/about');
       expect(aboutLink!.getAttribute('aria-current')).to.equal('page');
     });
   });

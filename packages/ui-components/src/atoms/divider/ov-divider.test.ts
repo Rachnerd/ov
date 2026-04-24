@@ -13,7 +13,9 @@ describe('ov-divider', () => {
     });
 
     it('renders nothing visible for vertical orientation', async () => {
-      const el = await fixture<OvDivider>(html`<ov-divider orientation="vertical"></ov-divider>`);
+      const el = await fixture<OvDivider>(
+        html`<ov-divider orientation="vertical"></ov-divider>`,
+      );
       expect(el.shadowRoot!.querySelector('[role="separator"]')).to.not.exist;
     });
 
@@ -38,7 +40,9 @@ describe('ov-divider', () => {
     });
 
     it('reflects orientation attribute', async () => {
-      const el = await fixture<OvDivider>(html`<ov-divider orientation="vertical"></ov-divider>`);
+      const el = await fixture<OvDivider>(
+        html`<ov-divider orientation="vertical"></ov-divider>`,
+      );
       expect(el.getAttribute('orientation')).to.equal('vertical');
     });
 
@@ -48,7 +52,9 @@ describe('ov-divider', () => {
     });
 
     it('reflects variant attribute', async () => {
-      const el = await fixture<OvDivider>(html`<ov-divider variant="subtle"></ov-divider>`);
+      const el = await fixture<OvDivider>(
+        html`<ov-divider variant="subtle"></ov-divider>`,
+      );
       expect(el.getAttribute('variant')).to.equal('subtle');
     });
   });

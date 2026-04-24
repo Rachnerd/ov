@@ -32,20 +32,58 @@ export class OvAvatar extends LitElement {
         color: var(--_fg, var(--color-text-on-brand));
         letter-spacing: 0;
       }
-      :host([shape='circle']) { border-radius: 50%; }
-      :host([shape='square']) { border-radius: var(--ov-radius-md); }
+      :host([shape='circle']) {
+        border-radius: 50%;
+      }
+      :host([shape='square']) {
+        border-radius: var(--ov-radius-md);
+      }
 
-      :host([size='xs']) { width: 20px; height: 20px; font-size: 9px; }
-      :host([size='sm']) { width: 28px; height: 28px; font-size: 11px; }
-      :host([size='md']) { width: 40px; height: 40px; font-size: 14px; }
-      :host([size='lg']) { width: 56px; height: 56px; font-size: 18px; }
-      :host([size='xl']) { width: 80px; height: 80px; font-size: 26px; }
+      :host([size='xs']) {
+        width: 20px;
+        height: 20px;
+        font-size: 9px;
+      }
+      :host([size='sm']) {
+        width: 28px;
+        height: 28px;
+        font-size: 11px;
+      }
+      :host([size='md']) {
+        width: 40px;
+        height: 40px;
+        font-size: 14px;
+      }
+      :host([size='lg']) {
+        width: 56px;
+        height: 56px;
+        font-size: 18px;
+      }
+      :host([size='xl']) {
+        width: 80px;
+        height: 80px;
+        font-size: 26px;
+      }
 
-      :host([tone='brand'])   { --_bg: var(--color-brand);            --_fg: var(--color-text-on-brand); }
-      :host([tone='accent'])  { --_bg: var(--color-accent);           --_fg: var(--color-accent-contrast); }
-      :host([tone='neutral']) { --_bg: var(--color-bg-surface-muted); --_fg: var(--color-text-primary); }
+      :host([tone='brand']) {
+        --_bg: var(--color-brand);
+        --_fg: var(--color-text-on-brand);
+      }
+      :host([tone='accent']) {
+        --_bg: var(--color-accent);
+        --_fg: var(--color-accent-contrast);
+      }
+      :host([tone='neutral']) {
+        --_bg: var(--color-bg-surface-muted);
+        --_fg: var(--color-text-primary);
+      }
 
-      img { width: 100%; height: 100%; object-fit: cover; display: block; }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
     `,
   ];
 
@@ -54,13 +92,16 @@ export class OvAvatar extends LitElement {
     if (!this.name) return '';
     const parts = this.name.trim().split(/\s+/);
     const first = parts[0]?.[0] ?? '';
-    const last  = parts.length > 1 ? parts[parts.length - 1]![0] ?? '' : '';
+    const last = parts.length > 1 ? (parts[parts.length - 1]![0] ?? '') : '';
     return (first + last).toUpperCase();
   }
 
   protected override render(): TemplateResult {
     if (this.src) {
-      return html`<img src=${this.src} alt=${this.alt || this.name || 'Avatar'} />`;
+      return html`<img
+        src=${this.src}
+        alt=${this.alt || this.name || 'Avatar'}
+      />`;
     }
     return html`<span aria-hidden="true">${this._deriveInitials()}</span>`;
   }

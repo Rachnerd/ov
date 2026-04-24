@@ -8,17 +8,25 @@ describe('ov-switch', () => {
 
   describe('rendering', () => {
     it('renders an input with role="switch"', async () => {
-      const el = await fixture<OvSwitch>(html`<ov-switch>Dark mode</ov-switch>`);
-      expect(el.shadowRoot!.querySelector<HTMLInputElement>('input[role="switch"]')).to.exist;
+      const el = await fixture<OvSwitch>(
+        html`<ov-switch>Dark mode</ov-switch>`,
+      );
+      expect(
+        el.shadowRoot!.querySelector<HTMLInputElement>('input[role="switch"]'),
+      ).to.exist;
     });
 
     it('renders the track element', async () => {
-      const el = await fixture<OvSwitch>(html`<ov-switch>Dark mode</ov-switch>`);
+      const el = await fixture<OvSwitch>(
+        html`<ov-switch>Dark mode</ov-switch>`,
+      );
       expect(el.shadowRoot!.querySelector('.track')).to.exist;
     });
 
     it('projects label text', async () => {
-      const el = await fixture<OvSwitch>(html`<ov-switch>Dark mode</ov-switch>`);
+      const el = await fixture<OvSwitch>(
+        html`<ov-switch>Dark mode</ov-switch>`,
+      );
       expect(el.textContent!.trim()).to.equal('Dark mode');
     });
   });
@@ -32,22 +40,29 @@ describe('ov-switch', () => {
     });
 
     it('reflects checked attribute', async () => {
-      const el = await fixture<OvSwitch>(html`<ov-switch checked>Dark mode</ov-switch>`);
+      const el = await fixture<OvSwitch>(
+        html`<ov-switch checked>Dark mode</ov-switch>`,
+      );
       expect(el.checked).to.be.true;
-      expect(el.shadowRoot!.querySelector<HTMLInputElement>('input')!.checked).to.be.true;
+      expect(el.shadowRoot!.querySelector<HTMLInputElement>('input')!.checked)
+        .to.be.true;
     });
 
     it('reflects disabled attribute', async () => {
-      const el = await fixture<OvSwitch>(html`<ov-switch disabled>Option</ov-switch>`);
+      const el = await fixture<OvSwitch>(
+        html`<ov-switch disabled>Option</ov-switch>`,
+      );
       expect(el.hasAttribute('disabled')).to.be.true;
-      expect(el.shadowRoot!.querySelector<HTMLInputElement>('input')!.disabled).to.be.true;
+      expect(el.shadowRoot!.querySelector<HTMLInputElement>('input')!.disabled)
+        .to.be.true;
     });
 
     it('updates checked state reactively', async () => {
       const el = await fixture<OvSwitch>(html`<ov-switch>Option</ov-switch>`);
       el.checked = true;
       await elementUpdated(el);
-      expect(el.shadowRoot!.querySelector<HTMLInputElement>('input')!.checked).to.be.true;
+      expect(el.shadowRoot!.querySelector<HTMLInputElement>('input')!.checked)
+        .to.be.true;
     });
   });
 
@@ -55,7 +70,9 @@ describe('ov-switch', () => {
 
   describe('events', () => {
     it('dispatches "change" event with checked=true when toggled on', async () => {
-      const el = await fixture<OvSwitch>(html`<ov-switch value="notifications">Notifications</ov-switch>`);
+      const el = await fixture<OvSwitch>(
+        html`<ov-switch value="notifications">Notifications</ov-switch>`,
+      );
       const input = el.shadowRoot!.querySelector<HTMLInputElement>('input')!;
 
       let detail: { checked: boolean; value: string } | null = null;
@@ -70,7 +87,9 @@ describe('ov-switch', () => {
     });
 
     it('dispatches "change" event with checked=false when toggled off', async () => {
-      const el = await fixture<OvSwitch>(html`<ov-switch checked value="on">Option</ov-switch>`);
+      const el = await fixture<OvSwitch>(
+        html`<ov-switch checked value="on">Option</ov-switch>`,
+      );
       const input = el.shadowRoot!.querySelector<HTMLInputElement>('input')!;
 
       let detail: { checked: boolean; value: string } | null = null;
@@ -100,7 +119,9 @@ describe('ov-switch', () => {
 
   describe('accessibility', () => {
     it('passes axe with label text', async () => {
-      const el = await fixture(html`<ov-switch>Enable notifications</ov-switch>`);
+      const el = await fixture(
+        html`<ov-switch>Enable notifications</ov-switch>`,
+      );
       await expect(el).to.be.accessible({
         ignoredRules: ['color-contrast'],
       });
@@ -114,7 +135,9 @@ describe('ov-switch', () => {
     });
 
     it('passes axe when disabled', async () => {
-      const el = await fixture(html`<ov-switch disabled>Locked setting</ov-switch>`);
+      const el = await fixture(
+        html`<ov-switch disabled>Locked setting</ov-switch>`,
+      );
       await expect(el).to.be.accessible({
         ignoredRules: ['color-contrast'],
       });

@@ -55,11 +55,14 @@ export type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
 
 /** Visual size independent of semantic level. */
 export type HeadingSize =
-  | ''                    // '' = derive from level
+  | '' // '' = derive from level
   | 'display-1'
   | 'display-2'
-  | 'h1' | 'h2' | 'h3' | 'h4'
-  | 'hero';               // fluid hero display; font-size controlled by --ov-heading-hero-size
+  | 'h1'
+  | 'h2'
+  | 'h3'
+  | 'h4'
+  | 'hero'; // fluid hero display; font-size controlled by --ov-heading-hero-size
 
 export type Tone =
   | 'primary'
@@ -75,7 +78,11 @@ export type Tone =
 
 /** A narrower tone set — only the ones that make sense on a heading. */
 export type HeadingTone =
-  | 'primary' | 'secondary' | 'brand' | 'accent' | 'inverse';
+  | 'primary'
+  | 'secondary'
+  | 'brand'
+  | 'accent'
+  | 'inverse';
 
 export type TextVariant =
   | 'body'
@@ -86,7 +93,7 @@ export type TextVariant =
   | 'code';
 
 export type FontWeight =
-  | ''                    // '' = use the variant's default weight
+  | '' // '' = use the variant's default weight
   | 'light'
   | 'regular'
   | 'medium'
@@ -117,11 +124,22 @@ export type BadgeSize = 'sm' | 'md';
  * derive the literal union and also ship the runtime list if needed.
  */
 export const BUILT_IN_ICON_NAMES = [
-  'check', 'x', 'arrow-right', 'arrow-left', 'search', 'mail',
-  'info', 'warning', 'sun', 'moon', 'plus', 'user', 'menu',
+  'check',
+  'x',
+  'arrow-right',
+  'arrow-left',
+  'search',
+  'mail',
+  'info',
+  'warning',
+  'sun',
+  'moon',
+  'plus',
+  'user',
+  'menu',
 ] as const;
 
-export type BuiltInIconName = typeof BUILT_IN_ICON_NAMES[number];
+export type BuiltInIconName = (typeof BUILT_IN_ICON_NAMES)[number];
 
 /** A user may pass '' to indicate "no built-in, use slotted SVG". */
 export type IconName = BuiltInIconName | '';

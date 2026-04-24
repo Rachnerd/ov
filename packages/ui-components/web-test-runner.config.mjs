@@ -11,9 +11,7 @@ export default {
       tsconfig: new URL('./tsconfig.json', import.meta.url).pathname,
     }),
   ],
-  browsers: [
-    playwrightLauncher({ product: 'chromium' }),
-  ],
+  browsers: [playwrightLauncher({ product: 'chromium' })],
   testFramework: {
     config: {
       timeout: 5000,

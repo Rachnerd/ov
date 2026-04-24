@@ -20,7 +20,9 @@ export class OvMenuItem extends LitElement {
   static override styles = [
     baseStyles,
     css`
-      :host { display: block; }
+      :host {
+        display: block;
+      }
 
       :host([separator]) .item {
         height: 0;
@@ -42,11 +44,19 @@ export class OvMenuItem extends LitElement {
         outline: none;
       }
       .item:hover,
-      .item:focus-visible { background: var(--color-bg-surface-muted); }
-      .item:focus-visible  { box-shadow: var(--shadow-focus); }
+      .item:focus-visible {
+        background: var(--color-bg-surface-muted);
+      }
+      .item:focus-visible {
+        box-shadow: var(--shadow-focus);
+      }
 
-      :host([selected]) .item { background: var(--color-brand-subtle); }
-      :host([selected]) .main { color: var(--color-brand); }
+      :host([selected]) .item {
+        background: var(--color-brand-subtle);
+      }
+      :host([selected]) .main {
+        color: var(--color-brand);
+      }
 
       :host([disabled]) .item {
         opacity: 0.45;
@@ -55,14 +65,22 @@ export class OvMenuItem extends LitElement {
       }
 
       .icon-slot {
-        width: 18px; height: 18px;
+        width: 18px;
+        height: 18px;
         flex: 0 0 auto;
         color: var(--color-text-tertiary);
-        display: flex; align-items: center; justify-content: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
-      :host([selected]) .icon-slot { color: var(--color-brand); }
+      :host([selected]) .icon-slot {
+        color: var(--color-brand);
+      }
 
-      .content { flex: 1 1 auto; min-width: 0; }
+      .content {
+        flex: 1 1 auto;
+        min-width: 0;
+      }
 
       .main {
         font-size: var(--ov-fs-sm);
@@ -109,11 +127,17 @@ export class OvMenuItem extends LitElement {
   ];
 
   private _onClick(e: MouseEvent): void {
-    if (this.disabled || this.separator) { e.stopImmediatePropagation(); return; }
-    this.dispatchEvent(new CustomEvent('select', {
-      detail: { label: this.label },
-      bubbles: true, composed: true,
-    }));
+    if (this.disabled || this.separator) {
+      e.stopImmediatePropagation();
+      return;
+    }
+    this.dispatchEvent(
+      new CustomEvent('select', {
+        detail: { label: this.label },
+        bubbles: true,
+        composed: true,
+      }),
+    );
   }
 
   protected override render(): TemplateResult {
@@ -131,7 +155,9 @@ export class OvMenuItem extends LitElement {
         <span class="icon-slot"><slot name="icon"></slot></span>
         <span class="content">
           <div class="main">${this.label}</div>
-          ${this.description ? html`<div class="desc">${this.description}</div>` : nothing}
+          ${this.description
+            ? html`<div class="desc">${this.description}</div>`
+            : nothing}
         </span>
         <span class="shortcut"><slot name="shortcut"></slot></span>
         <span class="trailing"><slot name="trailing"></slot></span>

@@ -19,12 +19,17 @@ export class OvLabel extends LitElement {
   @property({ type: Boolean, reflect: true }) required = false;
 
   /** Narrower than ControlSize — labels only need two sizes. */
-  @property({ type: String, reflect: true }) size: Extract<ControlSize, 'sm' | 'md'> = 'md';
+  @property({ type: String, reflect: true }) size: Extract<
+    ControlSize,
+    'sm' | 'md'
+  > = 'md';
 
   static override styles = [
     baseStyles,
     css`
-      :host { display: inline-flex; }
+      :host {
+        display: inline-flex;
+      }
       label {
         display: inline-flex;
         align-items: baseline;
@@ -35,7 +40,9 @@ export class OvLabel extends LitElement {
         color: var(--color-text-primary);
         cursor: pointer;
       }
-      :host([size='sm']) label { font-size: var(--ov-fs-xs); }
+      :host([size='sm']) label {
+        font-size: var(--ov-fs-xs);
+      }
       .required {
         color: var(--color-danger);
         font-weight: var(--ov-fw-regular, 400);
@@ -54,7 +61,9 @@ export class OvLabel extends LitElement {
     return html`
       <label for=${this.htmlFor}>
         <slot></slot>
-        ${this.required ? html`<span class="required" aria-hidden="true">*</span>` : null}
+        ${this.required
+          ? html`<span class="required" aria-hidden="true">*</span>`
+          : null}
         <slot name="hint"></slot>
       </label>
     `;

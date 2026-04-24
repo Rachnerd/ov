@@ -6,12 +6,12 @@ import '@ov/ui-components/atoms/text/ov-text';
 import '@ov/ui-components/atoms/link/ov-link';
 
 const ITEMS = html`
-  <ov-image-card label="Amsterdam"  src="/banner.jpg" href="#"></ov-image-card>
-  <ov-image-card label="Arnhem"     src="/banner.jpg" href="#"></ov-image-card>
+  <ov-image-card label="Amsterdam" src="/banner.jpg" href="#"></ov-image-card>
+  <ov-image-card label="Arnhem" src="/banner.jpg" href="#"></ov-image-card>
   <ov-image-card label="Düsseldorf" src="/banner.jpg" href="#"></ov-image-card>
-  <ov-image-card label="Rotterdam"  src="/banner.jpg" href="#"></ov-image-card>
-  <ov-image-card label="Eindhoven"  src="/banner.jpg" href="#"></ov-image-card>
-  <ov-image-card label="Utrecht"    src="/banner.jpg" href="#"></ov-image-card>
+  <ov-image-card label="Rotterdam" src="/banner.jpg" href="#"></ov-image-card>
+  <ov-image-card label="Eindhoven" src="/banner.jpg" href="#"></ov-image-card>
+  <ov-image-card label="Utrecht" src="/banner.jpg" href="#"></ov-image-card>
 `;
 
 const meta: Meta = {
@@ -20,18 +20,18 @@ const meta: Meta = {
   tags: ['autodocs'],
   parameters: { layout: 'fullscreen' },
   argTypes: {
-    heading:      { control: 'text' },
+    heading: { control: 'text' },
     visibleCount: { control: { type: 'number', min: 1, max: 5 } },
-    countMd:      { control: { type: 'number', min: 1, max: 5 } },
-    countSm:      { control: { type: 'number', min: 1, max: 5 } },
-    autoPlayMs:   { control: { type: 'number', min: 0, step: 500 } },
+    countMd: { control: { type: 'number', min: 1, max: 5 } },
+    countSm: { control: { type: 'number', min: 1, max: 5 } },
+    autoPlayMs: { control: { type: 'number', min: 0, step: 500 } },
   },
   args: {
-    heading:      'Featured cities',
+    heading: 'Featured cities',
     visibleCount: 3,
-    countMd:      2,
-    countSm:      1,
-    autoPlayMs:   4000,
+    countMd: 2,
+    countSm: 1,
+    autoPlayMs: 4000,
   },
 };
 
@@ -67,18 +67,14 @@ export const WithDescription: Story = {
 export const TwoVisible: Story = {
   name: '2 items visible',
   render: () => html`
-    <ov-carousel heading="Projects" visible-count="2">
-      ${ITEMS}
-    </ov-carousel>
+    <ov-carousel heading="Projects" visible-count="2"> ${ITEMS} </ov-carousel>
   `,
 };
 
 export const NoAutoPlay: Story = {
   name: 'Manual navigation only',
   render: () => html`
-    <ov-carousel heading="Gallery" auto-play-ms="0">
-      ${ITEMS}
-    </ov-carousel>
+    <ov-carousel heading="Gallery" auto-play-ms="0"> ${ITEMS} </ov-carousel>
   `,
 };
 
@@ -86,9 +82,21 @@ export const FewItems: Story = {
   name: 'No dots (items ≤ visible-count)',
   render: () => html`
     <ov-carousel heading="Small set" visible-count="3">
-      <ov-image-card label="Amsterdam"  src="/banner.jpg" href="#"></ov-image-card>
-      <ov-image-card label="Rotterdam"  src="/banner.jpg" href="#"></ov-image-card>
-      <ov-image-card label="Eindhoven"  src="/banner.jpg" href="#"></ov-image-card>
+      <ov-image-card
+        label="Amsterdam"
+        src="/banner.jpg"
+        href="#"
+      ></ov-image-card>
+      <ov-image-card
+        label="Rotterdam"
+        src="/banner.jpg"
+        href="#"
+      ></ov-image-card>
+      <ov-image-card
+        label="Eindhoven"
+        src="/banner.jpg"
+        href="#"
+      ></ov-image-card>
     </ov-carousel>
   `,
 };
@@ -96,7 +104,12 @@ export const FewItems: Story = {
 export const ResponsiveCounts: Story = {
   name: 'Responsive counts (resize to see)',
   render: () => html`
-    <ov-carousel heading="Resize this panel" visible-count="4" count-md="2" count-sm="1">
+    <ov-carousel
+      heading="Resize this panel"
+      visible-count="4"
+      count-md="2"
+      count-sm="1"
+    >
       ${ITEMS}
     </ov-carousel>
   `,

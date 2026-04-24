@@ -26,7 +26,10 @@ function parseTypeAliases(src) {
     /export type (\w+)\s*=\s*((?:(?!export\s)[\s\S])*?);/g,
   )) {
     // Strip inline comments before storing so they don't corrupt union types.
-    const clean = body.replace(/\/\/[^\n]*/g, '').trim().replace(/\s+/g, ' ');
+    const clean = body
+      .replace(/\/\/[^\n]*/g, '')
+      .trim()
+      .replace(/\s+/g, ' ');
     map[name] = clean;
   }
   return map;
@@ -48,7 +51,7 @@ function parseConstArrays(src) {
   for (const [, name, body] of src.matchAll(
     /export const (\w+)\s*=\s*\[([\s\S]*?)\]\s*as\s*const/g,
   )) {
-    const values = [...body.matchAll(/'([^']+)'/g)].map(m => `'${m[1]}'`);
+    const values = [...body.matchAll(/'([^']+)'/g)].map((m) => `'${m[1]}'`);
     if (values.length) map[name] = values.join(' | ');
   }
   return map;
@@ -59,11 +62,15 @@ const _tokensSource = readFileSync(join(UI_PKG, 'src/tokens.ts'), 'utf8');
 // Load global design-system type definitions once.
 const GLOBAL_TYPES = {
   ...parseTypeAliases(_tokensSource),
-  ...parseTypeAliases(readFileSync(join(UI_PKG, 'src/molecule-tokens.ts'), 'utf8')),
+  ...parseTypeAliases(
+    readFileSync(join(UI_PKG, 'src/molecule-tokens.ts'), 'utf8'),
+  ),
 };
 const GLOBAL_INTERFACES = {
   ...parseInterfaces(_tokensSource),
-  ...parseInterfaces(readFileSync(join(UI_PKG, 'src/molecule-tokens.ts'), 'utf8')),
+  ...parseInterfaces(
+    readFileSync(join(UI_PKG, 'src/molecule-tokens.ts'), 'utf8'),
+  ),
 };
 const CONST_ARRAYS = parseConstArrays(_tokensSource);
 
@@ -74,8 +81,9 @@ const CONST_ARRAYS = parseConstArrays(_tokensSource);
  */
 function fullyResolve(typeText, visited = new Set()) {
   // Expand typeof X[number] (as const array types)
-  typeText = typeText.replace(/typeof (\w+)\[number\]/g, (_, name) =>
-    CONST_ARRAYS[name] ?? `typeof ${name}[number]`,
+  typeText = typeText.replace(
+    /typeof (\w+)\[number\]/g,
+    (_, name) => CONST_ARRAYS[name] ?? `typeof ${name}[number]`,
   );
   // Substitute remaining PascalCase type name references
   typeText = typeText.replace(/\b([A-Z][A-Za-z0-9]+)\b/g, (match) => {
@@ -114,15 +122,20 @@ function resolveEventDetail(eventTypeText, localInterfaces = {}) {
 
 // ── Naming helpers ───────────────────────────────────────────────────────────
 
-const toPascalCase = tag => tag.split('-').map(s => s[0].toUpperCase() + s.slice(1)).join('');
+const toPascalCase = (tag) =>
+  tag
+    .split('-')
+    .map((s) => s[0].toUpperCase() + s.slice(1))
+    .join('');
 
 /** field-reset → fieldResetEvent */
-const toOutputName = event => event.replace(/-([a-z])/g, (_, c) => c.toUpperCase()) + 'Event';
+const toOutputName = (event) =>
+  event.replace(/-([a-z])/g, (_, c) => c.toUpperCase()) + 'Event';
 
-const getTier = path =>
+const getTier = (path) =>
   path.match(/src\/(atoms|molecules|organisms|templates)\//)?.[1] ?? null;
 
-const getLitImport = path => path.replace(/^src\//, '').replace(/\.ts$/, '');
+const getLitImport = (path) => path.replace(/^src\//, '').replace(/\.ts$/, '');
 
 // ── Wrapper generator ────────────────────────────────────────────────────────
 
@@ -142,7 +155,7 @@ function generateWrapper({ tagName, modulePath, fields, events }) {
   } catch {}
 
   // ── Process props
-  const props = fields.map(f => {
+  const props = fields.map((f) => {
     const raw = f.type?.text ?? 'string';
     const arrMatch = raw.match(/^(\w+)\[\]$/);
     return {
@@ -163,8 +176,8 @@ function generateWrapper({ tagName, modulePath, fields, events }) {
   }
 
   // ── Process events
-  const filteredEvents = events.filter(e => !SKIP_EVENTS.has(e.name));
-  const outputs = filteredEvents.map(e => ({
+  const filteredEvents = events.filter((e) => !SKIP_EVENTS.has(e.name));
+  const outputs = filteredEvents.map((e) => ({
     name: e.name,
     outputName: toOutputName(e.name),
     detailType: resolveEventDetail(e.type?.text, localInterfaces),
@@ -204,7 +217,10 @@ function generateWrapper({ tagName, modulePath, fields, events }) {
 
   for (const [name, body] of neededInterfaces) {
     out.push(`export interface ${name} {`);
-    body.split('\n').forEach(l => { const t = l.trim(); if (t) out.push(`  ${t}`); });
+    body.split('\n').forEach((l) => {
+      const t = l.trim();
+      if (t) out.push(`  ${t}`);
+    });
     out.push('}');
     out.push('');
   }
@@ -229,7 +245,9 @@ function generateWrapper({ tagName, modulePath, fields, events }) {
   if (hasEvents) {
     if (hasProps) out.push('');
     for (const o of outputs) {
-      out.push(`  @Output() ${o.outputName} = new EventEmitter<${o.detailType}>();`);
+      out.push(
+        `  @Output() ${o.outputName} = new EventEmitter<${o.detailType}>();`,
+      );
     }
   }
 
@@ -252,7 +270,9 @@ function generateWrapper({ tagName, modulePath, fields, events }) {
     out.push(`    this._teardowns.push(`);
     outputs.forEach((o, i) => {
       const comma = i < outputs.length - 1 ? ',' : '';
-      out.push(`      listen<CustomEvent<${o.detailType}>>(this._el, '${o.name}', (ev) => {`);
+      out.push(
+        `      listen<CustomEvent<${o.detailType}>>(this._el, '${o.name}', (ev) => {`,
+      );
       out.push(`        this.${o.outputName}.emit(ev.detail);`);
       out.push(`      })${comma}`);
     });
@@ -273,18 +293,20 @@ function generateWrapper({ tagName, modulePath, fields, events }) {
 
 // ── Main ─────────────────────────────────────────────────────────────────────
 
-const cem = JSON.parse(readFileSync(join(UI_PKG, 'custom-elements.json'), 'utf8'));
+const cem = JSON.parse(
+  readFileSync(join(UI_PKG, 'custom-elements.json'), 'utf8'),
+);
 let count = 0;
 
 for (const mod of cem.modules) {
-  const decl = mod.declarations?.find(d => d.tagName && d.customElement);
+  const decl = mod.declarations?.find((d) => d.tagName && d.customElement);
   if (!decl) continue;
 
   const tier = getTier(mod.path);
   if (!tier) continue;
 
   const fields = (decl.members ?? []).filter(
-    m => m.kind === 'field' && !m.privacy && m.attribute,
+    (m) => m.kind === 'field' && !m.privacy && m.attribute,
   );
 
   const content = generateWrapper({

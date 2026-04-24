@@ -36,7 +36,8 @@ export const Primary: Story = {
       ?disabled=${args['disabled']}
       ?loading=${args['loading']}
       ?block=${args['block']}
-    >Get started</ov-button>
+      >Get started</ov-button
+    >
   `,
 };
 

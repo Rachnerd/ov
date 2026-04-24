@@ -18,7 +18,10 @@ export class OvEmptyState extends LitElement {
   static override styles = [
     baseStyles,
     css`
-      :host { display: flex; justify-content: center; }
+      :host {
+        display: flex;
+        justify-content: center;
+      }
 
       .es {
         display: flex;
@@ -29,11 +32,18 @@ export class OvEmptyState extends LitElement {
         padding: var(--ov-space-12) var(--ov-space-8);
         max-width: 400px;
       }
-      :host([size='sm']) .es { padding: var(--ov-space-8) var(--ov-space-6); max-width: 300px; }
-      :host([size='lg']) .es { padding: var(--ov-space-20) var(--ov-space-12); max-width: 520px; }
+      :host([size='sm']) .es {
+        padding: var(--ov-space-8) var(--ov-space-6);
+        max-width: 300px;
+      }
+      :host([size='lg']) .es {
+        padding: var(--ov-space-20) var(--ov-space-12);
+        max-width: 520px;
+      }
 
       .icon-wrap {
-        width: 56px; height: 56px;
+        width: 56px;
+        height: 56px;
         border-radius: var(--ov-radius-xl);
         background: var(--color-bg-surface-muted);
         display: flex;
@@ -41,12 +51,27 @@ export class OvEmptyState extends LitElement {
         justify-content: center;
         color: var(--color-text-muted);
       }
-      :host([size='sm']) .icon-wrap { width: 40px; height: 40px; }
-      :host([size='lg']) .icon-wrap { width: 72px; height: 72px; }
+      :host([size='sm']) .icon-wrap {
+        width: 40px;
+        height: 40px;
+      }
+      :host([size='lg']) .icon-wrap {
+        width: 72px;
+        height: 72px;
+      }
 
-      .icon-wrap svg { width: 24px; height: 24px; }
-      :host([size='sm']) .icon-wrap svg { width: 18px; height: 18px; }
-      :host([size='lg']) .icon-wrap svg { width: 32px; height: 32px; }
+      .icon-wrap svg {
+        width: 24px;
+        height: 24px;
+      }
+      :host([size='sm']) .icon-wrap svg {
+        width: 18px;
+        height: 18px;
+      }
+      :host([size='lg']) .icon-wrap svg {
+        width: 32px;
+        height: 32px;
+      }
 
       .heading {
         font-size: var(--ov-fs-md);
@@ -54,8 +79,12 @@ export class OvEmptyState extends LitElement {
         color: var(--color-text-primary);
         line-height: var(--ov-lh-snug);
       }
-      :host([size='sm']) .heading { font-size: var(--ov-fs-base); }
-      :host([size='lg']) .heading { font-size: var(--ov-fs-lg); }
+      :host([size='sm']) .heading {
+        font-size: var(--ov-fs-base);
+      }
+      :host([size='lg']) .heading {
+        font-size: var(--ov-fs-lg);
+      }
 
       .description {
         font-size: var(--ov-fs-sm);
@@ -70,7 +99,9 @@ export class OvEmptyState extends LitElement {
         flex-wrap: wrap;
         justify-content: center;
       }
-      .actions:empty { display: none; }
+      .actions:empty {
+        display: none;
+      }
     `,
   ];
 
@@ -79,19 +110,36 @@ export class OvEmptyState extends LitElement {
       <div class="es" part="empty-state">
         <div class="icon-wrap" part="icon">
           <slot name="icon">
-            ${this.icon ? html`
-              <ov-icon name=${this.icon} size="xl"></ov-icon>
-            ` : html`
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <rect x="3" y="3" width="18" height="18" rx="3"
-                      stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 2"/>
-                <path d="M9 12h6M12 9v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              </svg>
-            `}
+            ${this.icon
+              ? html` <ov-icon name=${this.icon} size="xl"></ov-icon> `
+              : html`
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <rect
+                      x="3"
+                      y="3"
+                      width="18"
+                      height="18"
+                      rx="3"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-dasharray="3 2"
+                    />
+                    <path
+                      d="M9 12h6M12 9v6"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                `}
           </slot>
         </div>
-        ${this.heading ? html`<div class="heading">${this.heading}</div>` : nothing}
-        ${this.description ? html`<div class="description">${this.description}</div>` : nothing}
+        ${this.heading
+          ? html`<div class="heading">${this.heading}</div>`
+          : nothing}
+        ${this.description
+          ? html`<div class="description">${this.description}</div>`
+          : nothing}
         <div class="actions"><slot name="actions"></slot></div>
       </div>
     `;

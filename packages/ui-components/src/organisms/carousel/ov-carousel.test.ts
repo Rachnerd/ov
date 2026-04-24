@@ -5,11 +5,11 @@ import './ov-carousel.js';
 import '@ov/ui-components/molecules/image-card/ov-image-card';
 
 const cards = html`
-  <ov-image-card label="Amsterdam"  src="/a.jpg" href="#"></ov-image-card>
-  <ov-image-card label="Rotterdam"  src="/b.jpg" href="#"></ov-image-card>
-  <ov-image-card label="Eindhoven"  src="/c.jpg" href="#"></ov-image-card>
-  <ov-image-card label="Utrecht"    src="/d.jpg" href="#"></ov-image-card>
-  <ov-image-card label="Den Haag"   src="/e.jpg" href="#"></ov-image-card>
+  <ov-image-card label="Amsterdam" src="/a.jpg" href="#"></ov-image-card>
+  <ov-image-card label="Rotterdam" src="/b.jpg" href="#"></ov-image-card>
+  <ov-image-card label="Eindhoven" src="/c.jpg" href="#"></ov-image-card>
+  <ov-image-card label="Utrecht" src="/d.jpg" href="#"></ov-image-card>
+  <ov-image-card label="Den Haag" src="/e.jpg" href="#"></ov-image-card>
 `;
 
 describe('ov-carousel', () => {
@@ -24,12 +24,16 @@ describe('ov-carousel', () => {
     });
 
     it('does not render heading element when heading is empty', async () => {
-      const el = await fixture<OvCarousel>(html`<ov-carousel>${cards}</ov-carousel>`);
+      const el = await fixture<OvCarousel>(
+        html`<ov-carousel>${cards}</ov-carousel>`,
+      );
       expect(el.shadowRoot!.querySelector('ov-heading')).to.not.exist;
     });
 
     it('projects slotted items into the track', async () => {
-      const el = await fixture<OvCarousel>(html`<ov-carousel>${cards}</ov-carousel>`);
+      const el = await fixture<OvCarousel>(
+        html`<ov-carousel>${cards}</ov-carousel>`,
+      );
       expect(el.querySelectorAll('ov-image-card').length).to.equal(5);
     });
 
@@ -80,12 +84,16 @@ describe('ov-carousel', () => {
     });
 
     it('reads visible-count attribute', async () => {
-      const el = await fixture<OvCarousel>(html`<ov-carousel visible-count="2"></ov-carousel>`);
+      const el = await fixture<OvCarousel>(
+        html`<ov-carousel visible-count="2"></ov-carousel>`,
+      );
       expect(el.visibleCount).to.equal(2);
     });
 
     it('reads auto-play-ms attribute', async () => {
-      const el = await fixture<OvCarousel>(html`<ov-carousel auto-play-ms="2000"></ov-carousel>`);
+      const el = await fixture<OvCarousel>(
+        html`<ov-carousel auto-play-ms="2000"></ov-carousel>`,
+      );
       expect(el.autoPlayMs).to.equal(2000);
     });
 
@@ -136,9 +144,11 @@ describe('ov-carousel', () => {
         <ov-carousel auto-play-ms="0">${cards}</ov-carousel>
       `);
       await aTimeout(50);
-      el.shadowRoot!.querySelectorAll<HTMLButtonElement>('.dot').forEach(dot => {
-        expect(dot.getAttribute('aria-label')).to.not.equal('');
-      });
+      el.shadowRoot!.querySelectorAll<HTMLButtonElement>('.dot').forEach(
+        (dot) => {
+          expect(dot.getAttribute('aria-label')).to.not.equal('');
+        },
+      );
     });
   });
 
@@ -147,7 +157,9 @@ describe('ov-carousel', () => {
   describe('accessibility', () => {
     it('passes axe with heading and items', async () => {
       const el = await fixture(html`
-        <ov-carousel heading="Our offices" auto-play-ms="0">${cards}</ov-carousel>
+        <ov-carousel heading="Our offices" auto-play-ms="0"
+          >${cards}</ov-carousel
+        >
       `);
       await aTimeout(50);
       await expect(el).to.be.accessible({ ignoredRules: ['color-contrast'] });

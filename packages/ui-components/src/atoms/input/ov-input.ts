@@ -1,7 +1,11 @@
 import { LitElement, html, css, type TemplateResult } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { baseStyles } from '../../shared-styles.js';
-import type { InputType, ControlSize, InputChangeDetail } from '../../tokens.js';
+import type {
+  InputType,
+  ControlSize,
+  InputChangeDetail,
+} from '../../tokens.js';
 
 /**
  * <ov-input>
@@ -34,7 +38,10 @@ export class OvInput extends LitElement {
   static override styles = [
     baseStyles,
     css`
-      :host { display: inline-flex; width: 100%; }
+      :host {
+        display: inline-flex;
+        width: 100%;
+      }
 
       .wrap {
         display: inline-flex;
@@ -46,18 +53,27 @@ export class OvInput extends LitElement {
         border-radius: var(--ov-input-radius, var(--ov-radius-md));
         padding: 0 var(--ov-space-4);
         transition:
-          border-color     var(--ov-duration-fast) var(--ov-ease-out),
+          border-color var(--ov-duration-fast) var(--ov-ease-out),
           background-color var(--ov-duration-fast) var(--ov-ease-out),
-          box-shadow       var(--ov-duration-fast) var(--ov-ease-out);
+          box-shadow var(--ov-duration-fast) var(--ov-ease-out);
       }
-      .wrap:hover         { border-color: var(--color-control-border-hover); }
-      .wrap:focus-within  {
+      .wrap:hover {
+        border-color: var(--color-control-border-hover);
+      }
+      .wrap:focus-within {
         border-color: var(--color-border-focus);
         box-shadow: var(--shadow-focus);
       }
-      :host([invalid]) .wrap                { border-color: var(--color-danger); }
-      :host([invalid]) .wrap:focus-within   { box-shadow: 0 0 0 3px var(--color-danger-bg); }
-      :host([disabled]) .wrap { background: var(--color-control-bg-disabled); cursor: not-allowed; }
+      :host([invalid]) .wrap {
+        border-color: var(--color-danger);
+      }
+      :host([invalid]) .wrap:focus-within {
+        box-shadow: 0 0 0 3px var(--color-danger-bg);
+      }
+      :host([disabled]) .wrap {
+        background: var(--color-control-bg-disabled);
+        cursor: not-allowed;
+      }
 
       input {
         flex: 1 1 auto;
@@ -70,11 +86,22 @@ export class OvInput extends LitElement {
         font-size: var(--ov-fs-sm);
         color: var(--color-text-primary);
       }
-      input::placeholder { color: var(--color-text-muted); }
-      input:disabled     { cursor: not-allowed; color: var(--color-text-muted); }
+      input::placeholder {
+        color: var(--color-text-muted);
+      }
+      input:disabled {
+        cursor: not-allowed;
+        color: var(--color-text-muted);
+      }
 
-      :host([size='sm']) input { padding: var(--ov-space-2) 0; font-size: var(--ov-fs-xs); }
-      :host([size='lg']) input { padding: var(--ov-space-4) 0; font-size: var(--ov-fs-base); }
+      :host([size='sm']) input {
+        padding: var(--ov-space-2) 0;
+        font-size: var(--ov-fs-xs);
+      }
+      :host([size='lg']) input {
+        padding: var(--ov-space-4) 0;
+        font-size: var(--ov-fs-base);
+      }
 
       ::slotted([slot='prefix']),
       ::slotted([slot='suffix']) {
@@ -90,17 +117,25 @@ export class OvInput extends LitElement {
     const target = e.target as HTMLInputElement;
     this.value = target.value;
     const detail: InputChangeDetail = { value: this.value };
-    this.dispatchEvent(new CustomEvent<InputChangeDetail>('input', {
-      detail, bubbles: true, composed: true,
-    }));
+    this.dispatchEvent(
+      new CustomEvent<InputChangeDetail>('input', {
+        detail,
+        bubbles: true,
+        composed: true,
+      }),
+    );
   }
 
   private _onChange(e: Event): void {
     const target = e.target as HTMLInputElement;
     const detail: InputChangeDetail = { value: target.value };
-    this.dispatchEvent(new CustomEvent<InputChangeDetail>('change', {
-      detail, bubbles: true, composed: true,
-    }));
+    this.dispatchEvent(
+      new CustomEvent<InputChangeDetail>('change', {
+        detail,
+        bubbles: true,
+        composed: true,
+      }),
+    );
   }
 
   /** Forward focus to the internal input so .focus() on the host works. */

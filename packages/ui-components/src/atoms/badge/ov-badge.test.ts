@@ -44,17 +44,23 @@ describe('ov-badge', () => {
     });
 
     it('reflects variant attribute', async () => {
-      const el = await fixture<OvBadge>(html`<ov-badge variant="success">Active</ov-badge>`);
+      const el = await fixture<OvBadge>(
+        html`<ov-badge variant="success">Active</ov-badge>`,
+      );
       expect(el.getAttribute('variant')).to.equal('success');
     });
 
     it('reflects appearance attribute', async () => {
-      const el = await fixture<OvBadge>(html`<ov-badge appearance="solid">Solid</ov-badge>`);
+      const el = await fixture<OvBadge>(
+        html`<ov-badge appearance="solid">Solid</ov-badge>`,
+      );
       expect(el.getAttribute('appearance')).to.equal('solid');
     });
 
     it('reflects size attribute', async () => {
-      const el = await fixture<OvBadge>(html`<ov-badge size="sm">Small</ov-badge>`);
+      const el = await fixture<OvBadge>(
+        html`<ov-badge size="sm">Small</ov-badge>`,
+      );
       expect(el.getAttribute('size')).to.equal('sm');
     });
 
@@ -65,7 +71,9 @@ describe('ov-badge', () => {
     });
 
     it('reflects pill=false when set', async () => {
-      const el = await fixture<OvBadge>(html`<ov-badge .pill=${false}>Square</ov-badge>`);
+      const el = await fixture<OvBadge>(
+        html`<ov-badge .pill=${false}>Square</ov-badge>`,
+      );
       expect(el.pill).to.be.false;
     });
   });
@@ -81,14 +89,18 @@ describe('ov-badge', () => {
     });
 
     it('passes axe for success variant', async () => {
-      const el = await fixture(html`<ov-badge variant="success">Published</ov-badge>`);
+      const el = await fixture(
+        html`<ov-badge variant="success">Published</ov-badge>`,
+      );
       await expect(el).to.be.accessible({
         ignoredRules: ['color-contrast'],
       });
     });
 
     it('passes axe for solid appearance', async () => {
-      const el = await fixture(html`<ov-badge variant="danger" appearance="solid">Critical</ov-badge>`);
+      const el = await fixture(
+        html`<ov-badge variant="danger" appearance="solid">Critical</ov-badge>`,
+      );
       await expect(el).to.be.accessible({
         ignoredRules: ['color-contrast'],
       });

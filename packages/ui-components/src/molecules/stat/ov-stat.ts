@@ -17,7 +17,9 @@ export class OvStat extends LitElement {
   static override styles = [
     baseStyles,
     css`
-      :host { display: block; }
+      :host {
+        display: block;
+      }
 
       .stat {
         display: flex;
@@ -55,11 +57,20 @@ export class OvStat extends LitElement {
         font-size: var(--ov-fs-xs);
         font-weight: var(--ov-fw-semibold);
       }
-      :host([trend='up'])      .delta { color: var(--color-success); }
-      :host([trend='down'])    .delta { color: var(--color-danger); }
-      :host([trend='neutral']) .delta { color: var(--color-text-muted); }
+      :host([trend='up']) .delta {
+        color: var(--color-success);
+      }
+      :host([trend='down']) .delta {
+        color: var(--color-danger);
+      }
+      :host([trend='neutral']) .delta {
+        color: var(--color-text-muted);
+      }
 
-      .delta svg { width: 12px; height: 12px; }
+      .delta svg {
+        width: 12px;
+        height: 12px;
+      }
 
       .sublabel {
         font-size: var(--ov-fs-xs);
@@ -70,9 +81,23 @@ export class OvStat extends LitElement {
 
   private _arrowPath(): TemplateResult | typeof nothing {
     if (this.trend === 'up')
-      return html`<path d="M8 12V4m0 0L4 8m4-4l4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`;
+      return html`<path
+        d="M8 12V4m0 0L4 8m4-4l4 4"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        fill="none"
+      />`;
     if (this.trend === 'down')
-      return html`<path d="M8 4v8m0 0L4 8m4 4l4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`;
+      return html`<path
+        d="M8 4v8m0 0L4 8m4 4l4-4"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        fill="none"
+      />`;
     return nothing;
   }
 
@@ -82,15 +107,19 @@ export class OvStat extends LitElement {
         <div class="label">${this.label}</div>
         <div class="value">${this.value}</div>
         <div class="meta">
-          ${this.delta ? html`
-            <span class="delta">
-              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                ${this._arrowPath()}
-              </svg>
-              ${this.delta}
-            </span>
-          ` : nothing}
-          ${this.sublabel ? html`<span class="sublabel">${this.sublabel}</span>` : nothing}
+          ${this.delta
+            ? html`
+                <span class="delta">
+                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    ${this._arrowPath()}
+                  </svg>
+                  ${this.delta}
+                </span>
+              `
+            : nothing}
+          ${this.sublabel
+            ? html`<span class="sublabel">${this.sublabel}</span>`
+            : nothing}
         </div>
       </div>
     `;

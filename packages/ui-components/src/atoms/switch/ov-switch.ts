@@ -20,7 +20,8 @@ export class OvSwitch extends LitElement {
     css`
       .track {
         position: relative;
-        width: 34px; height: 20px;
+        width: 34px;
+        height: 20px;
         margin-top: 1px;
         border-radius: var(--ov-radius-pill);
         background: var(--color-control-border);
@@ -29,15 +30,21 @@ export class OvSwitch extends LitElement {
       }
       .thumb {
         position: absolute;
-        top: 2px; left: 2px;
-        width: 16px; height: 16px;
+        top: 2px;
+        left: 2px;
+        width: 16px;
+        height: 16px;
         border-radius: 50%;
         background: var(--ov-white);
         box-shadow: var(--shadow-sm);
         transition: transform var(--ov-duration-base) var(--ov-ease-spring);
       }
-      :host([checked]) .track { background: var(--color-brand); }
-      :host([checked]) .thumb { transform: translateX(14px); }
+      :host([checked]) .track {
+        background: var(--color-brand);
+      }
+      :host([checked]) .thumb {
+        transform: translateX(14px);
+      }
     `,
   ];
 

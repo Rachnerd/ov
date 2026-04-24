@@ -66,8 +66,13 @@ export class OvField extends LitElement {
         align-items: center;
         gap: var(--ov-space-4);
       }
-      :host([inline]) .label-wrap { flex: 0 0 auto; min-width: 120px; }
-      :host([inline]) .control-wrap { flex: 1 1 auto; }
+      :host([inline]) .label-wrap {
+        flex: 0 0 auto;
+        min-width: 120px;
+      }
+      :host([inline]) .control-wrap {
+        flex: 1 1 auto;
+      }
 
       .help {
         font-size: var(--ov-fs-xs);
@@ -84,13 +89,23 @@ export class OvField extends LitElement {
       }
 
       /* Status-driven message colours */
-      :host([status='error'])   .message { color: var(--color-danger); }
-      :host([status='success']) .message { color: var(--color-success); }
-      :host([status='warning']) .message { color: var(--color-warning); }
-      :host([status='idle'])    .message { color: var(--color-text-tertiary); }
+      :host([status='error']) .message {
+        color: var(--color-danger);
+      }
+      :host([status='success']) .message {
+        color: var(--color-success);
+      }
+      :host([status='warning']) .message {
+        color: var(--color-warning);
+      }
+      :host([status='idle']) .message {
+        color: var(--color-text-tertiary);
+      }
 
       .message-icon {
-        width: 12px; height: 12px; flex: 0 0 auto;
+        width: 12px;
+        height: 12px;
+        flex: 0 0 auto;
       }
 
       /* Forward invalid state to slotted controls */
@@ -107,16 +122,24 @@ export class OvField extends LitElement {
   private _statusIcon(): TemplateResult | typeof nothing {
     if (this.status === 'idle') return nothing;
     const paths: Record<Exclude<FieldStatus, 'idle'>, string> = {
-      error:   'M8 5v4M8 11v.5M3 13h10L8 3 3 13z',
+      error: 'M8 5v4M8 11v.5M3 13h10L8 3 3 13z',
       success: 'M3 8l3 3 6-6',
       warning: 'M8 5v4M8 11v.5M3 13h10L8 3 3 13z',
     };
     return html`
-      <svg class="message-icon" viewBox="0 0 16 16" fill="none"
-           aria-hidden="true">
-        <path d=${paths[this.status as Exclude<FieldStatus, 'idle'>]}
-              stroke="currentColor" stroke-width="1.6"
-              stroke-linecap="round" stroke-linejoin="round"/>
+      <svg
+        class="message-icon"
+        viewBox="0 0 16 16"
+        fill="none"
+        aria-hidden="true"
+      >
+        <path
+          d=${paths[this.status as Exclude<FieldStatus, 'idle'>]}
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
       </svg>
     `;
   }
@@ -140,7 +163,8 @@ export class OvField extends LitElement {
   }
 
   protected override render(): TemplateResult {
-    const hasMessage = this.message.length > 0 ||
+    const hasMessage =
+      this.message.length > 0 ||
       this.querySelector('[slot="message"]') !== null;
 
     return html`
@@ -149,10 +173,9 @@ export class OvField extends LitElement {
           <slot name="label">
             ${this.label
               ? html`
-                  <ov-label
-                    for=${this.for}
-                    ?required=${this.required}
-                  >${this.label}</ov-label>
+                  <ov-label for=${this.for} ?required=${this.required}
+                    >${this.label}</ov-label
+                  >
                 `
               : nothing}
           </slot>
@@ -162,17 +185,22 @@ export class OvField extends LitElement {
           <slot></slot>
         </div>
 
-        ${hasMessage || this.status !== 'idle' ? html`
-          <div class="message" role=${this.status === 'error' ? 'alert' : 'status'}
-               aria-live=${this.status === 'error' ? 'assertive' : 'polite'}>
-            ${this._statusIcon()}
-            <slot name="message">${this.message}</slot>
-          </div>
-        ` : html`
-          <div class="help">
-            <slot name="help"></slot>
-          </div>
-        `}
+        ${hasMessage || this.status !== 'idle'
+          ? html`
+              <div
+                class="message"
+                role=${this.status === 'error' ? 'alert' : 'status'}
+                aria-live=${this.status === 'error' ? 'assertive' : 'polite'}
+              >
+                ${this._statusIcon()}
+                <slot name="message">${this.message}</slot>
+              </div>
+            `
+          : html`
+              <div class="help">
+                <slot name="help"></slot>
+              </div>
+            `}
       </div>
     `;
   }

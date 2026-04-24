@@ -12,13 +12,18 @@ export const selectionBase: CSSResult = css`
     font-size: var(--ov-fs-sm);
     color: var(--color-text-primary);
   }
-  :host([disabled]) { cursor: not-allowed; opacity: 0.5; }
+  :host([disabled]) {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
 
   input {
     position: absolute;
     opacity: 0;
-    width: 1px; height: 1px;
-    margin: -1px; padding: 0;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
     overflow: hidden;
     clip: rect(0 0 0 0);
     white-space: nowrap;
@@ -39,7 +44,11 @@ export function dispatchSelectionChange(
   el: LitElement,
   detail: SelectionChangeDetail,
 ): void {
-  el.dispatchEvent(new CustomEvent<SelectionChangeDetail>('change', {
-    detail, bubbles: true, composed: true,
-  }));
+  el.dispatchEvent(
+    new CustomEvent<SelectionChangeDetail>('change', {
+      detail,
+      bubbles: true,
+      composed: true,
+    }),
+  );
 }

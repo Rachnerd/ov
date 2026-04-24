@@ -14,7 +14,12 @@ import { baseStyles } from '../../shared-styles.js';
 @customElement('ov-logo')
 export class OvLogo extends LitElement {
   /** Named size preset. Sets `--ov-logo-height`; overrideable by the parent via CSS. */
-  @property({ type: String, reflect: true }) size: 'xs' | 'sm' | 'md' | 'lg' | 'xl' = 'md';
+  @property({ type: String, reflect: true }) size:
+    | 'xs'
+    | 'sm'
+    | 'md'
+    | 'lg'
+    | 'xl' = 'md';
 
   /**
    * Colour variant.
@@ -32,11 +37,21 @@ export class OvLogo extends LitElement {
       }
 
       /* Named size presets — all overrideable by setting --ov-logo-height on the host */
-      :host([size='xs']) { --ov-logo-height: 20px; }
-      :host([size='sm']) { --ov-logo-height: 28px; }
-      :host([size='md']) { --ov-logo-height: 44px; }
-      :host([size='lg']) { --ov-logo-height: 72px; }
-      :host([size='xl']) { --ov-logo-height: 108px; }
+      :host([size='xs']) {
+        --ov-logo-height: 20px;
+      }
+      :host([size='sm']) {
+        --ov-logo-height: 28px;
+      }
+      :host([size='md']) {
+        --ov-logo-height: 44px;
+      }
+      :host([size='lg']) {
+        --ov-logo-height: 72px;
+      }
+      :host([size='xl']) {
+        --ov-logo-height: 108px;
+      }
 
       img {
         display: block;
@@ -48,10 +63,7 @@ export class OvLogo extends LitElement {
 
   protected override render(): TemplateResult {
     return html`
-      <img
-        src="/openvalue-tt-white.png"
-        alt="OpenValue — Tech Tribes"
-      >
+      <img src="/openvalue-tt-white.png" alt="OpenValue — Tech Tribes" />
     `;
   }
 }

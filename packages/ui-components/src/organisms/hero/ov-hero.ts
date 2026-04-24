@@ -36,16 +36,16 @@ export class OvHero extends LitElement {
         display: block;
 
         /* Local component tokens */
-        --ov-hero-height:          36vh;
-        --ov-hero-bg:              var(--ov-charcoal);
-        --ov-hero-clip-path:       polygon(0 0, 100% 0, 100% 88%, 0 100%);
-        --ov-hero-content-z:       1;
-        --ov-hero-heading-size:    clamp(3rem, 10vw, 7rem);
-        --ov-hero-fg-muted:        rgba(255, 255, 255, 0.8);
-        --ov-hero-subheading-ls:   0.45em;
+        --ov-hero-height: 36vh;
+        --ov-hero-bg: var(--ov-charcoal);
+        --ov-hero-clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
+        --ov-hero-content-z: 1;
+        --ov-hero-heading-size: clamp(3rem, 10vw, 7rem);
+        --ov-hero-fg-muted: rgba(255, 255, 255, 0.8);
+        --ov-hero-subheading-ls: 0.45em;
 
         /* Inject fluid heading size into ov-heading shadow DOM */
-        --ov-heading-hero-size:    var(--ov-hero-heading-size);
+        --ov-heading-hero-size: var(--ov-hero-heading-size);
       }
 
       section {
@@ -115,15 +115,16 @@ export class OvHero extends LitElement {
   protected override render(): TemplateResult {
     return html`
       <section aria-label="Hero">
-
-        ${this.src ? html`
-          <div
-            class="bg"
-            style="background-image: url('${this.src}')"
-            role="img"
-            aria-hidden="true"
-          ></div>
-        ` : nothing}
+        ${this.src
+          ? html`
+              <div
+                class="bg"
+                style="background-image: url('${this.src}')"
+                role="img"
+                aria-hidden="true"
+              ></div>
+            `
+          : nothing}
 
         <div
           class="overlay"
@@ -134,7 +135,9 @@ export class OvHero extends LitElement {
         <div class="content">
           <div class="logo-area"><slot name="logo"></slot></div>
           ${this.heading
-            ? html`<ov-heading level="1" size="hero" tone="inverse">${this.heading}</ov-heading>`
+            ? html`<ov-heading level="1" size="hero" tone="inverse"
+                >${this.heading}</ov-heading
+              >`
             : nothing}
           ${this.subheading
             ? html`<span class="subheading">${this.subheading}</span>`
@@ -143,7 +146,6 @@ export class OvHero extends LitElement {
             <slot name="actions"></slot>
           </div>
         </div>
-
       </section>
     `;
   }

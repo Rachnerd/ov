@@ -48,7 +48,7 @@ export class OvCarousel extends LitElement {
   }
 
   private _pickCount(width: number): number {
-    if (width < 640)  return this.countSm;
+    if (width < 640) return this.countSm;
     if (width < 1024) return this.countMd;
     return this.visibleCount;
   }
@@ -63,7 +63,7 @@ export class OvCarousel extends LitElement {
     super.connectedCallback();
     // Pre-seed from viewport width to avoid a flash of 3-item layout on mobile.
     this._syncVis(window.innerWidth);
-    this._ro = new ResizeObserver(entries => {
+    this._ro = new ResizeObserver((entries) => {
       this._syncVis(entries[0].contentRect.width);
     });
     this._ro.observe(this);
@@ -78,7 +78,11 @@ export class OvCarousel extends LitElement {
 
   override updated(changed: Map<string, unknown>) {
     // Re-sync when any count prop changes after initial render.
-    if (changed.has('visibleCount') || changed.has('countMd') || changed.has('countSm')) {
+    if (
+      changed.has('visibleCount') ||
+      changed.has('countMd') ||
+      changed.has('countSm')
+    ) {
       this._syncVis(this.getBoundingClientRect().width || window.innerWidth);
     }
   }
@@ -117,9 +121,10 @@ export class OvCarousel extends LitElement {
     // offsetLeft is relative to the light-DOM offsetParent, which crosses the
     // shadow boundary and gives wrong values. getBoundingClientRect() uses the
     // actual rendered position so it works correctly for slotted elements.
-    const left = this._track.scrollLeft
-      + target.getBoundingClientRect().left
-      - this._track.getBoundingClientRect().left;
+    const left =
+      this._track.scrollLeft +
+      target.getBoundingClientRect().left -
+      this._track.getBoundingClientRect().left;
     this._track.scrollTo({ left: left, behavior: 'smooth' });
   }
 
@@ -159,12 +164,13 @@ export class OvCarousel extends LitElement {
         -ms-overflow-style: none;
       }
 
-      .track::-webkit-scrollbar { display: none; }
+      .track::-webkit-scrollbar {
+        display: none;
+      }
 
       ::slotted(*) {
-        flex: 0 0 calc(
-          (100% - var(--ov-space-5) * (var(--_vis) - 1)) / var(--_vis)
-        );
+        flex: 0 0
+          calc((100% - var(--ov-space-5) * (var(--_vis) - 1)) / var(--_vis));
         scroll-snap-align: start;
         min-width: 0;
       }
@@ -210,18 +216,23 @@ export class OvCarousel extends LitElement {
           <slot @slotchange=${this._handleSlotChange}></slot>
         </div>
 
-        ${showDots ? html`
-          <div class="dots">
-            ${Array.from({ length: dotCount }, (_, i) => html`
-              <button
-                class="dot"
-                aria-label="Go to slide ${i + 1}"
-                aria-current=${i === this._current ? 'true' : 'false'}
-                @click=${() => this._goTo(i)}
-              ></button>
-            `)}
-          </div>
-        ` : nothing}
+        ${showDots
+          ? html`
+              <div class="dots">
+                ${Array.from(
+                  { length: dotCount },
+                  (_, i) => html`
+                    <button
+                      class="dot"
+                      aria-label="Go to slide ${i + 1}"
+                      aria-current=${i === this._current ? 'true' : 'false'}
+                      @click=${() => this._goTo(i)}
+                    ></button>
+                  `,
+                )}
+              </div>
+            `
+          : nothing}
       </div>
     `;
   }

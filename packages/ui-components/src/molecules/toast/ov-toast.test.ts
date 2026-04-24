@@ -1,4 +1,10 @@
-import { fixture, expect, elementUpdated, oneEvent, aTimeout } from '@open-wc/testing';
+import {
+  fixture,
+  expect,
+  elementUpdated,
+  oneEvent,
+  aTimeout,
+} from '@open-wc/testing';
 import { html } from 'lit';
 import type { OvToast } from './ov-toast.js';
 import './ov-toast.js';
@@ -9,14 +15,24 @@ describe('ov-toast', () => {
   describe('initial state', () => {
     it('renders nothing before show() is called', async () => {
       const el = await fixture<OvToast>(html`
-        <ov-toast toast-id="t1" variant="info" title="Hello" message="World."></ov-toast>
+        <ov-toast
+          toast-id="t1"
+          variant="info"
+          title="Hello"
+          message="World."
+        ></ov-toast>
       `);
       expect(el.shadowRoot!.querySelector('.toast')).to.not.exist;
     });
 
     it('renders the toast element after show() is called', async () => {
       const el = await fixture<OvToast>(html`
-        <ov-toast toast-id="t1" variant="info" title="Hello" message="World."></ov-toast>
+        <ov-toast
+          toast-id="t1"
+          variant="info"
+          title="Hello"
+          message="World."
+        ></ov-toast>
       `);
       el.show();
       await elementUpdated(el);
@@ -29,25 +45,44 @@ describe('ov-toast', () => {
   describe('rendering', () => {
     it('renders the title', async () => {
       const el = await fixture<OvToast>(html`
-        <ov-toast toast-id="t1" variant="success" title="Saved" message="Changes saved."></ov-toast>
+        <ov-toast
+          toast-id="t1"
+          variant="success"
+          title="Saved"
+          message="Changes saved."
+        ></ov-toast>
       `);
       el.show();
       await elementUpdated(el);
-      expect(el.shadowRoot!.querySelector('.title')!.textContent!.trim()).to.equal('Saved');
+      expect(
+        el.shadowRoot!.querySelector('.title')!.textContent!.trim(),
+      ).to.equal('Saved');
     });
 
     it('renders the message', async () => {
       const el = await fixture<OvToast>(html`
-        <ov-toast toast-id="t1" variant="info" title="Info" message="File uploaded."></ov-toast>
+        <ov-toast
+          toast-id="t1"
+          variant="info"
+          title="Info"
+          message="File uploaded."
+        ></ov-toast>
       `);
       el.show();
       await elementUpdated(el);
-      expect(el.shadowRoot!.querySelector('.msg')!.textContent!.trim()).to.equal('File uploaded.');
+      expect(
+        el.shadowRoot!.querySelector('.msg')!.textContent!.trim(),
+      ).to.equal('File uploaded.');
     });
 
     it('renders a close button', async () => {
       const el = await fixture<OvToast>(html`
-        <ov-toast toast-id="t1" variant="info" title="Info" message="Text."></ov-toast>
+        <ov-toast
+          toast-id="t1"
+          variant="info"
+          title="Info"
+          message="Text."
+        ></ov-toast>
       `);
       el.show();
       await elementUpdated(el);
@@ -60,7 +95,12 @@ describe('ov-toast', () => {
   describe('properties and attributes', () => {
     it('reflects variant attribute', async () => {
       const el = await fixture<OvToast>(html`
-        <ov-toast toast-id="t1" variant="danger" title="Error" message="Failed."></ov-toast>
+        <ov-toast
+          toast-id="t1"
+          variant="danger"
+          title="Error"
+          message="Failed."
+        ></ov-toast>
       `);
       expect(el.getAttribute('variant')).to.equal('danger');
     });
@@ -78,7 +118,13 @@ describe('ov-toast', () => {
   describe('dismiss behaviour', () => {
     it('hides toast and dispatches "dismiss" when close button is clicked', async () => {
       const el = await fixture<OvToast>(html`
-        <ov-toast toast-id="t-close" variant="info" title="Info" message="Text." duration="0"></ov-toast>
+        <ov-toast
+          toast-id="t-close"
+          variant="info"
+          title="Info"
+          message="Text."
+          duration="0"
+        ></ov-toast>
       `);
       el.show();
       await elementUpdated(el);
@@ -94,7 +140,13 @@ describe('ov-toast', () => {
 
     it('hides toast when hide() is called', async () => {
       const el = await fixture<OvToast>(html`
-        <ov-toast toast-id="t-hide" variant="info" title="Info" message="Text." duration="0"></ov-toast>
+        <ov-toast
+          toast-id="t-hide"
+          variant="info"
+          title="Info"
+          message="Text."
+          duration="0"
+        ></ov-toast>
       `);
       el.show();
       await elementUpdated(el);
@@ -107,7 +159,13 @@ describe('ov-toast', () => {
 
     it('auto-dismisses after the duration elapses', async () => {
       const el = await fixture<OvToast>(html`
-        <ov-toast toast-id="t-auto" variant="info" title="Info" message="Text." duration="100"></ov-toast>
+        <ov-toast
+          toast-id="t-auto"
+          variant="info"
+          title="Info"
+          message="Text."
+          duration="100"
+        ></ov-toast>
       `);
       el.show();
       await elementUpdated(el);
@@ -120,7 +178,13 @@ describe('ov-toast', () => {
 
     it('does not auto-dismiss when duration=0', async () => {
       const el = await fixture<OvToast>(html`
-        <ov-toast toast-id="t-no-auto" variant="info" title="Info" message="Text." duration="0"></ov-toast>
+        <ov-toast
+          toast-id="t-no-auto"
+          variant="info"
+          title="Info"
+          message="Text."
+          duration="0"
+        ></ov-toast>
       `);
       el.show();
       await elementUpdated(el);
@@ -136,7 +200,13 @@ describe('ov-toast', () => {
   describe('accessibility', () => {
     it('passes axe for success variant when visible', async () => {
       const el = await fixture(html`
-        <ov-toast toast-id="t-a11y" variant="success" title="Saved" message="Changes saved." duration="0"></ov-toast>
+        <ov-toast
+          toast-id="t-a11y"
+          variant="success"
+          title="Saved"
+          message="Changes saved."
+          duration="0"
+        ></ov-toast>
       `);
       (el as OvToast).show();
       await elementUpdated(el);
@@ -147,17 +217,30 @@ describe('ov-toast', () => {
 
     it('close button has an accessible label', async () => {
       const el = await fixture<OvToast>(html`
-        <ov-toast toast-id="t-label" variant="info" title="Info" message="Text." duration="0"></ov-toast>
+        <ov-toast
+          toast-id="t-label"
+          variant="info"
+          title="Info"
+          message="Text."
+          duration="0"
+        ></ov-toast>
       `);
       el.show();
       await elementUpdated(el);
-      const btn = el.shadowRoot!.querySelector<HTMLButtonElement>('button.close')!;
+      const btn =
+        el.shadowRoot!.querySelector<HTMLButtonElement>('button.close')!;
       expect(btn.getAttribute('aria-label')).to.not.be.empty;
     });
 
     it('toast container has role="status"', async () => {
       const el = await fixture<OvToast>(html`
-        <ov-toast toast-id="t-role" variant="info" title="Info" message="Text." duration="0"></ov-toast>
+        <ov-toast
+          toast-id="t-role"
+          variant="info"
+          title="Info"
+          message="Text."
+          duration="0"
+        ></ov-toast>
       `);
       el.show();
       await elementUpdated(el);

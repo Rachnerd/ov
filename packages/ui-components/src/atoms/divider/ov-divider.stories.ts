@@ -87,11 +87,17 @@ export const LoginPageOR: Story = {
   name: 'Real-world: Login OR divider',
   render: () => html`
     <div style="max-width:320px;display:flex;flex-direction:column;gap:16px">
-      <button style="padding:10px;border:1px solid #e5e7eb;border-radius:8px;background:white;cursor:pointer;font-size:14px">
+      <button
+        style="padding:10px;border:1px solid #e5e7eb;border-radius:8px;background:white;cursor:pointer;font-size:14px"
+      >
         Continue with Google
       </button>
       <ov-divider>OR</ov-divider>
-      <input type="email" placeholder="Email address" style="padding:10px;border:1px solid #e5e7eb;border-radius:8px;font-size:14px">
+      <input
+        type="email"
+        placeholder="Email address"
+        style="padding:10px;border:1px solid #e5e7eb;border-radius:8px;font-size:14px"
+      />
     </div>
   `,
 };

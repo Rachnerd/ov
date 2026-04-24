@@ -6,7 +6,7 @@ const meta: Meta = {
   title: 'Atoms/NavLink',
   component: 'ov-nav-link',
   argTypes: {
-    href:   { control: 'text' },
+    href: { control: 'text' },
     active: { control: 'boolean' },
   },
   args: { href: '#', active: false },
@@ -24,14 +24,14 @@ type Story = StoryObj;
 
 export const Default: Story = {
   render: (args) => html`
-    <ov-nav-link href=${args['href']} ?active=${args['active']}>Services</ov-nav-link>
+    <ov-nav-link href=${args['href']} ?active=${args['active']}
+      >Services</ov-nav-link
+    >
   `,
 };
 
 export const Active: Story = {
-  render: () => html`
-    <ov-nav-link href="#" active>Home</ov-nav-link>
-  `,
+  render: () => html` <ov-nav-link href="#" active>Home</ov-nav-link> `,
 };
 
 export const States: Story = {
@@ -47,8 +47,12 @@ export const RealWorldNavBar: Story = {
   name: 'Real-world: Nav bar',
   decorators: [(story) => story()],
   render: () => html`
-    <nav style="background:#1e2330;display:flex;align-items:center;gap:24px;padding:0 32px;min-height:60px">
-      <span style="color:white;font-weight:700;font-size:14px;letter-spacing:0.12em;text-transform:uppercase;margin-right:auto">
+    <nav
+      style="background:#1e2330;display:flex;align-items:center;gap:24px;padding:0 32px;min-height:60px"
+    >
+      <span
+        style="color:white;font-weight:700;font-size:14px;letter-spacing:0.12em;text-transform:uppercase;margin-right:auto"
+      >
         OpenValue
       </span>
       <ov-nav-link href="/" active>Home</ov-nav-link>

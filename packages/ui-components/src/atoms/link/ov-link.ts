@@ -24,7 +24,9 @@ export class OvLink extends LitElement {
     baseStyles,
     focusRing,
     css`
-      :host { display: inline; }
+      :host {
+        display: inline;
+      }
 
       a {
         color: var(--_color, var(--color-text-link));
@@ -33,21 +35,49 @@ export class OvLink extends LitElement {
         transition: color var(--ov-duration-fast) var(--ov-ease-out);
         border-radius: 2px;
       }
-      a:hover { color: var(--_hover, var(--color-text-link-hover)); }
+      a:hover {
+        color: var(--_hover, var(--color-text-link-hover));
+      }
 
-      :host([underline='always']) a       { text-decoration: underline; }
-      :host([underline='hover']) a        { text-decoration: none; }
-      :host([underline='hover']) a:hover  { text-decoration: underline; }
-      :host([underline='none']) a         { text-decoration: none; }
+      :host([underline='always']) a {
+        text-decoration: underline;
+      }
+      :host([underline='hover']) a {
+        text-decoration: none;
+      }
+      :host([underline='hover']) a:hover {
+        text-decoration: underline;
+      }
+      :host([underline='none']) a {
+        text-decoration: none;
+      }
 
-      :host([variant='default']) { --_color: var(--color-text-link);     --_hover: var(--color-text-link-hover); }
-      :host([variant='subtle'])  { --_color: var(--color-text-secondary); --_hover: var(--color-text-primary); }
-      :host([variant='brand'])   { --_color: var(--color-brand);          --_hover: var(--color-brand-hover); }
-      :host([variant='inverse']) { --_color: var(--ov-white);             --_hover: var(--ov-blue-200); }
+      :host([variant='default']) {
+        --_color: var(--color-text-link);
+        --_hover: var(--color-text-link-hover);
+      }
+      :host([variant='subtle']) {
+        --_color: var(--color-text-secondary);
+        --_hover: var(--color-text-primary);
+      }
+      :host([variant='brand']) {
+        --_color: var(--color-brand);
+        --_hover: var(--color-brand-hover);
+      }
+      :host([variant='inverse']) {
+        --_color: var(--ov-white);
+        --_hover: var(--ov-blue-200);
+      }
 
-      :host([size='sm']) a { font-size: var(--ov-fs-xs); }
-      :host([size='md']) a { font-size: var(--ov-fs-sm); }
-      :host([size='lg']) a { font-size: var(--ov-fs-base); }
+      :host([size='sm']) a {
+        font-size: var(--ov-fs-xs);
+      }
+      :host([size='md']) a {
+        font-size: var(--ov-fs-sm);
+      }
+      :host([size='lg']) a {
+        font-size: var(--ov-fs-base);
+      }
     `,
   ];
 
@@ -59,7 +89,8 @@ export class OvLink extends LitElement {
         target=${this.target || ''}
         rel=${this.rel || ''}
         download=${this.download || ''}
-      ><slot></slot></a>
+        ><slot></slot
+      ></a>
     `;
   }
 }

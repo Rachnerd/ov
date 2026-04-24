@@ -8,7 +8,10 @@ const meta: Meta = {
   argTypes: {
     placeholder: { control: 'text' },
     rows: { control: 'number' },
-    resize: { control: 'select', options: ['none', 'vertical', 'horizontal', 'both'] },
+    resize: {
+      control: 'select',
+      options: ['none', 'vertical', 'horizontal', 'both'],
+    },
     disabled: { control: 'boolean' },
     readonly: { control: 'boolean' },
     invalid: { control: 'boolean' },
@@ -45,9 +48,15 @@ export const States: Story = {
   render: () => html`
     <div style="max-width:400px;display:flex;flex-direction:column;gap:12px">
       <ov-textarea placeholder="Normal"></ov-textarea>
-      <ov-textarea value="This field is read-only and cannot be edited." readonly></ov-textarea>
+      <ov-textarea
+        value="This field is read-only and cannot be edited."
+        readonly
+      ></ov-textarea>
       <ov-textarea placeholder="Disabled" disabled></ov-textarea>
-      <ov-textarea value="This field has a validation error." invalid></ov-textarea>
+      <ov-textarea
+        value="This field has a validation error."
+        invalid
+      ></ov-textarea>
     </div>
   `,
 };
@@ -55,10 +64,16 @@ export const States: Story = {
 export const FeedbackForm: Story = {
   name: 'Real-world: Feedback form',
   render: () => html`
-    <div style="max-width:480px;display:flex;flex-direction:column;gap:16px;padding:24px;border:1px solid #e5e7eb;border-radius:12px">
+    <div
+      style="max-width:480px;display:flex;flex-direction:column;gap:16px;padding:24px;border:1px solid #e5e7eb;border-radius:12px"
+    >
       <div>
-        <div style="font-size:18px;font-weight:600;margin-bottom:4px">Share your feedback</div>
-        <div style="font-size:13px;color:#6b7280">Help us improve the platform</div>
+        <div style="font-size:18px;font-weight:600;margin-bottom:4px">
+          Share your feedback
+        </div>
+        <div style="font-size:13px;color:#6b7280">
+          Help us improve the platform
+        </div>
       </div>
       <ov-textarea
         placeholder="What's working well? What could be better?"

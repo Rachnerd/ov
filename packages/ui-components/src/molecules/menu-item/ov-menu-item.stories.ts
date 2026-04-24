@@ -8,11 +8,11 @@ const meta: Meta = {
   title: 'Molecules/MenuItem',
   component: 'ov-menu-item',
   argTypes: {
-    label:       { control: 'text' },
+    label: { control: 'text' },
     description: { control: 'text' },
-    disabled:    { control: 'boolean' },
-    selected:    { control: 'boolean' },
-    separator:   { control: 'boolean' },
+    disabled: { control: 'boolean' },
+    selected: { control: 'boolean' },
+    separator: { control: 'boolean' },
   },
   args: {
     label: 'Edit profile',
@@ -28,7 +28,9 @@ type Story = StoryObj;
 
 export const Default: Story = {
   render: (args) => html`
-    <div style="max-width:240px;padding:4px;border:1px solid #e5e7eb;border-radius:8px">
+    <div
+      style="max-width:240px;padding:4px;border:1px solid #e5e7eb;border-radius:8px"
+    >
       <ov-menu-item
         label=${args['label']}
         description=${args['description'] || ''}
@@ -42,7 +44,9 @@ export const Default: Story = {
 
 export const WithIcons: Story = {
   render: () => html`
-    <div style="max-width:240px;padding:4px;border:1px solid #e5e7eb;border-radius:8px">
+    <div
+      style="max-width:240px;padding:4px;border:1px solid #e5e7eb;border-radius:8px"
+    >
       <ov-menu-item label="Dashboard" selected>
         <ov-icon slot="icon" name="info"></ov-icon>
       </ov-menu-item>
@@ -62,12 +66,17 @@ export const WithIcons: Story = {
 
 export const States: Story = {
   render: () => html`
-    <div style="max-width:240px;padding:4px;border:1px solid #e5e7eb;border-radius:8px">
+    <div
+      style="max-width:240px;padding:4px;border:1px solid #e5e7eb;border-radius:8px"
+    >
       <ov-menu-item label="Default item"></ov-menu-item>
       <ov-menu-item label="Selected item" selected></ov-menu-item>
       <ov-menu-item label="Disabled item" disabled></ov-menu-item>
       <ov-menu-item separator></ov-menu-item>
-      <ov-menu-item label="With description" description="Short helper text below"></ov-menu-item>
+      <ov-menu-item
+        label="With description"
+        description="Short helper text below"
+      ></ov-menu-item>
     </div>
   `,
 };
@@ -75,7 +84,9 @@ export const States: Story = {
 export const DropdownMenu: Story = {
   name: 'Real-world: User dropdown menu',
   render: () => html`
-    <div style="max-width:220px;padding:4px;border:1px solid #e5e7eb;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.1)">
+    <div
+      style="max-width:220px;padding:4px;border:1px solid #e5e7eb;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.1)"
+    >
       <ov-menu-item label="My profile" description="View and edit your account">
         <ov-icon slot="icon" name="user"></ov-icon>
       </ov-menu-item>

@@ -6,7 +6,10 @@ const meta: Meta = {
   title: 'Atoms/Link',
   component: 'ov-link',
   argTypes: {
-    variant: { control: 'select', options: ['default', 'subtle', 'brand', 'inverse'] },
+    variant: {
+      control: 'select',
+      options: ['default', 'subtle', 'brand', 'inverse'],
+    },
     underline: { control: 'select', options: ['hover', 'always', 'none'] },
     size: { control: 'select', options: ['sm', 'md', 'lg'] },
   },
@@ -18,7 +21,12 @@ type Story = StoryObj;
 
 export const Default: Story = {
   render: (args) => html`
-    <ov-link href="#" variant=${args['variant']} underline=${args['underline']} size=${args['size']}>
+    <ov-link
+      href="#"
+      variant=${args['variant']}
+      underline=${args['underline']}
+      size=${args['size']}
+    >
       View portfolio details
     </ov-link>
   `,
@@ -42,9 +50,12 @@ export const InlineProse: Story = {
   render: () => html`
     <p style="max-width:520px;font-size:14px;line-height:1.6;color:#374151">
       Your portfolio is performing well this quarter.
-      <ov-link href="#">View the full report</ov-link> to see asset-class breakdowns,
-      or <ov-link href="#">schedule a review</ov-link> with your advisor.
-      <ov-link href="#" variant="subtle" style="margin-left:4px">Learn more about our methodology →</ov-link>
+      <ov-link href="#">View the full report</ov-link> to see asset-class
+      breakdowns, or <ov-link href="#">schedule a review</ov-link> with your
+      advisor.
+      <ov-link href="#" variant="subtle" style="margin-left:4px"
+        >Learn more about our methodology →</ov-link
+      >
     </p>
   `,
 };

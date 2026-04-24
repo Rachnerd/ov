@@ -65,18 +65,27 @@ export class OvNavBar extends LitElement {
   }
 
   private _checkOverflow() {
-    const links = [...this._linksEl.querySelectorAll<HTMLElement>('ov-nav-link')];
+    const links = [
+      ...this._linksEl.querySelectorAll<HTMLElement>('ov-nav-link'),
+    ];
 
     // Reset all to visible so measurements reflect natural widths
-    links.forEach(l => l.removeAttribute('hidden'));
+    links.forEach((l) => l.removeAttribute('hidden'));
 
     const containerRight = this._linksEl.getBoundingClientRect().right;
-    const hasOverflow = links.some(l => l.getBoundingClientRect().right > containerRight);
+    const hasOverflow = links.some(
+      (l) => l.getBoundingClientRect().right > containerRight,
+    );
 
     if (hasOverflow) {
       // Hamburger button will occupy ~52 px — hide items that no longer fit
       const fittingRight = containerRight - 52;
-      links.forEach(l => l.toggleAttribute('hidden', l.getBoundingClientRect().right > fittingRight));
+      links.forEach((l) =>
+        l.toggleAttribute(
+          'hidden',
+          l.getBoundingClientRect().right > fittingRight,
+        ),
+      );
     }
 
     if (hasOverflow !== this._hasOverflow) {
@@ -98,23 +107,34 @@ export class OvNavBar extends LitElement {
   protected override render(): TemplateResult {
     return html`
       <nav aria-label="Main navigation">
-
-        <a class="logo-link" href=${this.logoHref}
-           aria-label="${this.brand}${this.tagline ? ' — ' + this.tagline : ''}, home">
+        <a
+          class="logo-link"
+          href=${this.logoHref}
+          aria-label="${this.brand}${this.tagline
+            ? ' — ' + this.tagline
+            : ''}, home"
+        >
           <slot name="logo">
-            ${this.brand   ? html`<span class="logo-name">${this.brand}</span>`     : nothing}
-            ${this.tagline ? html`<span class="logo-tagline">${this.tagline}</span>` : nothing}
+            ${this.brand
+              ? html`<span class="logo-name">${this.brand}</span>`
+              : nothing}
+            ${this.tagline
+              ? html`<span class="logo-tagline">${this.tagline}</span>`
+              : nothing}
           </slot>
         </a>
 
         <div class="links">
           <span class="links-spacer"></span>
-          ${this.items.map(item => html`
-            <ov-nav-link
-              href=${item.href}
-              ?active=${item.href === this.active}
-            >${item.label}</ov-nav-link>
-          `)}
+          ${this.items.map(
+            (item) => html`
+              <ov-nav-link
+                href=${item.href}
+                ?active=${item.href === this.active}
+                >${item.label}</ov-nav-link
+              >
+            `,
+          )}
         </div>
 
         <div class="more-wrap" ?hidden=${!this._hasOverflow}>
@@ -131,20 +151,23 @@ export class OvNavBar extends LitElement {
           </ov-button>
         </div>
 
-        ${this._menuOpen ? html`
-          <div class="overflow-menu" role="menu">
-            ${this.items.map(item => html`
-              <ov-menu-item
-                label=${item.label}
-                ?selected=${item.href === this.active}
-                @select=${() => this._navigate(item.href)}
-              ></ov-menu-item>
-            `)}
-          </div>
-        ` : nothing}
+        ${this._menuOpen
+          ? html`
+              <div class="overflow-menu" role="menu">
+                ${this.items.map(
+                  (item) => html`
+                    <ov-menu-item
+                      label=${item.label}
+                      ?selected=${item.href === this.active}
+                      @select=${() => this._navigate(item.href)}
+                    ></ov-menu-item>
+                  `,
+                )}
+              </div>
+            `
+          : nothing}
 
         <div class="actions"><slot name="actions"></slot></div>
-
       </nav>
     `;
   }
@@ -157,19 +180,19 @@ export class OvNavBar extends LitElement {
         display: block;
 
         /* Structure */
-        --ov-nav-bar-height:         var(--ov-space-16);
-        --ov-nav-bar-bg:             var(--ov-charcoal);
+        --ov-nav-bar-height: var(--ov-space-16);
+        --ov-nav-bar-bg: var(--ov-charcoal);
         --ov-nav-bar-dropdown-width: 180px;
         --ov-nav-bar-tagline-opacity: 0.65;
 
         /* Dark-surface colour scale — override to retheme the bar */
-        --ov-nav-bar-fg:             var(--ov-white);
-        --ov-nav-bar-fg-dim:         rgba(255, 255, 255, 0.92);
-        --ov-nav-bar-fg-muted:       rgba(255, 255, 255, 0.45);
-        --ov-nav-bar-surface:        rgba(255, 255, 255, 0.12);
-        --ov-nav-bar-surface-alt:    rgba(255, 255, 255, 0.2);
-        --ov-nav-bar-border:         rgba(255, 255, 255, 0.1);
-        --ov-nav-bar-brand-subtle:   rgba(255, 255, 255, 0.15);
+        --ov-nav-bar-fg: var(--ov-white);
+        --ov-nav-bar-fg-dim: rgba(255, 255, 255, 0.92);
+        --ov-nav-bar-fg-muted: rgba(255, 255, 255, 0.45);
+        --ov-nav-bar-surface: rgba(255, 255, 255, 0.12);
+        --ov-nav-bar-surface-alt: rgba(255, 255, 255, 0.2);
+        --ov-nav-bar-border: rgba(255, 255, 255, 0.1);
+        --ov-nav-bar-brand-subtle: rgba(255, 255, 255, 0.15);
       }
 
       nav {
@@ -214,13 +237,19 @@ export class OvNavBar extends LitElement {
         overflow: hidden;
       }
       /* Spacer pushes items right; shrinks to 0 before items overflow */
-      .links-spacer { flex: 1 1 auto; }
+      .links-spacer {
+        flex: 1 1 auto;
+      }
 
       /* Prevent links from shrinking so they actually overflow the container */
-      .links ov-nav-link { flex-shrink: 0; }
+      .links ov-nav-link {
+        flex-shrink: 0;
+      }
 
       /* ── Hamburger — [hidden] when no overflow ── */
-      [hidden] { display: none !important; }
+      [hidden] {
+        display: none !important;
+      }
       .more-wrap {
         flex: 0 0 auto;
         margin-right: var(--ov-space-2);
@@ -228,9 +257,9 @@ export class OvNavBar extends LitElement {
 
       /* ── ov-button (ghost) themed for dark nav background ── */
       .more-btn {
-        --color-text-primary:     var(--ov-nav-bar-fg);
+        --color-text-primary: var(--ov-nav-bar-fg);
         --color-bg-surface-muted: var(--ov-nav-bar-surface);
-        --color-bg-surface-alt:   var(--ov-nav-bar-surface-alt);
+        --color-bg-surface-alt: var(--ov-nav-bar-surface-alt);
       }
 
       /* ── Dropdown — anchored to <nav> ── */
@@ -251,15 +280,17 @@ export class OvNavBar extends LitElement {
 
       /* ── ov-menu-item themed for dark dropdown background ── */
       .overflow-menu ov-menu-item {
-        --color-text-primary:     var(--ov-nav-bar-fg-dim);
-        --color-text-tertiary:    var(--ov-nav-bar-fg-muted);
+        --color-text-primary: var(--ov-nav-bar-fg-dim);
+        --color-text-tertiary: var(--ov-nav-bar-fg-muted);
         --color-bg-surface-muted: var(--ov-nav-bar-border);
-        --color-brand-subtle:     var(--ov-nav-bar-brand-subtle);
-        --color-border-subtle:    var(--ov-nav-bar-border);
+        --color-brand-subtle: var(--ov-nav-bar-brand-subtle);
+        --color-border-subtle: var(--ov-nav-bar-border);
       }
 
       /* ── Actions slot ── */
-      .actions { flex: 0 0 auto; }
+      .actions {
+        flex: 0 0 auto;
+      }
     `,
   ];
 }

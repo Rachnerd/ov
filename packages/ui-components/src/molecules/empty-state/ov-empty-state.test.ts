@@ -11,14 +11,21 @@ describe('ov-empty-state', () => {
       const el = await fixture<OvEmptyState>(html`
         <ov-empty-state heading="No results found"></ov-empty-state>
       `);
-      expect(el.shadowRoot!.querySelector('.heading')!.textContent!.trim()).to.equal('No results found');
+      expect(
+        el.shadowRoot!.querySelector('.heading')!.textContent!.trim(),
+      ).to.equal('No results found');
     });
 
     it('renders the description text', async () => {
       const el = await fixture<OvEmptyState>(html`
-        <ov-empty-state heading="Empty" description="Nothing here yet."></ov-empty-state>
+        <ov-empty-state
+          heading="Empty"
+          description="Nothing here yet."
+        ></ov-empty-state>
       `);
-      expect(el.shadowRoot!.querySelector('.description')!.textContent!.trim()).to.equal('Nothing here yet.');
+      expect(
+        el.shadowRoot!.querySelector('.description')!.textContent!.trim(),
+      ).to.equal('Nothing here yet.');
     });
 
     it('renders default dashed-box icon when no icon prop is set', async () => {
@@ -29,12 +36,16 @@ describe('ov-empty-state', () => {
     });
 
     it('does not render heading when heading is empty', async () => {
-      const el = await fixture<OvEmptyState>(html`<ov-empty-state></ov-empty-state>`);
+      const el = await fixture<OvEmptyState>(
+        html`<ov-empty-state></ov-empty-state>`,
+      );
       expect(el.shadowRoot!.querySelector('.heading')).to.not.exist;
     });
 
     it('does not render description when description is empty', async () => {
-      const el = await fixture<OvEmptyState>(html`<ov-empty-state heading="Empty"></ov-empty-state>`);
+      const el = await fixture<OvEmptyState>(
+        html`<ov-empty-state heading="Empty"></ov-empty-state>`,
+      );
       expect(el.shadowRoot!.querySelector('.description')).to.not.exist;
     });
 
@@ -50,7 +61,7 @@ describe('ov-empty-state', () => {
     it('projects icon slot content', async () => {
       const el = await fixture<OvEmptyState>(html`
         <ov-empty-state heading="Empty">
-          <img slot="icon" id="custom-icon" src="/empty.svg" alt="">
+          <img slot="icon" id="custom-icon" src="/empty.svg" alt="" />
         </ov-empty-state>
       `);
       expect(el.querySelector('#custom-icon')).to.exist;
@@ -61,12 +72,16 @@ describe('ov-empty-state', () => {
 
   describe('properties and attributes', () => {
     it('defaults to size="md"', async () => {
-      const el = await fixture<OvEmptyState>(html`<ov-empty-state heading="Empty"></ov-empty-state>`);
+      const el = await fixture<OvEmptyState>(
+        html`<ov-empty-state heading="Empty"></ov-empty-state>`,
+      );
       expect(el.size).to.equal('md');
     });
 
     it('reflects size attribute', async () => {
-      const el = await fixture<OvEmptyState>(html`<ov-empty-state heading="Empty" size="lg"></ov-empty-state>`);
+      const el = await fixture<OvEmptyState>(
+        html`<ov-empty-state heading="Empty" size="lg"></ov-empty-state>`,
+      );
       expect(el.getAttribute('size')).to.equal('lg');
     });
   });
@@ -88,7 +103,10 @@ describe('ov-empty-state', () => {
 
     it('passes axe with action button', async () => {
       const el = await fixture(html`
-        <ov-empty-state heading="No results" description="Try a different search.">
+        <ov-empty-state
+          heading="No results"
+          description="Try a different search."
+        >
           <button slot="actions">Clear filters</button>
         </ov-empty-state>
       `);

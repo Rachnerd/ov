@@ -8,8 +8,10 @@ import type { DividerOrientation, DividerVariant } from '../../tokens.js';
  */
 @customElement('ov-divider')
 export class OvDivider extends LitElement {
-  @property({ type: String, reflect: true }) orientation: DividerOrientation = 'horizontal';
-  @property({ type: String, reflect: true }) variant: DividerVariant = 'default';
+  @property({ type: String, reflect: true }) orientation: DividerOrientation =
+    'horizontal';
+  @property({ type: String, reflect: true }) variant: DividerVariant =
+    'default';
   @property({ type: String }) spacing = '';
 
   @state() private _hasLabel = false;
@@ -21,8 +23,12 @@ export class OvDivider extends LitElement {
         display: block;
         --_color: var(--color-border-default);
       }
-      :host([variant='subtle']) { --_color: var(--color-border-subtle); }
-      :host([variant='strong']) { --_color: var(--color-border-strong); }
+      :host([variant='subtle']) {
+        --_color: var(--color-border-subtle);
+      }
+      :host([variant='strong']) {
+        --_color: var(--color-border-strong);
+      }
 
       :host([orientation='horizontal']) {
         width: 100%;
@@ -37,14 +43,21 @@ export class OvDivider extends LitElement {
         text-transform: uppercase;
         color: var(--color-text-tertiary);
       }
-      .h::before, .h::after {
-        content: "";
+      .h::before,
+      .h::after {
+        content: '';
         flex: 1;
         border-top: 1px solid var(--_color);
       }
-      .h.empty { gap: 0; }
-      .h.empty::before { flex: 1; }
-      .h.empty::after  { display: none; }
+      .h.empty {
+        gap: 0;
+      }
+      .h.empty::before {
+        flex: 1;
+      }
+      .h.empty::after {
+        display: none;
+      }
 
       :host([orientation='vertical']) {
         display: inline-block;
@@ -66,9 +79,10 @@ export class OvDivider extends LitElement {
   private _onSlotChange(e: Event): void {
     const slot = e.target as HTMLSlotElement;
     const nodes = slot.assignedNodes({ flatten: true });
-    this._hasLabel = nodes.some((n) =>
-      (n.nodeType === Node.TEXT_NODE && n.textContent!.trim().length > 0) ||
-      n.nodeType === Node.ELEMENT_NODE,
+    this._hasLabel = nodes.some(
+      (n) =>
+        (n.nodeType === Node.TEXT_NODE && n.textContent!.trim().length > 0) ||
+        n.nodeType === Node.ELEMENT_NODE,
     );
   }
 

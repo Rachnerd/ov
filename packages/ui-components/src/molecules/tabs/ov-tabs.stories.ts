@@ -31,7 +31,11 @@ export const Underline: Story = {
 
 export const Pills: Story = {
   render: () => html`
-    <ov-tabs .tabs=${dashboardTabs} active="holdings" appearance="pills"></ov-tabs>
+    <ov-tabs
+      .tabs=${dashboardTabs}
+      active="holdings"
+      appearance="pills"
+    ></ov-tabs>
   `,
 };
 
@@ -70,7 +74,10 @@ export const WithContent: Story = {
           if (panel) panel.textContent = `Content for tab: ${e.detail.key}`;
         }}
       ></ov-tabs>
-      <div id="tab-content" style="padding:20px;border:1px solid #e5e7eb;border-top:none;border-radius:0 0 8px 8px;font-size:14px;color:#374151">
+      <div
+        id="tab-content"
+        style="padding:20px;border:1px solid #e5e7eb;border-top:none;border-radius:0 0 8px 8px;font-size:14px;color:#374151"
+      >
         Content for tab: positions
       </div>
     </div>

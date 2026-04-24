@@ -41,16 +41,22 @@ export class OvButton extends LitElement {
     baseStyles,
     focusRing,
     css`
-      :host { display: inline-flex; vertical-align: middle; }
-      :host([block]) { display: flex; width: 100%; }
+      :host {
+        display: inline-flex;
+        vertical-align: middle;
+      }
+      :host([block]) {
+        display: flex;
+        width: 100%;
+      }
 
       button {
         /* Variant-local tokens — overridden per variant below. */
-        --btn-bg:        var(--color-brand);
-        --btn-bg-hover:  var(--color-brand-hover);
+        --btn-bg: var(--color-brand);
+        --btn-bg-hover: var(--color-brand-hover);
         --btn-bg-active: var(--color-brand-active);
-        --btn-fg:        var(--color-text-on-brand);
-        --btn-border:    transparent;
+        --btn-fg: var(--color-text-on-brand);
+        --btn-border: transparent;
 
         display: inline-flex;
         align-items: center;
@@ -73,14 +79,23 @@ export class OvButton extends LitElement {
         position: relative;
         transition:
           background-color var(--ov-duration-fast) var(--ov-ease-out),
-          border-color     var(--ov-duration-fast) var(--ov-ease-out),
-          color            var(--ov-duration-fast) var(--ov-ease-out),
-          transform        var(--ov-duration-fast) var(--ov-ease-out),
-          box-shadow       var(--ov-duration-fast) var(--ov-ease-out);
+          border-color var(--ov-duration-fast) var(--ov-ease-out),
+          color var(--ov-duration-fast) var(--ov-ease-out),
+          transform var(--ov-duration-fast) var(--ov-ease-out),
+          box-shadow var(--ov-duration-fast) var(--ov-ease-out);
       }
-      button:hover:not(:disabled)  { background: var(--btn-bg-hover); }
-      button:active:not(:disabled) { background: var(--btn-bg-active); transform: translateY(1px); }
-      button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+      button:hover:not(:disabled) {
+        background: var(--btn-bg-hover);
+      }
+      button:active:not(:disabled) {
+        background: var(--btn-bg-active);
+        transform: translateY(1px);
+      }
+      button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+      }
 
       /* Variants */
       :host([variant='secondary']) button {
@@ -116,22 +131,43 @@ export class OvButton extends LitElement {
       }
 
       /* Sizes */
-      :host([size='sm']) button { padding: var(--ov-space-2) var(--ov-space-4); font-size: var(--ov-fs-xs); }
-      :host([size='lg']) button { padding: var(--ov-space-4) var(--ov-space-6); font-size: var(--ov-fs-base); }
+      :host([size='sm']) button {
+        padding: var(--ov-space-2) var(--ov-space-4);
+        font-size: var(--ov-fs-xs);
+      }
+      :host([size='lg']) button {
+        padding: var(--ov-space-4) var(--ov-space-6);
+        font-size: var(--ov-fs-base);
+      }
 
       /* Loading state */
       :host([loading]) .label,
-      :host([loading]) ::slotted(*) { visibility: hidden; }
-      .spinner {
-        position: absolute; inset: 0;
-        display: flex; align-items: center; justify-content: center;
+      :host([loading]) ::slotted(*) {
+        visibility: hidden;
       }
-      .spinner svg { animation: spin 0.9s linear infinite; }
-      @keyframes spin { to { transform: rotate(360deg); } }
+      .spinner {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .spinner svg {
+        animation: spin 0.9s linear infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
 
       ::slotted(svg),
       ::slotted([slot='start']),
-      ::slotted([slot='end']) { width: 1em; height: 1em; flex: 0 0 auto; }
+      ::slotted([slot='end']) {
+        width: 1em;
+        height: 1em;
+        flex: 0 0 auto;
+      }
     `,
   ];
 
@@ -154,14 +190,28 @@ export class OvButton extends LitElement {
         <slot name="start"></slot>
         <span class="label"><slot></slot></span>
         <slot name="end"></slot>
-        ${this.loading ? html`
-          <span class="spinner" aria-hidden="true">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-opacity="0.25" stroke-width="2"/>
-              <path d="M14 8a6 6 0 0 0-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </span>
-        ` : null}
+        ${this.loading
+          ? html`
+              <span class="spinner" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <circle
+                    cx="8"
+                    cy="8"
+                    r="6"
+                    stroke="currentColor"
+                    stroke-opacity="0.25"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M14 8a6 6 0 0 0-6-6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </span>
+            `
+          : null}
       </button>
     `;
   }

@@ -22,7 +22,9 @@ body {
   align-items: center;
   justify-content: center;
   color: white;
-  transition: background-color var(--ov-duration-fast), transform var(--ov-duration-fast);
+  transition:
+    background-color var(--ov-duration-fast),
+    transform var(--ov-duration-fast);
 }
 
 .scroll-btn:hover {

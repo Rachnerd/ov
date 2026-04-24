@@ -13,7 +13,9 @@ describe('ov-hero', () => {
     });
 
     it('renders the heading when heading is set', async () => {
-      const el = await fixture<OvHero>(html`<ov-hero heading="OpenValue"></ov-hero>`);
+      const el = await fixture<OvHero>(
+        html`<ov-hero heading="OpenValue"></ov-hero>`,
+      );
       const h1 = el.shadowRoot!.querySelector('h1');
       expect(h1).to.exist;
       expect(h1!.textContent).to.include('OpenValue');
@@ -25,7 +27,9 @@ describe('ov-hero', () => {
     });
 
     it('renders the subheading when subheading is set', async () => {
-      const el = await fixture<OvHero>(html`<ov-hero subheading="Tech Tribes"></ov-hero>`);
+      const el = await fixture<OvHero>(
+        html`<ov-hero subheading="Tech Tribes"></ov-hero>`,
+      );
       const sub = el.shadowRoot!.querySelector('.subheading');
       expect(sub).to.exist;
       expect(sub!.textContent).to.include('Tech Tribes');
@@ -37,7 +41,9 @@ describe('ov-hero', () => {
     });
 
     it('renders a .bg element with background-image when src is set', async () => {
-      const el = await fixture<OvHero>(html`<ov-hero src="/banner.jpg"></ov-hero>`);
+      const el = await fixture<OvHero>(
+        html`<ov-hero src="/banner.jpg"></ov-hero>`,
+      );
       const bg = el.shadowRoot!.querySelector<HTMLElement>('.bg')!;
       expect(bg).to.exist;
       expect(bg.style.backgroundImage).to.include('/banner.jpg');
@@ -54,7 +60,9 @@ describe('ov-hero', () => {
     });
 
     it('applies overlay opacity to the overlay element', async () => {
-      const el = await fixture<OvHero>(html`<ov-hero .overlay=${0.4}></ov-hero>`);
+      const el = await fixture<OvHero>(
+        html`<ov-hero .overlay=${0.4}></ov-hero>`,
+      );
       const overlay = el.shadowRoot!.querySelector<HTMLElement>('.overlay')!;
       expect(overlay.style.opacity).to.equal('0.4');
     });
@@ -95,18 +103,24 @@ describe('ov-hero', () => {
       const el = await fixture<OvHero>(html`<ov-hero></ov-hero>`);
       el.heading = 'Hello';
       await elementUpdated(el);
-      expect(el.shadowRoot!.querySelector('h1')!.textContent).to.include('Hello');
+      expect(el.shadowRoot!.querySelector('h1')!.textContent).to.include(
+        'Hello',
+      );
     });
 
     it('updates subheading reactively', async () => {
       const el = await fixture<OvHero>(html`<ov-hero></ov-hero>`);
       el.subheading = 'Sub text';
       await elementUpdated(el);
-      expect(el.shadowRoot!.querySelector('.subheading')!.textContent).to.include('Sub text');
+      expect(
+        el.shadowRoot!.querySelector('.subheading')!.textContent,
+      ).to.include('Sub text');
     });
 
     it('updates overlay reactively', async () => {
-      const el = await fixture<OvHero>(html`<ov-hero .overlay=${0.5}></ov-hero>`);
+      const el = await fixture<OvHero>(
+        html`<ov-hero .overlay=${0.5}></ov-hero>`,
+      );
       el.overlay = 0.8;
       await elementUpdated(el);
       const overlay = el.shadowRoot!.querySelector<HTMLElement>('.overlay')!;
@@ -130,7 +144,9 @@ describe('ov-hero', () => {
     });
 
     it('passes axe', async () => {
-      const el = await fixture(html`<ov-hero heading="OpenValue" subheading="Tech Tribes"></ov-hero>`);
+      const el = await fixture(
+        html`<ov-hero heading="OpenValue" subheading="Tech Tribes"></ov-hero>`,
+      );
       await expect(el).to.be.accessible({ ignoredRules: ['color-contrast'] });
     });
   });
