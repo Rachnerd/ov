@@ -1,7 +1,7 @@
 import { LitElement, html, css, type TemplateResult } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { baseStyles } from '../../shared-styles.js';
-import '@ov/ui-components/atoms/icon/ov-icon';
+import '../../atoms/icon/ov-icon.js';
 
 /**
  * <ov-image-card>

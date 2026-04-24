@@ -16,9 +16,9 @@ describe('ov-hero', () => {
       const el = await fixture<OvHero>(
         html`<ov-hero heading="OpenValue"></ov-hero>`,
       );
-      const h1 = el.shadowRoot!.querySelector('h1');
-      expect(h1).to.exist;
-      expect(h1!.textContent).to.include('OpenValue');
+      const heading = el.shadowRoot!.querySelector('ov-heading[level="1"]');
+      expect(heading).to.exist;
+      expect(heading!.textContent).to.include('OpenValue');
     });
 
     it('does not render heading element when heading is empty', async () => {
@@ -103,9 +103,9 @@ describe('ov-hero', () => {
       const el = await fixture<OvHero>(html`<ov-hero></ov-hero>`);
       el.heading = 'Hello';
       await elementUpdated(el);
-      expect(el.shadowRoot!.querySelector('h1')!.textContent).to.include(
-        'Hello',
-      );
+      expect(
+        el.shadowRoot!.querySelector('ov-heading[level="1"]')!.textContent,
+      ).to.include('Hello');
     });
 
     it('updates subheading reactively', async () => {

@@ -37,6 +37,7 @@ export class OvNavBar extends LitElement {
   @query('.links') private _linksEl!: HTMLElement;
 
   private _ro!: ResizeObserver;
+  private _rafId = 0;
 
   private _onDocClick = (e: Event) => {
     if (!e.composedPath().includes(this)) {
@@ -45,7 +46,10 @@ export class OvNavBar extends LitElement {
   };
 
   override firstUpdated() {
-    this._ro = new ResizeObserver(() => this._checkOverflow());
+    this._ro = new ResizeObserver(() => {
+      cancelAnimationFrame(this._rafId);
+      this._rafId = requestAnimationFrame(() => this._checkOverflow());
+    });
     this._ro.observe(this._linksEl);
     this._checkOverflow();
   }
@@ -61,6 +65,7 @@ export class OvNavBar extends LitElement {
   override disconnectedCallback() {
     super.disconnectedCallback();
     this._ro?.disconnect();
+    cancelAnimationFrame(this._rafId);
     document.removeEventListener('click', this._onDocClick);
   }
 

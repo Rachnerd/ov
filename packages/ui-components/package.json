@@ -7,7 +7,7 @@
   "customElements": "custom-elements.json",
   "scripts": {
     "analyze": "cem analyze && node scripts/generate-html-custom-data.mjs",
-    "test": "wtr --config web-test-runner.config.mjs",
+    "test": "wtr --config web-test-runner.config.mjs --fail-on-unhandled-errors",
     "test:watch": "wtr --config web-test-runner.config.mjs --watch",
     "storybook": "npm run analyze && storybook dev -p 6006 --config-dir .storybook",
     "build-storybook": "npm run analyze && storybook build --config-dir .storybook"

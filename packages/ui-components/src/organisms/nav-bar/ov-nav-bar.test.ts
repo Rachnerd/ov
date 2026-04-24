@@ -22,7 +22,7 @@ describe('ov-nav-bar', () => {
       const el = await fixture<OvNavBar>(
         html`<ov-nav-bar .items=${ITEMS}></ov-nav-bar>`,
       );
-      const links = el.shadowRoot!.querySelectorAll('a.link');
+      const links = el.shadowRoot!.querySelectorAll('ov-nav-link');
       expect(links.length).to.equal(ITEMS.length);
     });
 
@@ -31,7 +31,7 @@ describe('ov-nav-bar', () => {
         html`<ov-nav-bar .items=${ITEMS}></ov-nav-bar>`,
       );
       const links = Array.from(
-        el.shadowRoot!.querySelectorAll<HTMLAnchorElement>('a.link'),
+        el.shadowRoot!.querySelectorAll<HTMLElement>('ov-nav-link'),
       );
       expect(links[0].textContent!.trim()).to.equal('Home');
       expect(links[1].textContent!.trim()).to.equal('Services');
@@ -42,7 +42,7 @@ describe('ov-nav-bar', () => {
         html`<ov-nav-bar .items=${ITEMS}></ov-nav-bar>`,
       );
       const links = Array.from(
-        el.shadowRoot!.querySelectorAll<HTMLAnchorElement>('a.link'),
+        el.shadowRoot!.querySelectorAll<HTMLElement>('ov-nav-link'),
       );
       expect(links[0].getAttribute('href')).to.equal('/');
       expect(links[1].getAttribute('href')).to.equal('/services');
@@ -100,7 +100,7 @@ describe('ov-nav-bar', () => {
 
     it('renders no links when items is empty', async () => {
       const el = await fixture<OvNavBar>(html`<ov-nav-bar></ov-nav-bar>`);
-      expect(el.shadowRoot!.querySelectorAll('a.link').length).to.equal(0);
+      expect(el.shadowRoot!.querySelectorAll('ov-nav-link').length).to.equal(0);
     });
 
     it('updates links reactively when items changes', async () => {
@@ -109,7 +109,7 @@ describe('ov-nav-bar', () => {
       );
       el.items = [{ label: 'New', href: '/new' }];
       await elementUpdated(el);
-      const links = el.shadowRoot!.querySelectorAll('a.link');
+      const links = el.shadowRoot!.querySelectorAll('ov-nav-link');
       expect(links.length).to.equal(1);
       expect(links[0].textContent!.trim()).to.equal('New');
     });
@@ -118,41 +118,41 @@ describe('ov-nav-bar', () => {
   // ── Active state ──────────────────────────────────────────────────────────
 
   describe('active state', () => {
-    it('sets aria-current="page" on the active link', async () => {
+    it('sets active attribute on the active link', async () => {
       const el = await fixture<OvNavBar>(html`
         <ov-nav-bar .items=${ITEMS} active="/services"></ov-nav-bar>
       `);
       const links = Array.from(
-        el.shadowRoot!.querySelectorAll<HTMLAnchorElement>('a.link'),
+        el.shadowRoot!.querySelectorAll<HTMLElement>('ov-nav-link'),
       );
       const activeLink = links.find(
         (a) => a.getAttribute('href') === '/services',
       );
-      expect(activeLink!.getAttribute('aria-current')).to.equal('page');
+      expect(activeLink!.hasAttribute('active')).to.be.true;
     });
 
-    it('does not set aria-current on non-active links', async () => {
+    it('does not set active attribute on non-active links', async () => {
       const el = await fixture<OvNavBar>(html`
         <ov-nav-bar .items=${ITEMS} active="/services"></ov-nav-bar>
       `);
       const links = Array.from(
-        el.shadowRoot!.querySelectorAll<HTMLAnchorElement>('a.link'),
+        el.shadowRoot!.querySelectorAll<HTMLElement>('ov-nav-link'),
       );
       const homeLink = links.find((a) => a.getAttribute('href') === '/');
-      expect(homeLink!.hasAttribute('aria-current')).to.be.false;
+      expect(homeLink!.hasAttribute('active')).to.be.false;
     });
 
-    it('updates aria-current reactively', async () => {
+    it('updates active attribute reactively', async () => {
       const el = await fixture<OvNavBar>(html`
         <ov-nav-bar .items=${ITEMS} active="/"></ov-nav-bar>
       `);
       el.active = '/about';
       await elementUpdated(el);
       const links = Array.from(
-        el.shadowRoot!.querySelectorAll<HTMLAnchorElement>('a.link'),
+        el.shadowRoot!.querySelectorAll<HTMLElement>('ov-nav-link'),
       );
       const aboutLink = links.find((a) => a.getAttribute('href') === '/about');
-      expect(aboutLink!.getAttribute('aria-current')).to.equal('page');
+      expect(aboutLink!.hasAttribute('active')).to.be.true;
     });
   });
 

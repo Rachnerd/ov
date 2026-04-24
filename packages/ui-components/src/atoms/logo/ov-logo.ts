@@ -61,9 +61,24 @@ export class OvLogo extends LitElement {
     `,
   ];
 
+  private static readonly _SIZE_HEIGHT: Record<string, number> = {
+    xs: 20,
+    sm: 28,
+    md: 44,
+    lg: 72,
+    xl: 108,
+  };
+
   protected override render(): TemplateResult {
+    const height = OvLogo._SIZE_HEIGHT[this.size] ?? 44;
+    const width = Math.round(height * (1614 / 298));
     return html`
-      <img src="/openvalue-tt-white.png" alt="OpenValue — Tech Tribes" />
+      <img
+        src="/openvalue-tt-white.png"
+        alt="OpenValue — Tech Tribes"
+        height=${height}
+        width=${width}
+      />
     `;
   }
 }

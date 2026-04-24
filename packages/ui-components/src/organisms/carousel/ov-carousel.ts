@@ -1,7 +1,7 @@
 import { LitElement, html, css, nothing, type TemplateResult } from 'lit';
 import { customElement, property, state, query } from 'lit/decorators.js';
 import { baseStyles } from '../../shared-styles.js';
-import '@ov/ui-components/atoms/heading/ov-heading';
+import '../../atoms/heading/ov-heading.js';
 
 /**
  * <ov-carousel>

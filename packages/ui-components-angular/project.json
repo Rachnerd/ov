@@ -6,6 +6,12 @@
       "options": {
         "cwd": "packages/ui-components-angular"
       }
+    },
+    "test": {
+      "command": "jest --passWithNoTests",
+      "options": {
+        "cwd": "packages/ui-components-angular"
+      }
     }
   }
 }

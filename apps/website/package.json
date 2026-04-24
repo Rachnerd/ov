@@ -4,13 +4,16 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest run"
   },
   "dependencies": {
-    "@ov/ui-components": "*",
-    "@ov/style": "*"
+    "@ov/style": "*",
+    "@ov/ui-components": "*"
   },
   "devDependencies": {
-    "vite": "^5.1.4"
+    "jsdom": "^29.0.2",
+    "vite": "^5.1.4",
+    "vitest": "^4.1.5"
   }
 }

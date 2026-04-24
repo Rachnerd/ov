@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist/out-tsc",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "types": ["jest", "node"]
+  },
+  "files": ["setup-jest.ts"],
+  "include": ["src/**/*.spec.ts"]
+}

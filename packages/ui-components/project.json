@@ -6,6 +6,12 @@
       "options": {
         "cwd": "packages/ui-components"
       }
+    },
+    "test": {
+      "command": "npm run test",
+      "options": {
+        "cwd": "packages/ui-components"
+      }
     }
   }
 }
