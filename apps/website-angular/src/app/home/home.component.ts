@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { OvPageLayoutComponent } from '@ov/ui-components-angular';
-import { OvNavBarComponent } from '@ov/ui-components-angular';
-import { OvHeroComponent } from '@ov/ui-components-angular';
-import { OvTextComponent } from '@ov/ui-components-angular';
-import { OvLinkComponent } from '@ov/ui-components-angular';
-import { OvImageCardComponent } from '@ov/ui-components-angular';
-import { OvCarouselComponent } from '@ov/ui-components-angular';
-import { OvLogoComponent } from '@ov/ui-components-angular';
-import { OvButtonComponent } from '@ov/ui-components-angular';
+import { OvPageLayoutComponent } from '@ov/ui-components-angular/templates/page-layout';
+import { OvNavBarComponent } from '@ov/ui-components-angular/organisms/nav-bar';
+import { OvHeroComponent } from '@ov/ui-components-angular/organisms/hero';
+import { OvTextComponent } from '@ov/ui-components-angular/atoms/text';
+import { OvLinkComponent } from '@ov/ui-components-angular/atoms/link';
+import { OvImageCardComponent } from '@ov/ui-components-angular/molecules/image-card';
+import { OvCarouselComponent } from '@ov/ui-components-angular/organisms/carousel';
+import { OvLogoComponent } from '@ov/ui-components-angular/atoms/logo';
+import { OvButtonComponent } from '@ov/ui-components-angular/atoms/button';
 
 const NAV_ITEMS = [
   { label: 'Home', href: '/' },

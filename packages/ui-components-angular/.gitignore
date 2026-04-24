@@ -1,1 +1,4 @@
-src/lib/*
+atoms/*
+molecules/*
+organisms/*
+templates/*
