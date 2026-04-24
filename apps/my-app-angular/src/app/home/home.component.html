@@ -28,8 +28,7 @@
 
   <ov-carousel heading="Our offices in 8 cities">
     <ov-text slot="description" variant="body" as="p">
-      Present throughout the Netherlands — always close to you.
-      <ov-link href="/contact">Contact us</ov-link>.
+      Click on your nearby office to learn more, or <ov-link href="/contact">Contact us</ov-link>.
     </ov-text>
     @for (card of officeCards; track card.label + card.src) {
       <ov-image-card [label]="card.label" [src]="card.src" [href]="card.href"></ov-image-card>
