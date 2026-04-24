@@ -3,7 +3,8 @@
  * generate-wrappers.mjs
  *
  * Reads packages/ui-components/custom-elements.json and generates Angular
- * wrapper components into packages/ui-components-angular/src/lib/.
+ * wrapper components into packages/ui-components-angular/<tier>/<name>/.
+ * Each component gets ov-<name>.ts, public-api.ts, and ng-package.json.
  *
  * Run:  node scripts/generate-wrappers.mjs
  */
@@ -15,7 +16,6 @@ import { fileURLToPath } from 'url';
 const __dir = dirname(fileURLToPath(import.meta.url));
 const ANGULAR_PKG = join(__dir, '..');
 const UI_PKG = join(__dir, '../../ui-components');
-const LIB_DIR = join(ANGULAR_PKG, 'src/lib');
 
 // ── Type resolution ──────────────────────────────────────────────────────────
 
@@ -209,7 +209,9 @@ function generateWrapper({ tagName, modulePath, fields, events }) {
   out.push(`  ${ngImports.join(',\n  ')},`);
   out.push(`} from '@angular/core';`);
   if (utilImports.length) {
-    out.push(`import { ${utilImports.join(', ')} } from '../../utils';`);
+    out.push(
+      `import { ${utilImports.join(', ')} } from '@ov/ui-components-angular';`,
+    );
   }
   out.push(`import '@ov/ui-components/${litImport}.js';`);
   out.push('');
@@ -315,11 +317,28 @@ for (const mod of cem.modules) {
     events: decl.events ?? [],
   });
 
-  const outDir = join(LIB_DIR, tier);
+  const compName = decl.tagName.replace(/^ov-/, '');
+  const outDir = join(ANGULAR_PKG, tier, compName);
   mkdirSync(outDir, { recursive: true });
-  writeFileSync(join(outDir, `${decl.tagName}.ts`), content);
 
-  console.log(`  ${tier}/${decl.tagName}.ts`);
+  writeFileSync(join(outDir, `${decl.tagName}.ts`), content);
+  writeFileSync(
+    join(outDir, 'public-api.ts'),
+    `export * from './${decl.tagName}';\n`,
+  );
+  writeFileSync(
+    join(outDir, 'ng-package.json'),
+    JSON.stringify(
+      {
+        $schema: '../../node_modules/ng-packagr/ng-package.schema.json',
+        lib: { entryFile: 'public-api.ts' },
+      },
+      null,
+      2,
+    ) + '\n',
+  );
+
+  console.log(`  ${tier}/${compName}/`);
   count++;
 }
 

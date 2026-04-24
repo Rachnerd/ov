@@ -3,6 +3,28 @@
   "version": "1.0.0",
   "main": "./dist/fesm2022/ov-ui-components-angular.mjs",
   "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/fesm2022/ov-ui-components-angular.mjs"
+    },
+    "./atoms/*": {
+      "types": "./dist/atoms/*/index.d.ts",
+      "default": "./dist/fesm2022/ov-ui-components-angular-atoms-*.mjs"
+    },
+    "./molecules/*": {
+      "types": "./dist/molecules/*/index.d.ts",
+      "default": "./dist/fesm2022/ov-ui-components-angular-molecules-*.mjs"
+    },
+    "./organisms/*": {
+      "types": "./dist/organisms/*/index.d.ts",
+      "default": "./dist/fesm2022/ov-ui-components-angular-organisms-*.mjs"
+    },
+    "./templates/*": {
+      "types": "./dist/templates/*/index.d.ts",
+      "default": "./dist/fesm2022/ov-ui-components-angular-templates-*.mjs"
+    }
+  },
   "files": [
     "dist"
   ],
