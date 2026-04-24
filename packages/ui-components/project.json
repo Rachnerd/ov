@@ -2,7 +2,7 @@
   "name": "@ov/ui-components",
   "targets": {
     "build": {
-      "command": "npm run analyze && npm run build-storybook",
+      "command": "npm run build && npm run analyze && npm run build-storybook",
       "options": {
         "cwd": "packages/ui-components"
       }

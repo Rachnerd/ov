@@ -1,18 +1,38 @@
 {
   "name": "@ov/ui-components",
   "version": "1.0.0",
+  "type": "module",
   "exports": {
-    "./*": "./src/*.ts"
+    "./*": {
+      "@ov/source": "./src/*.ts",
+      "types": "./dist/*.d.ts",
+      "import": "./dist/*.js"
+    }
   },
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.d.ts",
+    "dist/**/*.js.map",
+    "dist/**/*.d.ts.map",
+    "custom-elements.json"
+  ],
+  "sideEffects": [
+    "./dist/atoms/**/*.js",
+    "./dist/molecules/**/*.js",
+    "./dist/organisms/**/*.js",
+    "./dist/templates/**/*.js"
+  ],
   "customElements": "custom-elements.json",
   "scripts": {
     "analyze": "cem analyze && node scripts/generate-html-custom-data.mjs",
+    "build": "tsc -p tsconfig.build.json",
     "test": "wtr --config web-test-runner.config.mjs --fail-on-unhandled-errors",
     "test:watch": "wtr --config web-test-runner.config.mjs --watch",
     "storybook": "npm run analyze && storybook dev -p 6006 --config-dir .storybook",
     "build-storybook": "npm run analyze && storybook build --config-dir .storybook"
   },
-  "dependencies": {
+  "peerDependencies": {
+    "@ov/style": "*",
     "lit": "^3.1.2"
   },
   "devDependencies": {
@@ -27,6 +47,7 @@
     "@web/dev-server-esbuild": "^1.0.5",
     "@web/test-runner": "^0.20.2",
     "@web/test-runner-playwright": "^0.11.1",
+    "lit": "^3.1.2",
     "storybook": "^8.6.18"
   }
 }
