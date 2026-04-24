@@ -1,6 +1,6 @@
 # OpenValue Design System
 
-Monorepo containing the OpenValue design system and a Vite demo application.
+Framework-agnostic UI component library built with Lit 3 web components and a two-tier CSS custom property token system.
 
 ## Packages
 
@@ -9,8 +9,8 @@ Monorepo containing the OpenValue design system and a Vite demo application.
 | [`packages/style`](./packages/style)                                 | Design token CSS — `@ov/style`                           |
 | [`packages/ui-components`](./packages/ui-components)                 | Lit 3 web-component library — `@ov/ui-components`        |
 | [`packages/ui-components-angular`](./packages/ui-components-angular) | Generated Angular wrappers — `@ov/ui-components-angular` |
-| [`apps/website`](./apps/website)                                     | Vite demo application                                    |
-| [`apps/website-angular`](./apps/website-angular)                     | Angular demo application                                 |
+| [`apps/website`](./apps/website)                                     | Lit website consuming the components directly            |
+| [`apps/website-angular`](./apps/website-angular)                     | Angular website exercising the Angular wrappers          |
 
 ## Quick start
 
@@ -143,8 +143,8 @@ btn.variant = 'prumary'; // ✗ TS error — not assignable to ButtonVariant
 ```
 ov/
 ├── apps/
-│   ├── website/                  Vite demo application
-│   └── website-angular/          Angular demo application
+│   ├── website/                  Lit website (consumes ov-* components directly)
+│   └── website-angular/          Angular website (exercises Angular wrappers)
 ├── packages/
 │   ├── style/                   @ov/style
 │   │   ├── tokens/              primitives.css · semantic.css · motion.css
@@ -178,11 +178,13 @@ ov/
 
 ## Technology
 
-- **[Lit 3](https://lit.dev)** — web components with reactive properties and shadow DOM
-- **CSS custom properties** — design tokens that pierce shadow DOM for zero-overhead theming
+- **[Lit 3](https://lit.dev)** — web components with reactive properties and shadow DOM; used for all `ov-*` components and the `apps/website` Lit website
+- **CSS custom properties** — design tokens that pierce shadow DOM for zero-overhead theming across any framework
+- **[Angular 18](https://angular.dev)** — `apps/website-angular` and the generated `@ov/ui-components-angular` wrapper library
+- **[ng-packagr](https://github.com/ng-packagr/ng-packagr)** — compiles Angular wrappers into secondary entry points (one per component, à la Angular Material)
 - **[Storybook 8](https://storybook.js.org)** — component explorer with dark mode toggle and auto-generated docs
 - **[Web Test Runner](https://modern-web.dev/docs/test-runner/overview/)** + **[@open-wc/testing](https://open-wc.org/docs/testing/helpers/)** — browser-native unit tests with axe accessibility checks
-- **[Vite](https://vitejs.dev)** — demo app dev server and bundler
+- **[Vite](https://vitejs.dev)** — `apps/website` dev server and bundler
 
 ## Browser support
 
