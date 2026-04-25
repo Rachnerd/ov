@@ -30,7 +30,14 @@
                 "output": "/"
               }
             ],
-            "styles": ["src/styles.css"],
+            "styles": [
+              "../../packages/style/base/reset.css",
+              "../../packages/style/base/fonts.css",
+              "../../packages/style/tokens/primitives.css",
+              "../../packages/style/tokens/semantic.css",
+              "../../packages/style/tokens/motion.css",
+              "src/styles.css"
+            ],
             "scripts": []
           },
           "configurations": {
