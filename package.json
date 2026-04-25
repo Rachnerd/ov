@@ -7,7 +7,8 @@
     "start": "nx run-many --target=start",
     "prod": "nx run-many --target=prod",
     "build": "nx run-many --target=build",
-    "test": "nx run-many --target=test"
+    "test": "nx run-many --target=test",
+    "convert-assets": "node ./scripts/convert-assets-to-webp.js"
   },
   "private": true,
   "devDependencies": {
@@ -19,6 +20,7 @@
     "lint-staged": "^16.4.0",
     "nx": "22.6.5",
     "prettier": "~3.6.2",
+    "sharp": "^0.34.5",
     "tslib": "^2.3.0",
     "typescript": "~5.9.2"
   },

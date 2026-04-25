@@ -6,6 +6,8 @@
     <title>OpenValue — Tech Tribes</title>
     <link rel="icon" type="image/x-icon" href="lit.svg" />
     <script type="module" src="/styles.ts"></script>
+    <!-- Light house performance fix -->
+    <link rel="preload" as="image" href="/banner.webp" fetchpriority="high" />
 
     <style>
       body {
@@ -62,8 +64,7 @@
           >Contact</ov-button
         >
       </ov-nav-bar>
-
-      <ov-hero slot="hero" src="/banner.jpg" overlay="0.68" subheading="">
+      <ov-hero slot="hero" src="/banner.webp" overlay="0.68" subheading="">
         <ov-logo slot="logo" size="xl"></ov-logo>
       </ov-hero>
 
@@ -107,52 +108,52 @@
         </ov-text>
         <ov-image-card
           label="OpenValue Amsterdam"
-          src="/amsterdam.jpg"
+          src="/amsterdam.webp"
           href="#"
         ></ov-image-card>
         <ov-image-card
           label="OpenValue Arnhem"
-          src="/arnhem.jpg"
+          src="/arnhem.webp"
           href="#"
         ></ov-image-card>
         <ov-image-card
           label="OpenValue Düsseldorf"
-          src="/dusseldorf.jpg"
+          src="/dusseldorf.webp"
           href="#"
         ></ov-image-card>
         <ov-image-card
           label="OpenValue Munich"
-          src="/munich.jpg"
+          src="/munich.webp"
           href="#"
         ></ov-image-card>
         <ov-image-card
           label="OpenValue Rotterdam"
-          src="/rotterdam.jpg"
+          src="/rotterdam.webp"
           href="#"
         ></ov-image-card>
         <ov-image-card
           label="OpenValue Utrecht"
-          src="/utrecht.jpg"
+          src="/utrecht.webp"
           href="#"
         ></ov-image-card>
         <ov-image-card
           label="OpenValue Vienna"
-          src="/vienna.jpg"
+          src="/vienna.webp"
           href="#"
         ></ov-image-card>
         <ov-image-card
           label="OpenValue Zurich"
-          src="/zurich.jpg"
+          src="/zurich.webp"
           href="#"
         ></ov-image-card>
         <ov-image-card
           label="OpenValue Amsterdam"
-          src="/amsterdam.jpg"
+          src="/amsterdam.webp"
           href="#"
         ></ov-image-card>
         <ov-image-card
           label="OpenValue Arnhem"
-          src="/arnhem.jpg"
+          src="/arnhem.webp"
           href="#"
         ></ov-image-card>
       </ov-carousel>

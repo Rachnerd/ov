@@ -21,14 +21,14 @@ const NAV_ITEMS = [
 ];
 
 const OFFICE_CARDS = [
-  { label: 'OpenValue Amsterdam', src: '/amsterdam.jpg', href: '#' },
-  { label: 'OpenValue Arnhem', src: '/arnhem.jpg', href: '#' },
-  { label: 'OpenValue Düsseldorf', src: '/dusseldorf.jpg', href: '#' },
-  { label: 'OpenValue Munich', src: '/munich.jpg', href: '#' },
-  { label: 'OpenValue Rotterdam', src: '/rotterdam.jpg', href: '#' },
-  { label: 'OpenValue Utrecht', src: '/utrecht.jpg', href: '#' },
-  { label: 'OpenValue Vienna', src: '/vienna.jpg', href: '#' },
-  { label: 'OpenValue Zurich', src: '/zurich.jpg', href: '#' },
+  { label: 'OpenValue Amsterdam', src: '/amsterdam.webp', href: '#' },
+  { label: 'OpenValue Arnhem', src: '/arnhem.webp', href: '#' },
+  { label: 'OpenValue Düsseldorf', src: '/dusseldorf.webp', href: '#' },
+  { label: 'OpenValue Munich', src: '/munich.webp', href: '#' },
+  { label: 'OpenValue Rotterdam', src: '/rotterdam.webp', href: '#' },
+  { label: 'OpenValue Utrecht', src: '/utrecht.webp', href: '#' },
+  { label: 'OpenValue Vienna', src: '/vienna.webp', href: '#' },
+  { label: 'OpenValue Zurich', src: '/zurich.webp', href: '#' },
 ];
 
 @Component({

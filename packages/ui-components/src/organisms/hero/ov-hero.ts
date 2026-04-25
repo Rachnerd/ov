@@ -118,6 +118,7 @@ export class OvHero extends LitElement {
                 style="background-image: url('${this.src}')"
                 role="img"
                 aria-hidden="true"
+                fetch-priority="high"
               ></div>
             `
           : nothing}

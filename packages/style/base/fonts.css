@@ -10,7 +10,7 @@
   font-weight: 300;
   font-stretch: normal;
   font-display: swap;
-  src: url(/montserrat/Montserrat-Light.woff2) format('truetype');
+  src: url(/montserrat/Montserrat-Light.woff2) format('woff2');
 }
 
 @font-face {
@@ -19,7 +19,7 @@
   font-weight: 300;
   font-stretch: normal;
   font-display: swap;
-  src: url(/montserrat/Montserrat-LightItalic.woff2) format('truetype');
+  src: url(/montserrat/Montserrat-LightItalic.woff2) format('woff2');
 }
 
 @font-face {
@@ -28,7 +28,7 @@
   font-weight: 400;
   font-stretch: normal;
   font-display: swap;
-  src: url(/montserrat/Montserrat-Regular.woff2) format('truetype');
+  src: url(/montserrat/Montserrat-Regular.woff2) format('woff2');
 }
 
 @font-face {
@@ -37,7 +37,7 @@
   font-weight: 400;
   font-stretch: normal;
   font-display: swap;
-  src: url(/montserrat/Montserrat-Italic.woff2) format('truetype');
+  src: url(/montserrat/Montserrat-Italic.woff2) format('woff2');
 }
 
 @font-face {
@@ -46,7 +46,7 @@
   font-weight: 500;
   font-stretch: normal;
   font-display: swap;
-  src: url(/montserrat/Montserrat-Medium.woff2) format('truetype');
+  src: url(/montserrat/Montserrat-Medium.woff2) format('woff2');
 }
 
 @font-face {
@@ -55,7 +55,7 @@
   font-weight: 500;
   font-stretch: normal;
   font-display: swap;
-  src: url(/montserrat/Montserrat-MediumItalic.woff2) format('truetype');
+  src: url(/montserrat/Montserrat-MediumItalic.woff2) format('woff2');
 }
 
 @font-face {
@@ -64,7 +64,7 @@
   font-weight: 600;
   font-stretch: normal;
   font-display: swap;
-  src: url(/montserrat/Montserrat-SemiBold.woff2) format('truetype');
+  src: url(/montserrat/Montserrat-SemiBold.woff2) format('woff2');
 }
 
 @font-face {
@@ -73,7 +73,7 @@
   font-weight: 600;
   font-stretch: normal;
   font-display: swap;
-  src: url(/montserrat/Montserrat-SemiBoldItalic.woff2) format('truetype');
+  src: url(/montserrat/Montserrat-SemiBoldItalic.woff2) format('woff2');
 }
 
 @font-face {
@@ -82,7 +82,7 @@
   font-weight: 700;
   font-stretch: normal;
   font-display: swap;
-  src: url(/montserrat/Montserrat-Bold.woff2) format('truetype');
+  src: url(/montserrat/Montserrat-Bold.woff2) format('woff2');
 }
 
 @font-face {
@@ -91,5 +91,5 @@
   font-weight: 700;
   font-stretch: normal;
   font-display: swap;
-  src: url(/montserrat/Montserrat-BoldItalic.woff2) format('truetype');
+  src: url(/montserrat/Montserrat-BoldItalic.woff2) format('woff2');
 }

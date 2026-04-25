@@ -74,7 +74,7 @@ export class OvLogo extends LitElement {
     const width = Math.round(height * (1614 / 298));
     return html`
       <img
-        src="/openvalue-tt-white.png"
+        src="/openvalue-tt-white.webp"
         alt="OpenValue — Tech Tribes"
         height=${height}
         width=${width}

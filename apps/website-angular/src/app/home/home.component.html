@@ -1,10 +1,13 @@
+<!-- Light house performance fix -->
+<link rel="preload" as="image" href="/banner.webp" fetchpriority="high" />
+
 <ov-page-layout>
   <ov-nav-bar slot="nav" logo-href="/" active="/" [items]="navItems">
     <ov-logo slot="logo" size="sm"></ov-logo>
     <ov-button slot="actions" variant="primary" size="sm">Contact</ov-button>
   </ov-nav-bar>
 
-  <ov-hero slot="hero" src="/banner.jpg" [overlay]="0.68" subheading="">
+  <ov-hero slot="hero" src="/banner.webp" [overlay]="0.68" subheading="">
     <ov-logo slot="logo" size="xl"></ov-logo>
   </ov-hero>
 
