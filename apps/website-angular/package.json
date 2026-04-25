@@ -5,7 +5,7 @@
     "prod": "npm run build && npx live-server dist/website-angular/browser --port=3001",
     "build": "ng build --configuration production",
     "start": "ng serve -o",
-    "stats": "ng build --configuration production --stats-json && esbuild-visualizer  && open dist/stats.html",
+    "stats": "ng build --configuration production --stats-json && esbuild-visualizer --metadata dist/website-angular/stats.json && open stats.html",
     "test": "jest"
   },
   "dependencies": {

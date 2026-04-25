@@ -25,7 +25,7 @@ fs.readdirSync(inputDir).forEach((file) => {
   const outputPath = path.join(outputDir, path.parse(file).name + '.webp');
 
   sharp(inputPath)
-    .webp({ quality: 50 })
+    .webp({ quality: 25 })
     .toFile(outputPath)
     .then(() => console.log(`Converted: ${file}`))
     .catch((err) => console.error(`Error processing ${file}:`, err));
