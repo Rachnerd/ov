@@ -21,6 +21,17 @@ const OFFICE_CARDS = [
   { label: 'OpenValue Zurich', src: '/zurich.webp', href: '#' },
 ];
 
+const NAV_ITEMS = [
+  { label: 'Home', href: '/' },
+  { label: 'Services', href: '/services' },
+  { label: 'Projects', href: '/projects' },
+  { label: 'Training', href: '/training' },
+  { label: 'Career', href: '/career' },
+  { label: 'Speakers', href: '/speakers' },
+  { label: 'Tech Insights', href: '/tech-insights' },
+  { label: 'About', href: '/about' },
+];
+
 @Component({
   selector: 'app-home',
   imports: [
@@ -40,6 +51,7 @@ const OFFICE_CARDS = [
 })
 export class HomeComponent {
   officeCards = OFFICE_CARDS;
+  navItems = NAV_ITEMS;
 
   scrollToIntro(): void {
     document.getElementById('intro')?.scrollIntoView({ behavior: 'smooth' });
