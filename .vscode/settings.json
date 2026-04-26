@@ -3,5 +3,5 @@
   "lit-plugin.rules.no-unknown-tag-name": "warning",
   "lit-plugin.rules.no-unknown-attribute": "warning",
   "lit-plugin.rules.no-unknown-property": "warning",
-  "angular.enable-strict-mode-prompt": true
+  "angular.enable-strict-mode-prompt": false
 }
