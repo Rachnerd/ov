@@ -47,8 +47,20 @@
 
   <body data-theme="light">
     <ov-page-layout max-width="1000px">
-      <ov-nav-bar slot="nav" logo-href="/" active="/services.html">
+      <ov-nav-bar slot="nav" logo-href="/">
         <ov-logo slot="logo" size="sm"></ov-logo>
+        <ov-nav-link slot="links" href="/">Home</ov-nav-link>
+        <ov-nav-link slot="links" href="/services.html" active
+          >Services</ov-nav-link
+        >
+        <ov-nav-link slot="links" href="/projects.html">Projects</ov-nav-link>
+        <ov-nav-link slot="links" href="/training.html">Training</ov-nav-link>
+        <ov-nav-link slot="links" href="/career.html">Career</ov-nav-link>
+        <ov-nav-link slot="links" href="/speakers.html">Speakers</ov-nav-link>
+        <ov-nav-link slot="links" href="/tech-insights.html"
+          >Tech Insights</ov-nav-link
+        >
+        <ov-nav-link slot="links" href="/about.html">About</ov-nav-link>
         <ov-button slot="actions" variant="primary" size="sm"
           >Contact</ov-button
         >
@@ -112,18 +124,5 @@
     </ov-page-layout>
 
     <script type="module" src="/main.ts"></script>
-
-    <script type="module">
-      document.querySelector('ov-nav-bar').items = [
-        { label: 'Home', href: '/' },
-        { label: 'Services', href: '/services.html' },
-        { label: 'Projects', href: '/projects.html' },
-        { label: 'Training', href: '/training.html' },
-        { label: 'Career', href: '/career.html' },
-        { label: 'Speakers', href: '/speakers.html' },
-        { label: 'Tech Insights', href: '/tech-insights.html' },
-        { label: 'About', href: '/about.html' },
-      ];
-    </script>
   </body>
 </html>

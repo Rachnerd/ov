@@ -5,11 +5,7 @@ import '../../atoms/button/ov-button.js';
 import '../../atoms/icon/ov-icon.js';
 import '../../atoms/nav-link/ov-nav-link.js';
 import '../../molecules/menu-item/ov-menu-item.js';
-
-export interface NavItem {
-  label: string;
-  href: string;
-}
+import type { OvNavLink } from '../../atoms/nav-link/ov-nav-link.js';
 
 /**
  * <ov-nav-bar>
@@ -21,6 +17,7 @@ export interface NavItem {
  * @element ov-nav-bar
  *
  * @slot logo    - Custom logo image / SVG override.
+ * @slot links   - ov-nav-link elements forming the navigation.
  * @slot actions - CTA buttons on the far right (e.g. ov-button).
  */
 @customElement('ov-nav-bar')
@@ -28,13 +25,12 @@ export class OvNavBar extends LitElement {
   @property({ type: String }) brand = '';
   @property({ type: String }) tagline = '';
   @property({ type: String, attribute: 'logo-href' }) logoHref = '/';
-  @property({ type: Array }) items: NavItem[] = [];
-  @property({ type: String }) active = '';
 
   @state() private _menuOpen = false;
   @state() private _hasOverflow = false;
 
   @query('.links') private _linksEl!: HTMLElement;
+  @query('slot[name="links"]') private _linksSlot!: HTMLSlotElement;
 
   private _ro!: ResizeObserver;
   private _rafId = 0;
@@ -69,10 +65,14 @@ export class OvNavBar extends LitElement {
     document.removeEventListener('click', this._onDocClick);
   }
 
+  private _getLinks(): OvNavLink[] {
+    return (this._linksSlot?.assignedElements({ flatten: true }) ??
+      []) as OvNavLink[];
+  }
+
   private _checkOverflow() {
-    const links = [
-      ...this._linksEl.querySelectorAll<HTMLElement>('ov-nav-link'),
-    ];
+    if (!this._linksEl) return;
+    const links = this._getLinks();
 
     // Reset all to visible so measurements reflect natural widths
     links.forEach((l) => l.removeAttribute('hidden'));
@@ -97,6 +97,11 @@ export class OvNavBar extends LitElement {
       this._hasOverflow = hasOverflow;
       if (!hasOverflow) this._menuOpen = false;
     }
+  }
+
+  private _onSlotChange() {
+    cancelAnimationFrame(this._rafId);
+    this._rafId = requestAnimationFrame(() => this._checkOverflow());
   }
 
   private _toggleMenu(e: Event) {
@@ -131,15 +136,7 @@ export class OvNavBar extends LitElement {
 
         <div class="links">
           <span class="links-spacer"></span>
-          ${this.items.map(
-            (item) => html`
-              <ov-nav-link
-                href=${item.href}
-                ?active=${item.href === this.active}
-                >${item.label}</ov-nav-link
-              >
-            `,
-          )}
+          <slot name="links" @slotchange=${this._onSlotChange}></slot>
         </div>
 
         <div class="more-wrap" ?hidden=${!this._hasOverflow}>
@@ -159,12 +156,12 @@ export class OvNavBar extends LitElement {
         ${this._menuOpen
           ? html`
               <div class="overflow-menu" role="menu">
-                ${this.items.map(
-                  (item) => html`
+                ${this._getLinks().map(
+                  (link) => html`
                     <ov-menu-item
-                      label=${item.label}
-                      ?selected=${item.href === this.active}
-                      @select=${() => this._navigate(item.href)}
+                      label=${link.textContent?.trim() ?? ''}
+                      ?selected=${link.active}
+                      @select=${() => this._navigate(link.href)}
                     ></ov-menu-item>
                   `,
                 )}
@@ -241,13 +238,23 @@ export class OvNavBar extends LitElement {
         margin: 0 var(--ov-space-8);
         overflow: hidden;
       }
+
       /* Spacer pushes items right; shrinks to 0 before items overflow */
       .links-spacer {
         flex: 1 1 auto;
       }
 
+      /*
+       * display: contents makes the slot transparent to layout — slotted
+       * ov-nav-link elements participate directly in .links's flex context,
+       * inheriting the gap and the overflow detection boundary.
+       */
+      slot[name='links'] {
+        display: contents;
+      }
+
       /* Prevent links from shrinking so they actually overflow the container */
-      .links ov-nav-link {
+      ::slotted(ov-nav-link) {
         flex-shrink: 0;
       }
 

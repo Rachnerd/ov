@@ -2,8 +2,16 @@
 <link rel="preload" as="image" href="/banner.webp" fetchpriority="high" />
 
 <ov-page-layout>
-  <ov-nav-bar slot="nav" logo-href="/" active="/" [items]="navItems">
+  <ov-nav-bar slot="nav" logo-href="/">
     <ov-logo slot="logo" size="sm"></ov-logo>
+    <ov-nav-link slot="links" href="/" [active]="true">Home</ov-nav-link>
+    <ov-nav-link slot="links" href="/services">Services</ov-nav-link>
+    <ov-nav-link slot="links" href="/projects">Projects</ov-nav-link>
+    <ov-nav-link slot="links" href="/training">Training</ov-nav-link>
+    <ov-nav-link slot="links" href="/career">Career</ov-nav-link>
+    <ov-nav-link slot="links" href="/speakers">Speakers</ov-nav-link>
+    <ov-nav-link slot="links" href="/tech-insights">Tech Insights</ov-nav-link>
+    <ov-nav-link slot="links" href="/about">About</ov-nav-link>
     <ov-button slot="actions" variant="primary" size="sm">Contact</ov-button>
   </ov-nav-bar>
 

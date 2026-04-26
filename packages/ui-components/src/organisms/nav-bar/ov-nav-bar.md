@@ -5,63 +5,51 @@ Sticky top navigation bar. Items that fit in the available width are shown inlin
 ## Tag
 
 ```html
-<ov-nav-bar
-  brand="OpenValue"
-  tagline="Tech Tribes"
-  .items=${navItems}
-  active="/"
->
+<ov-nav-bar brand="OpenValue" tagline="Tech Tribes">
+  <ov-nav-link slot="links" href="/" active>Home</ov-nav-link>
+  <ov-nav-link slot="links" href="/services">Services</ov-nav-link>
   <ov-button slot="actions" variant="primary" size="sm">Contact</ov-button>
 </ov-nav-bar>
 ```
 
 ## Properties
 
-| Property   | Attribute    | Type         | Default | Description                                          |
-|------------|--------------|--------------|---------|------------------------------------------------------|
-| `brand`    | `brand`      | `string`     | `''`    | Primary wordmark text                                |
-| `tagline`  | `tagline`    | `string`     | `''`    | Sub-brand or tagline below the brand name            |
-| `logoHref` | `logo-href`  | `string`     | `'/'`   | href the logo links to                               |
-| `items`    | —            | `NavItem[]`  | `[]`    | Navigation items. Set as a JS property, not attribute|
-| `active`   | `active`     | `string`     | `''`    | `href` of the active item — marks it `aria-current="page"` |
-
-### NavItem type
-
-```ts
-interface NavItem {
-  label: string;
-  href: string;
-}
-```
+| Property   | Attribute   | Type     | Default | Description                               |
+| ---------- | ----------- | -------- | ------- | ----------------------------------------- |
+| `brand`    | `brand`     | `string` | `''`    | Primary wordmark text                     |
+| `tagline`  | `tagline`   | `string` | `''`    | Sub-brand or tagline below the brand name |
+| `logoHref` | `logo-href` | `string` | `'/'`   | href the logo links to                    |
 
 ## Slots
 
-| Slot      | Description                                            |
-|-----------|--------------------------------------------------------|
-| `logo`    | Custom logo (SVG / img); overrides the text wordmark   |
-| `actions` | CTA buttons on the far right                           |
+| Slot      | Description                                                          |
+| --------- | -------------------------------------------------------------------- |
+| `logo`    | Custom logo (SVG / img); overrides the text wordmark                 |
+| `links`   | `ov-nav-link` elements forming the navigation; overflow auto-handled |
+| `actions` | CTA buttons on the far right                                         |
 
 ## Usage examples
 
 ```html
-<script type="module">
-  const NAV_ITEMS = [
-    { label: 'Home',     href: '/' },
-    { label: 'Services', href: '/services' },
-    { label: 'About',    href: '/about' },
-  ];
-  document.querySelector('ov-nav-bar').items = NAV_ITEMS;
-</script>
+<ov-nav-bar brand="OpenValue" tagline="Tech Tribes">
+  <ov-nav-link slot="links" href="/" active>Home</ov-nav-link>
+  <ov-nav-link slot="links" href="/services">Services</ov-nav-link>
+  <ov-nav-link slot="links" href="/about">About</ov-nav-link>
+  <ov-button slot="actions" variant="primary" size="sm">Contact</ov-button>
+</ov-nav-bar>
 
-<ov-nav-bar brand="OpenValue" tagline="Tech Tribes" active="/">
+<!-- With image logo -->
+<ov-nav-bar logo-href="/">
+  <ov-logo slot="logo" size="sm"></ov-logo>
+  <ov-nav-link slot="links" href="/" active>Home</ov-nav-link>
+  <ov-nav-link slot="links" href="/services">Services</ov-nav-link>
   <ov-button slot="actions" variant="primary" size="sm">Contact</ov-button>
 </ov-nav-bar>
 ```
 
 ## Rules
 
-- `items` is an array property — set it in JavaScript, not as an HTML attribute.
-- Set `active` to the exact `href` string of the current page to show the underline indicator.
+- Place `ov-nav-link` elements in the `links` slot — do not use raw `<a>` elements.
+- Set `active` directly on the `ov-nav-link` whose `href` matches the current page.
 - Use the `logo` slot only for image/SVG logos; for text wordmarks prefer `brand` + `tagline` props.
-- Inline nav links are rendered as `ov-nav-link` atoms — do not add custom `<a>` elements inside the bar.
 - The hamburger appears automatically when items overflow — no breakpoint configuration needed.
