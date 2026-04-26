@@ -33,7 +33,6 @@ const OFFICE_CARDS = [
 
 @Component({
   selector: 'app-home',
-  standalone: true,
   imports: [
     OvPageLayoutComponent,
     OvNavBarComponent,
