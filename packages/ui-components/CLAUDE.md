@@ -106,16 +106,7 @@ Never put multiple components in one file. Never create a component without all 
 
 ## Stories
 
-Before writing stories, read the skill file and the `.ts` source.
-
-Required stories for every component:
-
-- `Default` — args-driven
-- One story per major variant axis
-- `States` — disabled, loading, error, etc.
-- `Real-world: …` — a realistic usage example
-
-Place stories next to the component: `src/atoms/button/ov-button.stories.ts`.
+When writing or reviewing Storybook stories, read `src/authoring-stories.md`.
 
 ---
 

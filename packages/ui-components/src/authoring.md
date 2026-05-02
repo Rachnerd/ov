@@ -47,6 +47,8 @@ Does a fitting ov-* element exist?
 
 **No raw hex, px, or string literals anywhere.** Every CSS value must resolve to a token or a local variable that wraps one.
 
+Full token reference: `packages/style/tokens.md`
+
 ### Decision flow for any CSS value
 
 ```
@@ -77,22 +79,6 @@ nav {
 | Semantic  | `--color-*`, `--shadow-*` | **Yes — always prefer**                              |
 | Primitive | `--ov-*`                  | Only in token definitions and local component tokens |
 | Raw       | `#hex`, `px`, literal     | **Never**                                            |
-
-### Token quick reference
-
-| Need           | Token family                                                       |
-| -------------- | ------------------------------------------------------------------ |
-| Color          | `--color-text-*` `--color-bg-*` `--color-brand` `--color-border-*` |
-| Space / size   | `--ov-space-1` … `--ov-space-32`                                   |
-| Font size      | `--ov-fs-xs` … `--ov-fs-3xl`                                       |
-| Font weight    | `--ov-fw-light` … `--ov-fw-bold`                                   |
-| Line height    | `--ov-lh-none` `--ov-lh-tight` `--ov-lh-normal` `--ov-lh-relaxed`  |
-| Letter spacing | `--ov-ls-tighter` … `--ov-ls-display`                              |
-| Border width   | `--ov-border-thin` `--ov-border-base` `--ov-border-thick`          |
-| Border radius  | `--ov-radius-xs` … `--ov-radius-pill`                              |
-| Shadow         | `--shadow-xs` … `--shadow-xl` `--shadow-focus`                     |
-| Z-index        | `--ov-z-base` … `--ov-z-tooltip`                                   |
-| Motion         | `--ov-duration-*` `--ov-ease-*`                                    |
 
 ---
 
@@ -176,35 +162,19 @@ Add an entry here whenever a new component is created.
 
 ---
 
-## 7. Stories — keep in sync
-
-After **any** change to a component's `.ts` source:
-
-| What changed                            | Story action required                       |
-| --------------------------------------- | ------------------------------------------- |
-| New prop or variant                     | Add story or extend `argTypes` / `args`     |
-| Removed prop or variant                 | Remove or update affected story             |
-| New visible state                       | Add to `States` story                       |
-| Pure CSS token swap (no visual change)  | No update needed                            |
-| New child atom/molecule used internally | No update needed unless exposed API changed |
-
-Required stories for every component: `Default` (args-driven) · one per major variant axis · `States` · one `Real-world: …`
-
----
-
-## 8. API changes — mandatory side effects
+## 7. API changes — mandatory side effects
 
 When a component's **tag, attributes, or allowed attribute values** change:
 
 1. Update `.htmlvalidate.json` at the repo root.
 2. Update the component's `.md` skill file.
-3. Update the component's `.stories.ts` (see §7).
+3. Update the component's `.stories.ts` (see `src/authoring-stories.md`).
 4. Update `src/authoring.md` §6 if the element is new.
 5. Update both `CLAUDE.md` files if the element is new.
 
 ---
 
-## 9. Review checklist
+## 8. Review checklist
 
 Before marking any component work done, verify:
 

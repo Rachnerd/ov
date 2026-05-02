@@ -94,11 +94,8 @@ Never put multiple components in a single file. Never create a component without
 
 ### Generating stories
 
-When asked to write a Storybook story for a component:
-
-- Read the component's skill file and its `.ts` source before writing anything.
-- Place the story file next to the component: `src/atoms/button/ov-button.stories.ts`.
-- Always include: a `Default` story driven by `args`, one story per major variant axis, a `States` story, and at least one `Real-world: …` story.
+When asked to write or review Storybook stories, read:
+`packages/ui-components/src/authoring-stories.md`
 
 ### Reviewing code
 
