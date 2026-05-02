@@ -1,5 +1,4 @@
 {
-  "html.customData": ["./.vscode/html.custom-data.json"],
   "lit-plugin.rules.no-unknown-tag-name": "warning",
   "lit-plugin.rules.no-unknown-attribute": "warning",
   "lit-plugin.rules.no-unknown-property": "warning",
