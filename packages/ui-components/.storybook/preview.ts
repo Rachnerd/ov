@@ -59,6 +59,9 @@ const preview: Preview = {
   parameters: {
     backgrounds: { disable: true },
     layout: 'padded',
+    docs: {
+      codePanel: true,
+    },
   },
 };
 

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Services — OpenValue Tech Tribes</title>
+    <script type="module" src="/styles.ts"></script>
+  </head>
+
+  <body data-theme="light">
+    <ov-page-layout max-width="1000px">
+      <ov-nav-bar slot="nav" logo-href="/">
+        <ov-logo slot="logo" size="sm"></ov-logo>
+        <ov-nav-link slot="links" href="/">Home</ov-nav-link>
+        <ov-nav-link slot="links" href="/solutions.html" active
+          >Solutions</ov-nav-link
+        >
+        <ov-nav-link slot="links" href="/services.html">Services</ov-nav-link>
+        <ov-nav-link slot="links" href="/projects.html">Projects</ov-nav-link>
+        <ov-nav-link slot="links" href="/training.html">Training</ov-nav-link>
+        <ov-nav-link slot="links" href="/career.html">Career</ov-nav-link>
+        <ov-nav-link slot="links" href="/speakers.html">Speakers</ov-nav-link>
+        <ov-nav-link slot="links" href="/tech-insights.html"
+          >Tech Insights</ov-nav-link
+        >
+        <ov-nav-link slot="links" href="/about.html">About</ov-nav-link>
+        <ov-button slot="actions" variant="primary" size="sm"
+          >Contact</ov-button
+        >
+      </ov-nav-bar>
+
+      <ov-hero slot="hero" src="/banner.jpg" overlay="0.68">
+        <ov-logo slot="logo" size="xl"></ov-logo>
+      </ov-hero>
+
+      <section class="services-intro">
+        <ov-heading level="2">Solutions</ov-heading>
+        <ov-text variant="body" as="p"
+          >This is where we will put our solutions.</ov-text
+        >
+      </section>
+    </ov-page-layout>
+
+    <script type="module" src="/main.ts"></script>
+  </body>
+</html>
