@@ -1,18 +1,19 @@
 # @ov/ui-components
 
-Lit 3 web-component library for the OpenValue design system. Components are custom elements (`ov-*`) split into atoms and molecules.
+Lit 3 web-component library for the OpenValue design system. Components are custom elements (`ov-*`) split into atoms, molecules, organisms, and templates.
 
-## Authoring skill
+## Before you write anything
 
-Read this before creating or changing any component:
+1. Read `@src/authoring.md` before creating or modifying any component.
+2. Before touching any `ov-*` tag, read its skill file from the list below.
+3. If a prop, slot, variant, or token isn't in the skill file — ask, don't invent.
 
-@src/authoring.md
+---
 
 ## Skill files
 
-Read the relevant skill file before writing or reviewing any `ov-*` element. Each file documents exact props, slots, events, and valid attribute values.
-
 **Atoms**
+
 - @src/atoms/button/ov-button.md
 - @src/atoms/badge/ov-badge.md
 - @src/atoms/icon/ov-icon.md
@@ -31,6 +32,7 @@ Read the relevant skill file before writing or reviewing any `ov-*` element. Eac
 - @src/atoms/divider/ov-divider.md
 
 **Molecules**
+
 - @src/molecules/field/ov-field.md
 - @src/molecules/alert/ov-alert.md
 - @src/molecules/card/ov-card.md
@@ -42,59 +44,104 @@ Read the relevant skill file before writing or reviewing any `ov-*` element. Eac
 - @src/molecules/stat/ov-stat.md
 - @src/molecules/toast/ov-toast.md
 - @src/molecules/empty-state/ov-empty-state.md
+- @src/molecules/service-card/ov-service-card.md
 
 **Organisms**
+
 - @src/organisms/nav-bar/ov-nav-bar.md
 - @src/organisms/hero/ov-hero.md
 - @src/organisms/carousel/ov-carousel.md
+- @src/organisms/services-section/ov-services-section.md
 
 **Templates**
+
 - @src/templates/page-layout/ov-page-layout.md
 
-## Generating UI
+---
 
-- Use only props, slots, and attribute values listed in the skill files. Do not invent variants or props.
+## Rules
+
+### UI
+
+- Use only props, slots, and attribute values listed in the skill file. Never invent variants or props.
 - Use `ov-heading` for all headings — never `ov-text` for heading-level content.
-- Apply design tokens (`var(--color-brand)`, `var(--ov-space-4)`) instead of raw hex or pixel values.
+- Apply design tokens (`var(--color-brand)`, `var(--ov-space-4)`) instead of raw hex or pixel values. Raw hex/px where a token exists → **Error**.
 
-## Generating forms
+### Forms
 
-- Wrap every label+control pair in `<ov-field>` — never a bare `<ov-label>` next to a control.
+- Wrap every label+control pair in `<ov-field>`. A bare `<ov-label>` next to a control → **Error**.
 - Single-line → `<ov-input>`, multi-line → `<ov-textarea>`, boolean → `<ov-switch>`, one-of → `<ov-radio>`, many-of → `<ov-checkbox>`.
 - Primary submit: `<ov-button type="submit" variant="primary">`.
 
-## Component file structure
+### Importing
 
-Each component lives in its own folder (`atoms/<name>/`, `molecules/<name>/`, `organisms/<name>/`, or `templates/<name>/`) containing exactly:
-- `ov-<name>.ts` — the Lit element class
-- `ov-<name>.md` — the skill file (props, slots, events, examples)
-- `ov-<name>.stories.ts` — Storybook stories
-
-Never put multiple components in a single file. Never create a component without all three files.
-
-## Generating stories
-
-- Read the skill file and the `.ts` source before writing anything.
-- Place stories next to the component: `src/atoms/button/ov-button.stories.ts`.
-- Required stories: `Default` (args-driven), one per major variant axis, `States`, and one `Real-world: …`.
-
-## Reviewing code
-
-- **Error**: unknown prop/slot, invalid attribute value, `ov-radio` group missing shared `name`, bare `ov-label` without `ov-field`.
-- **Warning**: `ov-icon` without `label` as sole interactive content, `target="_blank"` missing `rel="noopener noreferrer"`, `ov-avatar` missing `name` and `initials`.
-- **Suggestion**: manual label+control replaceable with `ov-field`, `disabled` where `loading` fits better, raw color where a token exists.
-
-## Importing
-
-No barrel export. Import each component by path:
+Always import by exact path — no barrel export exists:
 
 ```ts
+import '@ov/ui-components/<tier>/<name>/ov-<name>';
+
+// Examples:
 import '@ov/ui-components/atoms/button/ov-button';
-import '@ov/ui-components/atoms/input/ov-input';
 import '@ov/ui-components/molecules/field/ov-field';
-import '@ov/ui-components/molecules/image-card/ov-image-card';
 import '@ov/ui-components/organisms/nav-bar/ov-nav-bar';
-import '@ov/ui-components/organisms/hero/ov-hero';
-import '@ov/ui-components/organisms/carousel/ov-carousel';
 import '@ov/ui-components/templates/page-layout/ov-page-layout';
 ```
+
+---
+
+## Component file structure
+
+Each component lives in its own folder containing exactly three files — no more, no fewer:
+
+```
+<tier>/<name>/
+  ov-<name>.ts          # Lit element class
+  ov-<name>.md          # Skill file (props, slots, events, examples)
+  ov-<name>.stories.ts  # Storybook stories
+```
+
+Never put multiple components in one file. Never create a component without all three files.
+
+---
+
+## Stories
+
+Before writing stories, read the skill file and the `.ts` source.
+
+Required stories for every component:
+
+- `Default` — args-driven
+- One story per major variant axis
+- `States` — disabled, loading, error, etc.
+- `Real-world: …` — a realistic usage example
+
+Place stories next to the component: `src/atoms/button/ov-button.stories.ts`.
+
+---
+
+## Code review severity
+
+### Error — must fix
+
+- Unknown prop, slot, or invalid attribute value
+- `ov-radio` group missing a shared `name`
+- Bare `<ov-label>` without `<ov-field>`
+- Raw hex or px value where a design token exists
+
+### Warning — should fix
+
+- `ov-icon` without `label` as sole interactive content
+- `target="_blank"` missing `rel="noopener noreferrer"`
+- `ov-avatar` missing both `name` and `initials`
+
+### Suggestion — worth considering
+
+- Manual label+control replaceable with `<ov-field>`
+- `disabled` where `loading` fits better
+- Raw color value where a token exists
+
+---
+
+## When in doubt
+
+If a prop, slot, variant, or token isn't in the skill file — **ask, don't invent**.
