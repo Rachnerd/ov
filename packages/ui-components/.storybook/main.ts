@@ -7,7 +7,7 @@ const config: StorybookConfig = {
     name: '@storybook/web-components-vite',
     options: {},
   },
-  staticDirs: ['./public'],
+  staticDirs: ['../../../apps/website/public'],
   docs: {
     autodocs: false,
   },
